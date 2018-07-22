@@ -89,6 +89,7 @@
     \[ \int\abs{fg} \le \sqrt{\int f^2}\cdot\sqrt{\int g^2}. \]
   \end{collary}
   \begin{collary}
+    \label{coll:lpui}
     若$\funcf{F}$内诸$\norm{f}_p\le M$，则$\funcf{F}$一致可积。
   \end{collary}
   \begin{proof}
@@ -266,7 +267,10 @@
   \[ \int \pare{f_1-f_2}^*\cdot f_2 = \lim_{n\to\infty} \int \pare{f_1-f_2}^*\cdot f_n = \int \pare{f_1-f_2}^* f_2. \]
   \begin{theorem}
     $L^p$上的弱收敛序列有诸$\norm{f_n}$有界且
-    \[ \norm{f} \le \lim \inf \norm{f_n}. \]
+    \begin{equation}
+    \label{eq:flefn}
+      \norm{f} \le \lim \inf \norm{f_n}.
+    \end{equation}
   \end{theorem}
   \begin{proof}
     注意到
@@ -274,12 +278,81 @@
     后Fatou即可。为证明有界，假设$\curb{\norm{f_n}}$无界，选取$\curb{f_n}$的子列$\curb{g_n}$满足$\norm{g_n}\ge n\cdot 3^n$，并再度选取子列$\curb{h_n}$满足$\norm{h_n}/\pare{n\cdot 3^n}\rightarrow \alpha\in\brac{1,+\infty}$。
     \par
     于是$\cF_n = n\cdot 3^n/\norm{h_n}\cdot h_n$满足$\cF_n$弱收敛于$f$且$\norm{\cF_n}=n\cdot 3^n$。定义
-    \[ \epsilon_{n+1} = \rec{3^{n+1}}\sgn \int \brac{\sum_k^n \epsilon_k \cdot f_k^*}\cdot f_{n+1}, \]
-    则$\norm{\epsilon_k\cdot f_k^*}=1/3^k$，由$L^p$的完备性知$g=\sum^\infty \epsilon_k \cdot f_k^*$收敛于$L^p$内。
-    
+    \[ \epsilon_{n+1} = \rec{3^{n+1}}\cdot\sgn \int \brac{\sum_k^n \epsilon_k \cdot f_k^*}\cdot f_{n+1}, \]
+    则$\norm{\epsilon_k\cdot f_k^*}=1/3^k$，由$L^p$的完备性知$g=\sum^\infty \epsilon_k \cdot f_k^*$收敛于$L^p$内。而
+    \[ \abs{\int g\cdot f_n} = \abs{\int \pare{\sum^{k=n} \epsilon_k \cdot f_k^* \cdot f_n}} -\abs{\int{\sum_{k=n+1}\epsilon_k \cdot f_k^* \cdot f_n}} \ge n - \frac{\norm{f_n}}{2\cdot 3^n}. \]
+    与$\int g\cdot f_n\rightarrow \int g\cdot f$矛盾。
   \end{proof}
-
-
+  \begin{collary}
+  设$f_n$弱收敛于$f$，$g_n$强收敛于$g$，则
+  \[ \int g_n \cdot f_n \rightarrow \int g\cdot f. \]
+  \end{collary}
+  \begin{proposition}
+  设$\cF$张成的空间在$L^q$中稠密，则$L^p$中有界的$\curb{f_n}$弱收敛于$f$当且仅当对任意$g\in\cF$，
+  \[ \int f_n\cdot g \rightarrow \int f\cdot g. \]
+  \end{proposition}
+  \begin{proof}
+  注意到
+  \[ \int f_n\cdot \cG - \int f\cdot\cG = \int \pare{f_n-f}\cdot\pare{\cG-g_k} + \int \pare{f_n-f}\cdot g_k. \]
+  前者由\hd 不等式知可任意小，后者由题设知可任意小。
+  \end{proof}
+  注意对于任意$q>1$的$L^q$，简单函数稠密。对于$q<\infty$，简单函数均为有界支撑。对任意$1<q<\infty$的$L^p$，阶梯函数在闭区间上稠密。因此
+  \begin{theorem}
+  \label{thm:wa}
+  对$1\le p<\infty$，有界$\curb{f_n}$弱收敛于$f$当且仅当对任意可测集，
+  \[ \int_A f_n \rightarrow \int_A f. \]
+  若$p>1$只需考虑有限测度的$A$。
+  \end{theorem}
+  \begin{theorem}
+  \label{thm:wax}
+  对于$1<p<\infty$与闭区间$\brac{a,b}$上的$L^p$，有界$\curb{f_n}$弱收敛于$f$当且仅当对任意$x$，
+  \[ \int_a^x f_n \rightarrow \int_a^x f. \]
+  \end{theorem}
+  考虑$\brac{0,1}$上的
+  \begin{align*}
+    f_n = 
+    \begin{cases}
+    1,& k/2^n+1/2^{2n+1}<x<\pare{k+1}/2^n \\
+    1-{2^{n+1},}& \text{otherwise.}
+    \end{cases}
+  \end{align*}
+  知$p=1$时不成立，而上述函数族在$p>1$时无界，故同样不成立。
+  \begin{ex}[Riemann-Lebesgue引理]
+  令$f_n=\sin nx$，则$f_n$满足\tref{wax}的条件，然而
+  \[ \int_{-\pi}^{\pi}\sin^2 nx\rightarrow \pi. \]
+  因此$L^2$中$\curb{f_n}$即不强收敛，也不逐点收敛。
+  \end{ex}
+  \begin{ex}
+  取$f_n=n\cdot\chi_{\lbr{0,1/n}}$，在$\brac{0,1}$上逐点收敛至零，但不弱收敛。
+  \end{ex}
+  \begin{ex}
+  取$f_0$为$\pare{-1,0}-\pare{0,1}-\pare{1,0}$，$f_n\pare{x} = f_0\pare{x-n}$，$f=0$，则$p>1$时\tref{wa}的条件满足但$p=1$时不满足，考虑$g=1$便知。
+  \end{ex}
+  \begin{theorem}
+  对于$1<p<\infty$与有界的$\curb{f_n}$几乎处处逐点收敛于$f$，有$\curb{f_n}$弱收敛于$f$。
+  \end{theorem}
+  \begin{proof}
+  由Fatou知$f\in L^p$，再由\cref{lpui}知\tref{wa}条件满足。
+  \end{proof}
+  \begin{theorem}[Radon-Riesz]
+  对于$1<p<\infty$，若$\curb{f_n}$弱收敛于$f$，则$f_n\rightarrow f$当且仅当$\norm{f_n}\rightarrow\norm{f}$。
+  \end{theorem}
+  \begin{proof}
+  对$p=2$，在题设下有
+  \[ \norm{f-f_n}^2 = \int \abs{f_n}^2-2\cdot\int f_n\cdot f+\int\abs{f}^2 = 0. \qedhere \]
+  \end{proof}
+  \begin{collary}
+  对$1<p<\infty$，弱收敛于$f$的$\curb{f_n}$存在收敛子列当且仅当
+  \[ \norm{f} = \lim\inf\norm{f_n}. \]
+  \end{collary}
+  \begin{proof}
+  只注意对收敛子列存在的情形，\eqref{eq:flefn}与$\lim\inf\norm{f_n}\le\lim\norm{f_{n_k}}$。
+  \end{proof}
+  \begin{ex}
+  令$\brac{-\pi,\pi}$上的$f_n=1+\sin nx$，$\curb{f_n}$弱收敛于$1$且$\norm{f_n}\rightarrow 2\pi$，当$f_n$并不强收敛于$1$。
+  \end{ex}
+  
+  
 %ContentEnds
  
 \ifx\allfiles\undefined %如果位置放错，可能出现意外中断

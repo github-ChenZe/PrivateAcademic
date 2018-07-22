@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.2.5)  14 JUL 2018 18:34
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.2.5)  22 JUL 2018 23:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1419,12 +1419,12 @@ able
 
 
 
-]) [24]
+] [24] [25] [26]) [27]
 \openout2 = `GeneralCalculus/Ch3.GeneralCalculus.aux'.
 
  (./GeneralCalculus/Ch3.GeneralCalculus.tex
 第三章
-) [25
+) [28
 
 
 
@@ -1433,7 +1433,7 @@ able
 
  (./GeneralLinearAlgebra/Ch4.GeneralLinearAlgebra.tex
 第四章
-) [26
+) [29
 
 
 
@@ -1442,7 +1442,7 @@ able
 
  (./GeneralFunctionTheory/Ch5.GeneralFunctionTheory.tex
 第五章
-[27
+[30
 
 
 
@@ -1451,45 +1451,45 @@ able
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <7.52812> not available
 (Font)              size <8> substituted on input line 59.
 
-[28] [29] [30]) [31]
+[31] [32] [33]) [34]
 \openout2 = `PointSetTopology/Ch6.PointSetTopology.aux'.
 
  (./PointSetTopology/Ch6.PointSetTopology.tex
 第六章
-[32
+[35
 
 
 
-]) [33]
+]) [36]
 \openout2 = `AnalysisOnManifolds/Ch7.AnalysisOnManifolds.aux'.
 
  (./AnalysisOnManifolds/Ch7.AnalysisOnManifolds.tex
 第七章
-[34
+[37
 
 
 
-]) [35]
+]) [38]
 \openout2 = `MeasureTheory/Ch8.MeasureTheory.aux'.
 
  (./MeasureTheory/Ch8.MeasureTheory.tex
 第八章
 Missing character: There is no 若 in font [lmroman10-regular]:mapping=tex-text;!
-[36
+[39
 
 
 
-] [37] [38] [39] [40] [41] [42] [43] [44]) [45]
+] [40] [41] [42] [43] [44] [45] [46] [47]) [48]
 \openout2 = `IntegrationTheory/Ch9.IntegrationTheory.aux'.
 
 
 (./IntegrationTheory/Ch9.IntegrationTheory.tex
 第九章
-[46
+[49
 
 
 
-] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58]) [59]
+] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61]) [62]
 \openout2 = `LpSpace/Ch10.LpSpace.aux'.
 
 
@@ -1507,11 +1507,11 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <16.06> not available
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <15.05624> not available
 (Font)              size <14.4> substituted on input line 11.
 
-[60
+[63
 
 
 
-] [61] [62] [63] [64] [65]) [66] [67
+] [64] [65] [66] [67] [68] [69] [70]) [71] [72
 
 
 ] (./Analysis.aux
@@ -1528,14 +1528,17 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <15.05624> not available
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.34248pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 21379 strings out of 493005
- 450356 string characters out of 6134597
+ 21391 strings out of 493005
+ 450284 string characters out of 6134597
  459520 words of memory out of 5000000
- 25045 multiletter control sequences out of 15000+600000
+ 25057 multiletter control sequences out of 15000+600000
  22523 words of font info for 136 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 57i,10n,67p,10433b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,16n,67p,10433b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Analysis.pdf (68 pages).
+Output written on Analysis.pdf (73 pages).
