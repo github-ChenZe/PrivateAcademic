@@ -1,0 +1,287 @@
+%Ch10.LpSpace
+\ifx\allfiles\undefined
+\documentclass{ctexrep}
+\input{../Head/head}
+\begin{document}
+\fi
+
+%Content
+
+\chapter{$L^p$空间}
+  \section{$L^p$空间：完备性与逼近}
+  \subsection{赋范线性空间}
+  \begin{definition}
+    二函数称为等价，如果其几乎处处相等。
+  \end{definition}
+  \begin{definition}
+    $E$上满足
+    \[ \int_E \abs{f}^p < \infty \]
+    之函数等价类全体构成一线性空间，谓$L^p$空间。
+  \end{definition}
+  由
+  \[ \abs{a+b}^p \le 2^p \curb{\abs{a}^p+\abs{b^p}} \]
+  知其可构成线性空间。
+  \begin{definition}
+    若$f$几乎处处满足
+    \[ \abs{f\pare{x}} \le M, \]
+    谓之本质有界。其等价类全体构成$L^\infty$。
+  \end{definition}
+  \begin{definition}
+    线性空间上一泛函$\norm{\cdot}$称为范数，若
+    \begin{align*}
+      \norm{f+g} &\le \norm{f}+\norm{g},\\
+      \norm{\alpha f} &= \abs{\alpha}\norm{f},\\
+      \norm{f} &\ge 0.
+    \end{align*}
+    最后的等号严格成立当且仅当$f=0$。
+  \end{definition}
+  \begin{ex}
+    易知$L^1$构成一赋范线性空间。
+  \end{ex}
+  \begin{ex}
+    易知$L^\infty$关于$\norm{f}=\inf M$构成一赋范线性空间。
+  \end{ex}
+  \begin{ex}
+    易知$\ell_1$与$\ell_\infty$构成一赋范线性空间。
+  \end{ex}
+  \begin{ex}
+    易知紧区间上的连续函数全体关于$\norm{f}=\max f$构成一赋范线性空间。
+  \end{ex}
+  \subsection{Young不等式，H\"{o}lder不等式，Minkowski不等式}
+  \begin{definition}
+    对于$1<p<\infty$以及$L^p$中的$f$，定义
+    \[ \norm{f}_p = \brac{\int \abs{f}^p}^{1/p}.  \]
+  \end{definition}
+  \begin{definition}
+    对$p\in\pare{1,\infty}$定义其共轭$q=p/\pare{p-1}$，同在$\pare{1,\infty}$内且
+    \[ \rec{p}+\rec{q}=1. \]
+  \end{definition}
+  \begin{theorem}[Young不等式]
+    设$p$，$q$共轭，对正数$a$，$b$有
+    \[ ab\le \frac{a^p}{p}+\frac{b^q}{q}. \]
+  \end{theorem}
+  \begin{proof}
+    由Jensen不等式，
+    \[ \frac{\log a^p}{p} + \frac{\log b^q}{q} \le \log\pare{\frac{a^p}{p} + \frac{b^q}{q}}. \qedhere \]
+  \end{proof}
+  \begin{theorem}[H\"{o}lder不等式]
+    对于$L^p$之$f$与$L^q$之$g$，有
+    \[ \int \abs{f\cdot g} \le \norm{f}_p \cdot\norm{g}_q. \]
+  \end{theorem}
+  \begin{proof}
+    不妨设$\norm{f}=\norm{g}=1$，从而由Young不等式易得
+    \[ \int\abs{f\cdot g} \le 1. \qedhere \]
+  \end{proof}
+  \begin{collary}
+    $f$之共轭$f^* = \norm{f}^{1-p}_p\cdot\sgn\pare{f}\cdot\abs{f}^{p-1}$为$L^q$，且
+    \[ \int f\cdot f^* = \norm{f}_p,\quad \norm{f^*}_q=1. \]
+  \end{collary}
+  \begin{theorem}[Minkowski不等式]
+    若$f$与$g$均为$L^p$，则$f+g$同且
+    \[ \norm{f+g}_p \le \norm{f}_p + \norm{g}_p. \]
+  \end{theorem}
+  \begin{proof}
+    借助前开推论与H\"{o}lder不等式，
+    \[ \norm{f+g}_p = \int f\cdot\pare{f+g}^* + \int g\cdot\pare{f+g}^* \le \norm{f}_p + \norm{g}_p. \qedhere \]
+  \end{proof}
+  \begin{collary}[Cauchy-Schwarz不等式]
+  对于$L^2$内的$f$与$g$，
+    \[ \int\abs{fg} \le \sqrt{\int f^2}\cdot\sqrt{\int g^2}. \]
+  \end{collary}
+  \begin{collary}
+    若$\funcf{F}$内诸$\norm{f}_p\le M$，则$\funcf{F}$一致可积。
+  \end{collary}
+  \begin{proof}
+    由H\"{o}lder不等式，
+    \[ \brac{\int_A \abs{f}} \le \brac{\int_E \abs{f}^p}^{1/p} \brac{m\pare{A}}^{1/q}. \qedhere \]
+  \end{proof}
+  \begin{collary}
+    有限测度上若$p_1<p_2$，则$L^{p_2}\subset L^{p_1}$。且
+    \[ \norm{f}_{p_1} \le c\norm{f}_{p_2}, \]
+    其中$c=\brac{m\pare{E}}^{\frac{p_2-p_1}{p_1p_2}}$。
+  \end{collary}
+  \begin{proof}
+    令$p=p_2/p_1$，则$f^{p_1}\in L^p$。由H\"{o}lder不等式，
+    \[ \int_E \abs{f}^{p_1} \le \norm{f}^{p_1}_{p_2}\brac{m\pare{E}}^{1/q}. \qedhere \]
+  \end{proof}
+  \begin{ex}
+    通常，有限测度集如$\lbr{0,1}$上上述包含关系是严格的。取$-1/p_1<\alpha<-1/p_2$，有$x^\alpha \in L^{p_1} - L^{p_2}$。
+  \end{ex}
+  \begin{ex}
+    在$\pare{0,\infty}$上$f=x^{-1/2}/\pare{1+\abs{\log x}}$仅仅属于$L^2$。
+  \end{ex}
+  \subsection{$L^p$的完备性}
+  \begin{definition}
+    称一序列收敛于$f$，如果
+    \[ \lim_{n\to\infty}\norm{f-f_n}=0. \]
+  \end{definition}
+  \begin{definition}
+    完备的赋范线性空间称为Banach空间。
+  \end{definition}
+  \begin{proposition}
+    完备空间内的收敛序列均为Cauchy序列，且包含收敛子序列的Cauchy序列收敛。
+  \end{proposition}
+  \begin{proof}
+    后一命题注意
+    \[ \norm{f_n-f} \le \norm{f_n-f_{n_k}} + \norm{f_{n_k}-f}. \qedhere  \]
+  \end{proof}
+  \begin{definition}
+    一序列称为快速Cauchy的，如果对于一收敛级数$\sum\epsilon_k$，有
+    \[ \norm{f_{k+1}-f_k} \le \epsilon_k^2. \]
+  \end{definition}
+  \begin{proposition}
+    快速Cauchy序列都是Cauchy的，而任一Cauchy序列均有快速子列。
+  \end{proposition}
+  \begin{proof}
+    选取子列满足
+    \[ \norm{f_{n_{k+1}}-f_{n_k}} \le \pare{\half}^k. \qedhere \]
+  \end{proof}
+  \begin{theorem}
+    $L^p$内的快速Cauchy序列依范数且几乎处处逐点收敛。
+  \end{theorem}
+  \begin{proof}
+    依定义选取$\sum\epsilon_k$后注意
+    \[ m\pare{\abs{f_{k+1}-f_k}^p>\epsilon_k^p} \le \rec{\epsilon_k^p}\int\abs{f_{k+1}-f_k}^p \le \epsilon_k^p. \]
+    由Borel-Cantelli引理知$f_n$几乎处处逐点收敛。由Fatou引理，
+    \[ \int\abs{f-f_n}^p \le \int\abs{f_{n+k}-f_n}^p \le \brac{\sum_{j=n} \epsilon_j^2}^p. \qedhere \]
+  \end{proof}
+  \begin{theorem}[Riesz-Fischer]
+    $L^p$空间为Banach空间。且Cauchy序列存在子列几乎处处逐点收敛。
+  \end{theorem}
+  \begin{ex}
+    $f_n=n^{1/p}\chi_{\lbr{0,1/n}}$逐点收敛于零，但不依范数收敛。
+  \end{ex}
+  \begin{theorem}
+    对$1\le p<\infty$，逐点收敛的序列依范数收敛当且仅当
+    \[ \lim_{n\to\infty}\int\abs{f_n}^p=\int\abs{f}^p. \]
+  \end{theorem}
+  \begin{proof}
+    若依范数收敛，由三角不等式即得结论。反之设极限成立，令
+    \[ h_n = \frac{\abs{f_n}^p+\abs{f}^p}{2}-\abs{\frac{f_n-f}{2}}^p. \]
+    由凸性知$h_n\ge 0$，且$\lim h_n = \abs{f}^p$逐点收敛，由Fatou引理
+    \[ \int \abs{f}^p \le \lim \inf \int h_n = \int \abs{f}^p - \lim\sup\int\abs{\frac{f_n-f}{2}}^p. \qedhere \]
+  \end{proof}
+  \begin{theorem}
+    对$1\le p<\infty$，逐点收敛的序列依范数收敛当且仅当$\curb{\abs{f_n}^p}$一致可积且紧密。
+  \end{theorem}
+  \begin{proof}
+    由\cref{mcon2int}，要求$\abs{f_n-f}^p$一致可积且紧密。再注意
+    \[ \abs{f_n-f}^p \le 2^p\curb{\abs{f_n}^p+\abs{f}^p}, \quad \abs{f_n}^p \le 2^p\curb{\abs{f_n-f}^p+\abs{f}^p}. \qedhere \]
+  \end{proof}
+  \subsection{逼近与可分性}
+  \begin{definition}
+    $L^p$下一函数族称为稠密的，如果其依范数可任意逼近$L^p$。
+  \end{definition}
+  \begin{proposition}
+    简单函数在$L^p$内稠密。
+  \end{proposition}
+  \begin{proof}
+    借助简单函数逼近引理，注意$\abs{\varphi_n-g}^p \le 2^{p+1}\abs{g}^p$后控制收敛。
+  \end{proof}
+  \begin{proposition}
+    对$1\le p<\infty$，阶梯函数在紧区间上的$L^p$稠密。
+  \end{proposition}
+  \begin{proof}
+    注意阶梯函数可在任意小的集合外逼近简单函数即可。而对$p=\infty$，再小的非零测集皆会导致范数不得为零，是故于其不成立。
+  \end{proof}
+  \begin{definition}
+    空间谓可分者，其下存在一可数稠密子集。
+  \end{definition}
+  \begin{theorem}
+    对$1\le p < \infty$，$L^p$可分。
+  \end{theorem}
+  \begin{proof}
+    紧区间内有理阶梯函数稠密，积分可由$\brac{-n,n}$上单调收敛逼近。
+  \end{proof}
+  \begin{ex}
+    紧区间上的$L^\infty$不可分。
+  \end{ex}
+  \begin{proof}
+    不可数特征函数族的区间稍变，逼近不复成立，不可以可数族逼近。
+  \end{proof}
+  \begin{theorem}
+    对$1\le p<\infty$，有界支撑的连续函数在$L^p$中稠密。
+  \end{theorem}
+  \section{$L^p$空间的对偶与弱收敛}
+  \subsection{$L^p$的对偶与表示}
+  \begin{definition}
+    线性泛函是函数上的线性算子。
+  \end{definition}
+  \begin{ex}
+    $T\pare{f}=\int fg$与$T\pare{f}=\int f \, \mathrm{d} g$均为线性泛函。
+  \end{ex}
+  \begin{definition}
+    所有$\abs{T\pare{f}} \le M \norm{f}$的$M$的下确界记作$\norm{T}$。
+  \end{definition}
+  由三角不等式知线性泛函连续。同时有
+  \[ \norm{T} = \sup\setcond{T\pare{f}}{\norm{f}\le 1}. \]
+  \begin{proposition}
+    赋范线性空间上的线性算子的空间构成一赋范线性空间。
+  \end{proposition}
+  \begin{proposition}
+    $L^p$上的算子
+    \[ T\pare{f}=\int g\cdot f \]
+    的范数为$\norm{g}$。
+  \end{proposition}
+  \begin{proposition}
+     在一稠密子集上相等的线性算子相等。
+  \end{proposition}
+  \begin{lemma}
+    可测函数$g$若对$L^p$上的简单函数$f$皆满足
+    \[ \abs{\int g\cdot f} \le M \norm{f}, \]
+    则$g\in L^q$，且$\norm{g}\le M$。
+  \end{lemma}
+  \begin{proof}
+    对于$p>1$，考虑$g$的下逼近，只证$\int\varphi_n^p\le M^p$即可，再注意$\varphi_n^q\le\abs{g}\varphi_n^{q-1}$，以及$p\pare{q-1}=q$并借助题设。
+    \par
+    对于$p=1$，需证$M$为一本质上界。考虑$f$为诸特征函数即可。
+  \end{proof}
+  \begin{theorem}
+    紧区间上的线性泛函满足$T\pare{f}=\int g\cdot f$的形式。
+  \end{theorem}
+  \begin{proof}
+    令$\Phi\pare{x}=T\chi_{\blr{a,x}}$，其绝对连续，故$\Phi'=g$积分还原。对阶梯函数，
+    \[ T\pare{f} = \int g\cdot f. \]
+    控制收敛后知对简单函数均成立之。调用前开命题再注意简单函数稠密。
+  \end{proof}
+  \begin{theorem}[$L^p$的Riesz表示定理]
+    $1\le p<\infty$上的线性泛函有$g$满足
+    \[ Tf = \Braket{g|f}, \quad \norm{T} = \norm{f}. \]
+  \end{theorem}
+  \begin{proof}
+    考虑$\brac{-n,n}$上的限制后不断扩大$n$，Fatou后知$g\in L^q$。
+  \end{proof}
+  \subsection{弱收敛性}
+  \begin{ex}
+    $\brac{0,1}$上的$1/2^n$-方波在$L^p$内不存在收敛子列。
+  \end{ex}
+  \begin{definition}
+    赋范线性空间上的序列$\curb{f_n}$，若$Tf_n\to Tf$对任意$T$成立，则称之弱收敛。
+  \end{definition}
+  \begin{proposition}
+    $\curb{f_n}$弱收敛于$f$当且仅当对任意$g$成立
+    \[ \lim_{n\to\infty} g\cdot f_n = \int g \cdot f. \]
+  \end{proposition}
+  弱收敛具有唯一性。因为
+  \[ \int \pare{f_1-f_2}^*\cdot f_2 = \lim_{n\to\infty} \int \pare{f_1-f_2}^*\cdot f_n = \int \pare{f_1-f_2}^* f_2. \]
+  \begin{theorem}
+    $L^p$上的弱收敛序列有诸$\norm{f_n}$有界且
+    \[ \norm{f} \le \lim \inf \norm{f_n}. \]
+  \end{theorem}
+  \begin{proof}
+    注意到
+    \[ \int f^*\cdot f_n \le \norm{f^*}_q \cdot \norm{f_n}_p = \norm{f_n}_p \]
+    后Fatou即可。为证明有界，假设$\curb{\norm{f_n}}$无界，选取$\curb{f_n}$的子列$\curb{g_n}$满足$\norm{g_n}\ge n\cdot 3^n$，并再度选取子列$\curb{h_n}$满足$\norm{h_n}/\pare{n\cdot 3^n}\rightarrow \alpha\in\brac{1,+\infty}$。
+    \par
+    于是$\cF_n = n\cdot 3^n/\norm{h_n}\cdot h_n$满足$\cF_n$弱收敛于$f$且$\norm{\cF_n}=n\cdot 3^n$。定义
+    \[ \epsilon_{n+1} = \rec{3^{n+1}}\sgn \int \brac{\sum_k^n \epsilon_k \cdot f_k^*}\cdot f_{n+1}, \]
+    则$\norm{\epsilon_k\cdot f_k^*}=1/3^k$，由$L^p$的完备性知$g=\sum^\infty \epsilon_k \cdot f_k^*$收敛于$L^p$内。
+    
+  \end{proof}
+
+
+%ContentEnds
+ 
+\ifx\allfiles\undefined %如果位置放错，可能出现意外中断
+\end{document}
+\fi

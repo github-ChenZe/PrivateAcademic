@@ -1,0 +1,584 @@
+%Ch9.IntegrationTheory.tex
+\ifx\allfiles\undefined
+\documentclass{ctexrep}
+\input{../Head/head}
+\begin{document}
+\fi
+
+%Content
+
+\chapter{积分论}
+  \section{Lebesgue积分}
+  \subsection{Riemann积分}
+  Riemann积分的定义如前不赘，唯注意下例。
+  \begin{ex}
+    对于Dirichlet函数
+    \[
+      f\pare{x}=
+      \begin{cases}
+        1, \quad x \in \Q, \\
+        0, \quad x \in \brac{0,1}-\Q.
+      \end{cases}
+    \]
+    虽可写为可数个简单函数之和，亦知其非Riemann可积。
+  \end{ex}
+  \subsection{有界函数在有限测度集上的Lebesgue积分}
+  \begin{definition}
+    对于有限测度集$E$上的简单函数$\psi$，定义其积分如
+    \[ \int_E\psi = \sum a_i\cdot m\pare{E_i}. \]
+    表达式中诸$a_i$不等。
+  \end{definition}
+  \begin{lemma}
+    纵表达式中$a_i$简并，亦无改其积分值。
+  \end{lemma}
+  \begin{proposition}[积分的线性与单调性]
+    对于简单函数$\varphi$与$\psi$，有
+    \[ \int\pare{\alpha\varphi+\beta\psi} = \alpha\int\varphi + \beta\int\psi. \]
+    以及若$\varphi<\psi$，则
+    \[ \int\varphi < \int\psi. \]
+  \end{proposition}
+  \begin{proof}
+    将$\varphi$与$\psi$共用一组$E_i$展开即可。
+  \end{proof}
+  此时已足够推断阶梯函数的Riemann与Lebesgue积分相符。
+  \begin{definition}
+    对有限测度集上的有界函数$f$，定义其Lebesgue上积分为全体$\varphi>f$之简单函数的Lebesgue积分的下界。相似定义Lebesgue下积分。
+  \end{definition}
+  \begin{definition}
+    前开$f$若Lebesgue上下积分相等，则称之其Lebesgue积分。
+  \end{definition}
+  \begin{theorem}
+    Lebesgue积分兼容Riemann积分。
+  \end{theorem}
+  \begin{proof}
+    注意到阶梯函数含于简单函数即可。
+  \end{proof}
+  \begin{ex}
+    注意Dirichlet函数$f=\chi_\Q$，故$\int f = m\pare{\Q}=0$。
+  \end{ex}
+  \begin{theorem}
+    \label{thm:intable}
+    有限测度集上定义的有界函数可积。
+  \end{theorem}
+  \begin{proof}
+    注意其存在简单函数的上下逼近即可。
+  \end{proof}
+  \begin{proposition}[积分的线性与单调性]
+    对于有限测度集上的可测函数$f$与$g$，有
+    \[ \int\pare{\alpha f+\beta g} = \alpha\int f + \beta\int g. \]
+    以及若$f<g$，则
+    \[ \int f < \int g. \]
+  \end{proposition}
+  \begin{proof}
+    只证$\alpha=\beta=1$的情况，目标积分不超二Lebesgue上积分之和而不低于二Legesgue下积分之和，再注意上下积分之和即积分之和。
+    \par
+    单调性考虑$\int\pare{f-g}$即可。
+  \end{proof}
+  \begin{collary}
+    对无交可测集$A$与$B$，有
+    \[ \int_{A\cup B}f=\int_A f+\int_B f. \]
+  \end{collary}
+  \begin{collary}
+    对有限测度集上的有界函数$f$，有
+    \[ \abs{\int f} \le \int \abs{f}. \]
+  \end{collary}
+  \begin{proof}
+    注意$-\abs{f}\le f\le \abs{f}$即可。
+  \end{proof}
+  \begin{proposition}
+    若有限测度集上的有界函数列$\curb{f}$一致收敛于$f$，则
+    \[ \lim_{n\to\infty}\int f_n = \int \lim_{n\to\infty} f_n. \]
+  \end{proposition}
+  \begin{proof}
+    注意$\norm{f-f_n}$可以任意小，借助前开推论即可。
+  \end{proof}
+  \begin{ex}
+    考虑$f_n$定义为$f\pare{0}=0$，$f\pare{1/n}=n$，$f\pare{2/n}=0$并线性连接，则其除逐点收敛于零外满足前开所有条件，而积分后序列非零。
+  \end{ex}
+  \begin{theorem}[有界收敛定理]
+    若有限测度集上的各点一致有界函数列$\curb{f}$逐点收敛于$f$，则
+    \[ \lim_{n\to\infty}\int f_n = \int \lim_{n\to\infty} f_n. \]
+  \end{theorem}
+  \begin{proof}
+    由Egoroff定理，$f_n$在任意接近$E$的闭集上一致收敛。故定义域的残余部分的积分任意小。
+  \end{proof}
+  \subsection{非负函数的Lebesgue测度}
+  \begin{definition}
+    定义$f$的支撑为使之非零的定义域部分\footnote{这和拓扑学上定义为其闭包不同。}。
+  \end{definition}
+  \begin{definition}
+    设$f$为$E$上的非负可测函数，定义其积分
+    \[ \int_E f = \sup \setcondl{\int_E h}{0\le h \le f}. \]
+    其中$h$为有限测度集上定义的有界可测函数。
+  \end{definition}
+  \begin{proposition}[Chebychev不等式]
+    设$f$非负可测，对$\lambda>0$，有
+    \[ m\pare{f\ge \lambda} \le \rec{\lambda}\int_E f. \]
+  \end{proposition}
+  \begin{proof}
+    取$g=\lambda\chi_{f\ge\lambda}$，并注意$0\le g\le f$。
+  \end{proof}
+  \begin{proposition}
+    \label{prp:ae0}
+    设$f$非负可测，则$\int f = 0$当且仅当$f$几乎处处为零。
+  \end{proposition}
+  \begin{proof}
+    由前不等式，诸$m\pare{f\le1/n}=0$，并起即可。
+  \end{proof}
+  \begin{proposition}[积分的线性与单调性]
+    对于非负可测函数$f$与$g$，有
+    \[ \int\pare{\alpha f+\beta g} = \alpha\int f + \beta\int g. \]
+    以及若$f<g$，则
+    \[ \int f < \int g. \]
+  \end{proposition}
+  \begin{proof}
+    易证$\int f + \int g \le \int \pare{f+g}$。反向的不等式则注意取$h=\mino{f,l}$，$k=l-h$，则$h$与$k$有界可测且
+    \[ \int l = \int\pare{h+k} \le \int f + \int g. \]
+    左侧取上界即可。单调性亦左侧取上界可证。
+  \end{proof}
+  \begin{theorem}[积分区间的可加性]
+    $f$非负可测而$A$与$B$为无交可测集，则
+    \[ \int_{A\cup B} f = \int_A f + \int_B f. \]
+  \end{theorem}
+  \begin{lemma}[Fatou引理]
+    非负可测函数列$\curb{f_n}$几乎处处逐点收敛于$f$，则
+    \[ \int_E f \le \lim\inf\int_E f_n. \]
+  \end{lemma}
+  \begin{proof}
+    除开一零测集，可设其处处收敛。对任意$h$，设$h_n=\mino{h,f_n}$，故$h_n\to h$且由有界收敛定理
+    \[ \lim_{n\to\infty} \int_E h_n = \int_E h. \]
+    再注意$h_n\le f_n$，$\lim\int h_n \le \lim \inf \int f_n$即可。
+  \end{proof}
+  \begin{ex}
+    令$E=\blr{0,1}$且$f_n=n\chi_{\pare{0,1/n}}$，则$f_n$极限的积分与积分的极限分别为$0$和$1$。再如$\chi_{\pare{n,n+1}}$逐点收敛至$0$但显然积分与极限不可互换。
+  \end{ex}
+  \begin{theorem}[单调收敛定理]
+    在Fatou引理的条件下，若$\curb{f_n}$递增，则
+    \[ \lim_{n\to\infty}\int f_n = \int f. \]
+  \end{theorem}
+  \begin{proof}
+    由积分的单调性知
+    \[ \lim\sup\int f_n \le \int f. \qedhere \]
+  \end{proof}
+  \begin{collary}
+    非负可测函数和$\sum u_n$几乎处处逐点收敛于$f$，则
+    \[ \int f = \sum \int u_n. \]
+  \end{collary}
+  \begin{definition}
+    积分有限的可测函数称为可积函数。
+  \end{definition}
+  \begin{proposition}
+    可积函数几乎处处有限。
+  \end{proposition}
+  \begin{proof}
+    注意对任意$n$，有
+    \[ m\pare{f \ge n} \le \rec{n}\int f. \]
+  \end{proof}
+  \begin{lemma}[Beppo Levi引理]
+    非负可测函数列$\curb{f_n}$诸积分一致有界，则$f_n$逐点收敛于一几乎处处有界的可积函数。
+  \end{lemma}
+  \begin{proof}
+    递增数列收敛于一广义实数，故定义$f\pare{x}=\lim f_n\pare{x}$，复用前开命题与有界收敛定理。
+  \end{proof}
+  \subsection{一般Lebesgue积分}
+  注意$f=f^+-f^-$且$\abs{f} = f^++f^-$。
+  \begin{proposition}
+    对可测函数$f$，$f^+$与$f^-$可积当且仅当$\abs{f}$可积。
+  \end{proposition}
+  \begin{definition}
+    若$\abs{f}$可积则称可测函数$f$可积且定义
+    \[ \int f = \int f^+ - \int f^-. \]
+  \end{definition}
+  \begin{proposition}
+    \label{prp:Ehole}
+    若$f$可积，则$\abs{f}$几乎处处有限且对零测集$E_0$，
+    \[ \int_E f = \int_{E-E_0} f. \]
+  \end{proposition}
+  \begin{proof}
+    前开命题知几乎处处有限。再注意对非负函数有相同成立即可。
+  \end{proof}
+  \begin{proposition}[比较审敛法]
+    若$\abs{f}$处处小于一可积函数，则$f$可积且
+    \[ \abs{\int f} \le \int \abs{f}. \]
+  \end{proposition}
+  \begin{proof}
+    可积性易证。再由实数的三角不等式，
+    \[ \abs{\int f^+ - \int f^-} \le \int f^+ + \int f^- \le \int \abs{f}. \]
+  \end{proof}
+  注意由\pref{Ehole}，两可积函数若某处值无限，则积分可径直挖去该点而无需定义在该点的值。
+  \begin{proposition}[积分的线性与单调性]
+    对于可积函数$f$与$g$，有
+    \[ \int\pare{\alpha f+\beta g} = \alpha\int f + \beta\int g. \]
+    以及若$f<g$，则
+    \[ \int f < \int g. \]
+  \end{proposition}
+  \begin{proof}
+    可积性由$\abs{f+g}\le\abs{f}+\abs{g}$得，其余易证。
+  \end{proof}
+  \begin{collary}
+    对无交可测集$A$与$B$，有
+    \[ \int_{A\cup B}f=\int_A f+\int_B f. \]
+  \end{collary}
+  \begin{theorem}[Lebesgue控制收敛定理]
+    逐点收敛于$f$的可测函数列$\curb{f_n}$满足$\abs{f_n}\le g$，则有$f$可积且
+    \[ \lim_{n\to\infty}\int f_n = \int f. \]
+  \end{theorem}
+  \begin{proof}
+    注意到由Fatou引理，
+    \[ \int \pare{g+f} \le \lim \inf \int \pare{g+f_n},  \]
+    以及
+    \[ \int \pare{g-f} \le \lim \inf \int \pare{g-f_n}. \qedhere \]
+  \end{proof}
+  \begin{theorem}[一般的Lebesgue控制收敛定理]
+    逐点收敛于$f$的可测函数列$\curb{f_n}$满足$\abs{f_n}\le g_n$，若$\curb{g_n}$几乎处处收敛于$g$，且
+    \[ \lim_{n\to\infty}\int g_n = \int g, \]
+    则有$f$可积且
+    \[ \lim_{n\to\infty}\int f_n = \int f. \]
+  \end{theorem}
+  \begin{proof}
+    证法同上。
+  \end{proof}
+  \subsection{积分的可数可加性与连续性}
+  \begin{theorem}[积分的可数可加性]
+    设$f$可积而$\curb{E_n}$为无交可测集族，其并为$E$，则
+    \[ \int f = \sum \int_n f. \]
+  \end{theorem}
+  \begin{proof}
+    对$f_n = f \chi_{E_1\cap\cdots\cap E_n}$应用控制收敛定理。
+  \end{proof}
+  \begin{theorem}[积分的连续性]
+    $f$为$E$上的可积函数，则
+    \begin{aenum}
+      \item 若$\curb{A_k}$为升链，则
+      \[ \int_{\cup A_n} f = \lim_{n\to\infty} \int_{A_n} f. \]
+      \item 若$\curb{B_k}$为降链，则
+      \[ \int_{\cap B_n} f = \lim_{n\to\infty} \int_{B_n} f. \]
+    \end{aenum}
+  \end{theorem}
+  \subsection{一致可积性}
+  \begin{lemma}
+    有限测度集可以被划分为有限个测度小于$\delta$的无交集。
+  \end{lemma}
+  \begin{proof}
+    注意$m\pare{E-\brac{-n,n}}$迟早小于$\delta$后划分$\brac{-n,n}$即可。
+  \end{proof}
+  \begin{proposition}
+    \label{prp:previtali}
+    $f$在$E$上可积，则对于任意小的$\epsilon$，存在$\delta$使得对任意满足$m\pare{A}<\delta$的子集$A$有
+    \[ \int_A\abs{f}<\epsilon. \]
+    反之，若$E$测度有限而对任意小的$\epsilon$，存在上述的$\delta$，则$f$可积。
+  \end{proposition}
+  \begin{proof}
+    仅考虑正的$f$。正向结论可由定义以有界函数逼近$f$并注意有界性推得。反向结论则选取一对$\epsilon$与$\delta$，并由前引理将$E$写为有限个小集的并。
+  \end{proof}
+  \begin{definition}
+    $E$上的可测函数族称为一致可积，若对于任意小的$\epsilon$，存在$\delta$使得对任意$m\pare{A}<\delta$以及其中的$f$，有
+    \[ \int_A \abs{f} < \epsilon. \]
+  \end{definition}
+  \begin{ex}
+    设$g$可积，所有满足$\abs{f}<g$的可测函数为一致可积。
+  \end{ex}
+  \begin{proposition}
+    有限个可积函数构成的族是一致可积的。
+  \end{proposition}
+  \begin{proposition}
+    若有限测度的$E$上一致可积的$\curb{f_n}$几乎处处逐点收敛于$f$，则$f$可积。
+  \end{proposition}
+  \begin{proof}
+    由\pref{previtali}，诸$f_n$的积分一致有界，由Fatou引理
+    \[ \int \abs{f} \le \lim\inf \int \abs{f_n}. \qedhere \]
+  \end{proof}
+  \begin{theorem}[Vitali收敛定理]
+    若有限测度的$E$上一致可积的$\curb{f_n}$几乎处处逐点收敛于$f$，则
+    \[ \lim_{n\to\infty}\int f_n = \int f. \]
+  \end{theorem}
+  \begin{proof}
+    由Egoroff定理，选取任意逼近$E$的$A$使得$\curb{f_n}$一致收敛，则
+    \[ \abs{\int_E f_n - \int_E f} \le \int_{E-A}\abs{f_n-f} + \int_A\abs{f_n} + \int_A\abs{f}. \]
+  第一项积分由一致收敛任意小，后二项由一致可积与Fatou引理任意小。
+  \end{proof}
+  \begin{theorem}
+    有限测度集上几乎处处收敛于零的非负可测函数列$\curb{h_n}$，当且仅当其一致可积时有
+    \[ \lim_{n\to\infty}\int h_n = 0. \]
+  \end{theorem}
+  \begin{proof}
+    只证极限为零推出一致可积。对任意$\epsilon>0$，可以选取足够大的$N$使
+    \[ \int h_{N:} < \epsilon, \]
+    再注意有限个$h_{:N}$一致可积即可。
+  \end{proof}
+  \section{进一步的主题}
+  \subsection{一致可积性与测度紧密型}
+  \begin{ex}
+    对无限测度的$E$，考虑$f=\chi_{\brac{n,n+1}}$知Vitali定理不适用。
+  \end{ex}
+  \begin{proposition}
+    设$f$可积，则在一有限测度集$E_0$外其积分任意小。
+  \end{proposition}
+  \begin{proof}
+    有定义知存在有限测度上有界的函数其积分任意逼近$f$。
+  \end{proof}
+  \begin{definition}
+    $E$上的可测函数族$\funcf{F}$称为紧密的，如果存在一有限测度集$E_0$使其全体在其外的积分一致任意小。
+  \end{definition}
+  \begin{theorem}[Vitali收敛定理]
+    若$E$上一致可积且紧密的$\curb{f_n}$几乎处处逐点收敛于$f$，则
+    \[ \lim_{n\to\infty}\int f_n = \int f. \]
+  \end{theorem}
+  \begin{proof}
+    选取$E_0$使其外的积分任意小，其内的积分调用前开Vitali定理。
+  \end{proof}
+  \begin{collary}
+    $E$上几乎处处收敛于零的非负可测函数列$\curb{h_n}$，当且仅当其一致可积且紧密时有
+    \[ \lim_{n\to\infty}\int h_n = 0. \]
+  \end{collary}
+  \subsection{依测度收敛}
+  \begin{definition}
+    $E$上几乎处处有限的可测函数列$\curb{f_n}$称为依测度收敛于可测的$f$，如果对任意$\eta$，
+    \[ \lim_{n\to\infty}m\setcond{x}{\abs{f_n\pare{x}-f\pare{x}}>\eta} = 0. \]
+  \end{definition}
+  \begin{proposition}
+    有限测度$E$上的逐点收敛是一致收敛。
+  \end{proposition}
+  \begin{proof}
+    由Egoroff定理选取逼近$E$的闭集上的一致收敛即可。
+  \end{proof}
+  \begin{ex}
+    考虑下述诸区间上的特征函数，虽依测度收敛却非逐点收敛。
+    \[ \brac{0,1},\brac{0,1/2},\brac{1/2,1},\brac{0,1/3},\brac{1/3,2/3},\brac{2/3,1},\brac{0,1/4}\cdots. \]
+  \end{ex}
+  \begin{theorem}[Riesz]
+    依测度收敛的函数列存在几乎处处逐点收敛的子列。
+  \end{theorem}
+  \begin{proof}
+    由依测度收敛知存在子列使$m\pare{\abs{f_{n_k}-f}>1/k}<1/2^k$，再由Borel-Cantelli引理知几乎每个$x$都收敛于$f$。
+  \end{proof}
+  \begin{collary}
+    \label{coll:mcon2int}
+    非负可积函数列$\curb{f_n}$满足
+    \[ \lim_{n\to\infty} \int f = 0 \]
+    当且仅当其依测度收敛于零且一致可积且紧密。
+  \end{collary}
+  \begin{proof}
+    由前开推论与Chebyshev不等式知其依测度收敛。
+    \par
+    反之，假设积分不收敛于零，则存在一子列之积分漂浮于一实数之上，此子列存在一几乎处处逐点收敛之子列，由Vitali定理知矛盾。
+  \end{proof}
+  \subsection{Riemann与Lebesgue可积性的特征}
+  \begin{lemma}
+    设$\curb{\varphi_n}$与$\curb{\psi_n}$分别为可积函数的升列与降列且夹挤$f$，若
+    \[ \lim_{n\to\infty}\int\brac{\psi_n-\varphi_n}=0, \]
+    则$\curb{\varphi_n}$与$\curb{\psi_n}$几乎处处逐点收敛于$f$且$f$可积且三者积分相等。
+  \end{lemma}
+  \begin{proof}
+    由单调收敛定理，$\int\pare{\psi-\varphi}\to 0$。由\pref{ae0}知其几乎处处为零，从而几乎处处逐点收敛于$f$，进而其可测。三积分相等易证。
+  \end{proof}
+  \begin{theorem}
+    有限测度集上的有界$f$，其可积当且仅当其可测。
+  \end{theorem}
+  \begin{proof}
+    若假设可测，由\tref{intable}知可积。
+    \par
+    若已知可积，则由定义知存在$f$的上下简单函数逼近且积分差为零，取诸$\maxo{\varphi_i}$与$\mino{\psi_i}$可设其分别为升降列，再调用前开引理。
+  \end{proof}
+  \begin{theorem}[Lebesgue]
+    紧区间上的有界函数$f$为Riemann可积当且仅当其非连续点为零测集。
+  \end{theorem}
+  \begin{proof}
+    假定Riemann可积，则存在一列加细的划分$\curb{P_n}$，对应上下逼近$\curb{\varphi_n}$与$\curb{\psi_n}$且由前开引理几乎处处收敛于$f$。在除开$P_\infty$的点处，对$\epsilon$取足够大的$N$即可使此处$\psi_n-\varphi_n<\epsilon$，从而此点的$\delta$邻域内变差任意小。
+    \par
+    反之，假定$f$不连续点为零测集。对加细至稠密的划分列$P_n$以及$P_\infty$及不连续点以外的点，选取足够的大$n$使$P_n$的间隙小于$\delta$，则$f$在诸间隙内的变差小$\epsilon$，故上下逼近可互相接近而积分相等。
+  \end{proof}
+  \section{微分与积分}
+  \subsection{单调函数的连续性}
+  \begin{theorem}
+    单调函数最多仅有可数个不连续点。
+  \end{theorem}
+  \begin{proposition}
+    对开区间内的可数集，存在增函数仅在此可数集上不连续。
+  \end{proposition}
+  \begin{proof}
+    取$f$如下，在任意$E-C$的点有足够小的开区间不包含$q_1,\cdots ,q_n$。
+    \[ f\pare{x} = \sum_{q_n\le x} 1/2^n. \qedhere \]
+  \end{proof}
+  \subsection{单调函数的可微性}
+  \begin{definition}
+    非退化紧区间集$\setf{F}$称为$E$的Vitali覆盖，如果对于任意点$x$和$\epsilon>0$，存在长度小于$\epsilon$的区间覆盖$x$。
+  \end{definition}
+  \begin{lemma}[Vitali覆盖引理]
+    设$E$为有限外测度集，$\setf{F}$是其Vitali覆盖，则其无交有限子集任意可接近$E$。
+  \end{lemma}
+  \begin{proof}
+    若存在有限子集覆盖之则证毕。反之，依"在剩余无交区间内选取区间长度过半者"之程式选取"下一区间"而得无交可数族，则任意有限子集外的区间与可数族内一区间有交。将后者扩大5倍即可覆盖之。故其有限子集外者扩大5倍后便可覆盖$E$。
+  \end{proof}
+  \begin{definition}
+    定义上导数
+    \[ \DDu f\pare{x} = \lim_{h\to 0}\brac{\sup_{0<\abs{t}\le h} \frac{f\pare{x+t}-f\pare{x}}{t}}. \]
+    相似定义下导数。若二者相等则称可导。
+  \end{definition}
+  \begin{lemma}
+    设$f$为紧区间上的增函数，则对任意正数$\alpha$，
+    \[ m^*\pare{\DDu f \ge \alpha} \le \rec{\alpha}\brac{f\pare{b}-f\pare{a}}. \]
+    特别地，$m^*\pare{\DDu f = \infty} = 0$。
+  \end{lemma}
+  \begin{proof}
+    注意诸$\Delta f \ge \alpha^-\pare{d-c}$的区间$\brac{c,d}$构成其Vitali覆盖。
+  \end{proof}
+  \begin{theorem}[Lebesgue]
+    开区间上的单调函数几乎处处可导。
+  \end{theorem}
+  \begin{proof}
+    设$E$中上导数大于$\alpha$而下导数小于$\beta$，则诸$\Delta f \le \beta \pare{d-c}$的$\brac{c,d}$构成$E$的Vitali覆盖。$\sum^n \Delta f \le \beta m^*\pare{E}$。再由前开引理，
+    \[ m^*\pare{E}\le \rec{\alpha} \sum^n \Delta f. \qedhere \]
+  \end{proof}
+  \begin{definition}
+    紧区间上的可积函数$f$，两侧水平延伸其值，对正数$h$定义差分与平均分别为
+    \[ \Diff{h}f\pare{x}=\frac{f\pare{x+h}-f\pare{h}}{h},\quad \Av{h}f\pare{x} = \rec{h}\int_x^{x+h}f. \]
+  \end{definition}
+  \begin{collary}
+    \label{coll:diff2int}
+    紧区间上的增函数，其导数可积且
+    \[ \int f' \le f\pare{b} - f\pare{a}. \]
+  \end{collary}
+  \begin{proof}
+    由Fatou引理，
+    \[ \int f' \le \lim \inf \int \Diff{} f. \qedhere \]
+  \end{proof}
+  参考Cantor-Lebesgue函数知等号可严格成立。
+  \subsection{有界变差函数：Jordan定理}
+  \begin{definition}
+    定义变差为
+    \[ V\pare{f,P} = \sum \abs{\Delta f}, \]
+    全变差为$TV = \sup V$。若全变差有界，则称之有界变差。
+  \end{definition}
+  \begin{ex}
+    增函数，\Lip{1}的函数是有界变差的。$x\cos\pare{\pi/2x}$则不是。
+  \end{ex}
+  \begin{lemma}
+    有界变差函数可以写为如下二增函数之差：
+    \begin{equation}
+      \label{eq:TVd}
+      f\pare{x} = \brac{f\pare{x} + TV\pare{x}} - TV\pare{x}.
+    \end{equation}
+  \end{lemma}
+  \begin{theorem}[Jordan]
+    紧区间上的函数有界变差当且仅当其为增函数之差。
+  \end{theorem}
+  \begin{proof}
+    $f=g-h$称为其Jordan分解，只需注意
+    \[ V\pare{f,P} = \sum \abs{\Delta f} \le \sum \abs{\Delta g} + \sum \abs{\Delta h}. \qedhere \]
+  \end{proof}
+  \begin{collary}
+    紧区间上的有界变差函数几乎处处可微且导数可积。
+  \end{collary}
+  \subsection{绝对连续函数}
+  \begin{definition}
+    对任意$\epsilon>0$，存在$\delta>0$使$\sum \pare{b_k-a_k}$之一切区间族上$\sum \abs{\Delta f} < \epsilon$，则称$f$绝对连续。
+  \end{definition}
+  \begin{ex}
+    Cantor-Lebesgue函数虽连续却非绝对连续。
+  \end{ex}
+  \begin{proposition}
+    \Lip{1}的函数绝对连续。
+  \end{proposition}
+  \begin{theorem}
+    紧区间上的绝对连续函数可写为绝对连续的增函数之差。
+  \end{theorem}
+  \begin{proof}
+    注意绝对连续的$f$的全变差为绝对连续即可。
+  \end{proof}
+  \begin{theorem}
+    \label{thm:abs2unint}
+    紧区间上的连续函数绝对连续当且仅当$\lbr{0,1}$的差分一致可积。
+  \end{theorem}
+  \begin{proof}
+    设其差分一致可积，注意$\Delta \Av{h}f = \int \Diff{h} f$以及$\lim \Av{h} f = f$。\par
+    反之只证$f$为非负绝对连续增函数的情形，注意只需证"任意小的区间集上的积分任意小"即可，再藉$\int \Diff{h}f = 1/h\cdot\int \brac{f\pare{u+t}-f\pare{v+t}}$。
+  \end{proof}
+  可以发现如下的包含关系
+  \[ \funcf{F}_{Lip} \subset \funcf{F}_{AC} \subset \funcf{F}_{BV}. \]
+  且各族内的函数都可以如\eqref{eq:TVd}写成族内二增函数之差。
+  \subsection{积分下的微分}
+  \begin{theorem}
+    \label{thm:int2dif}
+    紧区间上的绝对连续函数几乎处处可微且
+    \[ \int_a^b f' = f\pare{b} - f\pare{a}. \]
+  \end{theorem}
+  \begin{proof}
+    注意
+    \[ \lim_{h\to 0}\int_a^b \Diff{h} f = \lim_{h\to 0} \brac{\Av{h} f\pare{b} - \Av{h} f\pare{a}}. \]
+    右侧为所求，左侧由\tref{abs2unint}知一致可积后调用Vitali定理。
+  \end{proof}
+  \begin{theorem}
+    紧区间上的函数一致连续当且仅当其为一不定积分。
+  \end{theorem}
+  \begin{proof}
+    假设$f=\int g$，注意由\pref{previtali}，小测度上$g$的积分可任意小。
+  \end{proof}
+  \begin{collary}
+    紧区间上单调的$f$为绝对连续当且仅当
+    \[ \int_a^b f' = f\pare{b}-f\pare{a}. \]
+  \end{collary}
+  \begin{proof}
+    由\cref{diff2int}，
+    \[ \int_a^x f' \le f\pare{x}-f\pare{a},\quad \int_x^b f' \le f\pare{b}-f\pare{x}. \]
+    故二者均为相等，从而$f=\int f'$。
+  \end{proof}
+  \begin{lemma}
+    紧区间上的$f$几乎处处为零当且仅当任意区间上积分为零。
+  \end{lemma}
+  \begin{proof}
+    注意任意区间上积分为零得出任意$\Gd$型集上积分为零即可。
+  \end{proof}
+  \begin{theorem}
+    紧区间上的可积函数几乎处处有
+    \[ \DD \int_a^x f = f\pare{x}. \]
+  \end{theorem}
+  \begin{proof}
+    借助前开命题，注意对任意$\brac{x_1,x_2}$，有
+    \[ \int_{x_1}^{x_2}\brac{F'-f} = F\pare{x_2}-F\pare{x_1} - \int_{x_1}^{x_2} f = 0. \qedhere \]
+  \end{proof}
+  并非所有函数解有\tref{int2dif}的适用。借助前开命题，考虑下述的分解
+  \[ f = \pare{f-\int f'} + \int f', \]
+  前者导数几乎处处为零，后者为一绝对连续函数，此谓其Lebesgue分解。
+  \subsection{凸函数}
+  \begin{definition}
+    满足下式者谓凸函数，其中$a+b=1$。
+    \[ \varphi\pare{a x_1 + b x_2} \le a \varphi\pare{x_1} + b \varphi\pare{x_2}. \]
+  \end{definition}
+  在上式中令
+  \[ a=\frac{x_2-x}{x_2-x_1},\quad b=\frac{x-x_1}{x_2-x_1}, \]
+  可得对于任意$x_1<x<x_2$，
+  \[ \frac{\varphi\pare{x}-\varphi\pare{x_1}}{x-x_1} \le \frac{\varphi\pare{x_2}-\varphi\pare{x}}{x_2-x}. \]
+  \begin{proposition}
+    若$\varphi$可微而$\varphi'$为增函数，则$\varphi$为凸函数。
+  \end{proposition}
+  \begin{lemma}[弦斜率]
+    凸函数上顺次三点$p_1$，$p$，$p_2$，有$k_{p_1p}<k_{p_1p_2}<k_{pp_2}$。
+  \end{lemma}
+  \begin{lemma}
+    凸函数$\varphi$各点左右导数存在，且若$u<v$则
+    \[ \varphi'\pare{u^-} \le \varphi'\pare{u^+}\le\frac{\varphi\pare{v}-\varphi\pare{u}}{v-u}\le\varphi'\pare{v^-}\le\varphi'\pare{u^+}. \]
+  \end{lemma}
+  \begin{collary}
+    开区间上的凸函数是Lipschitz的，在任意紧区间上绝对连续。
+  \end{collary}
+  \begin{theorem}
+    凸函数几乎处处可导且导函数为增函数。
+  \end{theorem}
+  \begin{theorem}[Jensen不等式]
+    对凸函数$\varphi$与可积函数$f$，设$\varphi\comp f$可积，有
+    \[ \varphi\pare{\int_0^1 f} \le \int_0^1 \varphi\comp f. \]
+  \end{theorem}
+  \begin{proof}
+    令$\alpha=\int f$，则
+    \[ \int_0^1 \varphi\comp f \ge \int_0^1 \brac{m\pare{f-\alpha}+\varphi\pare{\alpha}} = \varphi\pare{\alpha}. \qedhere \]
+  \end{proof}
+  将上开不等式用于加和为$1$的诸$\alpha_n$，
+  \[ \sum \alpha_n \log x_n \le \log \sum \alpha_n x_n \]
+  可得算术-几何不等式。
+  
+%ContentEnds
+ 
+\ifx\allfiles\undefined %如果位置放错，可能出现意外中断
+\end{document}
+\fi

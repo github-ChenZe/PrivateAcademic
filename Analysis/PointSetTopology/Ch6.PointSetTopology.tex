@@ -1,0 +1,44 @@
+%Ch6.PointSetTopology.tex
+\ifx\allfiles\undefined
+\documentclass{ctexrep}
+\include{head}
+\begin{document}
+\fi
+
+%Content
+
+\chapter{点集拓扑}
+  \section{可数性公理与分离公理}
+  \subsection{流形的嵌入}
+  \begin{definition}
+    一个\mmani 为一个具有可数基的Hausdorff空间$X$，其每一点$x$都有一邻域同胚于$\R^m$中的开子集。
+  \end{definition}
+  曲线为1-维流形，曲面为2-维流形。
+  \begin{definition}
+    $\func{\phi}{X}{\R}$的支撑为使其非零的定义域子集的闭包。
+  \end{definition}
+  \begin{definition}
+    设$\curb{U_1,\cdots,U_n}$为$X$的加标有限开覆盖. 连续函数加标族$\func{\phi}{X}{\brac{0,1}}$称为由$\curb{U_i}$控制的单位分拆（partition of unity），如果$\phi_i$的支撑在$U_i$内且$\sum \phi_i\pare{x} = 1$。
+  \end{definition}
+  \begin{theorem}[有限单位分拆的存在性（existence of finite partitions of unity）]
+    正规空间的有限开覆盖存在单位分拆。
+  \end{theorem}
+  \begin{proof}
+    首先注意，通过正规性条件，闭集$A=X-\pare{U_2\cup \cdots}$内可以选择满足$\clo{V}_1 \subset U_1$的开集$V_1$。归纳可将诸$U_k$均缩小为$V_k$且含其闭包在内。
+    \par
+    再将$V_k$同样缩小为覆盖$X$的$W_k$，借助Urysohn定理对诸$i$存在$\psi\pare{W}=1$且$\psi\pare{X-U}=0$的$\psi$，注意$\phi_i=\psi_i/\sum \psi_i$满足条件即可。
+  \end{proof}
+  \begin{theorem}
+    若$X$为\mmani ，则存在$N$使之得嵌入$\R^N$。
+  \end{theorem}
+  \begin{proof}
+    设有限开覆盖$\curb{U_i}$可各由$\bfg_i$嵌入$\R^m$，又设$\phi_i$为相应单位分拆。似可径以$\pare{\bfg_1,\cdots,\bfg_n}$映入$\R^{mn}$，然而诸$\bfg$虽在$U$内连续，在$X$上则会"突然"归零，故不可采，应采用$\pare{\phi_1\bfg_1,\cdots}$将之平滑化。此则不得保证单射性，盖不等之$\bfg$可由不等之$\phi$相乘后相等。是故复以
+    \[ \func{F}{X}{\R^{n+mn}} = \pare{\phi_1,\cdots,\phi_n,\phi_1\bfg_1,\cdots,\phi_n\bfg_n} \]
+    为之，易证为单射。
+  \end{proof}
+
+%ContentEnds
+ 
+\ifx\allfiles\undefined %如果位置放错，可能出现意外中断
+\end{document}
+\fi

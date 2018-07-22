@@ -1,0 +1,56 @@
+%Ch7.AnalysisOnManifolds.tex
+\ifx\allfiles\undefined
+\documentclass{ctexrep}
+\include{head}
+\begin{document}
+\fi
+
+%Content
+
+\chapter{流形上的分析}
+  \section{重积分的换元}
+  \subsection{单位分解}
+  \begin{lemma}
+    对$\R^n$中的矩形，存在\cinf 的函数恰以之为支撑。
+  \end{lemma}
+  \begin{proof}
+    设$f\pare{x}=e^{-1/x}\chi_{\R^+}$，则$f\pare{x}f\pare{1-x}$为\cinf 且以$\brac{0,1}$为支撑。
+  \end{proof}
+  \begin{lemma}
+    设$\setf{A}$是$\R^n$的一族开集，其并为$A$。存在矩形的可数族$\curb{Q_i}$覆盖之，而诸矩形在诸集内，且局部有限。
+  \end{lemma}
+  \begin{proof}
+    取覆盖$A$的严格递增紧子集列$\curb{D_i}$并设其差分为$\curb{B_i}$，知为紧致，故可以有限多矩形覆盖至且诸矩形在$D_{i-2}$外。易知此矩形族满足条件。
+  \end{proof}
+  \begin{definition}
+    $\func{\phi}{\R^n}{\R}$的支撑为使其非零的定义域子集的闭包。
+  \end{definition}
+  \begin{theorem}[单位分解的存在性]
+    在前开引理的条件下，存在诸矩形控制的\cinf 可数单位分拆。
+  \end{theorem}
+  \begin{proof}
+    参考前二引理，注意由局部有限性，各点处均有邻域使可数分拆仅为有限和，故和收敛且为\cinf ，故可加和后归一。
+  \end{proof}
+  \begin{ex}
+    将$f\pare{x}=\chi_{\brac{-2\pi,2\pi}}\pare{1+\cos x}/2$逐次移动$\pi$，可以得到$\R$的\cuno 单位分解。
+  \end{ex}
+  \begin{lemma}
+    $\func{f}{A}{\R}$连续且在紧集$C\subset A$外为零，则$\int_A f=\int_C f$。
+  \end{lemma}
+  \begin{proof}
+    存在性由$C$的有界性和极值定理推出$f$的有界性可得。取覆盖$A$的严格增紧集列$C_i$，其亦覆盖$C$，故$C$在某$C_M$内。
+    \[ \int_C f = \lim \int_{C_N} f = \int_A f. \qedhere \]
+  \end{proof}
+  \begin{theorem}
+    $\func{f}{A}{\R}$连续，$\curb{\varphi_i}$为$A$的具有紧支撑的单位分解，则$\int_A f$存在当且仅当
+    \[ \sum \brac{\int_A \varphi_i \abs{f}} \]
+    收敛，此时
+    \[ \int_A f = \sum \brac{\int_A \varphi_i f}. \]
+  \end{theorem}
+
+
+%ContentEnds
+ 
+\ifx\allfiles\undefined %如果位置放错，可能出现意外中断
+\end{document}
+\fi

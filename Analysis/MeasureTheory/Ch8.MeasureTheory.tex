@@ -1,0 +1,408 @@
+%Ch8.MeasureTheory.tex
+\ifx\allfiles\undefined
+\documentclass{ctexrep}
+\input{../Head/head}
+\begin{document}
+\fi
+
+%Content
+
+\chapter{测度论}
+  \section{Lebesgue测度}
+  \subsection{引论}
+  \subsubsection*{Lebesgue测度的性质}
+  我们期望Lebesgue测度具有如下一些性质。
+  \paragraph{区间的测度为其长度}非空区间是可测集，且
+  \[ m\pare{I}=\len\pare{I}. \]
+  \paragraph{测度是平移不变的}若$E$为Lebesgue可测集且$y$为一数，则
+  \[ m\pare{E+y}=m\pare{E}. \]
+  \paragraph{无交集的可数并的测度可加}$若E_k$为可数个无交可测集，则
+  \[ m\pare{\bigcup E_k} = \sum m\pare{E_k}. \]
+  且Lebesgue可测集全体构成一\siga。
+  \begin{definition}
+    一集族构成代数 ，如果其元素的补，有限交与有限并皆封闭。
+  \end{definition}
+  \begin{definition}
+    一集族构成\siga ，如果其元素的补，可数交与可数并皆封闭。
+  \end{definition}
+  在全体集合上定义满足条件的测度是不可能的，甚至仅仅满足前两个条件而具有有限可加性都是不能指望的。但在定义Lebesgue测度前，仍可先构造对任意集合都适用的外测度，满足前二条件，而第三条件替换为无论诸$E_k$无交与否，皆有
+  \[ m^*\pare{\bigcup E_k} \le \sum m^*\pare{E_k}. \]
+  \subsection{Lebesgue外测度}
+  定义无界区间的长度为$\infty$。对于任意集合，定义外测度
+  \[ m^*\pare{A} = \inf\sum\len\pare{I_k}. \]
+  其中$\curb{I_k}$为$A$的区间覆盖。立即可得空集外测度为零且外测度具有单调性，即若$A \subset B$则
+  \[ m^*\pare{A} \le m^*\pare{B}. \]
+  可以由此证明，可数集的测度为零。
+  \begin{proposition}
+    区间的测度为其长度。
+  \end{proposition}
+  \begin{proof}
+    考虑有界闭区间$\brac{a,b}$，易证$m*\le\pare{b-a}$。另一方向的不等号需要
+    \[ \sum\len\pare{I_k} \ge b-a. \]
+    由紧致性只需要对有限开覆盖证明
+    \[ \sum^n \len\pare{I_k} \ge b-a. \]
+    选取包含$a$的区间1，若右端点在$\pare{a,b}$内则选取另一包含其右端点的区间2，重复这一过程直到右端点在$\pare{a,b}$外，则上述不等式成立。
+    \par
+    对于任意有界区间，选取其闭区间的上下逼近并注意外测度的单调性即可。对于无界区间，易得其测度为$\infty$。
+  \end{proof}
+  \begin{proposition}
+    Lebesgue外测度是平移不变的。
+  \end{proposition}
+  \begin{proof}
+    注意区间的平移不变即可。
+  \end{proof}
+  \begin{proposition}
+    对任意$\curb{E_k}$，有
+    \[ m^*\pare{\bigcup E_k} \le \sum m^*\pare{E_k}. \]
+  \end{proposition}
+  \begin{proof}
+    对$E_k$取误差不超过$2^{-k}\epsilon$的覆盖区间，加和即可。
+  \end{proof}
+  \subsection{Lebesgue可测集的\siga}
+  \subsubsection{\cara 可测}
+  \begin{definition}
+    若对于任意集合$A$，都有
+    \[ m^*\pare{A} = m^*\pare{A\cap E}+m^*\pare{A\cap\complement E}, \]
+    则称$E$可测。
+  \end{definition}
+  鉴于外测度的次可加性，上述条件可弱化为
+  \[ m^*\pare{A} \ge m^*\pare{A\cap E}+m^*\pare{A\cap\complement E}. \]
+  此外还应注意到，对于无交集，若其中任一可测，立刻有
+  \begin{align*}
+  m*\pare{A\cup B} &= m^*\pare{\brac{A\cup B}\cap A}+m^*\pare{\brac{A\cup B}\cap \complement A}\\ &= m^*\pare{A}+m^*\pare{B}.
+  \end{align*}
+  故有可加性。此外，可测集的补仍为可测集。
+  \begin{theorem}
+    零测集为可测集。
+  \end{theorem}
+  \begin{proof}
+    代入弱化后的条件，注意外测度的单调性即可。
+  \end{proof}
+  \begin{theorem}
+    可测集的有限并可测。故可测集构成代数。
+  \end{theorem}
+  \begin{proof}
+    只证二可测集的并可测。借助二集可测的\cara 条件，有
+    \begin{align*}
+      m^*\pare{A} &= m^*\pare{A\cap E_1}+m^*\pare{A\cap\complement E_1\cap E_2} + m^*\pare{A\cap\complement E_1\cap \complement E_2} \\
+      &\ge m^*\pare{A\cap\brac{E_1\cup E_2}} + m^*\pare{A\cap\complement\brac{E_1\cup E_2}}.\qedhere
+    \end{align*}
+  \end{proof}
+  \begin{theorem}
+    无交可测集的有限并满足
+    \[ m^*\pare{A\cap\bigcup E_k} = \sum m^*\pare{A\cap E_k}. \]
+  \end{theorem}
+  \begin{proof}
+    注意到\cara 条件的
+    \[ A\cap\bigcup^n E_k \cap E_n = A \cap E_n \]
+    以及
+    \[ A\cap\bigcup^n E_k \cap \complement E_n = A\cap\bigcup^{n-1} E_n, \]
+    归纳即可。
+  \end{proof}
+  \begin{collary}
+    可测集的测度有限可加。
+  \end{collary}
+  \begin{theorem}
+    可测集的可数并可测。故可测集构成\siga 。
+  \end{theorem}
+  \begin{proof}
+    不妨设诸集无交。设其并为$E$，则根据前开命题及单调性，有
+    \[ m^*\pare{A} \ge \sum^n m^*\pare{A\cap E_k} + m^*\pare{A\cap\complement E}. \]
+    让$n\to\infty$，借助次可加性即可。
+  \end{proof}
+  \begin{theorem}
+    区间是可测集。
+  \end{theorem}
+  \begin{proof}
+    只证$I=\pare{a,\infty}$型区间可测。不妨设$a$不在$A$内且将之分割为$A\cap \complement I = A_1$与$A \cap I = A_2$。对于$A$的任意覆盖$\curb{I_k}$均同样割裂之，有
+    \[ m^*\pare{A_1} + m^*\pare{A_2} \le \sum \len\pare{I_k}, \]
+    故满足弱化后条件。
+  \end{proof}
+  \begin{definition}
+    开集的可数交为$\Gd$型集。
+  \end{definition}
+  \begin{definition}
+    闭集的可数并为$\Fs$型集。
+  \end{definition}
+  注意$\R$中开集为区间的并，故$\Gd$型（以及$\Fs$型）集可测。
+  \begin{definition}
+    包含开集的最小\siga 称为Borel \siga ，其元素称为Borel集。
+  \end{definition}
+  \begin{theorem}
+    $\R$中可测集包含Borel \siga 。区间，开集，闭集，$\Gd$与$\Fs$型集可测。
+  \end{theorem}
+  \begin{proposition}
+    可测集平移后可测。
+  \end{proposition}
+  \begin{proof}
+    在\cara 条件中将$E$的平移转化为$A$的平移，注意外测度的平移不变即可。
+  \end{proof}
+  \subsection{Lebesgue可测集的内外逼近}
+  \begin{lemma}
+    对$A\subset B$，有
+    \[ m^*\pare{B-A} = m^*\pare{B} - m^*\pare{A}. \]
+  \end{lemma}
+  \begin{proof}
+  注意由\cara 条件，
+  \[ m^*\pare{B} = m^*\pare{B \cap A} + m^*\pare{B-A}.\qedhere \]
+  \end{proof}
+  \begin{theorem}
+    下列条件与$E$的可测性等价。
+    \begin{aenum}
+      \item 对$\epsilon>0$，存在包含$E$的开集$\open{O}$满足$m^*\pare{\open{O}-E}<\epsilon$；
+      \item 存在包含$E$的$\Gd$型集满足$m^*\pare{G-E}=0$；
+      \item 对$\epsilon>0$，存在$E$内的闭集$F$满足$m^*\pare{E-F}<\epsilon$；
+      \item 存在$E$内的$\Fs$型集满足$m^*\pare{E-F}=0$。
+    \end{aenum}
+  \end{theorem}
+  \begin{proof}
+    只证前二者。后二者取补可得。
+    \par
+    设$E$可测，则存在区间并任意逼近其外测度，取$\open{O}$为区间并即可。有
+    \[ m^*\pare{\open{O}-E} = m^*\pare{\open{O}} - m^*\pare{E} < \epsilon. \]
+    对于无界$E$，分为可数个有界部分即可。不断缩小$\epsilon$，可得所求$\Gd$型集。鉴于零测集可测， 又$E=G\cap\complement\pare{G-E}$，知$E$可测。
+  \end{proof}
+  注意到对于任意集合$E$都存在开集使$m^*\pare{\open{O}}-m^*\pare{E}$任意小，然而外测度的减性仅对可测集成立。
+  \begin{theorem}
+    \label{thm:lt1}
+    对有限测度的$E\subset \R$，存在有限多个区间的并$\open{O}$满足$m*\pare{E-\open{O}} + m^*\pare{\open{O}-E} < \epsilon$。
+  \end{theorem}
+  \begin{proof}
+    取开集$U$为$E$的$\epsilon/2$外逼近，写$U$为区间并，选取其中有限个以$\epsilon/2$逼近之，注意到两差均小于$\epsilon/2$即可。
+  \end{proof}
+  \subsection{Lebesgue测度的其他性质}
+  \begin{definition}
+    对可测集定义其Lebesgue测度为外测度。
+  \end{definition}
+  \begin{theorem}
+    Lebesgue测度是可数可加的。
+  \end{theorem}
+  \begin{proof}
+    $m\pare{\cup}\le\sum m$由次可加性可得，由有限可加性和单调性又有$m\pare{\cup}\ge\sum^n m$，让右侧$n\to\infty$即可。
+  \end{proof}
+  \begin{theorem}
+    $\R$中可测集包含Borel \siga 。区间测度为长度，且平移不变，可数可加。
+  \end{theorem}
+  \begin{definition}
+    一个可数集族称为升链，如果$E_k\subset E_{k+1}$，相似定义降链。
+  \end{definition}
+  \begin{theorem}
+    Lebesgue测度满足
+    \begin{aenum}
+      \item 若$\curb{A_k}$为升链，则
+      \[ m\pare{\bigcup A_k} = \lim_{k\to\infty}m\pare{A_k}. \]
+      \item 若$\curb{B_k}$为降链且$m\pare{B_1}<\infty$，则
+      \[ m\pare{\bigcap B_k} = \lim_{k\to\infty}m\pare{B_k}. \]
+    \end{aenum}
+  \end{theorem}
+  \begin{proof}
+    不妨设诸$A_k$测度有限，则构造$A_k$的差得到等价的无交序列，后应用可数可加性即可。
+    \par
+    对于$B$则关于$B_1$取补后构造等价无交序列，借助减性即可。
+  \end{proof}
+  \begin{definition}
+    称一性质在$E$上几乎处处成立，如果它在除一零测集外成立。
+  \end{definition}
+  \begin{lemma}[Borel-Cantelli]
+    若$\curb{E_k}$测度和有限，则几乎任意$x\in\R$最多属于有限多个$E_k$。
+  \end{lemma}
+  \begin{proof}
+    \[ m\pare{\bigcap\bigcup_{k=n}E_k}=\lim_{n\to\infty}m\pare{\bigcup_{k=n}E_k} = 0.\qedhere \]
+  \end{proof}
+  \subsection{不可测集}
+  \begin{lemma}
+    设$E\subset\R$有界且存在可数无限有界实数集$\Lambda$其元素使诸$\lambda+E$无交，则$m\pare{E}=0$。
+  \end{lemma}
+  \begin{proof}
+    注意平移不变性与可数可加性，以及有界性即可。
+  \end{proof}
+  \begin{definition}
+    定义二实数有理等价，若其差为有理数。
+  \end{definition}
+  \begin{theorem}[Vitali]
+    任意正测度的实数集$E$存在一不可测子集。
+  \end{theorem}
+  \begin{proof}
+    不妨设$E$有界，取$E$内有理等价类的代表元集$\mathcal{C}$，有上述引理知$m\pare{\mathcal{C}}=0$。再选取$\Lambda$为$\Q$足够大的子集，使诸$\lambda+E$可覆盖$E$，矛盾。
+  \end{proof}
+  \begin{theorem}
+    存在$\R$的无交子集$A$与$B$满足
+    \[ m^*\pare{A\cup B} < m^*\pare{A} + m^*\pare{B}. \]
+  \end{theorem}
+  \subsection{Cantor集与Cantor-Lebesgue函数}
+  \begin{definition}
+    定义Cantor集为$I=\brac{0,1}$不断挖去各连通分量之三等分之中间部分的结果。令诸$C_k$为每一步的结果，$\mathbf{C}=\cap C_k$。
+  \end{definition}
+  \begin{theorem}
+    Cantor集不可数，且$m\pare{\mathbf{C}}=0$。
+  \end{theorem}
+  \begin{proof}
+    易证其可测且测度为零。参考\tref{uncountableR}的证明过程知不可数。
+  \end{proof}
+  定义Cantor-Lebesgue函数$\varphi$函数如下。对$\open{O}_k=\brac{0,1}-C_k$的$2^k-1$个连通分量分别赋值
+  \[ \curb{1/2^k,2/2^k,3/2^k,\cdots,\pare{2^k-1}/2^k}. \]
+  令$\varphi\pare{0}=0$且
+  \[ \varphi\pare{x} = \sup\setcond{\varphi\pare{t}}{t\in\blr{0,x}}. \]
+  \begin{theorem}
+    $\varphi$连续单调递增且在$\open{O}$内导数为零，并将$\brac{0,1}$映满$\brac{0,1}$。
+  \end{theorem}
+  \begin{proof}
+    注意$\varphi$在$x\in\mathbf{C}$附近的跳跃不超过其两侧$\open{O}$的跳跃，而随$k$增大其可任意小。故其连续，由介值定理知映满。
+  \end{proof}
+  \begin{theorem}
+    \label{thm:cantorl}
+    连续严格递增映射$\psi\pare{x}=\varphi\pare{x}+x$满足：
+    \begin{aenum}
+      \item 将零测$\mathbf{C}$映为一正测集；
+      \item 将一可测$E\subset\mathbf{C}$映为不可测集。
+    \end{aenum}
+  \end{theorem}
+  \begin{proof}
+    注意到$\brac{0,2}=\psi\pare{\open{O}}+\psi\pare{\mathbf{C}}$且开集与闭集映射后仍为开集与闭集，故仍可测。将$\open{O}$分解成区间，映射后区间长度不变即知$m\pare{\psi\pare{\open{O}}}=1$。
+    \par
+    因此，$m\pare{\psi\pare{\mathbf{C}}}=1$而含有不可测集，其原像为零测可测集。
+  \end{proof}
+  \begin{lemma}
+    严格递增映射存在连续逆。
+  \end{lemma}
+  \begin{lemma}
+    连续映射$f$的Borel集像的原像为Borel集。
+  \end{lemma}
+  \begin{proof}
+    注意$f^{-1}\pare{\complement U}=\complement f^{-1}\pare{U}$，$f^{-1}\pare{A\cap B}=f^{-1}\pare{A} \cap f^{-1}\pare{B}$。
+  \end{proof}
+  \begin{theorem}
+    存在非Borel集的可测集。
+  \end{theorem}
+  \begin{proof}
+    Borel集经严格增映射后仍为Borel集，可测集映射后可能不可测。
+  \end{proof}
+  \section{可测函数}
+  \subsection{可测函数的和、积与复合}
+  \begin{proposition}
+    对于在可测集上定义的函数$f$，下列命题等价。
+    \begin{enumerate}
+      \item 对任意$c$，$f\pare{x}>c$的$x$可测；
+      \item 对任意$c$，$f\pare{x}\ge c$的$x$可测；
+      \item 对任意$c$，$f\pare{x}<c$的$x$可测；
+      \item 对任意$c$，$f\pare{x}\le c$的$x$可测；
+    \end{enumerate}
+  \end{proposition}
+  \begin{proof}
+    只证前二。将$f\pare{x}\ge c$的$x$视为诸$f\pare{x}>c-1/k$的交，而$f\pare{x}>c$视为诸$f\pare{x}\ge c+1/k$的并。
+  \end{proof}
+  \begin{definition}
+    可测集上定义的函数$f$称为可测的，若其满足前开命题之一。
+  \end{definition}
+  \begin{proposition}
+    可测集上定义的$f$为可测当且仅当开集的原像均可测。
+  \end{proposition}
+  \begin{proof}
+    注意开集可写为区间并，而$\pare{a,b}=\pare{-\infty,b}\cap\pare{a,+\infty}$。
+  \end{proof}
+  \begin{proposition}
+    可测集上定义的连续函数可测。
+  \end{proposition}
+  \begin{proposition}
+    区间上定义的单调函数可测。
+  \end{proposition}
+  \begin{proposition}
+    设$\func{f}{E}{\clo{\R}}$。
+    \begin{enumerate}
+      \item 若$f$可测而$g$与$f$几乎处处相等，则$g$可测；
+      \item 设$D$为可测子集，$f$可测当且仅当在$D$和$E-D$上可测。
+    \end{enumerate}
+  \end{proposition}
+  \begin{theorem}
+    $f$和$g$为几乎处处有界的可测函数，则$ \alpha f + \beta g $与$ fg $可测。
+  \end{theorem}
+  \begin{proof}
+    只证$f+g$和$fg$可测。$f+g<c$，则存在$q\in\Q$满足$f<q<c-g$，将诸可数个$q$并起即可。又注意
+    \[ fg=\half\brac{\pare{f+g}^2-f^2-g^2} \]
+    以及可测函数的平方可测即可。
+  \end{proof}
+  \begin{ex}
+    由\tref{cantorl}可知，可测函数的复合$\chi_E\comp\psi^{-1}>0$的原像$\psi\pare{E}$不可测。
+  \end{ex}
+  \begin{theorem}
+    设$f$连续可测而$g$可测，则$f\comp g$可测。
+  \end{theorem}
+  \begin{proof}
+    注意$\pare{f\comp g}^{-1}\pare{\open{O}} = g^{-1}\pare{f^{-1}\pare{\open{O}}}$即可。
+  \end{proof}
+  由是立得$\abs{\pare{f}}$与$\abs{\pare{f}}^p$可测。
+  \begin{proposition}
+    $\maxo{f_1,\cdots,f_n}$与$\mino{f_1,\cdots,f_n}$可测。
+  \end{proposition}
+  由是立得诸
+  \[ \abs{f} = \maxo{f,-f},\quad f^+=\maxo{f,0},\quad f^-=\maxo{-f,0} \]
+  可测。故$f$可写为可测函数之差$f=f^+-f^-$。
+  \subsection{可测函数的极限与逼近}
+  \begin{definition}
+    称$\curb{f_n}$一致收敛于$f$，若对于充分大的$n$有$\norm{f-f_n}<\epsilon$。
+  \end{definition}
+  \begin{proposition}
+    若可测函数列$\curb{f_n}$逐点收敛于$f$，则$f$可测。
+  \end{proposition}
+  \begin{proof}
+    若$f\pare{x}<c$，对于充分大的$N$有$f_{N:}\pare{x}<c$，并起诸$N$即可。
+  \end{proof}
+  \begin{definition}
+    简单函数为仅取有限多个值的可测函数。
+  \end{definition}
+  注意简单函数$\varphi$均可写为
+  \[ \varphi = \sum^n c_k\cdot \chi_{E_k}. \]
+  \begin{lemma}[简单函数逼近]
+    可测函数存在\epsclo 的上下逼近$\varphi_\epsilon$与$\psi_\epsilon$。
+  \end{lemma}
+  \begin{proof}
+    将可测函数的值域分割为若干$\epsilon$小区间即可。
+  \end{proof}
+  \begin{theorem}[简单函数逼近]
+    可测函数存在满足$\abs{\varphi_n}<\abs{\func{f}{E}{\clo{\R}}}$的逼近。若$f$恒正，则存在诸$\varphi_n$递增。
+  \end{theorem}
+  \begin{proof}
+    设$f$恒正。在第$n$步截断$f$的值域至$n$后作$1/n$逼近即可。取$\varphi_n=\maxo{\varphi_1,\cdots,\varphi_n}$可得递增序列。
+    \par
+    一般情形将$f$写为$f^+-f^-$即可。
+  \end{proof}
+  \subsection{Littlewood的三大原理}
+  三大原理谓
+  \begin{enumerate}
+    \item 每个\emph{可测}集都\emph{几乎}是区间的并；（\tref{lt1}）
+    \item 每个\emph{可测}函数都\emph{几乎}是连续的；（\tref{Lusin}）
+    \item 每个\emph{可测}函数的逐点收敛序列都\emph{几乎}是一致收敛的。（\tref{Egoroff}）
+  \end{enumerate}
+  \begin{lemma}
+    对有限测度的$E$上定义的逐点收敛可测函数列$\curb{f_n}\to f$，存在充分大的$N$使$f_{N:}$在任意逼近$E$的集合上任意逼近$f$。
+  \end{lemma}
+  \begin{proof}
+    注意由逐点收敛，诸$N$的$A$为升列且并为$E$即可。
+  \end{proof}
+  \begin{theorem}[Egoroff定理]
+    \label{thm:Egoroff}
+    有限测度的$E$上定义的逐点收敛可测函数列$\curb{f_n}\to f$在一\epsclo $E$的闭集$F$上一致收敛。
+  \end{theorem}
+  \begin{proof}
+    据上引理，对任意$n$取$A_n$与$E$为\close{\epsilon/2^{n+1}}而$f_{N:}$与$f$为\close{1/n}，由是其交$A$与$E$为\close{\epsilon}且一致收敛。再取闭集逼近$A$即可。
+  \end{proof}
+  \begin{proposition}
+    对在$E$上定义的简单函数，存在连续函数在任意逼近$E$的集合上与之相等。
+  \end{proposition}
+  \begin{proof}
+    对诸$E_k$选取闭集逼近之，后调用Urysohn引理。
+  \end{proof}
+  \begin{theorem}[Lusin定理]
+    \label{thm:Lusin}
+    对可测函数，前开命题成立。
+  \end{theorem}
+  \begin{proof}
+    由简单函数逼近之，后以连续函数逼近之，再选取一致收敛的闭集。
+  \end{proof}
+
+
+%ContentEnds
+ 
+\ifx\allfiles\undefined %如果位置放错，可能出现意外中断
+\end{document}
+\fi

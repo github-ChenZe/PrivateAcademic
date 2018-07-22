@@ -1,0 +1,211 @@
+\documentclass{ctexart}
+\usepackage{fourier} 
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{currfile}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{multicol}
+\setlength{\intextsep}{5pt}
+\newcommand{\cc}{鹼基互補配對}
+\newcommand{\att}{著絲點}
+\newcommand{\dna}{脫氧核苷酸}
+\newcommand{\reff}{\textsubscript{[來自\currfiledir\currfilename]}}
+\newcommand{\parah}[1]{\par\noindent\subentrynote\textbf{#1}\reff\\ \textbf{{\color{red}\hrulefill}}}
+\newcommand{\para}[1]{\vspace{1cm}\par\noindent\subentrynote\textbf{#1}\reff\\ \textbf{{\color{red}\hrulefill}}}
+\newcommand{\err}[1]{\sout{而不是 #1。}}
+\newcommand{\wa}[1]{\textit{#1 は}}
+\newcommand{\qref}[3]{\quad---\textit{#1}.p.\-#2.\-#3}
+\newcommand{\subentrynote}{$\bullet^{\the\inputlineno}$}
+\newcommand{\term}[2]{\par\subentrynote\textit{表述：}#1 謂\textbf{#2}。}
+\newcommand{\fterm}[2]{\par\subentrynote\textit{表述：}#1 謂\textbf{#2}}
+\newcommand{\cons}[2]{\par\subentrynote\textit{結果：}#1 為\textbf{#2}。}
+\newcommand{\meth}[1]{\par\subentrynote\textit{方法：}#1。}
+\newcommand{\elem}[2]{\par\subentrynote\textit{從屬：}#1 屬於\textbf{#2}。}
+\newcommand{\prop}[2]{\par\subentrynote\textit{性質：}#1 具有\textbf{#2}。}
+\newcommand{\nprop}[2]{\par\subentrynote\textit{性質：}#1 不具有\textbf{#2}。}
+\newcommand{\defi}[2]{\par\subentrynote\textit{定義：}{\color{blue}{\textit{#1}}}謂\textbf{#2}。}
+\newcommand{\fdefi}[2]{\par\subentrynote\textit{定義：}{\color{blue}{\textit{#1}}}謂\textbf{#2}}
+\newcommand{\centry}[1]{\par \textit{$*$ #1}}
+\newcommand{\sus}[4]{{\par \color{red} \textit{存疑：}#1 \qref{#2}{#3}{#4}}}
+\newcommand{\noi}[4]{{\par \color{red} \textit{待補充：}#1 \qref{#2}{#3}{#4}}}
+\newcommand{\stress}[1]{{\color{red} #1}}
+\newcommand{\qreft}[2]{\qref{\bio\tek}{#1}{#2}}
+\newcommand{\vref}[2]{\qref{Vol}{#1}{#2}}
+\newcommand{\impl}[1]{\underline{\color{yellow}{[#1]}}}
+\newcommand{\termcomp}[4]{
+\par\subentrynote\textit{對比：}
+\begin{figure}[!htb]
+    \centering
+    \begin{minipage}{.45\textwidth}
+        \term{#1}{#2}
+    \end{minipage}%
+    \begin{minipage}{.1\textwidth}
+    \centering
+    $\leftrightarrow$
+    \end{minipage}%
+    \begin{minipage}{0.45\textwidth}
+        \term{#3}{#4}
+    \end{minipage}
+\end{figure}}
+\newcommand{\comp}[2]{
+\par\subentrynote\textit{對比：}
+\begin{figure}[!htb]
+    \centering
+    \begin{minipage}{.45\textwidth}
+        #1
+    \end{minipage}%
+    \begin{minipage}{.1\textwidth}
+    \centering
+    $\leftrightarrow$
+    \end{minipage}%
+    \begin{minipage}{0.45\textwidth}
+        #2
+    \end{minipage}
+\end{figure}}
+\newcommand{\bio}{せ}
+\newcommand{\tek}{テ}
+\newcommand{\MI}{減數第一次分裂}
+\newcommand{\MII}{減數第二次分裂}
+\newcommand{\PII}{第二極體}
+\newcommand{\PI}{第二極體}
+\newcommand{\cf}{cf.}
+\newcommand{\TIV}{T\textsubscript{4}}
+\newcommand{\Ecoli}{\textit{E}·\textit{coli}}
+\newcommand{\rulesep}{\unskip\ \vrule\ }
+
+\begin{document}
+\section{生物}
+\subsection*{生物·通論}
+\par 抽象司法行為禁止——篇目所載的要點須具有具體的存疑或失誤的題目，並與之俱有相當關聯性。
+\par 一事不再理——既已審查的題目除非存在要點歸納錯誤，不得再度審查。
+\par 表述性的要點，可以為操作之賓語、原因、工具或其他狀語。
+\par 定義性的要點，可以為定義本身或足夠精確之描述。
+\par 同一要點，視其所欲強調者不同，得給予不同之分類。
+\par 要點之順序，視其於所處之章節之位置確定。描述動態過程時，應以要點對應過程之步驟確定其位置；描述靜態時，應以一定位置順序確定之。
+
+\subsection{生物·通論}
+\meth{\wa{選擇題之項目排除}，选择题对知识性错误项目之排除优先于表述性错误}\vref{1070505}{7}
+
+\subsection{生物·卷0·常識或未歸類}
+\term{導管的構成}{植物的死細胞}
+\term{有絲分裂之著絲點分離發生於}{有絲分裂後期}\qreft{28}{4}
+\elem{玉米、小麥}{單子葉植物}\qreft{6}{lower.left}
+\elem{核移植技術}{細胞工程}\qreft{42}{1}
+\elem{溶酶體酶}{蛋白質}故其合成處為核糖體。\qreft{42}{2}
+\meth{若涉及動物細胞於培養皿內培養，可判定其涉及動物細胞培養技術}\qreft{46}{7.3}
+\meth{題目中出現的名詞在必要時應徑直使用}\qreft{92}{2}
+\noi{選填顯微注射技術或轉基因技術}\qreft{92}{14.4}\qreft{94}{14.4}
+\noi{選填基因工程技術或轉基因技術}\qreft{96}{12.2}
+\noi{選填基因工程技術/細胞工程技術或核移植技術}\qreft{51}{7.2}\qreft{60}{6.1}
+\sus{激素僅作用於特定細胞}\qreft{51}{4}
+\term{細胞核移植之細胞核所移入者}{\stress{去核}卵母細胞}\qreft{28}{4}
+\term{以去核卵母細胞為受體細胞之原因}{含有使細胞核表達全能性的物質與營養條件，體積大且易操作}\qreft{96}{11.3}
+\term{轉錄之首先步驟}{\stress{RNA聚合酶}識別基因的\stress{啟動子}結構}\qreft{11}{7.1}
+\term{啟動子之作用}{為RNA聚合酶提供識別與結合的部位，驅動轉錄}\qreft{72}{13.4}
+\term{啟動子與終止子之作用}{啟動和終止\stress{轉錄}的進程}\err{翻譯}\qreft{13}{2}
+\noi{格里菲斯實驗之步驟}{\bio\tek}{11}{6.5}
+\term{格里菲斯實驗之啟示}{DNA可以從一種生物個體傳遞至另一種生物個體}\qreft{11}{6.5}
+
+\subsection{生物·卷I·細胞與遺傳學}
+\subsubsection{遺傳學}
+\parah{實驗}
+\comp{\fterm{孟德爾「一堆相對性狀的雜交實驗」包含步驟}{
+\begin{enumerate}
+\item 顯性純合與隱形純合雜交，得到不分離的$F_1$；
+\item $F_1$自交得到分離的$F_2$。
+\end{enumerate}
+}}{\fterm{摩爾根證實基因位於染色體上的實驗包含步驟}{
+\begin{enumerate}
+\item 顯性雌性與隱性雌性雜交，得到顯性$F_1$；
+\item $F_1$\stress{雜交}得到分離的$F_2$。
+\end{enumerate}
+}}\vref{1070505}{25}
+\fterm{孟德爾之假說}{
+\begin{enumerate}
+\item 生物的性狀由遺傳因子決定；
+\item 體細胞的遺傳因子成對存在；
+\item 生物體形成配子時，成對的遺傳因子分離進入不同配子；
+\item 雌雄配子的結合是隨機的。
+\end{enumerate}}
+上述假說不涉及染色體。\vref{1070505}{38}
+\term{檢驗植物是否顯性純合，最簡便易行的方式}{自交視後代是否性狀分離}\vref{1070505}{21,24}
+
+\para{基因的表達}
+\meth{\wa{尋找提高產物之方法}，應審查促進產物之產生的基因或物質與抑制產物產生之基因或物質，並添加或去處之}\qreft{74}{13.4}
+\nprop{原核生物}{內含子}故其基因結構與人體的基因結構不同。\qreft{73}{5}
+\term{欲改變蛋白質中某一氨基酸，應替換之鹼基數量最少}{1個}\err{3個}\qreft{75}{11.2}
+\meth{\wa{基因突變}，題目中給出終止密碼子時，可考慮突變為終止密碼子之情形}\qreft{76}{15.2}
+\term{從基因表達水平分析，遺傳病之患病原因之一可能}{突變後終止密碼子提前出現，翻譯提前終止，形成一場蛋白}\qreft{76}{15.2}
+\meth{\wa{表現型數目之判定}，應視實際表現出相對性狀之數目決定，\err{單純由基因之組合數量}}\vref{1070505}{35}
+
+\para{染色體與有絲分裂}
+\sus{神經細胞之染色體數目為2N？}{vol}{1070505}{29}
+\fdefi{同源染色體}{
+\begin{enumerate}
+\item 成對存在；
+\item 形態、大小相同；
+\item 一條來自父方，一條來自母方；
+\end{enumerate}
+的一對染色體。
+}上述第二條存在例外，如性染色體。\vref{1070505}{9}
+\noi{染色單體之定義}{Vol}{20170505}{9}僅在\att 分離前存在。
+\term{同源染色體}{在減數分裂是聯會之性質}不存在例外。\vref{1070505}{11}
+\comp{\term{植物細胞有絲分裂末期之特徵}{細胞壁合成，高爾基體活動旺盛}}{\term{動物細胞有絲分裂末期之特徵僅}{細胞膜變形}}\vref{1070505}{5}
+
+\subsection{生物·卷II·基因工程}
+\subsubsection{基因工程}
+\input{bio.tek.1/bio.tek.1.1}
+\input{bio.tek.1/bio.tek.1.2}
+\para{基因工程的應用}
+\defi{轉基因植物}{植物體細胞中被轉入\stress{外源基因}的植物}\err{出現了新基因}\qreft{13}{upper.right.2}
+\term{植物轉基因技術之優點}{目的性強，克服遠緣雜交不親和性}\qreft{16}{7.3}
+\meth{抗原-抗體雜交技術可確定蛋白質產物之位置，即為提取產物之位置}\qreft{76}{13.3}
+\term{轉基因動物作器官移植供體，優點}{避免\stress{免疫}排斥反應}\qreft{74}{14.5}
+\term{真核生物作為受體細胞之優勢}{含有內質網與高爾基體，可以對蛋白質進行加工與修飾}\qreft{76}{14.2}
+\defi{基因治療}{將健康的\stress{外源}基因導入有基因缺陷的細胞中，以治療疾病}\qreft{74}{15.1}
+\term{取出患者細胞，導入正常基因後細胞培養生成組織後重新植入之治療方法}{體外基因治療}\qreft{19}{6.1}
+\term{基因治療效果發生之原因}{細胞中能合成\impl{目標產物}}\qreft{74}{15.3}
+\noi{交叉引用}{}{}{}
+\term{基因工程技術用於基因診斷之原理}{DNA分子雜交}
+
+\para{蛋白質工程}
+\fterm{蛋白質工程之流程}{
+\begin{enumerate}
+\item 預期蛋白質功能；
+\item 設計蛋白質的空間結構；
+\item 推測蛋白質的氨基酸序列；
+\item 合成相應的\dna 序列。
+\end{enumerate}}注意上述第二與第三項之順序。\qreft{76}{12.1}
+\term{蛋白質工程之原理}{中心法則之逆推}\qreft{76}{14.3}
+\term{蛋白質工程之實質}{改造基因}\qreft{76}{14.3}
+\fterm{蛋白質工程之手段}{基因修飾與基因合成}\qreft{76}{12.2}
+\term{蛋白質工程之蛋白質產物性能提升之\stress{根本}原因}{控制基因合成之位點發生突變}\qreft{19}{3}
+\term{對天然基因之改造，選擇操作基因而非操作蛋白質分子之原因}{對蛋白質之改造無法遺傳；對基因之改造操作更為容易，難度降低}\qreft{76}{12.4}
+\term{改造蛋白質性質的手段之一}{對蛋白質進行少數胺基酸的替換}\qreft{75}{11.3}
+\term{蛋白質工程之目的}{對現有的蛋白質進行改造，或製造一種新的蛋白質，以滿足\stress{人類的生產與生活}的需求}\qreft{76}{12.2}
+\subsubsection{植物細胞工程}
+\input{bio.tek.2/bio.tek.2.1}
+\subsubsection{胚胎工程}
+\input{bio.tek.3/bio.tek.3.1}
+\input{bio.tek.3/bio.tek.3.2}
+\input{bio.tek.3/bio.tek.3.3}
+
+
+
+\subsection{生物·卷III·實踐}
+\subsubsection{DNA與蛋白質技術}
+\term{PCR技術之條件要求}{模板、游離的\dna 、引物與DNA聚合酶等}\qreft{74}{13.1}
+\term{PCR技術之引物要求}{與模板DNA兩條鏈末端鹼基互補配對}因此若PCR實驗失敗，可考慮重新設計引物。\qreft{10}{2}\qreft{72}{5}
+\term{為方便構建重組質粒，引物中可添加適當的}{\stress{限制酶}切割位點}\qreft{72}{11.2}
+\term{為防止自聯，引物之間應避免形成}{鹼基互補配對}\qreft{72}{4}
+\term{PCR技術之聚合酶應當使用者}{耐高溫的Taq DNA聚合酶}
+\centry{Taq謂Thermus aquaticus，aquaticus謂與水相關的，由是知Taq酶由溫泉或深海熱泉細菌取得。}
+
+\end{document}

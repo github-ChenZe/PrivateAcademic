@@ -1,0 +1,197 @@
+%Ch2.GeneralPointSetTopology.tex
+\ifx\allfiles\undefined
+\documentclass{ctexrep}
+\input{../Head/head}
+\begin{document}
+\fi
+
+%Content
+
+\chapter{普通点集拓扑}
+  \section{拓扑空间与连续函数}
+  \subsection{拓扑空间}
+  \begin{definition}
+  集合$X$上的一个拓扑$\cT$谓$X$的一满足如下条件的子集族：
+  \begin{cenum}
+    \item $\curb{\eset, X} \in \cT$；
+    \item $\cT$中元素的任意并仍在$\cT$中；
+    \item $\cT$中元素的有限交仍在$\cT$中。
+  \end{cenum}
+  \end{definition} 
+  \begin{definition}
+  $X$的所有子集构成的拓扑谓离散拓扑。
+  \end{definition}
+  \begin{definition}
+  由$X$和$\eset$构成的拓扑谓密着拓扑。
+  \end{definition}
+  \begin{definition}
+  由$X$本身与所有满足$X-U$为有限集的$U$构成的拓扑谓有限补拓扑。
+  \end{definition}
+  \begin{definition}
+  $\cT'\supset\cT$则$\cT'$细于$\cT$，反之则谓粗于。
+  \end{definition}
+  如果把开集比做石子，把石子打碎就得到更细的拓扑。
+  \subsection{拓扑的基}
+  \begin{definition}
+  \label{def:tb}
+  基$\cB$谓满足如下条件的子集族：
+  \begin{cenum}
+    \item 对任意$x\in X$，存在$B\in\cB$满足$x\in B$；
+    \item 对任意$x\in B_1\cap B_2$，存在$B$满足$x\in B$且$B\subset B_1\cap B_2$。
+  \end{cenum}
+  \end{definition}
+  注意此定义不针对具体的拓扑。
+  \begin{ex}
+  平面上的圆域和矩形域构成的集族都构成基。
+  \end{ex}
+  \begin{definition}
+  满足\dref{tb}的$\cB$生成的拓扑为所有满足对$x\in U$，存在$x\in B\subset U$的$U$的集族。
+  \end{definition}
+  可以直接验证上述定义构成一个拓扑。对所有$x$取对应的$x\in B_x$后将诸$B_x$并起，可得等价的表述
+  \begin{theorem}
+  若$\cB$为$\cT$的基，则$\cT$为$\cB$中元素并的族。
+  \end{theorem}
+  \begin{theorem}
+  设$\cC$为开集族，若对于任意开集$U$中任意$x$，存在$C\in\cC$满足$x\in C\subset U$，则$\cC$为$\cT$的基。
+  \end{theorem}
+  \begin{proof}
+  容易验证$\cC$为基。再分别证$\cC\subset \curb{U}$与$\curb{\cup C}\supset \curb{U}$。
+  \end{proof}
+  \begin{theorem}
+  设$\cB$于$\cB'$分别生成$\cT$与$\cT'$，则$\cT'$细于$\cT$当且仅当对任意$x\in B$存在$x\in B'\subset B$。
+  \end{theorem}
+  \begin{proof}
+  强行带入定义，即任意$U$均在$\cT'$内即可。
+  \end{proof}
+  \begin{definition}
+  $\R$上的$\pare{a,b}$生成的拓扑谓标准拓扑。
+  \end{definition}
+  \begin{definition}
+  $\R$上$\blr{a,b}$生成的拓扑谓下限拓扑，记作$\R_\ell$。
+  \end{definition}
+  \begin{definition}
+  $\R$上$\pare{a,b}$与$\pare{a,b} - \curb{\rec{n}}$生成的拓扑谓K-拓扑，记作$\R_K$。
+  \end{definition}
+  \begin{lemma}
+  $\R_\ell$与$\R_K$严格细于标准拓扑，但它们之间不可比较。
+  \end{lemma}
+  \begin{proof}
+  $\R_K$\emph{严格}细于的证明只需考虑$x=0$与$B=\pare{-1,1}-\curb{1/n}$，同一个集合可证$\R_\ell$不细于$R_K$。
+  \end{proof}
+  \begin{definition}
+  子基$\cS$谓满足$\cup S=X$的集族。
+  \end{definition}
+  \begin{definition}
+  子基生成的拓扑谓$\cS$中有限交的所有并。
+  \end{definition}
+  可以直接验证$\curb{\cap S}$为一个基，故其确实生成一拓扑。
+  \subsection{序拓扑}
+  \begin{definition}
+  具有全序关系的$X$上的序拓扑谓所有$\pare{a,b}$，$\lbr{a,\max X}$，$\blr{\min X, b}$生成的拓扑。
+  \end{definition}
+  \begin{ex}
+  $\Z_+$上的序拓扑是离散拓扑。然而$X=\curb{1,2}\times\Z_+$的字典序拓扑下单点集$1\times1$并非开集。
+  \end{ex}
+  \begin{definition}
+  全序集$X$中$a$决定的射线谓开射线$\pare{a,+\infty}$，$\pare{-\infty,a}$，$\blr{a,+\infty}$，$\lbr{-\infty,a}$。
+  \end{definition}
+  所有开射线构成$X$的序拓扑的子基。
+  \subsection{积拓扑}
+  \begin{definition}
+  $X\times Y$上的积拓扑谓所有$U\times V$的集族$\cB$生成的拓扑，其中$U$与$V$为$X$与$Y$中的开集。
+  \end{definition}
+  \begin{theorem}
+  若$\cB$与$\cC$分别为$X$与$Y$的基，则$\cB\times\cC$为$X\times Y$的基。
+  \end{theorem}
+  \begin{definition}
+  投射$\pi_1\pare{x,y}=x$，$\pi_2\pare{x,y}=y$。
+  \end{definition}
+  \begin{theorem}
+  如下的$\cS$构成$X\times Y$的一子基，其中$U$和$V$分别为$X$与$Y$中的开集。
+  \[ \cS = \curb{\pi_1^{-1}\pare{U}}\cup\curb{\pi_2^{-1}\pare{V}}. \]
+  \end{theorem}
+  \subsection{子空间拓扑}
+  \begin{definition}
+  对$X$的子集$Y$定义子空间拓扑，其中$U$为$X$中的开集。
+  \[ \cT_Y = \curb{Y\cap U}. \]
+  \end{definition}
+  \begin{theorem}
+  若$\cB$为$X$的一个基，则
+  \[ \cB_Y = \setcond{B\cap Y}{B \in \cB} \]
+  谓$Y$的子空间拓扑的一个基。
+  \end{theorem}
+  \begin{lemma}
+  若$Y$为$X$中开集而$U$为$Y$中开集，则$U$为$X$中开集。
+  \end{lemma}
+  \begin{theorem}
+  若$A\subset X$，$B\subset Y$，则$A\times B$的积拓扑与其自$X\times Y$继承的子空间拓扑相符。
+  \end{theorem}
+  然而，对于序拓扑无类似结论。
+  \begin{ex}
+  考虑$X=\R$而$Y=\brac{0,1}$，$Y$上的序拓扑与子空间拓扑相符。
+  \end{ex}
+  \begin{ex}
+  考虑$X=\R$而$Y=\blr{0,1}\cup\curb{2}$，子空间拓扑中$\curb{2}$为开集，二者不符。
+  \end{ex}
+  \begin{ex}
+  考虑$X=\R^2$而$Y=\brac{0,1}\times\brac{0,1}$，则$\half\times\lbr{\half,1}$为子空间拓扑的开集但不是序拓扑的开集。
+  \end{ex}
+  \begin{definition}
+  子集$Y$称为凸的，如果对$Y$中$a<b$皆有$\pare{a,b}\subset Y$。
+  \end{definition}
+  \begin{theorem}
+  设$X$为全序集，$Y$为凸子集，则子空间拓扑与序拓扑一致。
+  \end{theorem}
+  \begin{proof}
+  借助开射线构造子基后证明其相互包含即可。
+  \end{proof}
+  \subsection{闭集与极限点}
+  \subsubsection{Hausdorff空间}
+  \begin{definition}
+    若$X$中任意两不同点存在无交邻域，则称$X$为一Hausdorff空间（Hausdorff space）。
+  \end{definition}
+  \section{连通性与紧致性}
+  \subsection{紧致空间}
+  \begin{definition}
+    $X$的子集族$\setf{C}$称为具有有限交性质（finite intersection property），如果$\setf{C}$的任意有限子族交非空。
+  \end{definition}
+  \begin{theorem}
+    \label{thm:finiteinters}
+    $X$是紧致的当且仅当$X$中具有有限交性质的每一个闭集族$\setf{C}$，其交非空。
+  \end{theorem}
+  \begin{proof}
+    这些集合的补是一堆开集，这些开集中的任意有限个都不能覆盖$X$，但$X$是紧致的，所以它们合起来也不能覆盖$X$。
+  \end{proof}
+  \subsection{实直线上的紧致子空间}
+  \begin{theorem}
+    \label{thm:uncountableR}
+    非空紧致Hausforff空间$X$，若无孤立点则不可数。
+  \end{theorem}
+  \begin{proof}
+    对于$X$的任意元素$x$，由Hausdorff性质皆可以选取一非空开集$V$，满足$x \notin \clo{V}$。\par
+    假设有$\func{f}{\Z_+}{X}$，则可以选取$V_1$其闭包不包含$x$，且可选取$V_2 \subset V_1$其闭包不包含$x_2$，以此类推。考虑
+    \[ \clo{V}_1 \supset \clo{V}_2 \supset \cdots, \]
+    由$x$的紧致性与\tref{finiteinters}，知其交非空故有元素$x$在诸$x_n$之外。
+  \end{proof}
+  \subsection{极限点紧致性}
+  \begin{definition}
+    度量空间内的映射$f$，若
+    \[ \dist{f\pare{x}}{f\pare{y}} < \dist{x}{y}, \]
+    则称$f$为收紧映射（shrinking map）。
+  \end{definition}
+    \begin{definition}
+    度量空间内的映射$f$，若
+    \[ \dist{f\pare{x}}{f\pare{y}} \le \alpha\dist{x}{y}, \]
+    其中$\alpha < 1$，则称$f$为压缩映射（contraction map）。
+  \end{definition}
+  \begin{theorem}
+    \label{thm:fixp0}
+    若$X$为完备度量空间，则压缩映射存在不动点。
+  \end{theorem}
+
+
+%ContentEnds
+ 
+\ifx\allfiles\undefined %如果位置放错，可能出现意外中断
+\end{document}
+\fi

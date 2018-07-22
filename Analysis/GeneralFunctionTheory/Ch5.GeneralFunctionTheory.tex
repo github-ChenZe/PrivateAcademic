@@ -1,0 +1,163 @@
+%Ch5.GeneralFunctionTheory.tex
+\ifx\allfiles\undefined
+\documentclass{ctexrep}
+\include{head}
+\begin{document}
+\fi
+
+%Content
+
+\chapter{普通函数理论}
+  \section{函数序列}
+  \section{特殊函数}
+  \section{多元函数}
+  \subsection{微分法}
+  \begin{definition}
+    设$E$是$\R^n$中的开集，$\bv{f}$将$E$映入$\R^m$，$\bv{x}\in E$。若存在将$\R^n$映入$\R^m$的线性变换$A$，使得
+    \[ \lim_{\bv{h}\to 0} \frac{\abs{\bv{f}\pare{\bv{x}+\bv{h}}}-\bv{f}\pare{\bv{x}}-A\bv{h}}{\abs{\bv{h}}} = 0, \]
+    则称$\bv{f}$在$\bv{x}$处可微。记作
+    \[ \bv{f}'\pare{x}=A. \]
+  \end{definition}
+  \begin{theorem}
+    上述定义的$A$是唯一的。
+  \end{theorem}
+  \begin{proof}
+    设$B=A_1-A_2$，则
+    \[ \abs{B\bfh}\le\abs{\bff\pare{\bfx+\bfh}-\bff\pare{\bfx}-A_1\bfh}+\abs{\bff\pare{\bfx+\bfh}-\bff\pare{\bfx}-A_2\bfh}. \]
+    故$\abs{B\bfh}/\abs{\bfh}\to 0$。因此$B=0$。
+  \end{proof}
+  例如线性变换的导数显然是其自身。
+  \begin{theorem}
+    若$\bfF\pare{\bfx} = \bfg\pare{\bff\pare{x}}$,且$\bff$与$\bfg$在对应点可微，则
+    \[ \bfF'\pare{\bfx_0} = \bfg'\pare{\bff\pare{\bfx_0}}\bff'\pare{\bfx_0}. \]
+  \end{theorem}
+  \begin{proof}
+    设$\bfx_0$的增量为$\bfh$，$\bff\pare{\bfx_0}$的增量为$\bfk$。
+    \begin{align*}
+      \bfF\pare{\bfx_0+\bfh}-\bfF\pare{\bfx_0}-BA\bfh &= \bfg\pare{\bfy_0+\bfk} - \bfg\pare{\bfy_0}-BA\bfh \\
+      &= B\pare{\bfk-A\bfh}+\oo{\bfk} \\
+      &= B\oo{\bfh} + \oo{\bfk}.
+    \end{align*}
+    再注意$\bfk = A \bfh + \oo{\bfh}$便知其趋向零。
+  \end{proof}
+  \begin{definition}
+    设$E$是$\R^n$中的开集，$\bv{f}$将$E$映入$\R^m$。$\curb{e_n}$是定义域的标准基，$\curb{u_m}$是值域的标准基，以此定义$\bff$的分量。若极限
+    \[ \pare{\DD_jf_i}\pare{\bfx} = \lim_{t\to 0}\frac{f_i\pare{\bfx+t\bfe_j}-f_i\pare{\bfx}}{t} \]
+    存在，则称之为偏导数。
+  \end{definition}
+  \begin{theorem}
+    \label{thm:adij}
+    若$\bff$在$\bfx$处可微，则各偏导数存在，且
+    \[ A_{ij} = \DD_jf_i. \]
+  \end{theorem}
+  \begin{proof}
+    注意到方向导数的存在为可导所蕴含即可。
+  \end{proof}
+  注意$ij$的顺序，曲线的$A$为列矩阵，即切向量。
+  \begin{definition}若$f$是$\R^n$上的标量函数，则$A$为行矩阵，称为$f$的梯度，记作$\nabla f$。
+  \end{definition}
+  设$\gamma$为一曲线，$f$标量函数，$g=f \comp \gamma$，于是$g'\pare{t} = \pare{\nabla f}\gamma'$。若$\gamma$为指向$\bfu$的直线，则$g'\pare{t}=\bfu\cdot\nabla f$，称为$f$的方向导数。当$\bfu$与$\nabla f$同向时\footnote{此处将行向量与列向量等同，或者说协变矢量与逆变矢量等同。}，其具有最大值。
+  \begin{theorem}
+    若在凸集上$\norm{\bff'}\le M$，则$\abs{\bff\pare{\bfb}-\bff\pare{\bfa}} \le M \abs{\bfb-\bfa}$。
+  \end{theorem}
+  \begin{proof}
+    设$\gamma\pare{t} = \pare{1-t}\bfa+t\bfb$，$\bfg=\bff\comp\gamma$，因此$\bfg'=\bff'\comp\pare{\bfb-\bfa}$，再注意$\bff'$的上界并调用\tref{vfab}。
+  \end{proof}
+  \begin{collary}
+    若$\bff'=0$，则$\bff=\const$。
+  \end{collary}
+  \begin{definition}
+    若$\bff$可微且$\bff'$连续，则称$\bff$连续可微。
+  \end{definition}
+  \begin{theorem}
+    当且仅当$\func{\bff}{E\subset\R^n}{\R^m}$偏导数存在且连续时，$\bff$连续可微。
+  \end{theorem}
+  \begin{proof}
+    若$\bff$连续可微，则借助\tref{adij}，并注意
+    \[ \abs{\pare{\DD_jf_i}\pare{\bfy}-\pare{\DD_jf_i}\pare{\bfx}}\le\abs{\brac{\bff'\pare{\bfy}-\bff'\pare{\bfx}}\bfe_j} \]
+    即可。
+    \par
+    若$\bff$在$\bfx$的各偏导数存在，则可以仅考虑$\bff$的一个分量$f$。将$\bfx$的无穷小位移$\bfh$分解为各个方向的和，借助中值定理将增量转化为"稍微偏离"$\bfx$处的偏导。再借助连续性，从而$\bff'$可以写为$\DD_jf$的列向量，且各分量由题设连续。
+  \end{proof}
+  \subsection{反函数定理}
+  \begin{theorem}
+    若连续可微的$\bff$将开集$E\subset \R^n$映入$\R^n$，且对于某个$\bfa$，$\bff'\pare{\bfa}$可逆，$\bff\pare{\bfa} = \bfb$。则存在$\bfa$和$\bfb$的邻域$U$和$V$，使$\bff$为双射。
+  \end{theorem}
+  \begin{proof}
+    为了求出$\bff$的反函数，采用Newton法，令
+    \[ \varphi_\bfy\pare{\bfx} = \bfx + A^{-1}\pare{\bfy-\bff\pare{\bfx}}. \]
+    注意$\varphi'=A^{-1}\pare{A-\bff'}$，因此可以选择足够小的邻域使$\norm{\varphi'}$足够小。由\tref{fixp0}，其存在不动点，故$\bff$可逆。
+    \par
+    $\bff$的一一性已证，下证其为开映射。设$\bff\pare{\bfx_0}=\bfy_0$确凿，对于足够接近$\bfy_0$的$\bfy$，从任何$\bfx_0$附近的$\bfx$出发试图寻找其原像，皆有
+    \[ \abs{\varphi\pare{\bfx}-\bfx_0}\le\abs{\varphi\pare{\bfx}-\varphi\pare{\bfx_0}}+\abs{\varphi\pare{\bfx_0}-\bfx_0}.\]
+    前一绝对值的大小由$\norm{\varphi'}$限制，后一绝对值的大小由$\bfy$的偏移量限制。因此迭代后的不动点仍在$\bfx$附近，故仍在$U$内，所以$\bfy$仍在$V$内。
+  \end{proof}
+  \begin{theorem}
+    前开定理的局域反函数$\bfg$亦连续可微。
+  \end{theorem}
+  \begin{proof}
+    由前证以及\tref{opr-0}，可以选取足够小的邻域$U$使得$\bff'$在此邻域内与$\bff'\pare{\bfa}$足够接近故可逆。还可以使得在此邻域内，$\bfh = \OO{\bfk}$。注意
+    \[ \bfg\pare{\bfy+\bfk}-\bfg\pare{\bfy}-T\bfk=-T\brac{\bff\pare{\bfx+\bfh}-\bff\pare{\bfx}-\bff'\pare{\bfx}\bfh}, \]
+    其中$T=\bff'^{-1}$。因此余项$\bfv=\OO{\bfu}$。再注意到求逆是连续映射即可。
+  \end{proof}
+  \begin{theorem}
+    若连续可微的$\bff$将开集$E\subset \R^n$映入$\R^n$，$\bff'$逐点可逆，则$\bff$为开映射。
+  \end{theorem}
+  \subsection{隐函数定理}
+  \begin{definition}
+    $\pare{\bfx,\bfy}$为
+    \[ \pare{x_1,\cdots,x_n,y_1,\cdots,y_m} \in \R^{n+m}. \]
+  \end{definition}
+  每个线性变换$\func{A}{\R^{n+m}}{\R^n}$都可以分解成$A_x$和$A_y$两部分。
+  \begin{theorem}
+    对于上述$A$，若$A_x$可逆，则对于每个$\bfk\in\R^m$，有唯一的$\bfh\in\R^n$满足$A\pare{\bfh,\bfk}=0$。
+  \end{theorem}
+  \begin{proof}
+    \[ \bfh = -\pare{A_x}^{-1}A_y\bfk. \qedhere \]
+  \end{proof}
+  \begin{theorem}
+    设$\func{\bff}{\pare{X,Y}}{Z}$是开集$E\subset\R^{n+m}$到$\R^n$内的连续可微映射，且在某点$\pare{\bfa,\bfb}$为零。令$A=\bff'\pare{\bfa,\bfb}$且$A_x$可逆，则存在$\pare{\bfa,\bfb}$的邻域$U$和$\bfb$的邻域$W$，$W$内的任意$\bfy$有唯一$\bfx$使$\bff=0$。
+  \end{theorem}
+  \begin{proof}
+    令$\bfF\pare{\bfx, \bfy}= \pare{\bff\pare{\bfx,\bfy},\bfy}$。因此
+    \[ \bfF\pare{\bfx+\bfh, \bfy+\bfk}-\bfF\pare{\bfx, \bfy}=\pare{A\pare{\bfh,\bfk},\bfk}+\oo{\bfh,\bfk}. \]
+    若右侧为零，则$\bfk=0$，$\bfh=0$。因此$\bfF'$可逆，故反函数定理可用于$\bfF$。因此，\emph{存在$\pare{0,\bfb}$的邻域$V$和$\pare{\bfa,\bfb}$的邻域$U$，使得$\bfF$是一一的}。在$V$中投影出$\pare{0,\bfy}$，注意其为开集即可。
+  \end{proof}
+  \begin{theorem}
+    在前开命题中设$\bfx=\bfg\pare{\bfy}$，有$\bfg$为连续可微映射且$\bfg'\pare{\bfb}=-\pare{A_x}^{-1}A_y$。
+  \end{theorem}
+  \begin{proof}
+    令$\bfG$为$\bfF$的局域反函数，则$\bfG$连续可微，故作为其限制的$\bfg$亦然。欲求$\bfg'\pare{\bfb}$，注意到
+    \[ \bff\pare{\bfg\pare{\bfb},\bfb}'=0, \]
+    即$A\pare{\bfg'\pare{\bfb},I}=0$，$A_x\bfg'\pare{\bfb}+A_y=0$。
+  \end{proof}
+  \subsection{秩定理}
+  \begin{theorem}
+  设$\func{\bfF}{E\subset\R^n}{\R^m}$将开集$E$映入$\R^m$，对于任意$\bfx$有$\bfF'$的秩为$r$。对于$\bfa\in E$，$A=\bfF'$的像空间为$Y_1$，$P$是到其上的投影，$Y_2$是$Y_1$的正交空间。
+  \par
+  存在$\bfa$的邻域$U$和$\R^n$中的开集$V$，存在连续可微双射$\func{\bfH}{V}{U}$满足
+  \[ \bfF\pare{\bfH\pare{\bfx}} = A\bfx+\varphi\pare{A\bfx}, \]
+  且$\bfH$的逆亦连续可微。式中$\varphi$映入$Y_2$。
+  \end{theorem}
+  \begin{proof}
+    若$r=0$（这里并没有使用归纳法的打算），存在$\bfa$的邻域使得$\bfF$为常量且$Y_1$为零空间。故可以取$\bfH=I$，$V=U$，$\varphi\pare{0}=\bfF\pare{\bfa}$。
+    \par
+    对于$r>0$，设$S$为$A$在$Y_1$上的逆，定义
+    \[ \func{\bfG}{E}{U\subset\R^n} = \bfx+SP\brac{\bfF\pare{\bfx}-A\bfx}. \]
+    由$\bfG'=I$知存在邻域使其可逆，设其逆为$\bfH$。将$\bfG$经$A$映射，即
+    \[ A\bfG = ASP\bfF = P\bfF. \]
+    这是因为$ASPA=A$。如果$\bfx = \bfH\pare{\bfv}$，则有$P\bfF\comp\bfH=A$。因此，
+    \[  \Phi\pare{\bfv}=\bfF\bfH\pare{\bfv}-A\bfv \]
+    是到$Y_2$的连续可微映射。下尚需证存在连续可微的映射$\varphi\pare{A\bfv} = \Phi\pare{\bfv}$。
+    \par
+    先证$\Phi$的值仅仅取决于$A\bfv$。考虑两$\bfv$的差$\bfh$，只需证明当$A\bfh=0$，有$\pare{\bfF\bfH}'\bfh=0$。由构造，$\pare{\bfF\bfH}'\bfh$到$Y_1$上投影仍为$A\bfh$，且二算子像空间皆$r$维，知$A\bfh$可决定$\pare{\bfF\bfH}'$。当前者为零，后者亦然。
+    \par
+    再证$\varphi$连续可微。注意$\varphi$的定义域是诸$A\bfv$，故对于$\varphi\pare{\bfu}$，相应的$\bfv=S\bfu+\bfa$，其中$\bfa$是$A$的零空间中任意元素。对于任意$\bfu$，可以寻找其邻域使得存在$\bfa$让$\bfv$留在$V$内。于是$\varphi\pare{\bfu}=\Phi\pare{\bfa+S\bfu}$连续可微。
+  \end{proof}
+  注意$A\bfx$映射到$Y_1$，因此$\bfF$在此点的值仅仅取决于其射影，因而可将其视为$r$维曲面，而其水平集可以视为$X$中的$n-r$维曲面。例如将汤勺映为棒棒糖的映射，勺柄的二维平面被映射为糖棒的一维线段，其$\bfF'$的秩固然为$1$。而其水平集，即糖棒上一点对应的原像则是$2-1=1$维的垂直于汤勺柄的线段。
+
+%ContentEnds
+ 
+\ifx\allfiles\undefined %如果位置放错，可能出现意外中断
+\end{document}
+\fi
