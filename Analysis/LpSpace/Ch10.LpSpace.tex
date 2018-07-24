@@ -189,6 +189,7 @@
     空间谓可分者，其下存在一可数稠密子集。
   \end{definition}
   \begin{theorem}
+  \label{thm:lpsep}
     对$1\le p < \infty$，$L^p$可分。
   \end{theorem}
   \begin{proof}
@@ -351,8 +352,95 @@
   \begin{ex}
   令$\brac{-\pi,\pi}$上的$f_n=1+\sin nx$，$\curb{f_n}$弱收敛于$1$且$\norm{f_n}\rightarrow 2\pi$，当$f_n$并不强收敛于$1$。
   \end{ex}
-  
-  
+  \subsection{弱列紧性}
+  \begin{theorem}[Helley]
+  设$X$为可分空间，$\curb{T_n}$为其对偶空间中一致有界的算子列，则存在子列$T_{n_k}$与$T$满足
+  \[ T_{n_k}\pare{f} \rightarrow T\pare{f}. \]
+  \end{theorem}
+  \begin{proof}
+  选取一稠密族$\curb{f_n}$与子列$T_{1k}$使得$T_{1k}\pare{f_1}$收敛，再选取$T_{1k}$的子列$T_{2k}$对$f_2$收敛，后对角线知$T_{kk}$对所有$\curb{f_n}$收敛。
+  \end{proof}
+  \begin{theorem}
+  对$1<p<\infty$，$L^p$中有界列存在弱收敛子列。
+  \end{theorem}
+  \begin{proof}
+  将$L^p$中的函数列视作算子列并由\tref{lpsep}其对偶空间可分。
+  \end{proof}
+  \begin{ex}
+  取$f_n=n\cdot\chi_{\brac{0,1/n}}$，取对偶空间为$\brac{0,1}$上的诸特征函数，知若$\curb{f_n}$存在弱收敛子列，则其必为收敛于零，在$\brac{0,1}$上积分知矛盾。
+  \end{ex}
+  \begin{definition}
+  赋范线性空间$X$的子集$K$称为弱列紧的，如果其任何序列都存在子列弱收敛于$K$。
+  \end{definition}
+  \begin{theorem}
+  对$1<p<\infty$，$\setcond{f}{\norm{f}\le1}$是一弱列紧子集。
+  \end{theorem}
+  \begin{proof}
+  由\eqref{eq:flefn}知$\norm{f}\le 1$。
+  \end{proof}
+  \subsection{凸函数的最小值}
+  \begin{theorem}[Banach-Saks]
+  弱收敛于$f$的$\curb{f_n}$存在子列$\curb{f_{n_k}}$强收敛
+  \[ \frac{f_{n_1} + f_{n_2} + \cdots + f_{n_k}}{k} \rightarrow f. \]
+  \end{theorem}
+  \begin{proof}
+  对$p=2$，替换$\curb{f_n}$为$\curb{f_n-f}$，只证$f_n\rightarrow 0$。注意$\norm{f}^2\le M$，故假设已选取
+  \[ \int \pare{f_{n_1} + f_{n_2} + \cdots + f_{n_k}}^2 \le 2j+Mj, \]
+  由于$\cF_k=f_{n_1} + f_{n_2} + \cdots + f_{n_k}\in L^2$，可选取$f_{n_{k+1}}$满足$\int \cF_k \cdot f_{n_{k+1}}\le 1$。
+  \[ \int \cF_{k+1}^2 = \int \cF_k^2 + 2\int \cF\cdot f_{n_{k+1}} + \int f_{n_{k+1}}^2 \le 2\pare{k+1}+2\pare{M+1}. \]
+  于是$\int\pare{\cF_k/k}^2=\pare{2+M}/k\rightarrow 0$。
+  \end{proof}
+  \begin{definition}
+  $X$的子集$C$为凸的，若对于$\lambda\in\brac{0,1}$皆有$\lambda f + \pare{1-\lambda} g \in C$。
+  \end{definition}
+  \begin{definition}
+  $X$的子集$C$为闭的，若$C$中收敛在$X$中的列皆收敛于$C$内。
+  \end{definition}
+  \begin{ex}
+  设$1\le p<\infty$，$g$为非负可测函数，则$\setcond{f}{\abs{f}\le g}$为凸。由Riesz-Fisher定理知$\curb{f_n}$存在子列逐点收敛，立刻知$C$为闭。
+  \end{ex}
+  \begin{ex}
+  $L^p$中的单位圆为凸集且为闭集。
+  \end{ex}
+  \begin{definition}
+  泛函$T$为连续的，若对于$f_n\rightarrow f$皆有$Tf_n\rightarrow Tf$。
+  \end{definition}
+  \begin{definition}
+  凸集$C$上的泛函$T$为凸的，如果对于$\lambda\in\brac{0,1}$有
+  \[ T\pare{\lambda f + \pare{1-\lambda} g} \le \lambda Tf + \pare{1-\lambda}Tg. \]
+  \end{definition}
+  \begin{theorem}
+  若$\phi$在$\R$上连续且$\phi\pare{x}\le a+b\cdot\abs{x}^p$，则泛函
+  \[ T\pare{f} = \int_E \phi\pare{f} \]
+  连续。其中$E$为有限测度，$f \in L^p$。
+  \end{theorem}
+  \begin{proof}
+  取$\curb{f_n}$的快速Cauchy子列后注意其逐点收敛于$f$且
+  \[ g = \abs{f_1} + \sum \abs{f_{n+1}-f_n} \]
+  收敛于$L^p$，再$\phi\pare{f_n} \le a+b\cdot g^p$控制收敛\footnote{\href{https://math.stackexchange.com/questions/2860453/prove-that-for-e-of-finite-measure-tf-int-e-phi-circ-f-is-continuous-o}{此MSE可供参考。}}。
+  \end{proof}
+  \begin{ex}
+  在前开定理中附加$\phi$为凸则$T$为凸。
+  \end{ex}
+  \begin{lemma}
+  对$1<p<\infty$，设$C$为$L^p$的凸闭集，其中的$\curb{f_n}$弱收敛于$f$，则$f$在$C$内，且
+  \[ T\pare{f} \le \lim\inf T\pare{f_n}. \]
+  \end{lemma}
+  \begin{proof}
+  由Banach-Saks定理，存在$\curb{f_n}$的子列算术平均强收敛于$f$，因此在$C$内。还可以选取这一子列满足$\lim T\pare{f_{n_k}} = \alpha = \lim\inf T\pare{f_n}$。
+  \[ T\pare{f} = \lim_{k\rightarrow \infty} T\pare{\frac{\sum^k f_{n_i}}{k}} \le \lim_{k\rightarrow \infty}\frac{\sum^k T\pare{f_{n_i}}}{k} = \alpha. \qedhere\]
+  \end{proof}
+  \begin{theorem}
+  设$C$为凸闭集，$T$为凸泛函，则存在$f_0\in C$使对任意$f\in C$，
+  \[ T\pare{f_0}\le T\pare{f}. \]
+  \end{theorem}
+  \begin{proof}
+  若$T\pare{f}$下无界，则选取$T\pare{f_n}\rightarrow -\infty$并选取弱收敛子列，则由前开引理$T\pare{f} \le -\infty$。弱$T\pare{f}$有下界$c$，则同样选取可得$f_0$。
+  \end{proof}
+  \begin{collary}
+  设$1<p<\infty$，$E$为有限测度集，$\phi$在$\R$上连续且满足$\abs{\phi{x}} \le a+b\cdot\abs{x}^p$，则存在单位圆内的$f_0$满足
+  \[ \int_E \phi\circ f_0 = \min_{f\in L^p\pare{E}, \norm{f}\le 1} \int_E \phi\circ f. \]
+  \end{collary}
 %ContentEnds
  
 \ifx\allfiles\undefined %如果位置放错，可能出现意外中断
