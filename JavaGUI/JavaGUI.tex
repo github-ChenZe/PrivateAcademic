@@ -1,0 +1,107 @@
+\documentclass{ctexart}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\lstset{language=Java}
+
+\newcommand{\term}[2]{\textbf{#1（#2）}}
+
+\begin{document}
+Swing用于表示“被绘制的”用户界面类，AWT表示事件处理等窗口工具箱的底层机制。所有代码无条件加入
+\begin{lstlisting}
+import java.awt.*;
+import javax.swing.*;
+\end{lstlisting}
+\par
+顶层窗口（未被包含在其他窗口中的窗口）称为\term{框架}{frame}。在Swing中框架类为JFrame，它不绘制在画布上，而是由窗口系统绘制。
+\par
+类似下图的代码可创建窗口
+\begin{lstlisting}
+public static void main(String[] args) {
+  EventQueue.invokeLater(() -> {
+    MyFrame frame = new MyFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+  });
+}
+\end{lstlisting}
+\par
+注意让框架显示需要调用setVisible方法。可以用setLocation，setBound，setIconImage，setTitle，setResizable方法设置其他属性。
+\par
+Tookit类包含许多于本地窗口系统打交道的方法，可以借助
+\begin{lstlisting}
+Toolkit kit = Toolkit.getDefaultToolkit();
+Dimension screenSize = kit.getScreenSize();
+\end{lstlisting}
+获得屏幕大小。
+\par
+为了向frame中添加组件，需要向frame的\term{内容窗格}{content pane}中添加之，然而实际上可以直接添加为
+\begin{lstlisting}
+frame.add(c);
+\end{lstlisting}
+\par
+为了定义component类，下列方法是必须的：
+\begin{lstlisting}
+public void paintComponent(Graphics g) {
+  g.drawString("Hello World!", x, y);
+}
+\end{lstlisting}
+paintComponent方法由系统自动调用，无需自行调用。Graphics类型的对象g保留绘制图像和文本的设置，所有绘制都依赖于它。
+\par
+同时还应当重写getPreferredSize方法，返回首选宽度和高度。
+\begin{lstlisting}
+public Dimension getPreferredSize() {
+  return new Dimension(w, h);
+}
+\end{lstlisting}
+\par
+最后，不同于上述空框架的setSIze，可以直接用pack方法将frame设置为满意的大小。
+\par
+Graphics2D提供了比Graphics更强大的绘图功能，可以通过下列方法调用
+\begin{lstlisting}
+Graphics2D g2 = (Graphics2D) g;
+Rectangle2D r = new Rectangle2D.Double(...);
+g2.draw(r);
+\end{lstlisting}
+使用内部类Double是为了使用Double指定坐标。
+\par
+Rectangle2D和Ellipse2D在很大程度上类似，并且可以通过
+\begin{lstlisting}
+Rectangle2D r = new Rectangle2D.Double();
+r.setFrameFromDIagonal(px, py, qx, qy);
+\end{lstlisting}
+或者
+\begin{lstlisting}
+Point2D p = ...; Point2D q = ...;
+r.setFrameFromDiagonal(p, q);
+\end{lstlisting}
+从对角点设定大小。此外还有Line2D可供绘图使用。
+\begin{lstlisting}
+g2.setPaint(Color.RED);
+g2.draw(r);
+g2.fill(r);
+\end{lstlisting}
+\par
+可以以给定的颜色绘图或填充。SystemColor.*可获得预设颜色。
+\end{document}
