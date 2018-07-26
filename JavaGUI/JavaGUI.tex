@@ -28,6 +28,7 @@
 \newcommand{\term}[2]{\textbf{#1（#2）}}
 
 \begin{document}
+\subsubsection*{图形程序设计}
 Swing用于表示“被绘制的”用户界面类，AWT表示事件处理等窗口工具箱的底层机制。所有代码无条件加入
 \begin{lstlisting}
 import java.awt.*;
@@ -67,7 +68,7 @@ public void paintComponent(Graphics g) {
   g.drawString("Hello World!", x, y);
 }
 \end{lstlisting}
-paintComponent方法由系统自动调用，无需自行调用。Graphics类型的对象g保留绘制图像和文本的设置，所有绘制都依赖于它。
+paintComponent方法由系统自动调用，无需自行调用。如果需要刷新，应调用repaint方法。Graphics类型的对象g保留绘制图像和文本的设置，所有绘制都依赖于它。
 \par
 同时还应当重写getPreferredSize方法，返回首选宽度和高度。
 \begin{lstlisting}
@@ -104,4 +105,127 @@ g2.fill(r);
 \end{lstlisting}
 \par
 可以以给定的颜色绘图或填充。SystemColor.*可获得预设颜色。
+\begin{lstlisting}
+setBackground(color);
+setOpaque(true);
+\end{lstlisting}
+可以设定背景。
+\par
+通过
+\begin{lstlisting}
+String[] fonts = GraphicsEnvironment
+                   .getLocalGraphicsEnvironment.
+                   .getAvailableFontFamilyNames();
+\end{lstlisting}
+可以获得字体集。也可以直接使用SansSerif，Serif，Monospaced等直接引用字体。通过
+\begin{lstlisting}
+// 常规方法
+Font f = new Font("SansSerif", Font.BOLD + Font.ITALIC, 14);
+// 换字号
+Font f2 = f.deriveFont(14.0F);
+// 从文件获得
+URL url = new URL("Arial.ttf");
+InputStream in = url.openStream();
+Font f3 = Font.createFont(Font.TRUETYPE_FONT, in);
+// 设定字体
+g2.setFont(f);
+\end{lstlisting}
+获得字体并且设定字体。
+\par
+为了获得渲染字体的大小，需要字符串与绘制设备，执行
+\begin{lstlisting}
+FontRenderContext context = g2.getFontRenderContext();
+Rectangle2D bounds = f.getStringBounds(message, context);
+\end{lstlisting}
+获得矩形。其坐标横轴为基线，纵轴为左边界，故
+\begin{lstlisting}
+double width = bounds.getWidth(); // 宽
+double height = bounds.getHeight();  // 高
+double acsent = -bounds.getY();  // 上坡度
+
+LineMetrics metrics = f.getLineMetrics(message, context);
+float ascent = metrics.getAscent(); // 上坡度
+float descent = metrics.getDescent(); // 下坡度
+float leading = metrics.getLeading(); // 行距
+\end{lstlisting}
+\par
+为了绘制文本，应当获得基线左端点的坐标。
+\begin{lstlisting}
+g2.drawString(message, x, upperLeftCornerY + ascent);
+\end{lstlisting}
+\par
+通过
+\begin{lstlisting}
+Image image = new ImageIcon(filename).getImage();
+g2.drawImage(image, x, y);
+g2.copyArea(upperleftX, upperleftY, bottomrightX, bottomrightY, targetX, targetY);
+\end{lstlisting}
+获得并绘制、复制图像。
+\subsubsection*{事件处理}
+AWT处理事件的方式谓，从事件源到事件监听器的事件委托模型。事件源产生事件时，会向事件注册的所有事件监听器对象发送一个通告。
+\begin{lstlisting}
+class MyListener implements ActionListener {
+  public void actionPerformed(ActionEvent event) { ... }
+}
+ActionListener listener = ...;
+button.addActionListener(listener);
+// lambda表达式
+button.addActionListener(event -> ...);
+\end{lstlisting}
+\par
+为了调整观感，可以借助
+\begin{lstlisting}
+try {
+  UIManager.setLookAndFeel(className);
+  SwingUtilities.updateComponentTreeUI(frame);
+  pack();
+} catch (Exception e) { e.printStackTrace(); }
+\end{lstlisting}
+其中className的选择范围在
+\begin{lstlisting}
+UIManager.LookAndFeelInfo[] infos = UIManager.getInstalledLookAndFeels();
+\end{lstlisting}
+\par
+对于有多个事件的Listener接口，可以通过继承其Adapter来获得同样效果，而无需将所有方法均重写。
+\begin{lstlisting}
+class Terminator extends WindowAdapter {
+  public void windowClosing(WindowsEvent e) { ... }
+}
+frame.addWindowListener(new Terminator());
+\end{lstlisting}
+\par
+可以通过继承Action或AbstractAction以实现将同一动作复用至多个事件源。
+\begin{lstlisting}
+public class MyAction extends AbstractAction {
+  public void ActionPerformed(ActionEvent event) { ... }
+}
+Action myAction = new MyAction(...);
+JButton myButton = new JButton(myAction); // 添加给按钮
+JMenuItem myItem = new JMenuItem(myAction); // 添加给菜单项
+
+\end{lstlisting}
+还可以通过设定
+\begin{lstlisting}
+public myAction() {
+  putValue(Action.NAME, name);
+  putValue(Action.SMALL_ICON, icon);
+}
+\end{lstlisting}
+改变按钮上的文字与图标。
+\par
+为了获得键盘输入，先通过InputMap将子元素的键盘输入映射到动作键，再通过ActionMap将动作键映射到Action。
+\begin{lstlisting}
+InputMap imap = panel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+imap.put(KeyStroke.getKeyStroke("control Y"), "panel.yellow");
+ActionMap amap = panel.getActionMap();
+amap.put("panel.yellow", yellowAction);
+\end{lstlisting}
+与鼠标点击有关的事件定义在MouseAdapter内，与鼠标移动、拖动有关的事件定义在MouseMotionListener内。
+\begin{lstlisting}
+setCursor(Cursor.getDefaultCursor());
+setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+\end{lstlisting}
+可以修改光标样式。
+\par
+除了上述各种Listener，还有用于滚动条的AdjustmentListener，用于复选框的ItemListener等。
 \end{document}
