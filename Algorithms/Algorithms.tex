@@ -1,0 +1,16 @@
+\documentclass{ctexart}
+
+\input{/Users/zechen/Documents/PrivateAcademic/CommonHead/CommonHead.tex}
+
+\begin{document}
+\section{字符串算法}
+\subsection{字符串排序}
+\subsubsection{索引排序}
+假设现在有一堆字符串 \snp{String[]}，每个 \snp{string}都有相应的 \snp{index}，那么将字符串按照 \snp{index}排序可以按照如下步骤：
+\begin{cenum}
+\item 获得 \snp{count}数组，其中 \snp{count[r+1] = #those of index r}；
+\item 循环 \snp{count[r+1] += count[r]} 使得 \snp{count[r]}储存 \snp{index r} 的首项索引；
+\item 创建新的 \snp{tmp_strings}，将 \snp{strings}拷贝至 \snp{string[count[r]++]}；
+
+\end{cenum}
+\end{document}

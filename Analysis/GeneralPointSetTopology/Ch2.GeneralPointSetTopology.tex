@@ -58,6 +58,7 @@
   容易验证$\cC$为基。再分别证$\cC\subset \curb{U}$与$\curb{\cup C}\supset \curb{U}$。
   \end{proof}
   \begin{theorem}
+  \label{thm:critfiner}
   设$\cB$于$\cB'$分别生成$\cT$与$\cT'$，则$\cT'$细于$\cT$当且仅当对任意$x\in B$存在$x\in B'\subset B$。
   \end{theorem}
   \begin{proof}
@@ -146,11 +147,524 @@
   借助开射线构造子基后证明其相互包含即可。
   \end{proof}
   \subsection{闭集与极限点}
+  \begin{definition}
+    若$X-A$为开集，则$A$为闭集。
+  \end{definition}
+  \begin{ex}
+  $\R$中$\brac{a,b}$为闭集，$\R^2$中$\R_+^2$为闭集，有限补拓扑中$X$、$\eset$、有限集为闭集。
+  \end{ex}
+  \begin{ex}
+  离散拓扑每一个集合都是开集也都是闭集，$Y=\brac{0,1}\cup\pare{2,3}$中两个分量都同时是开集和闭集。
+  \end{ex}
+  \begin{definition}
+  对于拓扑空间$X$，成立
+  \begin{cenum}
+    \item $\eset$、$X$都是闭集；
+    \item 闭集的任意交仍为闭集；
+    \item 闭集的有限并仍为闭集。
+  \end{cenum}
+  \end{definition} 
+  \begin{theorem}
+    $A$为$X$的子空间$Y$的闭集当且仅当有闭集$C$满足$A=Y\cap C$。
+  \end{theorem}
+  \begin{theorem}
+    $A$是$Y$的闭集，$Y$是$X$的闭集，则$A$是$X$的闭集。
+  \end{theorem}
   \subsubsection{Hausdorff空间}
+  \begin{definition}
+    集合的内部$\inter{A}$是包含于其内的所有开集的并，闭包$\clo{A}$是其外所有闭集的交。
+  \end{definition}
+  显然开集的内部是本身，闭集的闭包也是本身。注意$\pare{0,1}$在其本身中的闭包和在$\R$中的闭包不同，所称闭包都是指父空间闭包。
+  \begin{theorem}
+  $Y$中$\clo{A}^Y = \clo{A} \cap X$。
+  \end{theorem}
+  \begin{definition}
+    两集合相交，如果它们的交非空。
+  \end{definition}
+  \begin{definition}
+    含有$x$的开集称为其邻域。
+  \end{definition}
+  \begin{theorem}
+  \label{thm:sublpoint}
+    $x\in \clo{A}$当且仅当每一个邻域与$A$相交。
+  \end{theorem}
+  \begin{proof}
+    如果存在反例$U$，则$X-U$会成为包含$A$的闭集。
+  \end{proof}
+  \begin{collary}
+    $x\in \clo{A}$当且仅当含有$x$的每一个基元素与$A$相交。
+  \end{collary}
+  \begin{ex}
+    $A=\lbr{0,1}$，$\clo{A}=\brac{0,1}$。$A=\Q$，$\clo{A}=\R$。$\clo{\curb{1/n}} = \curb{1/n}\cup\curb{0}$。
+  \end{ex}
+  \subsubsection{极限点}
+  \begin{definition}
+    若$x$的任何一个邻域包含$A$中其他点，则$x$为$A$的极限点。
+  \end{definition}
+  \begin{ex}
+    $A=\lbr{0,1}$，$\brac{0,1}$中的点均为其极限点。$A=\Q$，$\R$中的点均为其极限点。$A=\curb{1/n}$，$0$为其极限点。
+  \end{ex}
+  \begin{theorem}
+  $\clo{A} = A\cup A'$，其中$A'$为极限点集合。
+  \end{theorem}
+  \begin{proof}
+    参考\tref{sublpoint}。
+  \end{proof}
+  \begin{collary}
+  $A$为闭集当且仅当$A'\subset A$。
+  \end{collary}
+  \subsubsection{Hausdorff空间}
+  \begin{definition}
+    如果\forest{$x$的任意邻域$U$}{$N$}{当$n>N$，$x_n\in U$}，则$\curb{x_n}$收敛到点$x$。
+  \end{definition}
+  $\R^2$和$\R$中的序列最多收敛至一点，然而其他拓扑空间不一定。
   \begin{definition}
     若$X$中任意两不同点存在无交邻域，则称$X$为一Hausdorff空间（Hausdorff space）。
   \end{definition}
+  \begin{theorem}
+    Hausdorff空间中有限集为闭集。
+  \end{theorem}
+  \begin{proof}
+    只证单点集。由于隔离邻域的存在，易见其他点都不在闭包内。
+  \end{proof}
+  比Hausdorff条件更弱的，有\tuno 。
+  \begin{definition}
+    若$X$中有限集为闭，则$X$满足\tuno 。
+  \end{definition}
+  \begin{theorem}
+    若$X$满足\tuno ，则$x$为$A$的极限点当且仅当$x$的任意邻域与$A$有无限交点。
+  \end{theorem}
+  \begin{proof}
+    如果有一个邻域只有有限交点，挖掉还是开集，但不再与$A$相交。
+  \end{proof}
+  \begin{theorem}
+    若$X$为Hausdorff空间，则$X$中的序列最多收敛至一点。
+  \end{theorem}
+  \begin{proof}
+    如果有两个点，在定义中取隔离邻域即可。
+  \end{proof}
+  \begin{theorem}
+  每一个具有序拓扑的全序集，两个Hausdorff空间的积，Hausdorff空间的子空间是Hausdorff空间。
+  \end{theorem}
+  \begin{proof}
+    全序集可选取中间元分割，中间元不存在的直接射线可分割。
+  \end{proof}
+  \subsection{连续函数}
+  \subsubsection{函数的连续性}
+  \begin{definition}
+    函数$\func{f}{X}{Y}$称为连续的，如果开集的原像为开集。
+  \end{definition}
+  为了证明函数连续，只需要证明基的原像为开集即可。
+  \begin{ex}
+  \label{ex:epsd}
+    上述定义等价于$\epsilon-\delta$定义。
+  \end{ex}
+  \begin{proof}
+    如果$\epsilon-\delta$定义成立，则$f\pare{x}$的$\epsilon$-邻域的原像包含$x$的$\delta$-邻域，故任意开集的原像均为开集。如果拓扑定义成立，则显而易见。
+  \end{proof}
+  \begin{ex}
+    $\func{f}{\R}{\R_\ell}$的$f\pare{x}=x$不是连续函数，但其逆连续。
+  \end{ex}
+  \begin{theorem}
+  \label{thm:contineq}
+    对于$\func{f}{X}{Y}$，下列条件等价：
+    \begin{cenum}
+      \item $f$连续；
+      \item 对$X$的任意子集$A$有$f\pare{\clo{A}}\subset\clo{f\pare{A}}$；
+      \item 对$Y$中任意闭集$B$有$f^{-1}\pare{B}$为闭集；
+      \item 对任意$x$与$f\pare{x}$的邻域$V$，存在$x$的邻域$U$满足$f\pare{U}\subset{V}$。
+    \end{cenum}
+  \end{theorem}
+  \begin{proof}
+    $1\Rightarrow 2$：若$y$在$f\pare{A}$外一开集内，则原像为$f\pare{A}$外一开集。$2\Rightarrow 3$：闭集$f\pare{A} = \clo{f\pare{A}}\supset f\pare{\clo{A}}$，故$A=\clo{A}$。$3\Rightarrow 1$与$1\Rightarrow 4 \Rightarrow1$显然。
+  \end{proof}
+  \subsubsection{同胚}
+  \begin{definition}
+    如果一个一一映射和它的逆都连续，则称之为同胚。
+  \end{definition}
+  \begin{definition}
+    如果$X$的性质于与之同胚的$Y$都成立，则称之为拓扑性质。
+  \end{definition}
+  \begin{definition}
+    映入子空间的同胚称为嵌入。
+  \end{definition}
+  \begin{ex}
+    $F\pare{x}=x/\pare{1-x^2}$与$G\pare{y}=2y/\pare{1+\pare{1+4y^2}^{1/2}}$为$\pare{-1,1}$与$\R$间同胚。
+  \end{ex}
+  \begin{ex}
+    $\blr{0,1}$弯曲到圆周的映射连续而非同胚。其扩张连续而非嵌入。
+  \end{ex}
+  \subsubsection{构造连续函数}
+  \begin{theorem}
+    下列函数皆连续：
+    \begin{cenum}
+      \item 常值函数；
+      \item 子空间到父空间的内射；
+      \item 连续函数的复合；
+      \item 连续函数限制定义域到一子空间的结果；
+      \item 连续函数限制或扩大值域至包含像集的子空间或父空间的结果；
+      \item 若$X$可写为开集的并，且$f$在每个分量上连续。
+    \end{cenum}
+  \end{theorem}
+  \begin{theorem}[黏结引理]
+    设$X=A\cup B$且二者为闭集，并且$\func{f}{A}{Y}$与$\func{g}{B}{Y}$连续且在$A\cap B$上相等，则$h$连续，
+    \[ h\pare{x}=\begin{cases}f\pare{x}, x\in A, \\ g\pare{x}, x\in B.\end{cases} \]
+  \end{theorem}
+  \begin{proof}
+    由\tref{contineq}，注意闭集被映回闭集即可。
+  \end{proof}
+  \begin{ex}
+    对$x\ge 0$，$h\pare{x}=x$，$x\le 0$，$h\pare{x}=x/2$，则$h$连续。
+  \end{ex}
+  \begin{theorem}
+    $\func{f}{A}{X\times Y}$连续的充分必要条件为$f_X$与$f_Y$连续。
+  \end{theorem}
+  \begin{proof}
+    注意连续的拓扑定义等价于对基连续即可。
+  \end{proof}
+  \begin{ex}
+    向量场连续当且仅当分量连续。
+  \end{ex}
+  \subsection{积拓扑}
+  \begin{definition}
+    $X$的元素的$J$-串为$\func{\vx}{J}{X}$，其全体记作$X^J$。
+  \end{definition}
+  例如，$\R^3\isom \R^{\curb{1,2,3}}$。
+  \begin{definition}
+    $A_j$的笛卡尔积$\prod A_j$为各取一元构成之$J$-串的集合。
+  \end{definition}
+  \begin{definition}
+    基由$\prod U_\alpha$构成$\prod X_\alpha$的称为箱拓扑。
+  \end{definition}
+  \begin{definition}
+    子基由$\curb{\pi^{-1}\pare{U_{\alpha}}}$构成的称为积拓扑。
+  \end{definition}
+  \begin{theorem}
+    箱拓扑的基由所有$\prod U_\alpha$构成，积拓扑的基由$\prod U_\alpha$构成但$U_\alpha$中只有有限个非$X_\alpha$。
+  \end{theorem}
+  \begin{theorem}
+    $\prod B_\alpha$构成箱拓扑的积，$\prod B_\alpha$中若$B_\alpha$中只有有限个非$X_\alpha$则构成积拓扑的基。
+  \end{theorem}
+  \begin{ex}
+    $\R^n$的积拓扑与箱拓扑一致。
+  \end{ex}
+  \begin{theorem}
+    $\prod A_\alpha$在两种拓扑下都是$\prod X_\alpha$的同种拓扑的子空间。
+  \end{theorem}
+  \begin{theorem}
+    若每个$X_\alpha$都是Hausdorff的，则两拓扑下$\prod X_\alpha$都如此。
+  \end{theorem}
+  \begin{theorem}
+    在$\prod X_\alpha$的两种拓扑下都有$\prod \clo{A_\alpha} = \clo{\prod A_\alpha}$。
+  \end{theorem}
+  \begin{proof}
+    若$x$在$\prod \clo{A_\alpha}$内，则诸$\prod U_\alpha$均有$\prod A_\alpha$的元素，故$x$在$\clo{\prod A_\alpha}$内。若$x$在$\prod \clo{A_\alpha}$外$U_\alpha$内，则$\pi^{-1}\pare{U_\alpha}$包含$x$且为开集，故在$\clo{\prod A_\alpha}$外。
+  \end{proof}
+  \begin{theorem}
+    积拓扑下$\func{f}{A}{\prod X_\alpha}$连续当且仅当各个分量连续。
+  \end{theorem}
+  \begin{proof}
+    注意连续的拓扑定义等价于对基成立即可。
+  \end{proof}  
+  \begin{ex}
+    对箱拓扑下$\R$的可数无限积$\R^\omega$，$f\pare{t}=\pare{t,t,t,\cdots}$不连续。注意$\pare{-1,1}\times\pare{-1/2,1/2}\times{-1/3,1/3}$被映回$0$即可。
+  \end{ex}
+  \subsection{度量拓扑}
+  \begin{definition}
+    集合$X$的一个度量$d$是一个函数$\func{d}{X\times X}{\R}$，满足正定、对称与三角不等式。
+  \end{definition}
+  \begin{definition}
+    以全体$\epsilon$-球为基的拓扑称为度量拓扑。
+  \end{definition}
+  容易验证全体$\epsilon$-球构成基。由这一定义，开集可视作满足任意$y\in U$都有某$B\pare{x,\epsilon}\subset U$的集合$U$。
+  \begin{ex}
+    若$x=y$，$d\pare{x,y}=1$，否则$d\pare{x,y}=0$诱导出离散拓扑。
+  \end{ex}
+  \begin{ex}
+    $d\pare{x,y}=\abs{x-y}$诱导$\R$上的序拓扑。
+  \end{ex}
+  \begin{definition}
+    若$X$的拓扑由某度量诱导，则称$X$为度量空间。
+  \end{definition}
+  \begin{definition}
+    度量空间的子集$A$为有界的，若$d\pare{a_1,a_2}$一致有界。$A$的直径谓$\diam A = \sup\curb{d\pare{a_1,a_2}}$。
+  \end{definition}
+  \begin{theorem}
+    由度量$d$诱导的度量
+    \[ \sbm{d}\pare{x,y} = \min\curb{d\pare{x,y}, 1} \]
+    谓标准有界度量。
+  \end{theorem}
+  \begin{definition}
+    分类验证三角不等式即可。
+  \end{definition}
+  \begin{definition}
+    对$\R^n$中的点，$d\pare{\vx,\vy} = \norm{\vx-\vy} = \pare{\sum\pare{x_i-y_i}^2}^{1/2}$诱导欧氏度量，$\rho\pare{\vx,\vy} = \max\curb{\abs{x_i-y_i}}$诱导平方度量。
+  \end{definition}
+  欧式度量的三角不等式是熟知的结论。平方度量由
+  \[ d_3 = \abs{x_k-z_k} \le \abs{x_k-y_k} + \abs{y_k-z_k} \le d_1 + d_2 \]
+  验证三角不等式。注意同理可证若$X$上度量$d_1$和$Y$上度量$d_2$可以生成$X\times Y$上一度量$d_3 = \max\curb{d_1,d_2}$。
+  \par
+  欧式度量和平方度量的基元素分别为圆域和方域。由\tref{critfiner}立得
+  \begin{theorem}
+    度量拓扑$\cT'$细于$\cT$当且仅当对于任意$x$与$\epsilon$，存在$\epsilon'$满足
+    \[ B'\pare{x,\epsilon'} \subset B\pare{x, \epsilon}. \]
+  \end{theorem}
+  \begin{theorem}
+    欧氏度量和平方度量诱导$\R^n$上的积拓扑。
+  \end{theorem}
+  \begin{proof}
+    直接验证不难，但由$\rho \le r \le \sqrt{n} \rho$可立得欧式与平方拓扑等价。
+  \end{proof}
+  \begin{definition}
+    对$\R^J$中的点定义
+    \[ \rho\pare{\vx,\vy} = \sup\setcond{\sbm{d}\pare{x_\alpha,y_\alpha}}{\alpha\in J}, \]
+    可得一致度量，诱导出一致拓扑。
+  \end{definition}
+  \begin{theorem}
+    一致拓扑细于积拓扑，粗于箱拓扑。$J$为无限集则两两不同。
+  \end{theorem}
+  \begin{proof}
+    玩弄基元素的大小可证其粗细。$J$无限时，$\pare{-1,1}^J$在一致拓扑下为开，积拓扑下非开。$\prod \pare{-1/n,1/n}$在箱拓扑下为开，一致拓扑下非开。
+  \end{proof}
+  \begin{theorem}
+    对$\R$的可数无限积$\R^\omega$定义
+    \[ D\pare{\vx, \vy} = \sup\curb{\frac{\sbm{d}\pare{x_i,y_i}}{i}}, \]
+    可诱导$\R^\omega$上的积拓扑。
+  \end{theorem}
+  \begin{proof}
+    设$\R^\omega$的某基$B$的分量在$j$后均为$\R$，则某$B\pare{x, \epsilon/j}$包含其内。反之也可以选择这样的基包含于$B\pare{x, 1/j}$内。
+  \end{proof}
+  类似证明可仿照得到
+  \begin{theorem}
+    可度量化空间的可数积仍可度量化。
+  \end{theorem}
+  \begin{ex}
+    在$X\times Y=\R^2$上定义$d=\min\curb{y_2-y_1,1}$，如果两点共$x$，否则$d = 1+\pare{x_1-x_2}$，则$d$诱导字典序拓扑。
+  \end{ex}
+  \begin{ex}
+    易见度量空间的子空间仍为度量空间，且子空间的度量直接限制定义域可得。
+  \end{ex}
+  \subsection{连续函数与度量拓扑}
+  \begin{theorem}
+    度量空间到度量空间的$\func{f}{X}{Y}$的连续性等价于$\epsilon$-$\delta$条件。
+  \end{theorem}
+  \begin{proof}
+    仿照\eref{epsd}可得。
+  \end{proof}
+  \begin{lemma}[序列引理]
+    若$A$中有收敛于$x$的序列，则$x\in\clo{A}$。若$X$为度量空间，逆命题成立。
+  \end{lemma}
+  \begin{theorem}
+    度量空间之间的$\func{f}{X}{Y}$连续的充要条件谓$x_n\rightarrow x$等价于$f\pare{x_n}\rightarrow f\pare{x}$。
+  \end{theorem}
+  \begin{proof}
+    若拓扑条件成立，则$f\pare{x}$的小邻域原像都会包含$x$的邻域，故包含$\curb{x_n}_{n\ge N}$。若序列条件成立，结合序列引理与\tref{contineq}即可。
+  \end{proof}
+  注意上述定理对满足下列条件的空间也可以直接适用。
+  \begin{definition}
+    如果$x$有邻域$\curb{U_n}$满足任意邻域$U$都有某$U_n$含于其内，则称$X$在$x$处有可数基。如果处处都有则称$X$满足第一可数性公理。
+  \end{definition}
+  \begin{lemma}
+    加减乘除是其定义域内的连续函数。
+  \end{lemma}
+  \begin{theorem}
+    连续函数加减乘的结果连续，恒非零的除亦连续。
+  \end{theorem}
+  \begin{definition}
+    若$\curb{f_n}$关于度量$d\pare{f,g}=\sup\curb{\abs{f-g}}$收敛于$f$，则称其一致收敛。
+  \end{definition}
+  \begin{theorem}
+    一致收敛的连续函数列收敛于连续函数。
+  \end{theorem}
+  \begin{proof}
+    对给定的$\epsilon$，存在$\delta$和$N$使得当$\abs{x-y}<\delta$，诸变差皆小于$\delta$。
+    \[ \abs{f\pare{x}-f\pare{y}} \le \abs{f\pare{x}-f_N\pare{x}} +  \abs{f_N\pare{x}-f_N\pare{y}} +  \abs{f\pare{y}-f_N\pare{y}}.\qedhere\]
+  \end{proof}
+  \begin{collary}
+    若$x_n\rightarrow x$而$\curb{f_n}$一致收敛于$f$，则$f_n\pare{x_n}\rightarrow f\pare{x}$。
+  \end{collary}
+  \begin{ex}
+    箱拓扑的$\R^\omega$不满足序列引理因此不可度量化。$0\in\clo{\R_+^\omega}$但$\prod\pare{-x_{ii},x_{ii}}$排斥所有$x_i$。
+  \end{ex}
+  \begin{ex}
+    不可数个$\R$的积空间不可度量化。
+  \end{ex}
+  \begin{proof}
+    考虑$\R^J$由那些知有有限个零分量的$\curb{0,1}$序列的子空间，易见$0$在其内。然而，能有幸为零的分量指标仅有可数个，故存在恒$1$的指标。
+  \end{proof}
+  \subsection{商拓扑}
+  \begin{definition}
+    满射$\func{p}{X}{Y}$称为商映射，如果$U$是$Y$的开集当且仅当$\inv{p}\pare{U}$是$X$的开集。
+  \end{definition}
+  易见开集也可以改为闭集。
+  \begin{definition}
+    $X$的子集$C$为饱和的，如果它是纤维的并。
+  \end{definition}
+  商映射等价于饱和开集映射到开集。易见开映射和闭映射（把开集映射到开集或者把闭集映射到闭集）都是商映射。
+  \begin{ex}
+    $\brac{0,1}\cup\brac{2,3}$到$\brac{0,2}$的黏贴映射是闭映射但不是开映射。
+  \end{ex}
+  \begin{ex}
+    $\func{\pi_1}{\R\times\R}{\R}$是开映射但不是闭映射，因为$\curb{y=1/x}$被映射到开集。
+  \end{ex}
+  \begin{ex}
+  \label{ex:qnotoc}
+    $\pi_1$在$A=\R\times0 \cup \blr{0,\infty} \times \R$上的限制是商映射，但不是开映射或者闭映射。$A-\lbr{-\infty,0}\times 0$是开集，但是被映射到闭集。$\curb{y=\pm\tan x}$图像左侧是闭集，但被映射到开集。
+  \end{ex}
+  \begin{definition}
+    满射$\func{p}{X}{A}$的像$A$上存在一拓扑使得$X$为商映射，此拓扑谓商拓扑。
+  \end{definition}
+  \begin{ex}
+    $y=\sgn\pare{x}$在点集上可以诱导一个商拓扑$\curb{\curb{\curb{-1},\curb{1}},0}$。
+  \end{ex}
+  \begin{definition}
+    $X^*$为$X$的分拆，则$\func{\pi}{X}{X^*}$诱导的商拓扑使$X^*$为商空间。
+  \end{definition}
+  \begin{ex}
+    将单位圆盘将圆周视为等价类，则商空间同胚于球面。
+  \end{ex}
+  \begin{ex}
+    将矩形四角和对边上对应点视为等价类，则商空间同胚于环面。
+  \end{ex}
+  由\eref{qnotoc}知商映射在子空间的限制未必是商映射，但仍然有
+  \begin{theorem}
+    设商映射$\func{p}{X}{Y}$与饱和子空间$A$，则$p$在其上的限制$\func{q}{A}{p\pare{A}}$仍为商映射，如果
+    \begin{cenum}
+      \item $A$为开集或闭集；
+      \item 或者$p$为开映射或闭映射。
+    \end{cenum}
+  \end{theorem}
+  \begin{proof}
+    先验证，如果$V\subset p\pare{A}$，则$\inv{q}\pare{V} = \inv{p}\pare{V}$。如果$U\subset X$，则$p\pare{U\cap A}=p\pare{U}\cap p\pare{A}$。都有$\inv{q}\pare{V}$是开的$\Rightarrow V$在$p\pare{A}$中为开。
+  \end{proof}
+  商映射的复合仍为商映射，但乘积不一定，Hausdorff空间的商空间也不一定是Hausdorff空间。
+  \begin{theorem}
+    商映射$p$与纤维上的映射$g$诱导$f$满足$f\comp p=g$。$f$连续当且仅当$g$连续，$f$为商映射当且仅当$g$为商映射。
+  \end{theorem}
+  \centerline{\xymatrix{
+      X\ar[d]_p\ar[dr]^g \\
+      Y\ar@{.>}[r]_f & Z
+    }}{}
+  \begin{proof}
+    若$p$和$g$为商映射，证明$\inv{f}\pare{V}$为开集$\Rightarrow V$为开集即可。
+  \end{proof}
+  \begin{corollary}
+    设$\func{g}{X}{Z}$为连续满射，$X^*$为各纤维的集，取商拓扑，则
+    \begin{cenum}
+      \item $g$诱导的$\func{f}{X^*}{Z}$一一连续，其为同胚当且仅当$g$为商映射；
+      \item 若$Z$为Hausdorff空间，则$X^*$为Hausdorff空间。
+    \end{cenum}
+  \end{corollary}
+  \centerline{\xymatrix{
+      X\ar[d]_p\ar[dr]^g \\
+      X^*\ar[r]_f & Z
+    }}{}
+  \begin{proof}
+    注意一一的商映射等价于同胚。
+  \end{proof}
+  \begin{ex}
+    设$X=\brac{0,1}\times\curb{1,2,\cdots}$，$Z=x\times \pare{x/n}$其中$x\in\brac{0,1}$，则$g\pare{x\times n} = x\times\pare{x/n}$诱导出$X^*$为将$X$诸左端点粘合的空间，但$\func{f}{X^*}{Z}$不是同胚。
+  \end{ex}
+  \begin{proof}
+    考虑$x_n=\pare{1/n}\times n$，则$\curb{x_n}$为闭集但是$z_n=\pare{1/n}\times{1/n^2}$不是，因此$g$不是商映射。
+  \end{proof}
+  \begin{ex}
+    设$\func{p}{X}{X^*}$是将$\R$的$\Z_+$粘合为$b$形成的商空间，$\func{i}{\Q}{\Q}$为恒等映射，则$p\times i$不是商映射。
+  \end{ex}
+  \begin{proof}
+    假设$U_n$为$n\times\pare{\sqrt{2}/n}$附加其上方和下方的条带，$U=\cup U_n$，则$U$饱和但$p\times i\pare{U}$不是开集，因为某$I_b\times I_\delta$的原像包含条带的缝隙。
+  \end{proof}
   \section{连通性与紧致性}
+  \subsection{连通空间}
+  \begin{definition}
+    拓扑空间$X$的一个分割，谓其一对无交非空开集其并为$X$。
+  \end{definition}
+  \begin{lemma}
+    若$Y$是$X$的子空间，则其分割的分量彼此不包含对方的极限点。若存在一对并为$Y$的非空集合彼此不包含对方极限点，则亦构成分割。
+  \end{lemma}
+  \begin{proof}
+    注意分量既开又闭，故极限点自含。若存在这样的一对，则$A$中任意元素都存在小邻域在$B$外，故在$A$内，故$A$为开集。
+  \end{proof}
+  \begin{ex}
+    密着拓扑是连通的。
+  \end{ex}
+  \begin{ex}
+    $\R$的子空间$\blr{-1,0}\cup\lbr{0,1}$不是连通的。
+  \end{ex}
+  \begin{ex}
+    $\Q$不是连通的。
+  \end{ex}
+  \begin{ex}
+    $\curb{y=1/x}$其中$x>0$和$\curb{y=0}$作为$\R^2$的子空间不是连通的。
+  \end{ex}
+  \begin{lemma}
+    连通子空间包含在分割的二者中一个内。
+  \end{lemma}
+  \begin{theorem}
+    含有一个公共点的连通子空间族的并是连通的。
+  \end{theorem}
+  \begin{theorem}
+    $A$为连通子空间，则$A\subset B \subset \clo{A}$的$B$是连通的。
+  \end{theorem}
+  \begin{proof}
+    若$\clo{A}$被分拆为$C\cup D$，则$A\subset C$而$D$为一个与$A$无交的邻域。
+  \end{proof}
+  \begin{theorem}
+    连通空间的连续映射的像是连通的。
+  \end{theorem}
+  \begin{theorem}
+    有限多个连通空间的积是连通的。
+  \end{theorem}
+  \begin{proof}
+    注意每个十字形是含有公共点的连通空间的并，再将十字形并起。
+  \end{proof}
+  \begin{ex}
+    箱拓扑的$\R^\omega$不连通，后者可分为有界序列和无界序列两开集。
+  \end{ex}
+  \begin{ex}
+    积拓扑的$\R^\omega$连通，因为$\R^\omega=\clo{\R^\infty}$，而$\R^\infty\isom\cap\pare{\R^n+\pare{0,0,\cdots}}$，被并的元素均连通且具有原点为公共点。
+  \end{ex}
+  \subsection{实直线上的连通子空间}
+  \begin{definition}
+    若$L$是多于一个元素的全序集，且$L$具有上确界性质，且$x<y\Rightarrow$ 存在$x<z<y$，则$L$谓线性连续统。
+  \end{definition}
+  \begin{theorem}
+    若$L$为序拓扑的线性连续统，则$L$及其区间和射线都连通。
+  \end{theorem}
+  \begin{proof}
+    $L$的凸子集$Y$若分拆为$A$和$B$，则其中的（不妨设）$a<b$有$\brac{a,b}$被分割为$A_0\cup B_0$。$\inf B_0 \in B_0$或$\inf B_0\in A_0$都会导致矛盾。
+  \end{proof}
+  \begin{corollary}
+    $\R$及其区间和射线都是连通的。
+  \end{corollary}
+  \begin{theorem}[介值定理]
+    连通空间到序拓扑的全序集的映射$\func{f}{X}{Y}$，任何$f\pare{a}$与$f\pare{b}$之间的$r$存在$c$满足$f\pare{c}=r$。
+  \end{theorem}
+  \begin{ex}
+    有序矩形是连通的，只需验证上确界性质。分$\sup \pi_1 \pare{A}$在$\pi_1 \pare{A}$内或外取$b\times c$或$b\times 0$即可。
+  \end{ex}
+  \begin{ex}
+    良序集$X$有$X\times\blr{0,1}$关于字典序为线性连续统。
+  \end{ex}
+  \begin{definition}
+    $X$中$x$到$y$到一条道路是连续的$\func{f}{\brac{a,b}}{X}$满足$f\pare{a}=x$与$f\pare{b}=y$。若$X$中任意两点之间都存在道路，则称之道路连通的。
+  \end{definition}
+  显然道路连通蕴含连通。
+  \begin{ex}
+    $\R^n$中的球是道路连通的，$f\pare{t}=\pare{1-t}\vx+t\vy$是一条道路。
+  \end{ex}
+  \begin{ex}
+    $\R^n-\curb{\vzero}$是连通的。
+  \end{ex}
+  \begin{ex}
+    单位球面是连通的，因为它可以从球由$\func{f}{\vx}{x/\norm{x}}$得到。
+  \end{ex}
+  \begin{ex}
+    有序矩形$I_o^2$连通而非道路连通。在每个被映射到竖线的$\brac{a_i,b_i}$中选取有理数，只能得到可数竖线。
+  \end{ex}
+  \begin{ex}
+    $S=\curb{x\times \sin\pare{1/x}}$的闭包$\clo{S}$连通而非道路连通。任何$S$到$0\times\brac{-1,1}$的路径都必然震荡$t_n \times \pare{-1}^n$，故无法收敛，不可能连续。
+  \end{ex}
   \subsection{紧致空间}
   \begin{definition}
     $X$的子集族$\setf{C}$称为具有有限交性质（finite intersection property），如果$\setf{C}$的任意有限子族交非空。

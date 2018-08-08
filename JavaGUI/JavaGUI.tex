@@ -1,31 +1,6 @@
 \documentclass{ctexart}
 
-\usepackage{listings}
-\usepackage{color}
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{frame=tb,
-  language=Java,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
-\lstset{language=Java}
-
-\newcommand{\term}[2]{\textbf{#1（#2）}}
+\input{../CommonHead/CommonHead.tex}
 
 \begin{document}
 \subsubsection*{图形程序设计}
@@ -228,4 +203,54 @@ setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 可以修改光标样式。
 \par
 除了上述各种Listener，还有用于滚动条的AdjustmentListener，用于复选框的ItemListener等。
+\subsubsection*{各种控件}
+表格中的数据以二维数组的形式储存
+\begin{lstlisting}
+Object[][] cells = { { "Alice", 92 }, { "Bob", 73 } };
+\end{lstlisting}
+标题以\snp{String[]}的形式储存，后
+\begin{lstlisting}
+JTable table = new JTable(cells, titles);
+JScrollPane pane = new JScrollPane(table);
+\end{lstlisting}
+\subsubsection*{XML}
+为了读取XML，通过
+\begin{lstlisting}
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+DocumentBuilder builder = factory.newDocumentBuilder();
+File f = ... ; // 文件方式
+Document doc = builder.parse(f);
+URL u = ... ; // 指定URL
+Document doc = buidler.parse(u);
+InputStream in = ... ; // 指定输入流
+Document doc = builder.parse(in);
+\end{lstlisting}
+之后通过
+\begin{lstlisting}
+Element root = doc.getDocumentElement();
+String tagName = root.getTagname();
+\end{lstlisting}
+获得根节点与标签名。之后枚举
+\begin{lstlisting}
+NodeList children = root.getChildNodes();
+for ... {
+  Node child = children.item(i);
+  if (child instance of Element) Element childElement = (Element) child;
+}
+\end{lstlisting}
+对于只包含文本的Element，可以
+\begin{lstlisting}
+Text textNode = (Text) childElement.getFirstChild();
+String text = textNode.getData().trim();
+\end{lstlisting}
+\par
+为了获得属性，可以通过
+\begin{lstlisting}
+NamedNodeMap attributes = element.getAttributes();
+Node attribute = attributes.item(0);
+String name = attribute.getNodeName();
+String value = attribute.getNodeValue();
+// 知道属性名可以直接获取
+String unit = element.getAttribute("unit");
+\end{lstlisting}
 \end{document}

@@ -1,0 +1,352 @@
+% Mathematics Include
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{braket}
+\usepackage{hyperref}
+\usepackage[all, pdf]{xy}
+
+% Physics Include
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage[makeroom]{cancel}
+\usepackage{pstricks}
+\usepackage{pstricks-add}
+\psset{algebraic=true}
+
+\usepackage[version=4]{mhchem}
+\usepackage{array,booktabs}
+\usepackage{longtable}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{multicol}
+
+% Mathematics Head
+
+\newcommand{\pare}[1]{\left(#1\right)}
+\newcommand{\blr}[1]{\left[#1\right)}
+\newcommand{\lbr}[1]{\left(#1\right]}
+\newcommand{\brac}[1]{\left[#1\right]}
+\newcommand{\curb}[1]{\left\{#1\right\}}
+% \newcommand{\abs}[1]{\left|\, #1 \,\right|}
+\newcommand{\rec}[1]{\frac{1}{#1}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\unk}{\mathcal{X}}
+\newcommand{\bu}[3]{#1_{#2}^{\pare{#3}}}
+\newcommand{\dref}[1]{定义\ref{def:#1}}
+\newcommand{\tref}[1]{定理\ref{thm:#1}}
+\newcommand{\lref}[1]{引理\ref{lem:#1}}
+\newcommand{\cref}[1]{推论\ref{coll:#1}}
+\newcommand{\pref}[1]{命题\ref{prp:#1}}
+\newcommand{\eref}[1]{例\ref{ex:#1}}
+\newcommand{\func}[3]{#1:\, #2 \rightarrow #3}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\clo}[1]{\overbar{#1}}
+\newcommand{\supi}[2]{\overbar{\int_{#1}^{#2}}}
+\newcommand{\infi}[2]{\underbar{\int_{#1}^{#2}}}
+\newcommand{\setf}{\mathscr}
+\newcommand{\bool}{\mathrm{bool}}
+\newcommand{\inc}{++}
+\newcommand{\defeq}{:=}
+\newcommand{\ntuple}{$n$元组}
+\newcommand{\card}[1]{\#\pare{#1}}
+\newcommand{\setcond}[2]{\curb{#1 \, \left| \, #2 \right.}}
+\newcommand{\setcondl}[2]{\curb{\left. #1 \, \right| \, #2}}
+\newcommand{\bv}[1]{\mathbf{#1}}
+\newcommand{\bfa}{\bv{a}}
+\newcommand{\bfb}{\bv{b}}
+\newcommand{\bfx}{\bv{x}}
+\newcommand{\bfy}{\bv{y}}
+\newcommand{\bfe}{\bv{e}}
+\newcommand{\bfF}{\bv{F}}
+\newcommand{\bff}{\bv{f}}
+\newcommand{\bfG}{\bv{G}}
+\newcommand{\bfH}{\bv{H}}
+\newcommand{\bfg}{\bv{g}}
+\newcommand{\bfh}{\bv{h}}
+\newcommand{\bfr}{\bv{r}}
+\newcommand{\bfk}{\bv{k}}
+\newcommand{\bfu}{\bv{u}}
+\newcommand{\bfv}{\bv{v}}
+\newcommand{\oo}[1]{o\pare{#1}}
+\newcommand{\OO}[1]{O\pare{#1}}
+% \newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\DD}{\mathbf{D}}
+\newcommand{\comp}{\circ}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\dist}[2]{d\pare{#1,#2}}
+\newcommand{\len}{\ell}
+\newcommand{\siga}{$\sigma$-代数}
+\newcommand{\cara}{Carath\'{e}odory}
+\newcommand{\Gd}{G_\delta}
+\newcommand{\Fs}{F_\sigma}
+\newcommand{\mmani}{$m$-维流形}
+\newcommand{\open}[1]{\mathcal{#1}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\maxo}[1]{\text{max}\curb{#1}}
+\newcommand{\mino}[1]{\text{min}\curb{#1}}
+\newcommand{\epsclo}{$\epsilon$-接近}
+\newcommand{\close}[1]{$#1$-接近}
+\newcommand{\cinf}{$C^\infty$}
+\newcommand{\cuno}{$C^1$}
+\newcommand{\Int}{\text{Int}\,}
+\newcommand{\Ext}{\text{Ext}\,}
+\newcommand{\funcf}{\mathcal}
+\newcommand{\DDu}{\overbar{\DD}}
+\newcommand{\DDl}{\underbar{\DD}}
+\newcommand{\Diff}[1]{\mathrm{Diff}_{#1}\,}
+\newcommand{\Av}[1]{\mathrm{Av}_{#1}\,}
+\newcommand{\Lip}[1]{Lipschitz-$#1$}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\eset}{\varnothing}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\inter}[1]{\mathring{#1}}
+\newcommand{\forest}[3]{对于{#1}，存在{#2}，使得{#3}}
+\newcommand{\tuno}{$T_1$公理}
+\newcommand{\isom}{\overset{\sim}{=}}
+\newcommand{\diam}{\mathrm{diam}\,}
+\newcommand{\ord}[1]{\abs{#1}}
+\newcommand{\sbm}[1]{\overbar{#1}}
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\restr}[2]{#1|_{#2}}
+\newcommand{\divs}{|}
+\newcommand{\ndivs}{\nmid}
+\newcommand{\modeq}[1]{\overbar{#1}}
+\newcommand{\ggen}[1]{\langle#1\rangle}
+\newcommand{\ggencond}{\braket}
+
+\newcommand{\hd}{H\"{o}lder}
+
+\renewcommand{\proofname}{证明}
+
+\newenvironment{cenum}{\begin{enumerate}\itemsep0em}{\end{enumerate}}
+
+\newtheorem{definition}{定义}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{collary}{推论}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{ex}{例}[section]
+\newtheorem{reflection}{反射}[section]
+\newcommand{\refl}[1]{\vspace{0.5em}\par\noindent\fbox{%
+    \parbox{0.9\textwidth}{%
+    \begin{reflection}
+        #1
+    \end{reflection}
+    }%
+}\vspace{0.5em}\par}
+\newcommand{\rref}[1]{反射\ref{refl:#1}}
+\newcommand{\tbref}[1]{表\ref{table:#1}}
+\allowdisplaybreaks
+
+\newenvironment{aenum}{\begin{enumerate}[label=\textnormal{(\alph*)}]}{\end{enumerate}}
+
+% Physics Head
+
+\DeclareSIUnit\dyne{dynes}
+
+\newcommand{\ddel}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\ddelon}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dddel}[1]{\frac{\partial^2}{\partial^2 #1}}
+\newcommand{\ddt}{\ddel{t}}
+\newcommand{\ddT}{\ddel{T}}
+\newcommand{\ddV}{\ddel{V}}
+\newcommand{\ddr}{\ddel{r}}
+\newcommand{\ddth}{\ddel{\theta}}
+\newcommand{\ddph}{\ddel{\phi}}
+\newcommand{\dddt}{\dddel{t}}
+\newcommand{\dddr}{\dddel{t}}
+\newcommand{\dddth}{\dddel{\theta}}
+\newcommand{\dddph}{\dddel{\phi}}
+\newcommand{\rd}[1]{\mathrm{d} #1}
+\newcommand{\dt}{\rd{t}}
+\newcommand{\dy}{\rd{y}}
+\newcommand{\dx}{\rd{x}}
+\newcommand{\edd}[1]{\frac{\mathrm{d}}{\mathrm{d} #1}}
+\newcommand{\eddd}[1]{\frac{\mathrm{d}^2}{\mathrm{d}^2 #1}}
+\newcommand{\eddon}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\edddon}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d}^2 #2}}
+\newcommand{\edt}{\edd{t}}
+\newcommand{\edton}[1]{\eddon{#1}{t}}
+\newcommand{\edT}{\edd{T}}
+\newcommand{\edr}{\edd{r}}
+\newcommand{\edl}{\edd{l}}
+\newcommand{\edx}{\edd{x}}
+\newcommand{\edth}{\edd{\theta}}
+\newcommand{\eddton}[1]{\edddon{#1}{t}}
+\newcommand{\eddzon}[1]{\edddon{#1}{z}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\alp}{\frac{1}{\sqrt{2}}}
+\newcommand{\alpi}{\frac{i}{\sqrt{2}}}
+\newcommand{\expc}[1]{\langle#1\rangle}
+\newcommand{\bkn}[1]{\bra{#1}\ket{#1}}
+\newcommand{\bk}[2]{\bra{#1}\ket{#2}}
+\newcommand{\bik}[3]{\bra{#1} #2 \ket{#3}}
+\newcommand{\vari}[1]{\sigma_{#1}}
+\newcommand{\intc}[2]{\left[#1, #2\right]}
+\newcommand{\sch}{Schr\"{o}dinger}
+\newcommand{\moment}{\boldsymbol{p}}
+\newcommand{\coor}{\boldsymbol{x}}
+\newcommand{\lapc}{\nabla^2}
+% \newcommand{\rec}[1]{\frac{1}{#1}}
+\newcommand{\vva}{\boldsymbol{a}}
+\newcommand{\vvb}{\boldsymbol{b}}
+\newcommand{\vc}{\boldsymbol{c}}
+\newcommand{\vd}{\boldsymbol{d}}
+\newcommand{\ve}{\boldsymbol{e}}
+\newcommand{\vf}{\boldsymbol{f}}
+\newcommand{\vg}{\boldsymbol{g}}
+\newcommand{\vh}{\boldsymbol{h}}
+\newcommand{\vi}{\boldsymbol{i}}
+\newcommand{\vj}{\boldsymbol{j}}
+\newcommand{\vk}{\boldsymbol{k}}
+\newcommand{\vl}{\boldsymbol{l}}
+\newcommand{\vm}{\boldsymbol{m}}
+\newcommand{\vn}{\boldsymbol{n}}
+\newcommand{\vo}{\boldsymbol{o}}
+\newcommand{\vp}{\boldsymbol{p}}
+\newcommand{\vq}{\boldsymbol{q}}
+\newcommand{\vr}{\boldsymbol{r}}
+\newcommand{\vs}{\boldsymbol{s}}
+\newcommand{\vt}{\boldsymbol{t}}
+\newcommand{\vvu}{\boldsymbol{u}}
+\newcommand{\vv}{\boldsymbol{v}}
+\newcommand{\vw}{\boldsymbol{w}}
+\newcommand{\vx}{\boldsymbol{x}}
+\newcommand{\vy}{\boldsymbol{y}}
+\newcommand{\vz}{\boldsymbol{z}}
+\newcommand{\vA}{\boldsymbol{A}}
+\newcommand{\vB}{\boldsymbol{B}}
+\newcommand{\vC}{\boldsymbol{C}}
+\newcommand{\vD}{\boldsymbol{D}}
+\newcommand{\vE}{\boldsymbol{E}}
+\newcommand{\vF}{\boldsymbol{F}}
+\newcommand{\vG}{\boldsymbol{G}}
+\newcommand{\vH}{\boldsymbol{H}}
+\newcommand{\vI}{\boldsymbol{I}}
+\newcommand{\vJ}{\boldsymbol{J}}
+\newcommand{\vK}{\boldsymbol{K}}
+\newcommand{\vL}{\boldsymbol{L}}
+\newcommand{\vM}{\boldsymbol{M}}
+\newcommand{\vN}{\boldsymbol{N}}
+\newcommand{\vO}{\boldsymbol{O}}
+\newcommand{\vP}{\boldsymbol{P}}
+\newcommand{\vQ}{\boldsymbol{Q}}
+\newcommand{\vR}{\boldsymbol{R}}
+\newcommand{\vS}{\boldsymbol{S}}
+\newcommand{\vT}{\boldsymbol{T}}
+\newcommand{\vU}{\boldsymbol{U}}
+\newcommand{\vV}{\boldsymbol{V}}
+\newcommand{\vW}{\boldsymbol{W}}
+\newcommand{\vX}{\boldsymbol{X}}
+\newcommand{\vY}{\boldsymbol{Y}}
+\newcommand{\vZ}{\boldsymbol{Z}}
+\newcommand{\vzero}{\boldsymbol{0}}
+\newcommand{\vomega}{\boldsymbol{\omega}}
+%\newcommand{\half}{\frac{1}{2}}
+\newcommand{\thalf}{\frac{3}{2}}
+\newcommand{\rot}{\nabla\times}
+\newcommand{\divg}{\nabla\cdot}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\conclu}[1]{\vspace{1em}\par\noindent\fbox{\parbox{0.9\textwidth}{#1}}\vspace{1em}}
+\newcommand{\subentrynote}{$\bullet$}
+\newcommand{\keypoint}[1]{\par\subentrynote\quad #1 \par}
+\newcommand{\fconclu}{\boxed}
+\newcommand{\pair}[2]{#1 \, #2}
+\newcommand{\intn}[2]{\int #1 \,\mathrm{d} #2}
+\newcommand{\intu}[3]{\int_0^{#1} #2 \,\mathrm{d} #3}
+\newcommand{\intiu}[3]{\int_{-\infty}^{#1} #2 \, \rd{} #3}
+\newcommand{\intui}[2]{\int_0^{\infty} #1 \,\mathrm{d} #2}
+\newcommand{\intii}[2]{\int_{-\infty}^{\infty} #1 \,\mathrm{d} #2}
+\newcommand{\intt}[2]{\int_0^\infty #1 \, \rd{} #2}
+\newcommand{\intr}[2]{\int_{-\infty}^{\infty} #1 \, \rd{} #2}
+\newcommand{\intbi}[3]{\int_{#1}^{\infty} #2 \, \rd{} #3}
+\newcommand{\intab}[4]{\int_{#1}^{#2} #3 \, \rd{} #4}
+\newcommand{\bfactor}[1]{e^{-#1/k_BT}}
+\newcommand{\pbfactor}[1]{e^{#1/k_BT}}
+\newcommand{\dn}[2]{#1^{\pare{#2}}}
+\newcommand{\prodg}[1]{\pare{#1}^\times}
+
+\newcommand{\notion}{\emph}
+\newcommand{\iP}{\mathcal{P}}
+\newcommand{\eiP}{e^{-\iP}}
+\newcommand{\iF}{\mathcal{F}}
+\newcommand{\eiF}{e^{-\iF}}
+\newcommand{\iG}{\mathcal{G}}
+
+\newcommand{\rc}{r\cos\theta}
+\newcommand{\rs}{r\sin\theta}
+\newcommand{\sn}{\mathrm{sn}}
+\newcommand{\cn}{\mathrm{cn}}
+\newcommand{\rdn}{\mathrm{dn}}
+
+\newcommand{\hankel}{H_p^{\pare{1}}}
+\newcommand{\hankell}{H_p^{\pare{2}}}
+\newcommand{\hhankel}{H_n^{\pare{1}}}
+\newcommand{\hhankell}{H_n^{\pare{2}}}
+\newcommand{\ber}{\text{ber}\,}
+\newcommand{\bei}{\text{bei}\,}
+\newcommand{\kker}{\text{ker}\,}
+\newcommand{\kei}{\text{kei}\,}
+\newcommand{\Ai}{\text{Ai}}
+\newcommand{\Bi}{\text{Bi}}
+
+\newcommand{\re}{\text{Re}\,}
+
+\newcommand{\Fp}{F_\phi}
+\newcommand{\Ep}{E_\phi}
+\newcommand{\Fx}{F_x}
+\newcommand{\FF}{\mathbf{F}}
+\newcommand{\Ex}{E_x}
+
+%\newcommand{\erf}{\mathrm{erf}}
+\newcommand{\erfi}{\mathrm{erfi}}
+\newcommand{\erfc}{\mathrm{erfc}}
+\newcommand{\ehxs}[1]{e^{-\frac{#1^2}{2}}}
+\newcommand{\dcol}[2]{\[ \left.#1 \hspace{1em}\right\vert\hspace{1em} #2 \]}
+\newcommand{\titlegamma}{\texorpdfstring{$\Gamma$}{Gamma}}
+\newcommand{\titleB}{\texorpdfstring{$B$}{B}}
+
+% Computer Science Head
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\lstset{language=Java}
+\newcommand{\snp}[1]{\lstinline!#1!}
+\newcommand{\term}[2]{\textbf{#1（#2）}}

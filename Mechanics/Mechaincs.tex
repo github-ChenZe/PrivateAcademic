@@ -1,0 +1,119 @@
+\documentclass{ctexart}
+
+\input{/Users/zechen/Documents/PrivateAcademic/CommonHead/CommonHead.tex}
+\title{经典力学}
+\author{C.Z.}
+
+\begin{document}
+\maketitle
+\section{运动学与基本力学}
+\subsection{质点运动学}
+对加速运动，成立
+\[ v\pare{t} = v_0 + \intab{0}{t}{a}{t}, \quad x\pare{t} = x_0 + \intab{0}{t}{v}{t}. \]
+对匀加速运动，成立
+\[ v^2 - v_0^2 = 2ax,\quad x\pare{x} = x_0 + v_0t + \half at^2. \]
+\keypoint{斜面的加速度为$a=g\sin \theta$。}
+\keypoint{追及问题可求临界条件，临界条件的追击满足路程相等且速度相等。}
+\keypoint{受力斜向的可以斜分解。}
+\keypoint{向心加速度$a = v\omega = v^2/R$。}
+对圆周运动，成立
+\[ \vv = \vomega \times \vR, \quad \vva_c = \vomega \times \vv, \quad \vva_t = \dot{\vomega} \times \vR. \]
+对一般的变速运动，将$R$替换为曲率半径$\rho$即可。曲率半径可通过设定一在曲线上运动的质点，求$v^2/a_c$得。
+\keypoint{可直接将$\vva$投影到垂直于$\vv$的方向上获得$a_c$。}
+在极坐标下，注意
+\[ \rd{} \ve_r =  \rd{\theta} \ve_\theta, \quad \rd{} \ve_\theta = -\rd{}\theta \ve_r.  \]
+立即有（可以用于求轨迹的）
+\[ \eddon{r}{\theta} = \frac{rv_r}{v_\theta}. \]
+以及
+\conclu{
+\begin{equation}
+\label{eq:polara}
+a_r = \ddot{r} - r\dot{\theta}^2, \quad a_\theta = 2\dot{r}\dot{\theta} + r\ddot{\theta}.
+\end{equation}
+}
+\par
+$a_r$的第一项为单纯的径向加速度，第二项为向心加速度，$a_\theta$的第一项为科氏力，第二项为单纯的切向加速度。
+\par
+刚体的运动可分平动与转动。任意两点的连线始终保持平行的运动谓平动。单个刚体，平动自由度有三个，故转动自由度有三个——自转，章动，进动。若为定轴转动，则只有一个自由度。
+\par
+欲变换参考系，则
+\[ \vr\pare{t} = \vr'\pare{t} + \vr_{O'}\pare{t}. \]
+将$\vr$替换为$\vv$，$\vva$皆可成立。由\eqref{eq:polara}，可得在新参考系中的极坐标下的加速度。
+\par
+以某参考系为背景可以建立质点的平动参考系，注意它和刚体的参考系不同，它不会自转。
+
+%%%%%%%%%%%%%
+\subsection{动量与能量}
+质点系的动能为
+\begin{align*}
+T = \half m_i \vv_i^2 &= \half m_i\pare{\vv_i-\vV+\vV}^2\\
+&= \half m_i\vv'^2_i + \half m_i\vV^2 + m_i\vv'_i\cdot\vV.
+\end{align*}
+欲消除交叉项，只需
+\[ m_i\pare{\vv_i-\vV}\cdot\vV=\pare{\vp-\sum m_i\vV}\cdot\vV=0, \quad \vV = \frac{m_i\vv_i}{\sum m_i}. \]
+从而有
+\conclu{
+\begin{equation}
+\label{eq:Tframe}
+T = T_\text{frame} + \sum T'_i.
+\end{equation}
+}
+\par
+质点系的角动量为
+\begin{align*}
+\vL &= \sum m_i\vr_i\times\vv_i = \sum m_i \pare{\vr_i - \vR} \times \pare{\vv_i - \vV} \\
+&+ \sum m_i \vR \times \vv_i + \cancelto{0}{\sum m_i \pare{\vr_i-\vR} \times \vV}.
+\end{align*}
+因此
+\conclu{
+\begin{equation}
+\label{eq:Lframe}
+\vL = \vL_\text{frame} + \sum \vL'_i.
+\end{equation}
+}
+\par
+完全相同的道理有
+\conclu{
+\begin{equation}
+\label{eq:Pframe}
+\vp = \vp_\text{frame} + \sum \vp'_i.
+\end{equation}
+}
+
+
+\section{中心力场问题}
+由\eqref{eq:Tframe}二体问题之动能在质心系可表示为
+\begin{align*}
+T &= \half m_1\dot{\vr}_1^2+\half m_2\dot{\vr}_2^2 \\
+&= \half m_1\pare{\frac{m_2}{m_1+m_2}\dot{\vr}}^2 + \half m_2\pare{\frac{m_1}{m_1+m_2}\dot{\vr}}^2 \\
+&= \half\frac{m_1m_2}{m_1+m_2}\dot{\vr}^2 = \half\mu\vr^2.
+\end{align*}
+
+\section{刚体运动学}
+为确定一个刚体的状态，只需其中三个点的坐标，且满足约束
+\[ r_{\pair{1}{2}} = c_{\pair{1}{2}}, \quad r_{\pair{2}{3}} = c_{\pair{2}{3}}, \quad r_{\pair{1}{3}} = c_{\pair{1}{3}}. \]
+故总的自由度为$9-3=6$。亦可以理解为3个自由度用于指定刚体一参考点的坐标，2个自由度用于指定一参考矢量的方向，1个自由度约束刚体在此矢量方向上的旋转。
+\par
+考虑坐标变换（基矢量的变换）
+\[ \vi'_i = \cos \theta_{\pair{i}{j}}\vi_j. \]
+并且注意由$x'_i = \vi'_i\cdot \vx$，立刻有
+\[ x'_i = \cos \theta_{\pair{i}{j}} x_j. \]
+
+\section{刚体的运动方程}
+可以在刚体中寻找一参考点，使运动方程的求解分为平动与纯转动两部分。若选择质心作参考点，则恰可由
+\[ \dot{\vp} = \sum \vF_i, \quad \dot{\vL} = \vN \]
+分别求解参考点的运动与刚体绕参考点的转动。在刚体上一固定点或质心建立（空间）惯性参考系，
+\[ \pare{\edton{\vL}}_s = \vN. \]
+对于刚体的内秉坐标系，有
+\[ \pare{\edton{\vL}}_s = \pare{\edton{\vL}}_b+\vomega\times\vL = \vN. \]
+注意$\vL=\vI\omega$，展开各分量有
+\begin{align*}
+I_1\dot{\omega}_1-\omega_2\omega_3\pare{I_2-I_3}&=N_1,\\
+I_2\dot{\omega}_2-\omega_3\omega_1\pare{I_3-I_1}&=N_2,\\
+I_3\dot{\omega}_3-\omega_1\omega_2\pare{I_1-I_2}&=N_3.
+\end{align*}
+上述方程亦可由拉格朗日方程导出。
+\subsubsection{刚体的自由转动}
+不受力的刚体质心保持静止或匀速直线运动，因此不妨以质心为参考点。
+
+\end{document}

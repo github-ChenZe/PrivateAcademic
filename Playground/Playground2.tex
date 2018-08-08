@@ -1,0 +1,33 @@
+\documentclass{ctexart}
+
+\makeatletter
+%\show\count@
+\newcommand{\generate}[4]{%
+  %#1 = prefix, #2 = macro, #3 = starting point, #4 = end point
+  \def\@tempa{#1} % we don't want to lowercase it
+  \count@=`#3
+  \loop
+  \lccode`Q=\count@
+  \lowercase{\@namedef{#1Q}{#2{Q}}}%
+  \ifnum\count@<`#4
+  \advance\count@\@ne
+  \repeat
+}
+
+\newcommand{\cccc}{\count@=1}
+
+\generate{rv}{\mathbf}{A}{Z}
+\generate{rv}{\mathbf}{a}{z}
+%\show\rvA
+\newcommand{\ccc}[1]{`#1?}
+
+\begin{document}
+\def\cc{c}
+$\rva$
+$\rvA$
+c ?
+\ccc{a}
+\lccode`Q=40
+Q
+\lowercase{Q}
+\end{document}

@@ -1,0 +1,196 @@
+\documentclass{ctexrep}
+
+\input{/Users/zechen/Documents/PrivateAcademic/CommonHead/CommonHead.tex}
+
+\begin{document}
+\chapter{群论}
+\section{基本知识}
+\subsection{集合}
+\begin{definition}
+  $f$的原像$\inv{f}$由谓纤维，
+  \[ \inv{f}\pare{C} = \setcond{a\in A}{f\pare{a}\in C}. \]
+\end{definition}
+\begin{definition}
+  $f$为单射，如果$a_1\neq a_2 \Rightarrow f\pare{a_1}\neq f\pare{a_2}$。
+\end{definition}
+\begin{definition}
+  $f$为满射，如果$f$映满$B$。
+\end{definition}
+\begin{definition}
+  $f$为双射，如果它是单射与满射。
+\end{definition}
+\begin{definition}
+  $f$有左逆，如果有$g$满足$g\comp f = I$。
+\end{definition}
+\begin{definition}
+  $f$有右逆，如果有$h$满足$f\comp h = I$。
+\end{definition}
+\begin{theorem}
+设$\func{f}{A}{B}$，则下列结论成立：
+\begin{cenum}
+\item 左逆存在当且仅当$f$为单射；
+\item 右逆存在当且仅当$f$为满射；
+\item $f$为双射当且仅当左右逆存在且相等；
+\item 若$A$与$B$等大有限，$f$为双射当且仅当$f$为单射当且仅当$f$为满射。
+\end{cenum}
+\end{theorem}
+\begin{proof}
+若左右逆存在且分别为$h$，则$g=fgg=hfg=h$。
+\end{proof}
+\begin{definition}
+$A$到自身的双射谓置换。
+\end{definition}
+\begin{definition}
+二元关系为$A\times A$上的子集，若$\pare{a,b}\in R$则$a\sim b$。
+\end{definition}
+\begin{definition}
+二元关系为等价关系，如果它满足对称性、自反性与传递性。
+\end{definition}
+\begin{definition}
+$a$的等价类是所有满足$x\sim a$的元素。
+\end{definition}
+\begin{definition}
+$A$的划分是并为$A$的非空无交集族。
+\end{definition}
+\begin{theorem}
+等价关系与划分等价。
+\end{theorem}
+\subsection{整数}
+\begin{theorem}
+Euclidean算法可以得到最大公因数。
+\begin{align*}
+a &= q_0 b + r_0 \\
+b &= q_1 r_0 + r_1\\
+r_0 &= q_2 r_1 + r_2\\
+&\cdots \\
+r_{n-2} &= q_n r_{n-1}+r_n\\
+r_{n-1} &= q_{n+1} r_n.
+\end{align*}
+则$r_n$为最大公因数。
+\end{theorem}
+\begin{corollary}
+$r_n=\gcd\pare{a,b}$为$a$和$b$的线性组合。
+\end{corollary}
+\begin{definition}
+只能被$1$和自身整除的数称为质数。
+\end{definition}
+\begin{theorem}
+若质数$p\divs ab$，则$p\divs a$或$p\divs b$。
+\end{theorem}
+\begin{proof}
+若$p\ndivs a$，则$\gcd\pare{a,p} = 1$故$ax+py=1$，$abx+pby=b$，故$p\divs b$。
+\end{proof}
+\begin{theorem}[算术基本定理]
+质因数分解存在且唯一。
+\end{theorem}
+\begin{theorem}
+定义$\varphi\pare{n}=\card{\setcond{a}{a\le n, \gcd \pare{a,n}=1}}$，则
+\[ \varphi\pare{n}=\prod p_i^{\alpha_i-1}\pare{p_{i}-1} = n \prod \pare{1-\rec{p_i}}. \]
+\end{theorem}
+\begin{proof}
+鸽笼原理的直接应用。
+\end{proof}
+\subsection{剩余系}
+\begin{definition}
+等价类$\modeq{a}=\curb{a+kn}$记作$\Z/n\Z$。
+\end{definition}
+\begin{theorem}
+$\Z/n\Z$上一般加减乘成立。
+\end{theorem}
+\begin{theorem}
+$\Z/n\Z$的乘法群为
+\[ \prodg{\Z/n\Z}=\setcond{\modeq{a}}{\gcd\pare{a,n}=1}. \]
+\end{theorem}
+\section{群论导论}
+\subsection{群的定义}
+\begin{definition}
+二元运算谓结合的，若结合律成立。谓交换的，若交换律成立。
+\end{definition}
+\begin{ex}
+加、乘是交换、结合的。减法、叉乘既不交换也不结合。$a\star b = \pare{a+b}/2$以及$a\star b=ab+1$交换但不结合。
+\end{ex}
+\begin{definition}
+若集合上有定义一结合且可逆的二元运算，则谓之群。
+\end{definition}
+\begin{definition}
+若相应的二元运算可逆，则谓abelian群。
+\end{definition}
+\begin{ex}
+$\Z$，$\Q$，$\R$与$\bC$关于加法成群。$\Q-\curb{0}$与$\Q^+$等关于乘法成群。
+\end{ex}
+\begin{ex}
+向量空间、$\Z/n\Z$关于加法成群。$\prodg{\Z/n\Z}$关于乘法成群。
+\end{ex}
+\begin{definition}
+$\pare{a,b}$在保留两个分量上的运算构成新的群，谓其直积。
+\end{definition}
+\begin{proposition}
+对于群$G$和运算$\star$，成立下列结论：
+\begin{cenum}
+\item 群的单位元唯一；
+\item 逆元$\inv{a}$唯一；
+\item $\inv{\pare{\inv{a}}}=a$；
+\item $\pare{a\star b}^{-1} = b^{-1}\star a^{-1}$；
+\item $a_1 \star a_2 \star \cdots \star a_n$可随意添加括号。
+\end{cenum}
+\end{proposition}
+\begin{proof}
+最后一条注意括号必定将表达式先分割成两部分，归纳即可。
+\end{proof}
+\begin{proposition}
+对于群，$ax=b$与$ya=b$有唯一解（不一定相等）。
+\end{proposition}
+只有在上述广义结合律被证明后，不添加括号的表达式才能没有歧义。
+\begin{definition}
+$x$的阶$\ord{x}$谓满足$x^n=1$的最小正整数，不存在时取无穷。
+\end{definition}
+\begin{ex}
+一阶元仅有单位元。$\prodg{\R-\curb{0}}$中$\pare{-1}$为二阶元，其他非$1$元素为无穷阶。$\Z/9\Z$中$\modeq{6}$为三阶元。$\prodg{\Z/7\Z}$中$2$为三阶元。
+\end{ex}
+\begin{definition}
+群$G$的乘法表谓$a_i a_j$全体构成的矩阵。
+\end{definition}
+\subsection{二面体群}
+\begin{definition}
+二面体群$D_{2n}$谓正$n$-边形全体对称操作的集合。
+\end{definition}
+鉴于对称操作可以视为函数，显然$D_{2n}$构成群。每个对称都可以由顶点$1$的目标序号$i$以及顶点$0$的目标序号确定，前者有$n$个选择而之后后者有两个。故$\ord{D_{2n}} = 2n$。
+\begin{proposition}
+对原子旋转$\rho$与横轴反射$r$，成立
+\begin{cenum}
+\item $\ord{\rho}=n$且$\ord{r}=2$；
+\item $r\neq \rho^i$；
+\item $\rho r=r\rho^{-1}$且$\rho^i r = r\rho^{-i}$。
+\end{cenum}
+\end{proposition}
+借此可以化简$r$与$\rho$的任意组合。
+\subsubsection{生成元和关系}
+\begin{definition}
+子集$S$生成群$G$，如果$G$中任何元素都可以写成$S$的元素及其逆的积，记作$G=\ggen{S}$。
+\end{definition}
+鉴于有限阶群的元素阶数有限，逆表示为积，故$G$可写成$S$中的积。
+\begin{definition}
+生成元之间的方程谓关系。
+\end{definition}
+例如$\rho^n=1$，$r^2=1$与$\rho r = r \rho^{-1}$是关系，实际上$D_{2n}$的其他关系都可以由它们导出。
+\begin{definition}
+群的表达谓生成元和关系，记作$G=\ggencond{S}{R_i}$。
+\end{definition}
+例如，$D_{2n} = \ggencond{\rho, r}{\rho^n=1, r^2=1, \rho r = r \rho^{-1}}$。
+\begin{ex}
+$X=\ggencond{x,y}{x^n=y^2=1,xy = yx^2}$，则$x = yx^2y = yxy\cdot yxy = x^4$，故$x^3=1$，发生崩塌。
+\end{ex}
+\begin{ex}
+$X=\ggencond{x,y}{x^4=y^3=1,xy = y^2x^2}$，则发生全盘崩塌。
+\end{ex}
+\begin{proof}
+只证$x^3=y^2x^4$，就有$x=y=1$。注意$yxy=x^2$推出$xyxy=x^3$，
+\begin{align*}
+x^3 &= y^2x^2\inv{y}\cdot y^2x^2\inv{y} \cdot y^2x^2\inv{y}\\
+&= y^2x^2y\cdot x^2y\cdot x^2y^{-1}\\
+&= xy \cdot yx\cdot xyx\cdot xy^{-1}\\
+&= y^2x^2\cdot yx\cdot y^2x^4y^{-1}\\
+&=y^2x^2yxy = y^2x^4.\qedhere
+\end{align*}
+\end{proof}
+\end{document}

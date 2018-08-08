@@ -1,0 +1,1597 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[UTF-8]{ctexart}
+
+\input{/Users/zechen/Documents/PrivateAcademic/CommonHead/CommonHead.tex}
+
+\title{数学物理方法 笔记}
+\author{C.Z.}
+\begin{document}
+  \maketitle
+  \tableofcontents
+  \section*{落单的奇技淫巧}
+  暂时...没有诶. 算上这个吧.
+  \refl{
+  \label{refl:abi}
+  对于
+  \[ \frac{a+bi}{a^2+b^2} \]
+  形式的复数，可以将之写为
+  \[ \frac{1}{r}e^{i\varphi}. \]
+  其中$re^{i\varphi} = a+bi$.}
+  \refl{
+  \label{refl:xd2x}
+  若方程中存在$x$与$x''$，可径在两侧乘以$x'$后积分.
+  }
+  此技巧在\emph{Classical Mechanics}的奇技淫巧导出机械能守恒中用到，在本书中的\ref{par:y2y}与\ref{sssec:gamma2pd}中有用到.
+  \refl{
+  \label{refl:et2}
+  \[e^{-t^2} = \frac{1}{t} t e^{-t^2} = -\frac{1}{t} \cdot \half \edt{e^{-t^2}}.\]
+  }
+  上述式可用于求渐进展开. 与之相对应的有
+  \[ f\pare{t} = \edt{t}f\pare{t} \]
+  这样的换元积分.
+  \refl{
+  \label{refl:fact2}
+  双阶乘
+  \[
+    \begin{cases}
+      \pare{2n-1}!! = \pare{2n-1}!/\pare{2^{n-1} \pare{n-1}!},\\
+      \pare{2n}!! = 2^n \pare{n}!.
+    \end{cases}
+  \]
+  上式反过来用到是挺经常的.
+  }
+  \refl{
+    \label{refl:dxd}
+    \[ v\DD x \DD u - u \DD x \DD v = \DD x\pare{v\DD u - u\DD v}. \]
+    参考Bessel函数的部分. 对微分方程由奇效.
+  }
+  \section{常微分方程}
+  \subsection{引论}
+  \label{ssec:ode_int}
+  含有偏导数的微分方程称为\notion{偏微分方程}，否则称为\notion{常微分方程}. 例子有LRC电路中的
+  \[ L \eddton{I} + R \edt{I} + \frac{I}{C} = \edt{V}.\]
+  \par
+  微分方程的\notion{阶}为方程中导数的最大阶数.
+  \par
+  \notion{线性}微分方程者如
+  \[ a_0 y + a_1 y' + a_2 y'' + a_3 y''' + \dots = b. \]
+  \par
+  $n$阶线性微分方程的解存在$n$个待定常数. 但对于非线性方程，情形可能并非如此，参见\ref{par:nonl}.
+  \subsection{分离变量法}
+  若可让方程一端仅存在未知函数与其导数之积，另一端仅存在自变量，则可以径直积分而求解，如
+  \[ \edt{N} = -\lambda N \]
+  可分离为
+  \[ \frac{\rd{} N}{N} = -\lambda. \]
+  \par
+  又如
+  \[ xy' = y+1 \]
+  可分离为
+  \[ \frac{y'}{y+1} = \frac{1}{x}. \]
+  其解为过一点的直线系，而其等势面$u$可以由
+  \[ u' = -\frac{1}{y'} = -\frac{x}{y+1} = -\frac{x}{u+1} \]
+  求解. 可将上式分解为
+  \[ u' \pare{u+1} = -x, \]
+  故等势面为同心圆系.
+  \par
+  待定常数数目不等于阶数者如
+  \[ y' = \sqrt{1-y^2}, \]
+  可将之分离为
+  \[ \frac{y'}{\sqrt{1-y^2}} = 1 \]
+  得
+  \[ y = \sin \pare{x+\alpha}. \]
+  然而实际解仅仅是正弦函数之一部分，剩余部分取$1$或$-1$. 这导致经过$\pare{0,1}$的解有无数多个\label{par:nonl}.
+  \refl{对于一阶方程，试将其化为$ f\pare{y}y' = g\pare{x} $的形式，则有
+  \[ \iF\pare{y} = \iG\pare{x} + C. \]
+  其中
+  \[ \iF'=f,\quad \iG'=g. \]}
+  \subsection{一阶线性微分方程}
+  \notion{一阶线性微分方程}者如
+  \[ y' + P\pare{x}y = Q\pare{x}. \]
+  若$Q=0$则可径依分离变量法求解，即
+  \[ \frac{y'}{y} = -P\pare{x}. \]
+  若令
+  \[ \iP'=P, \]
+  有
+  \[ y = \eiP. \]
+  同时
+  \begin{equation}
+    \label{eq:yp}
+    \pare{ye^\iP}' = e^\iP \pare{y'+\iP y}.
+  \end{equation}
+  得
+  \[ \pare{ye^\iP}' = Qe^\iP. \]
+  \refl{对于$y'+Py=Q$，可径解如下\[ y = \eiP\pare{ \int Q e^\iP + c }. \]}
+  \begin{ex}
+    \[ y' + \frac{6x}{1+x^2}\,y = \frac{2x}{1+x^2}. \]
+    因而
+    \[ P = \frac{6x}{1+x^2}, \quad Q = \frac{2x}{1+x^2}, \]
+    \[ \iP = 3\ln\pare{1+x^2}, \quad e^\iP = \pare{1+x^2}^3. \]
+    可求解$y$.
+  \end{ex}
+  \subsection{奇技淫巧}
+  \begin{ex}[Bernoulli方程]
+    \[ y' + Py = Qy^n \]
+    可通过令
+    \[ z = y^{1-n}, \]
+    两边除以$y$有
+    \[ \pare{\ln y}' + P = \frac{Q}{z}. \]
+    注意
+    \[ \ln z = \pare{1-n}\ln y. \]
+    故
+    \[ \frac{1}{1-n}\frac{z'}{z} + P = \frac{Q}{z}. \]
+    即
+    \[ \frac{1}{1-n}z' + Pz = Q. \]
+  \end{ex}
+  \refl{
+    \label{refl:bern}
+    对于
+    \[ y'+P\pare{x}y = Q\pare{x}y^n, \]
+    应作换元$z=y^{1-n}$，后有
+    \[ z' + \pare{n-1}P\pare{x}z = \pare{n-1}Q\pare{x}. \]
+  }
+  \paragraph{全微分与积分因子}
+  \[ y' + Py = Q \]
+  可等价于
+  \[ y' = \frac{[P]\pare{x,y}}{[Q]\pare{x,y}}. \]
+  注意这里的$P$和$Q$与上式中不同. 或者更广义地，
+  \[ [P]\dx + [Q]\dy = 0. \]
+  若
+  \[ \ddelon{[P]}{y} = \ddelon{[Q]}{x}, \]
+  则有
+  \[ \rd{} F = [P]\dx + [Q]\dy = 0. \]
+  知$F\pare{x,y}=\const$为$y$与$x$之关系.\footnote{尽管这时常可以化简问题，但似乎不太值得花大功夫搜索$\unk$.}
+  \refl{
+    对于$P\pare{x,y}\rd{} x + Q\pare{x,y}\rd{} y = 0$，可以尝试两边同时乘以$\unk$，使得
+    \[ \ddelon{[P]}{y} = \ddelon{[Q]}{x}, \]
+    则可以求出$F\pare{x,y}=\const$之$F$.
+  }
+  \par
+  对于
+  \[ \pare{Py - Q}\dx + \dy  = 0, \]
+  虽不满足全微分条件，然而欲拼凑
+  \[ \unk\pare{Py - Q}\dx + \unk\dy  = 0, \]
+  \[ [P] \dx + [Q] \dy = 0, \]
+  而要求
+  \[ \ddelon{\unk\pare{Py - Q}}{y} = \unk P = \ddelon{\unk}{x}, \]
+  者，
+  \[ \unk = e^\iP \]
+  为是. 此处$\unk$称为\notion{积分因子}.
+  \notion{势函数}$F\pare{x,y}的全微分已知，故可以直接积分$
+  \[ F\pare{x,y} = \int \unk\pare{Py - Q}{y} \, \rd{} x+ \int \unk \, \rd{} y. \]
+  先计算$F$关于$x$于$y=0$的变化，再计算关于$y$的变化，故
+  \[ F = -\int e^\iP Q \, \rd{} x+ e^\iP y = \const. \]
+  与\ref{eq:yp}可见一致.
+  \begin{ex}
+  \label{ex:bern}
+    对于方程
+    \[ 4y'y + 2y^2 + x = 0, \]
+    除了将其化为Bernoulli方程外，还可以化为
+    \[ 4y \dy + \pare{2y^2 + x} \dx = 0. \]
+    积分因子可寻找如下
+    \[ \eddon{}{x}\pare{4\unk y} = \eddon{}{y}\pare{2y^2\unk+x\unk}, \]
+    得
+    \[ \unk = e^x. \]
+    故全微分形式为
+    \[ 4ye^x\,\dy+\pare{2y^2e^x+xe^x}\dx=0, \]
+    先由$x=0$对$y$积分，再对$x$积分，有
+    \[ 2y^2e^x + xe^x -e^x + c = 0. \]
+  \end{ex}
+  \paragraph{齐次方程}如果
+  \[ P\pare{x,y}\dx + Q\pare{x,y}\dy = 0 \]
+  中$P$与$Q$为次数相同的\notion{齐次多项式}，则可以有
+  \newcommand{\yx}{\frac{y}{x}}
+  \[ y' = f\pare{\yx}. \]
+  令$y=xv$可求解之. 此对于结果$y$为$x$之隐函数的情形尤其有用.
+  \refl{
+    对于齐次方程
+    \[ y' = f\pare{\yx} \]
+    有
+    \[ \iF\pare{\yx} = \log x + C. \]
+    其中
+    \[ \iF'\pare{v} = \frac{1}{f\pare{v}-v}. \]
+  }
+  \par
+  亦可以在两边乘以
+  \[ \unk = \frac{1}{xP+yQ} \]
+  而令其成为齐次方程. 盖所求微分变为
+  \[ \frac{P\dx+Q\dy}{xP+yQ} = \frac{f\pare{u}\dx+\dy}{x\pare{f\pare{u}+u}}. \]
+  欲证其为齐次，需
+  \[ \frac{1}{x} \ddelon{}{y}\frac{f}{f+u} = \ddelon{}{x}\frac{1}{x}\frac{1}{f+u}, \]
+  若令
+  \[ G = \frac{1}{f+u}, \]
+  有
+  \[ \frac{1}{x} \ddelon{}{y}fG = \ddelon{}{x}\frac{G}{x}. \]
+  故需要
+  \[ \ddelon{u}{y} \eddon{fG}{u} = x \ddelon{u}{x} \eddon{}{u}\frac{G}{x}, \]
+  \[ f'G + fG' = -uG' - G .\]
+  等价于
+  \[ \frac{G'}{G}\pare{f+u} = f'+1. \]
+  \paragraph{换元}换元对积分有用，对微分方程也有用，前述Bernoulli方程即是一例.
+  \subsection{二阶常系数齐次方程}
+  形如
+  \[ a_2 y'' + a_1 y' + a_o y = 0 \]
+  的方程，可引入微分算子$\DD = \edt{}$求解. 将上述方程写为
+  \[ \pare{\DD-\alpha}\pare{\DD-\beta}y = 0. \]
+  其中$\alpha$与$\beta$为$a_2 x^2 + a_1 x + a_0 = 0$的两根.
+  \par
+  $\DD$有本征值为$\alpha$的本征函数$e^{\alpha t}$，故
+  \[ \pare{\DD-\alpha}y=0 \]
+  有解
+  \[ y=ce^{\alpha t}. \]
+  还注意到如下的\emph{位移公式}，
+  \refl{
+    \[\pare{\DD-\alpha} = e^{\DD\alpha t} \DD e^{-\alpha t}.\]
+  }
+  此外，$\DD$与非常数并不对易，
+  \[ \DD x = x\DD + 1. \]
+  可得
+  \begin{equation}
+    \label{eq:dpmx}
+    \pare{\DD-x}\pare{\DD+x} = \DD^2-x^2+1.
+  \end{equation}
+  \par
+  由上可得上述二阶方程有两特解（另一解将$\alpha$换成$\beta$），通解为两特解的线性组合
+  \refl{
+  \[ y=c_1 e^{\alpha t} + c_2 e^{\beta t}. \]
+  }
+  \par
+  对于两根皆为$\alpha$的情况，有
+  \[ \pare{\DD-\alpha}y = ce^{\alpha t}. \]
+  代入位移公式后积分，有
+  \refl{
+  \[ y = \pare{c_1x + c_2}e^{\alpha t}. \]
+  }
+  若$\alpha$与$\beta$为一对共轭复数$r \pm i\omega$，则实部对应指数，虚部对应角频率
+  \refl{
+  \[ y=e^{rt}\pare{c_1 \sin \omega t + c_2 \cos \omega t} = ce^{rt}\sin\pare{\omega t + \varphi}. \]}
+  \paragraph{阻尼-谐振子}阻尼-谐振子系统满足方程
+  \label{par:hd}
+  \[ my''=-ky-ly'. \]
+  若令
+  \[ \omega^2 = \frac{k}{m}, \quad b = \frac{l}{2m}, \]
+  则特征方程的判别式为
+  \[ \Delta = b^2 - \omega^2. \]
+  若弹簧具有优势，则$\Delta < 0$；反之若阻尼占优势则$\Delta > 0$. 可分类为
+  \begin{enumerate}
+    \item $\Delta < 0$，弹簧优势，振幅指数衰减的振动；
+    \item $\Delta = 0$，势均力敌，振幅呈伪指数衰减；
+    \item $\Delta > 0$，阻尼优势，振幅指数衰减.
+  \end{enumerate}
+  对于LRC电路可有类似结论.
+  \subsection{非齐次二阶常系数方程}
+  对于
+  \[ a_2 y'' + a_1 y' + a_0 = f\pare{t}, \]
+  通解为
+  \[ y = y_c + y_p. \]
+  其中$y_c$为齐次方程的通解，$y_p$为上述方程的任一特解.
+  \par
+  对于指数\footnote{若为三角函数亦得径化虚指数而适用. 此处假定$\alpha \neq \beta \neq \omega$.}的$f\pare{t}=e^{\omega t}$，由位移公式
+  \[ \pare{\DD-\alpha}\pare{\DD-\beta}y = e^{\alpha t} \DD e^{-\alpha t} u = e^{\omega t}, \]
+  得
+  \[ u = \frac{1}{\omega - \alpha}e^{\omega t} + c_1 e^{\alpha t}. \]
+  第二项可视为通解之一部分. 再度（同理）积分有\footnote{若$a_2=1$，则分母径为$\omega^2 + a_1 \omega + a_2$.}
+  \refl{
+  \label{refl:yp}
+  \[ y_p = \frac{1}{\pare{\omega - \alpha}\pare{\omega - \beta}}e^{\omega t}. \]}
+  对于一般的伪指数$f\pare{t}=P_n\pare{t} e^{\omega t}$及其叠加，可依\emph{待定系数法}求解.
+  \refl{
+  \begin{equation*}
+    y_p =
+    \begin{dcases}
+        e^{\omega t}Q_n\pare{t} &\omega \neq \alpha \neq \beta,\\
+        te^{\omega t}Q_n\pare{t} &\omega = \alpha \neq \beta,\\
+        t^2e^{\omega t}Q_n\pare{t} &\omega = \alpha = \beta.
+    \end{dcases}
+  \end{equation*}}
+  注意到当右侧为纯多项式时，特解亦为纯多项式.
+  \paragraph{受迫振动}参考\ref{par:hd}，对于受迫振动，有
+  \[ y'' + 2by' + \omega^2 y = F \sin \omega' t. \]
+  可视为
+  \[ y'' + 2by' + \omega^2 y = F e^{i\omega' t} \]
+  之虚部. 由\rref{yp}可得
+  \[ y = \frac{1}{-\omega'^2 + 2bi\omega' + \omega^2}e^{i\omega' t}. \]
+  系数又可以写为（参考\rref{abi}）
+  \[ C = \frac{\pare{\omega^2-\omega'^2} - 2bi\omega'}{\pare{\omega^2-\omega'^2}^2 + \pare{2b\omega'}^2} = \frac{e^{-i\varphi}}{R}. \]
+  故特解为
+  \[ y_p = \frac{F}{R}\sin\pare{\omega't - \varphi}. \]
+  此为\emph{稳态解}，因通解在$t$增长时急剧减小.
+  \par
+  上式中
+  \[ R = \sqrt{\pare{\omega^2-\omega'^2}^2 + \pare{2b\omega'}^2}. \]
+  对于给定的本征频率$\omega$，当$\omega'^2=\omega^2-2b^2$时“阻碍”$R$最小. 对于其他的$\omega'$，阻碍都会（视$b$的大小）相对增大. 调频收音机通过这一原理将给定的频率分离出来.\footnote{参考Walter Lewin的电磁学课程.}
+  \paragraph{借助Fourier级数求解}当右侧$f\pare{t}$为周期函数，可径将其Fourier展开并逐项求解后叠加. 逐项求解时可借助\rref{yp}.
+  \subsection{特殊二阶方程}
+  \paragraph{$y$消失的情形}在本节中不假设方程为线性.
+  \refl{
+  $y$消失时可设$y'=p$，$y''=p'$，后转为一阶方程.
+  }
+  \paragraph{$x$消失的情形}可以如上将方程转为$p$对$y$的方程，故得到一阶方程. 其中\[ p=y',\quad p'=\edt{p}=\eddon{p}{y}y'=p\eddon{p}{y}.\]求解后$p$对$y$的关系可知，再行求解一阶方程.
+  \refl{
+  $x$消失时可设$y'=p$，$y''=p'$，后两度求解一阶方程.
+  }
+  \begin{ex}
+  例如对
+  \[ 4y''+2y'^2+y=0, \]
+  先有\footnote{$p$上的撇号表示对$y$的求导.}
+  \[ 4pp' + 2p^2 + y=0. \]
+  可化为Bernoulli方程
+  \[ p' + \half p = -\frac{1}{4}yp^{-1}, \]
+  并借助\rref{bern}或\eref{bern}求解，代换$z=p^2$，有
+  \[ p^2 = \half\pare{y+1}-ce^y. \]
+  故原方程化为超越方程
+  \[ y'^2 = \half\pare{y+1}-ce^y. \]
+  \end{ex}
+  \paragraph{$y''+f\pare{y}=0$的形式}\label{par:y2y}此情形包含在上例中，但有更简单的解法.
+  \refl{
+    对于
+    \[ y''+ f\pare{y} = 0, \]
+    两侧同时乘以$y'$后积分有
+    \[ \half y'^2 + \iF\pare{y} = \const. \]
+    其中
+    \[ \iF'=f. \]
+  }
+  如果将$y$看做位置，$F=-f$看做力，上述方程即动能定理
+  \[ \half mv^2 = \int F \dx. \]
+  \paragraph{Cauchy-Euler方程}
+  对于方程\[ a_2 t^2 y'' + a_1 t y' + a_0 y = f\pare{t}, \]
+  若为换元
+  \[ t = e^z, \]
+  则
+  \[ y' = \edt{y} = \edt{z}\eddon{y}{z} = \frac{1}{t}\eddon{y}{z}, \]
+  \[ y'' = \edt{}\edt{y} = \edt{z}\eddon{}{z}{\frac{1}{t}\eddon{y}{z}} = -\frac{1}{t^2}\eddon{y}{z}+\frac{1}{t}\eddzon{y}. \]
+  代入有
+  \[ a_2 y'' + \pare{a_1-a_2}y'+a_0y=f\pare{e^z}. \]
+  \refl{
+  方程\[ a_2 t^2 y'' + a_1 t y' + a_0 y = f\pare{t}, \]
+  关于$z=\ln t$的求导有
+  \[ a_2 y'' + \pare{a_1-a_2}y'+a_0y=f\pare{e^z}. \]
+  可由此将$y$作为$z$的函数解出，再得到$y$对$t$的形式.
+  }
+  \paragraph{降次}对于
+  \[ y''+f\pare{x}y'+g\pare{x}y=0, \]如果已知一解$u$，则设$y=uv$，有
+  \begin{align*}
+    y'' &= u''v + 2u'v' + uv'',\\
+    f\pare{x}y' &= fu'v + fuv',\\
+    g\pare{x}y &= guv, \\
+    y'' + fy' + gy &= uv'' + \pare{2u'+fu}v' + \pare{u''+fu'+gu}v\\
+    &= uv''+\pare{2u'+fu}v'\\
+    &= 0.
+  \end{align*}
+  可径直分离变量求解.
+  \refl{
+    \label{refl:uv}
+    已知\[ y''+f\pare{x}y'+g\pare{x}y=0 \]一解$u$，另一解$y=uv$满足
+    \[ v' = \frac{c}{u^2} e^{-\iF}. \]
+    其中\[ \iF'=f. \]
+  }
+  \begin{ex}
+     对于\[ y'' - 2y' + y = 0, \]
+     一解为$y=e^x$，又$\iF = -2x$，遂得
+     \[ v'=c, \quad v' = cx, \]
+     知另解为
+     \[ y = xe^x. \]
+  \end{ex}
+  \subsection{Laplace变换}
+  \subsection{Laplace变换用于微分方程}
+  \subsection{卷积}
+  \subsection{Dirac Delta函数}
+  \subsection{Green函数}
+  \section{特殊函数}
+  \subsection{引论}
+  特殊函数之间的联系或者恒等式可能对发现一些关系以及化简有帮助.
+  \subsection{阶乘函数}
+  对
+  \[ \int_0^\infty e^{-\alpha x} \, \rd{} x = \frac{1}{\alpha} \]
+  求导$n$次，有
+  \[ \int_0^\infty x^n e^{-\alpha x} \, \rd{} x = \frac{n!}{\alpha^{n+1}}. \]
+  特别地，
+  \refl{
+  \begin{equation}
+    \label{eq:fact}
+    \int_0^\infty x^n e^{-x} \, \rd{} x = n!.
+  \end{equation}}
+  \par
+  对指数求导是一个计算含有指数的积分的常用技巧，如动力学理论中的积分
+  \[ \int_0^\infty t^{2n} e^{-\alpha x^2} \, \rd{} x \]
+  亦可以由（参考\ref{eq:ex2}）下式导出.
+  \refl{
+  \label{refl:eax2}
+  \[ \int_0^\infty e^{-\alpha x^2} \, \rd{} x = \half\sqrt{\frac{\pi}{\alpha}} \]}
+  \subsection{\titlegamma 函数}
+  \notion{$\Gamma$函数}定义为
+  \[ \Gamma\pare{p} = \int_0^\infty x^{p-1}e^{-x}\, \rd{} x, \quad p>0. \]
+  比照\ref{eq:fact}可知
+  \begin{equation}
+    \label{eq:gammarec}
+    \Gamma\pare{n} = \pare{n-1}!.
+  \end{equation}
+  且对前式分部积分亦可以得到
+  \[ \Gamma\pare{p+1} = p\Gamma\pare{p}. \]
+  \subsection{\titlegamma 函数于负数}
+  比照\ref{eq:gammarec}可知
+  \[ \Gamma\pare{p} = \frac{1}{p}\Gamma\pare{p+1}. \]
+  因此，$\Gamma$函数于负整数有奇点，但对其他负数可以定义.
+  \subsection{\titlegamma 函数的一些公式}
+  首级奇技淫巧谓
+    \[ \pare{\int_0^\infty e^{-x^2} \, \rd{} x}^2 = \int_0^\frac{\pi}{2}\int_0^\infty e^{-r^2}\, \rd{} r \, \rd{} \theta = \frac{\pi}{4}, \]
+  故
+  \begin{equation}
+    \label{eq:ex2}
+    \int_0^\infty e^{-x^2} \, \rd{} x = \frac{\sqrt{\pi}}{2}.
+  \end{equation}
+  令$u=x^2$，
+  \[ \half \int_0^\infty \sqrt{u}e^{-u} \, \rd{} u = \frac{\sqrt{\pi}}{2}. \]
+  即
+  \[ \Gamma\pare{\half} = \sqrt{\pi}. \]
+  \par
+  上述技巧亦可以倒过来使用，亦即
+  \begin{equation}
+    \label{eq:ux2}
+    \intt{u^{p-1}e^{-u}}{u} = 2\intt{x^{2p-1}e^{-x^2}}{x},
+  \end{equation}
+  这在下文会有意想不到的应用.
+  \par
+  欲求出
+  \[ \Gamma\pare{1-p}, \]
+  可以考虑
+  \begin{align*}
+    \Gamma\pare{p}\Gamma\pare{1-p} &= \intt{\intt{u^{p-1}v^{-p}e^{-u-v}}{u}}{v}\\
+    &=\intt{\intt{\frac{1}{u}\pare{\frac{u}{v}}^p e^{-u\pare{1+\frac{v}{u}}}}{u}}{v}\\
+    &=\intt{\intt{t^{-p}e^{-u\pare{1+t}}}{u}}{t}\\
+    &=\intt{\frac{t^{-p}}{1+t}}{t}.
+  \end{align*}
+  故有
+  \refl{
+  \label{refl:gammarefl}
+  \[ \Gamma\pare{p}\Gamma\pare{1-p} = \frac{\pi}{\sin \pi p}. \]}
+  亦可以由此得到
+  \[ \Gamma\pare{\half} = \sqrt{\pi}. \]
+  \par
+  上述求$\Gamma\pare{p}\Gamma\pare{1-p}$的方法亦可以用于求
+  \begin{align*}
+    \Gamma\pare{p}\Gamma\pare{s-p} &= \intt{\intt{u^{p-1}v^{s-p-1}e^{-u-v}}{u}}{v} \\
+    &= \intt{\intt{\frac{v^s}{uv}\pare{\frac{u}{v}}^{p}e^{u\pare{1+\frac{v}{u}}}}{u}}{v} \\
+    &= \intt{\intt{\pare{tu}^{s-1}t^{-p}e^{-u\pare{1+t}}}{u}}{t} \\
+    &= \intt{\frac{t^{q-1}}{\pare{1+t}^s}\intt{\pare{u\pare{1+t}}^{s-1}e^{-u\pare{1+t}}}{u\pare{1+t}}}{t} \\
+    & = \Gamma\pare{p+q} \intt{\frac{t^{q-1}}{\pare{1+t}^{p+q}}}{t}.
+  \end{align*}
+  式中$p+q=s$，故有
+  \refl{
+  \[ \frac{\Gamma\pare{p}\Gamma\pare{q}}{\Gamma\pare{p+q}} = \intt{\frac{t^{q-1}}{\pare{1+t}^{p+q}}}{t}, \]}
+  下文将看见，右端可以被记作$B\pare{p,q}$. 在此之前，亦可以引用\ref{eq:ux2}以相似于\ref{eq:ex2}的奇技淫巧（转化为极坐标）求之.
+  \begin{align*}
+    \Gamma\pare{p}\Gamma\pare{q} &= 4\intt{\intt{x^{2p-1}y^{2q-1}e^{-\pare{x^2+y^2}}}{x}}{y} \\
+    &= 4 \intu{\frac{\pi}{2}}{\intt{\pare{\rc}^{2p-1}\pare{\rs}^{2q-1}e^{-r^2}}{r}}{\theta} \\
+    &= 4 \intt{r^{2p+2q-2}e^{-r^2}}{r}\intu{\frac{\pi}{2}}{\pare{\cos\theta}^{2p-1}\pare{\sin\theta}^{2q-1}}{\theta} \\
+    &= 2\Gamma\pare{p+q}\intu{\frac{\pi}{2}}{\pare{\cos\theta}^{2p-1}\pare{\sin\theta}^{2q-1}}{\theta}.
+  \end{align*}
+  故有
+  \refl{
+  \[ \frac{\Gamma\pare{p}\Gamma\pare{q}}{\Gamma\pare{p+q}}  = 2\intu{\frac{\pi}{2}}{\pare{\cos\theta}^{2p-1}\pare{\sin\theta}^{2q-1}}{\theta}. \]}
+  \subsection{\titleB 函数}
+  \notion{\titleB 函数}定义为
+  \[ B\pare{p,q} = \intu{1}{x^{p-1}\pare{1-x}^{q-1}}{x}. \]
+  有一堆关于它的恒等式，如
+  \[ B\pare{p,q} = B\pare{q,p}. \]
+  若令$x=\sin\theta$，还有
+  \begin{align}
+  \label{eq:bsc}
+    B\pare{p,q} &= \intu{\frac{\pi}{2}}{\pare{\sin^2\theta}^{p-1}\pare{\cos^2\theta}^{q-1}2\sin\theta\cos\theta}{\theta} \\
+    &= 2 \intu{\frac{\pi}{2}}{\pare{\sin\theta}^{2p-1}\pare{\cos\theta}^{2q-1}}{\theta},
+  \end{align}
+  立知
+  \[ B\pare{p,q} = \frac{\Gamma\pare{p}\Gamma\pare{q}}{\Gamma\pare{p+q}}, \]
+  \refl{
+  \[ \frac{\Gamma\pare{p}\Gamma\pare{q}}{\Gamma\pare{p+q}} = \intu{1}{x^{p-1}\pare{1-x}^{q-1}}{x}. \]
+  }
+  故又有
+  \[ B\pare{p,q} = \intt{\frac{t^{q-1}}{\pare{1+t}^{p+q}}}{t}. \]
+  \subsection{与\titlegamma 函数的联系：加倍公式}
+  在\ref{eq:bsc}中令$p=q$有
+  \begin{align*}
+    B\pare{p,p} &= 2 \intu{\frac{\pi}{2}}{\pare{\sin\theta\cos\theta}^{2p-1}}{\theta} \\
+    &= \frac{2}{2^{2p-1}}\intu{\frac{\pi}{2}}{\pare{\sin2\theta}^{2p-1}}{\theta} \\
+    &= \frac{1}{2^{2p-1}}\intu{\pi}{\pare{\sin\theta}^{2p-1}}{\theta} \\
+    &= \frac{2}{2^{2p-1}}\intu{\frac{\pi}{2}}{\pare{\sin\theta}^{2p-1}}{\theta} \\
+    &=\frac{1}{2^{2p-1}}B\pare{p,\frac{1}{2}}.
+  \end{align*}
+  立刻得到
+  \[ \frac{\Gamma\pare{p}^2}{\Gamma\pare{2p}} = \frac{1}{2^{2p-1}}\frac{\Gamma\pare{p}\sqrt{\pi}}{\Gamma\pare{p+\half}}, \]
+  即\notion{Legendre加倍公式}
+  \refl{
+  \label{refl:gamma2p}
+  \[ \Gamma\pare{2p} = \frac{2^{2p-1}}{\sqrt{\pi}}\Gamma\pare{p}\Gamma\pare{p+\half}. \]}
+  \begin{ex}
+  \label{ex:sin2n}
+  积分
+  \begin{align*}
+   \intu{\frac{\pi}{2}}{\sin^{2n}\theta}{\theta} &= \half B\pare{n+\half,\half} = \half\frac{\Gamma\pare{n+\half}\Gamma\pare{\half}}{\Gamma\pare{n+1}}\\
+   &= \frac{\pi}{2^{2n}}\frac{\Gamma\pare{2n}}{\Gamma\pare{n}\Gamma\pare{n+1}} = \frac{\pi}{2^{2n}}C_{2n-1}^{n}.
+  \end{align*}
+  \end{ex}
+  \subsection{应用：与单摆的联系}
+  \label{sssec:gamma2pd}
+  单摆（自水平起摆）的方程为
+  \[ \rd{}ot{\theta} = -\half\sin\theta, \]
+  可以两侧同乘$\dot{\theta}$后积分即得到
+  \[ \dot{\theta}^2 = \cos{\theta}, \]
+  是故
+  \[ \rd{} t = \frac{\rd{} \theta}{\sqrt{\cos\theta}}, \]
+  \[ \frac{T}{4} = \intu{\frac{\pi}{4}}{\frac{1}{\sqrt{\cos\theta}}}{\theta}, \]
+  有
+  \[ T = 4B\pare{\half, \frac{1}{4}}. \]
+  \subsection{误差函数}
+  误差函数在统计学中有所应用，其定义为\footnote{具体定义可能存在分歧.}
+  \[ \erf\pare{x} = \frac{2}{\sqrt{\pi}}\intu{x}{e^{-t^2}}{t}. \]
+  可以视为正态分布下方的面积.应当注意，标准正态分布为
+  \[ f\pare{x} = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}. \]
+  其累积函数为
+  \[ \Phi\pare{x} = \frac{1}{\sqrt{2\pi}} \intiu{x}{\ehxs{t}}{t} = \half + \half \erf\pare{\frac{x}{\sqrt{2}}}. \]
+  上式亦可倒转而为
+  \[ \erf\pare{x} = 2\Phi\pare{x\sqrt{2}}-1. \]
+  \par 误差函数的若干性质如奇函数
+  \[ \erf\pare{x} = -\erf\pare{-x}, \]
+  以及无穷远处的极限如
+  \[ \erf\pare{\infty} = 1. \]
+  因此将误差函数视为正态分布下方面积的2倍似乎更为妥当.
+  \par
+  由上式立知
+  \[ \erfc\pare{x} = \frac{2}{\sqrt{\pi}} \intbi{x}{e^{-t^2}}{t} = 1-\erf\pare{x}. \]
+  \par
+  还可定义虚误差函数
+  \[ \erfi\pare{x} = \frac{2}{\sqrt{\pi}}\intu{x}{e^{t^2}}{t} = \erf\pare{ix}. \]
+  \subsection{级数展开}
+  注意\[ e^{-t^2} = 1-t^2+\frac{t^4}{2!}-\cdots, \]
+  积分后有
+  \refl{
+    \[ \erf\pare{x} = \frac{2}{\sqrt{\pi}}\pare{x-\frac{x^3}{3}+\frac{x^5}{5\cdot2!}-\cdots}. \]
+  }
+  上式对于小的$x$较为有用.对于大的$x$，应当考虑
+  \[ \erfc\pare{x} = \frac{2}{\sqrt{\pi}}\intbi{x}{e^{-t^2}}{t} \]
+  的分部积分，只需要在每个步骤中作如下代换（参考\rref{et2}）
+  \[ e^{-t^2} = \frac{1}{t} t e^{-t^2} = -\frac{1}{t} \cdot \half \edt{e^{-t^2}}, \]
+  对$\frac{1}{t}$微分便可以将分部积分的结果后项多乘一$\frac{1}{t^2}$，故得展开
+  \refl{
+    \[ \erfc\pare{x} = 1 - \erf\pare{x} \sim \frac{e^{-x^2}}{x\sqrt{\pi}}\pare{1-\frac{1}{2x^2} + \frac{1\cdot 3}{\pare{2x^2}^2} - \frac{1\cdot 3\cdot 5}{\pare{2x^2}^3} +\cdots }. \]
+  }
+  使用$\sim$是表示上述级数的渐进性. 上述级数对任意$x$发散，只有截断若干项才能得到有意义的结果.
+  \paragraph{误差估计}若截断二项，则由分部积分的步骤知
+  \[ \erfc\pare{x} =  \frac{e^{-x^2}}{x\sqrt{\pi}}\pare{1-\frac{1}{2x^2}} + O\pare{\intbi{x}{t^{-4}e^{-t^2}}{t}}. \]
+  余项可借助\rref{et2}估计为
+  \[ \intbi{x}{t^{-4}e^{-t^2}}{t} = \intbi{x}{t^{-5}\pare{te^{-t^2}}}{t} < \frac{1}{x^5}\intbi{x}{\pare{te^{-t^2}}}{t} = O\pare{\frac{e^{-x^2}}{x^5}}. \]
+  对于大的$x$远小于截断项，故可称上开级数为\emph{渐进级数}.
+  \paragraph{对数积分}定义对数积分如下
+  \newcommand{\Li}{\mathrm{Li}}
+  \[ \Li\pare{x} = \intu{x}{\frac{1}{\log t}}{t}. \]
+  可以通过分部积分将上述积分渐进展开为
+  \begin{align*}
+    \Li\pare{x} &= \intu{x}{\frac{1}{\log t}}{t} \\
+    &= \intu{x}{\pare{\edt{}t}\frac{1}{\log t}}{t} \\
+    &= \frac{x}{\log x} + \intu{x}{\pare{\edt{}t}\frac{1}{\log^2 t}}{t}\\
+    &= \frac{x}{\log x} \pare{\sum \frac{n!}{\log^n x}}.
+  \end{align*}
+  可以截断为
+  \[ \frac{t}{\log t} + \frac{t}{\log^2 t} \sim \frac{t}{\log t - 1}. \]
+  分母上的$1$称为\emph{Legendre常数}\footnote{这恐怕是一个笑话.也许它应该是1.08366.}.
+  \subsection{Laplace方法：Stirling公式}
+  试图计算积分
+  \dcol{\intab{a}{b}{e^{-s\Phi\pare{x}}\psi\pare{x}}{x}}
+  {\intt{e^{s\log x - sx}\frac{1}{x}}{x}}
+  时，可以尝试寻找$\Phi\pare{x}$的最小值点$x_0$，并考察其附近的情形，有
+  \dcol{e^{-s\Phi\pare{x_0}}\intab{a}{b}{e^{-s\frac{\Phi''\pare{x_0}}{2}\pare{x-x_0}^2\varphi\pare{x}}\psi\pare{x}}{x}}
+  {e^{-s}\intt{e^{-s\half\pare{x-1}^2\varphi\pare{x}}\frac{1}{x}}{x}.}
+  其中
+  \dcol{\varphi\pare{x} = 1+O\pare{x-x_0}}
+  {\varphi\pare{x} = 1-\frac{2}{3}\pare{x-1}+\cdots.}
+  可以令
+  \dcol{y=\pare{x-x_0}\sqrt{\varphi\pare{x}}}
+  {y=\pare{x-1}\sqrt{1-\frac{2}{3}\pare{x-1}+\cdots},}
+  则$\dy$与$\dx$几乎可径直互换，惟应注意
+  \dcol{\frac{\dy}{\dx} = 1+O\pare{y}}
+  {\frac{\dy}{\dx} = 1 - \frac{2}{3}y+\cdots.}
+  此时可以试图做换元积分，而$x$仅在$x_0$附近得保证与$y$有一一对应，上述$\dy$与$\dx$的互换也仅在有限范围内成立. 譬如右侧的
+  \[ \varphi\pare{x} = \frac{2\pare{x-\log x -1}}{\pare{x-1}^2} \]
+  在$x=0$附近便已发散.故仅仅估计$x_0$附近区域的积分，此时对应的$y$应当从负数穿过零变为正数，有
+  \begin{align*}
+  &\intab{x_0-}{x_0 +}{e^{-s\Phi\pare{x}}\psi\pare{x}}{x} = \\ & \psi\pare{x_0}\intab{-}{+}{e^{-s\frac{\Phi''\pare{x_0}}{2}y^2}}{y} + O\pare{\intab{-}{+}{e^{-s\frac{\Phi''\pare{x_0}}{2}y^2}\left\vert y\right\vert}{y}}
+  \end{align*}
+  \hrulefill
+  \begin{align*}
+  &\intab{1-}{1+}{e^{-s\half\pare{x-1}^2\varphi\pare{x}}\frac{1}{x}}{x} = \\& \psi\pare{x_0}\intab{-}{+}{e^{-\half sy^2}}{y} + O\pare{\intab{-}{+}{e^{-\half sy^2}\left\vert y\right\vert}{y}}
+  \end{align*}
+  第一项积分可求出为
+  \dcol{s^{-\half}\pare{\frac{2\pi}{\Phi''\pare{x_0}}}^{\half}+O\pare{e^{-\delta s}}}
+  {\pare{\frac{2\pi}{s}}^{\half}+O\pare{e^{-\delta s}}.}
+  第二项（余项）为$O\pare{1/s}$. 上开区间变更忽略掉的项为
+  \[ \int e^{-s\Phi\pare{x}}\psi\pare{x} \]
+  关于$s$指数递减，故忽略之.
+  \par
+  经由上述步骤可得
+  \[ \intt{e^{s\log x - sx}\frac{1}{x}}{x} \sim e^{-s}\frac{\sqrt{2\pi}}{s^{\half}}. \]
+  故有
+  \begin{align*}
+  \Gamma\pare{s} =& \intt{e^{s\log x - x}\frac{1}{x}}{x}\\ =& \intt{e^{s\log sx - sx}\frac{1}{sx}}{sx} \\=& e^{s\log s}\intt{e^{s\log x - sx}\frac{1}{x}}{x}\\
+  =& \sqrt{2\pi} e^{s\log s-s}s^{-\half}.
+  \end{align*}
+  稍加功夫，便可得到如下的\emph{Stirling公式}（带有渐进项）.
+  \refl{
+    \label{refl:st}
+    \[ p! = \Gamma\pare{p+1} = p^pe^{-p}\sqrt{2\pi p}\pare{1+\frac{1}{12p}+\frac{1}{288p^2}+\cdots}. \]
+  }
+  上述渐进依然发散. 相对误差随$p$的增加而减小，绝对误差则增大.
+  \paragraph{Wallis乘积}Wallis乘积的解法之一为
+  \begin{align*}
+    \Pi\pare{\frac{2n}{2n-1}\cdot\frac{2n}{2n+1}} &= \frac{1}{2k+1}\cdot\frac{2^{4k}\pare{k!}^4}{\pare{\pare{2k}!}^2} \\
+    &\sim \frac{\pi}{2}.
+  \end{align*}
+  第一行可以由如下技巧求得
+  \newcommand{\x}{\times}
+  \begin{align*}
+  &\frac{2\x2\x4\x4\x6\x6}{\pare{1\x3}\x\pare{3\x5}\x\pare{5\x7}} =\\ &\frac{2\x2\x4\x4\x6\x6}{\pare{1\x2\x3\x4}\x\pare{3\x4\x5\x6}\x\pare{5\x6\x7\x8}}\\ &\cdot\pare{2\x4\x4\x6\x6\x8}.
+  \end{align*}
+  \paragraph{高阶近似}前述Laplace方法稍加改动可获得更精确的Stirling近似. 欲得到$1/288p^2$项，需在$\varphi$与$\psi$的Taylor展开中保留至$t^4$项，即在
+  \[ \intt{e^{-s\pare{t-\log t -1}}\frac{1}{t}}{t} \]
+  中，注意到
+  \begin{align*}
+  & t-\log t-1\\
+  =& \half \pare{t-1}^2\pare{1-\frac{2 \pare{t-1}}{3}+\frac{1}{2} \pare{t-1}^2-\frac{2}{5} \pare{t-1}^3+\frac{1}{3} \pare{t-1}^4}. 
+  \end{align*}
+  以及
+  \begin{align*}
+    &\frac{1}{t} = 1-\pare{t-1}+\pare{t-1}^2-\pare{t-1}^3+\pare{t-1}^4.
+  \end{align*}
+  令$u=t-1$，将积分近似为
+  \[ \intab{0-}{0+}{e^{-\half su^2\pare{1-\frac{2 u}{3}+\frac{1}{2} u^2-\frac{2}{5} u^3+\frac{1}{3} u^4}}\pare{1-u+u^2-u^3+u^4}}{u}. \]
+  复令
+  \[ y=u\sqrt{1-\frac{2 u}{3}+\frac{1}{2} u^2-\frac{2}{5} u^3+\frac{1}{3} u^4} \]
+  并截断到4阶项，有
+  \[ y= u\pare{1-\frac{u}{3}+\frac{7}{36}u^2-\frac{73}{540}u^3+\frac{1331}{12960}u^4}. \]
+  于是到了最精彩也是最困难的一步，对$y$求逆（保留4阶项），有
+  \[ u=y\pare{1+\frac{y}{3}+\frac{1}{36}y^2-\frac{1}{270}y^3+\frac{1}{4320}y^4}. \]
+  欲换元积分，则需要$u$对$y$的导数，
+  \[ \eddon{u}{y} = 1+\frac{2}{3}y+\frac{1}{12}y^2-\frac{2}{135}y^3+\frac{1}{864}y^4. \]
+  于是有（截断后）
+  \[ \pare{1-\frac{2 u}{3}+\frac{1}{2} u^2-\frac{2}{5} u^3+\frac{1}{3} u^4} \eddon{u}{y} = 1-\frac{y}{3}+\frac{1}{12}y^2-\frac{2}{135}y^3+\frac{1}{864}y^4. \]
+  因此原来的积分为
+  \[ \intab{0-}{0+}{e^{-\half s y^2}\pare{1-\frac{y}{3}+\frac{1}{12}y^2-\frac{2}{135}y^3+\frac{1}{864}y^4}}{y}. \]
+  借助\rref{eax2}，并注意奇数次幂积分为$O\pare{e^{-\delta s}}$，有
+  \begin{align*}
+  \intab{0-}{0+}{e^{-\half s y^2}}{y} &= \sqrt{\frac{2\pi}{s}}, \\
+  \intab{0-}{0+}{e^{-\half s y^2}y^2}{y} &= \sqrt{2\pi}s^{-\frac{3}{2}}, \\
+  \intab{0-}{0+}{e^{-\half s y^2}y^2}{y} &= 3\sqrt{2\pi}s^{-\frac{5}{2}}.
+  \end{align*}
+  故上述积分近似为
+  \[ \sqrt{\frac{2\pi}{s}}\pare{1+\frac{1}{12s}+\frac{1}{288s^2}}, \]
+  可以得到\rref{st}的近似.
+  \subsection{椭圆积分与椭圆函数}
+  \paragraph{椭圆的周长}欲计算椭圆
+  \begin{equation*}
+    \begin{cases}
+      x = \cos \theta\\
+      y = b \sin \theta
+    \end{cases}
+  \end{equation*}
+  的周长，注意到$e^2=1-b^2$，
+  \[ \rd{} s^2 = \rd{} x^2 + \rd{} y^2 = \pare{\cos^2\theta+b^2\sin^2\theta}\rd{}\theta^2. \]
+  故
+  \[ L=\intu{2\pi}{\sqrt{1-e^2\sin^2\theta}}{\theta} = 4\intu{\frac{\pi}{2}}{\sqrt{1-e^2\sin^2\theta}}{\theta}. \]
+  式中的积分为完全椭圆积分. 若不欲计算全椭圆周长而仅需部分周长，则积分至对应的$\theta$即可.注意$\theta$并非对应点与轴之间的夹角，而是其anomaly. \par
+  定义\emph{椭圆积分}的\emph{Legendre形式}如下：
+  \refl{ 
+  \begin{align*}
+  &\Fp\pare{\phi, k} = \intu{\phi}{\frac{1}{\sqrt{1-k^2\sin^2\theta}}}{\theta},\quad & 0\le k \le 1,\\
+  &\Ep\pare{\phi, k} = \intu{\phi}{\sqrt{1-k^2\sin^2\theta}}{\theta},\quad & 0\le k\le 1.
+  \end{align*}
+  }
+  如果作换元$t=\sin\theta$，并令$x=\sin\phi$，可以将积分转化为\emph{Jacobi形式}：
+  \refl{
+    \begin{align*}
+  &\Fx\pare{x, k} = \intu{x}{\frac{1}{\sqrt{1-t^2}\sqrt{1-k^2t^2}}}{t},\quad & 0\le k \le 1,\\
+  &\Ex\pare{x, k} = \intu{x}{\frac{\sqrt{1-k^2t^2}}{\sqrt{1-t^2}}}{t},\quad & 0\le k\le 1.
+  \end{align*}
+  }
+  对于积分上限恰好为$\pi/4$（或$1$）的情况，可以定义\emph{完全椭圆积分}：
+  \refl{
+  \begin{align*}
+    K\pare{k} &= \Fp\pare{\frac{\pi}{2},k}=\Fx\pare{1,k},\\
+    E\pare{k} &= \Ep\pare{\frac{\pi}{2},k}=\Ex\pare{1,k}.
+   \end{align*}
+  }
+  由周期性和对称性还可以得到
+  \begin{align*}
+    \Ep\pare{\phi_1,k} + \Ep\pare{\phi_2,k} &= \intab{-\phi_1}{\phi_2}{\sqrt{1-k^2\sin^2\theta}}{\theta}.\\
+    \Ep\pare{n\pi\pm\phi,k} &= 2nK\pm\Ep\pare{\phi,k}.\\
+  \end{align*}
+  对$\Fp$有完全类似的公式.
+  \paragraph{与单摆的联系}参考\ref{sssec:gamma2pd}，对于起始摆角$\alpha$，有
+  \[ \dot{\theta}^2=\frac{2g}{l}\pare{\cos\theta-\cos\alpha}. \]
+  直接积分，有
+  \[ \intu{\alpha}{\frac{1}{\sqrt{\cos\theta-\cos\alpha}}}{\theta} = \sqrt{\frac{2g}{l}}\frac{T_\alpha}{4}, \]
+  应用倍角公式并换元，
+  \[ \cos\theta-\cos\alpha = 2\sin^2\frac{\alpha}{2}-2\sin^2\frac{\theta}{2} =  2k^2-2\sin^2\psi. \]
+  积分可以写为
+  \begin{align*}
+    \sqrt{2}\intu{\frac{\alpha}{2}}{\frac{1}{\sqrt{k^2-\sin^2\psi}}}{\psi} &= \sqrt{2}\intu{k}{\frac{1}{\sqrt{k^2-x^2}\sqrt{1-x^2}}}{x}\\
+    &= \sqrt{2}\intu{1}{\frac{1}{\sqrt{1-t^2}\sqrt{1-k^2t^2}}}{t}\\
+    &= \sqrt{2}K\pare{\sin\frac{\alpha}{2}}.
+  \end{align*}
+  立即有
+  \[ T_\alpha = 4\sqrt{\frac{l}{g}}K\pare{\sin\frac{\alpha}{2}}. \]
+  \paragraph{级数展开}注意到
+  \[ \frac{1}{\sqrt{1-x^2}} = \sum \frac{\pare{2n-1}!!}{2^n n!}x^{2n}, \]
+  再借助\eref{sin2n}以及\rref{fact2}，有
+  \begin{align*}
+  K\pare{k} &= \pi \sum \frac{\pare{2n-1}!!}{2^n n!}\frac{\pare{2n-1}!}{2^{2n}n!\pare{2n-1}!}k^{2n}\\
+  &= \frac{\pi}{2}\sum\pare{\frac{\pare{2n-1}!!}{\pare{2n}!!}}^2k^{2n}.
+  \end{align*}
+  立知
+  \begin{align*}
+  T_\alpha &= 2\pi\sqrt{\frac{l}{g}}\pare{1+\pare{\half}^2\sin^2\frac{\alpha}{2}+\pare{\frac{1\cdot 3}{2\cdot 4}}^2\sin^4\frac{\alpha}{2}+\cdots} \\
+  &= 2\pi\sqrt{\frac{l}{g}}\pare{1+\frac{\alpha^2}{16}+\cdots} .
+  \end{align*}
+  \paragraph{椭圆函数}比照
+  \[ u = \intu{x}{\frac{1}{\sqrt{1-t^2}}}{t} = \sin^{-1}x, \]
+  定义
+  \[ u = \intu{x}{\frac{1}{\sqrt{1-t^2}\sqrt{1-k^2t^2}}}{t} = \sn^{-1}\,x. \]
+  因此有
+  \[ \sn\, u = \sin \phi. \]
+  相似地定义
+  \[ \cn\, u = \cos \phi = \sqrt{1-\sn\, u^2}, \]
+  \[ \rdn\, u = \eddon{\phi}{u} = \frac{1}{\rd{} u/\rd{} \phi} = \sqrt{1-k^2\sn^2\,u}. \]
+  注意由于$\sn$是某个角的$\sin$，上述诸函数均为周期函数，周期随$k$有变.
+  \section{微分方程的级数解}
+  \subsection{引论}
+  本章将考察各种线性的二阶方程，其系数可能为$x$的函数，因此解析解的获得可能有困难. 这是激动人心的一章，尤其是在读了《量子力学概论》之后.
+  \begin{ex}
+    考虑方程
+    \[ y' = 2xy. \]
+    设
+    \[ y = \sum a_n x^n, \]
+    上述方程变为
+    \[ \pare{n+2}a_{n+2} = 2a_n, \]
+    且
+    \[ a_\text{odd} = 0. \]
+    得
+    \[ a_{2n} = \frac{a_0}{n!}, \]
+    \[ y = ce^{x^2}. \]
+  \end{ex}
+  \refl{
+  \label{refl:subst}
+  可以遵守如\tbref{subst}所示的替换法则.牢记当$n<0$时定义$a_n=0$.
+  }
+  \begin{table}[!ht]
+  \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    因子 & $1$ & $x$ & $x^2$ \\
+    \hline
+    $y$ & $a_n$ & $a_{n-1}$ & $a_{n-2}$ \\
+    \hline
+    $y'$ & $\pare{n+1}a_{n+1}$ & $na_n$ & $\pare{n-1}a_{n-1}$ \\
+    \hline
+    $y''$ & $\pare{n+1}\pare{n+2}a_{n+2}$ & $n\pare{n+1}a_{n+1}$ & $\pare{n-1}na_n$ \\
+    \hline
+    \end{tabular}
+    \caption{替换法则}
+    \label{table:subst}
+  \end{table}
+  \subsection{Legendre方程}
+  如下的\emph{Legendre方程}
+  \[ \pare{1-x^2}y'' - 2xy' + l\pare{l+1}y = 0, \]
+  经过\rref{subst}的替换，得到
+  \[ \pare{n+1}\pare{n+2}a_{n+2} + \pare{l^2+l-n^2-n}a_n = 0. \]
+  注意到
+  \[ l^2-n^2+l-n = \pare{l-n}\pare{l+n+1}, \]
+  得
+  \[ a_{n+2} = -\frac{\pare{l-n}\pare{l+n+1}}{\pare{n+1}\pare{n+2}}a_n. \]
+  立刻有
+  \begin{align*}
+    y = & a_0\pare{1-\frac{l\pare{l+1}}{2!}x^2 + \frac{l\pare{l+1}\pare{l-2}\pare{l+3}}{4!}x^4-\cdots}\\
+    & + a_1\pare{x-\frac{\pare{l-1}\pare{l+2}}{3!}x^3 + \frac{\pare{l-1}\pare{l+2}\pare{l-3}\pare{l+4}}{5!}x^5-\cdots}.
+  \end{align*}
+  若级数无限延续，则当$x^2=1$时其发散.
+  \paragraph{Legendre多项式}当$l$为非负整数时，上述展开中奇数幂或偶数幂部分之一将被截断. 若$l$为非负偶数，则上式偶数幂部分被截断，奇数幂无限延伸，故可设$a_1=0$而清除之. 故此时对应的$y$为偶数幂多项式，当$l$为奇数时则对应奇数幂多项式. 如此产生的多项式序列，若选择首项系数使得$x=1$时$y=1$，则称之为\emph{Legendre多项式}. 前几个Legendre多项式为
+  \[ P_0 = 1, \qquad P_1 = x, \qquad P_2 = \half\pare{3x^2-1}.\]
+  注意当$l$为偶数或奇数时，$P_l$为偶函数或奇函数，故
+  \[ P_l\pare{-1} = \pare{-1}^l. \]
+  还有，此处可以应用\rref{uv}获得\emph{第二类Legendre}函数，其中
+  \[ f\pare{x} = -\frac{2x}{1-x^2},\quad \iF\pare{x} = \log\pare{1-x^2},\quad \eiF = \frac{1}{1-x^2}. \]
+  \paragraph{特征值问题}
+  Legendre多项式可视为算子
+  \[ \FF\pare{\DD} = \pare{x^2-1}\DD^2-2x\DD = \DD\pare{x^2-1}\DD \]
+  的本征值为$l\pare{l+1}$的本征函数.
+  \refl{
+    \[ \DD f\DD P_l = l\pare{l+1}P_l. \]
+  }
+  \subsection{Leibniz求导法则}
+  \refl{
+    \[ \DD^n\pare{fg} = \sum C_n^r \DD^r f \DD^{n-r} g. \]
+    特别地，
+    \[ [\DD^n, x] = n\DD^{n-1}. \]
+  }
+  \begin{ex}
+  \label{ex:DfD}
+    \begin{alignat*}{2}
+    \DD^{l+1}f &= f \DD^{l+1} + \pare{l+1}&&f'\DD^{l} + l\pare{l+1}\frac{f''}{2}\DD^{l-1} + \cdots
+    \end{alignat*}
+    若$f$为首一二次多项式，$f''=2$，则
+    \[ [\DD^{l+1}, f] = \pare{l+1}f'\DD^l + l\pare{l+1}\DD^{l-1}. \]
+  \end{ex}
+  \subsection{Rodrigues公式}
+  令$f = x^2-1$，由\eref{DfD}，
+  \begin{align*}
+    \DD f\DD \DD ^lf^l &= \DD \pare{\DD ^{l+1}f - \pare{l+1}f'\DD ^l - l\pare{l+1}\DD ^{l-1}}f^l \\
+    &= \DD ^{l+2}ff^l - 2\pare{l+1}\DD x\DD ^lf^l - l\pare{l+1}\DD ^lf^l.
+  \end{align*}
+  第一项
+  \begin{align*}
+    \DD ^{l+2}ff^l &= \DD ^{l+1}\pare{l+1}f'f^l \\
+    &= 2\pare{l+1}\DD ^{l+1}xf^l \\
+    &= 2\pare{l+1}x\DD ^lf^l + 2\pare{l+1}\pare{l+1}\DD ^lf^l.
+  \end{align*}
+  第二项
+  \begin{align*}
+    -2\pare{l+1}\DD x\DD ^lf^l &= -2\pare{l+1}\pare{x\DD +1}\DD ^lf^l,
+  \end{align*}
+  知
+  \[ \DD f\DD \DD ^lf^l = l\pare{l+1}\DD ^lf^l. \]
+  再注意到
+  \[ \DD ^lf^l = \DD ^l\pare{x+1}^l\pare{x-1}^l, \]
+  借助Leibniz法则，$x=1$时仅有
+  \[ \pare{x+1}^l\DD ^l\pare{x-1}^l = 2^l l!. \]
+  一项非零（因$x-1$的因子已经被悉数微分）.
+  故
+  \refl{
+    \label{refl:pl}
+    \[ P_l = \frac{1}{2^l l!}\DD ^l\pare{x^2-1}^l. \]
+  }
+  \paragraph{Rodrigues公式之父}设$p$为二次多项式，$q$为一次多项式，$w$（可能不是有理函数）满足
+  \begin{equation}
+    \label{eq:w}
+    \pare{wp}' = wq.
+  \end{equation}
+  $w$的一阶导数可以写为
+  \[ \frac{w'}{w} = \frac{q-p'}{p}, \]
+  二阶导数可以写为
+  \[ \frac{w''}{w} = \frac{\pare{q-p'}\pare{q-2p'}+q'-p''}{p}. \]
+  \par
+  现在定义
+  \[ \FF = \frac{1}{w}\DD w, \]
+  以及
+  \[ y_n = \FF^np^n = \frac{1}{w}\DD^nwp^n. \]
+  由一阶导数的公式，有
+  \[ p\DD\pare{wp^n} = wp^n\pare{\pare{n-1}p'+q}. \]
+  对上式微分$n+1$次并注意$p$为二次而$q$为一次，得到
+  \begin{alignat*}{2}
+    p\FF^{n+2}p^n + \pare{n+1}p' & \FF^{n+1}p^n + && \frac{n\pare{n+1}}{2}  p''\FF^np^n \\
+    = \pare{\pare{n-1}p'+q} & \FF^{n+1}p^n + &&\pare{\pare{n+1}\pare{\pare{n- 1}p''+q'}} \FF^np^n.
+  \end{alignat*}
+  合并$\FF p$的同类项，有
+  \[ p\FF^{n+2}p^n + \pare{2p'-q}\FF^{n+1}p^n - \pare{\frac{n^2-n-2}{2}p''+\pare{n+1}q'}\FF^np^n = 0. \]
+  或者
+  \[ p\FF^2y_n + \pare{2p'-q}\FF y_n - \pare{\frac{n^2-n-2}{2}p''+\pare{n+1}q'}y_n = 0. \]
+  $\FF$可以消去如下
+  \begin{equation*}
+    \FF = \DD + \frac{w'}{w} = \DD + \frac{q-p'}{p}.
+  \end{equation*}
+  $\FF^2$可以消去为
+  \begin{align*}
+    \FF^2 &= \frac{1}{w}\DD^2w = \DD^2+2\frac{w'}{w}\DD + \frac{w''}{w} \\
+           &= \DD^2 + \frac{2\pare{q-p'}}{p}\DD + \frac{1}{p}\pare{\pare{q-p'}\pare{q-2p'}+q'-p''}.
+  \end{align*}
+  代回得
+  \[ py''_n + qy'_n - \pare{\frac{n^2-n}{2}p''+nq'}y_n = 0. \]
+  因此，有
+  \refl{
+    若$p$为二次多项式，$q$为一次多项式，则
+    \[ y_n = \FF^n p^n \]
+    是$p\DD^2+q\DD$本征值为
+    \[ \frac{n^2-n}{2}p''+nq' \]
+    的函数. 其中
+    \[ \log w = \int \frac{q}{p} - \log p. \]
+  }
+  可以看出，前述的Rodrigues公式是这一反射的特例.
+  \paragraph{正交性}$P_l$与所有次数小于$l$的多项式正交，因为
+  \[ \intab{-1}{1}{P_l}{x} = 0, \]
+  而
+  \[ 2^ll!\intab{-1}{1}{x^mP_l}{x} = \left. x^mD^{l-1}\pare{x^2-1}^l\right\vert_{x=-1}^{1} - \int x^{m-1}\cdots.  \]
+  第一项由对称性知为零，第二项由归纳假设为零.
+  \subsection{生成函数与递归关系}
+  令
+  \[ \Phi\pare{x,h} = \pare{1-2xh+h^2}^{-\half}, \]
+  有（参考《电动力学导论》）
+  \refl{
+    \[\pare{1-2xh+h^2}^{-\half} = \sum P_l\pare{x}h^l.\]
+  }
+  Taylor展开$1/\sqrt{1-x}$可以验证前若干项目. 令人信服的证明则需要先验证当$x=1$，有
+  \[ \Phi\pare{x,h} = \frac{1}{1-h} = 1+h+h^2+\cdots, \]
+  故系数多项式在$x=1$时均为$1$. 再注意到
+  \[ \pare{1-x^2}\Phi_{xx}-2x\Phi_x+h\pare{h\Phi}_{hh} = 0, \]
+  其中下标表示求导. 因而（参考\rref{subst}）
+  \[ \pare{1-x^2}P'' -2xP' + l\pare{l+1}P = 0. \]
+  从生成函数还可以得到相当多的递推关系，从而得以在已知次数小的Legendre多项式的情况下推出次数大的多项式. 例如，借助
+  \[ \pare{1-2xh+h^2}\Phi_h = \pare{x-h}\Phi, \]
+  即
+  \[ h\Phi_h = xh\pare{h\Phi}_h + xh^2\Phi_h-h^2\pare{h\Phi}_h, \]
+  有
+  \refl{
+    \label{refl:lpl1}
+    \[ lP_l = \pare{2l-1}xP_{l-1} - \pare{l-1}P_{l-2}. \]
+  }
+  \begin{ex}
+    \label{ex:xpp}
+    \begin{align*}
+      \frac{\int xP_{n-1}P_n}{\int P_{2n-1}^2} &= \frac{2n-1}{2}\pare{\int\frac{nP_n+\pare{n-1}P_{n-2}}{2n-1}P_n} \\
+      &= \frac{n}{2n+1}.
+    \end{align*}
+    同理有（更简单的方法为注意奇函数乘偶函数为奇函数）
+    \[ \int xP_n^2 = 0. \]
+  \end{ex}
+  又借助
+  \[ \pare{x-h}\Phi_x = h\Phi_h, \]
+  有（书中证明正交关系时有用）
+  \refl{
+    \label{refl:lpl2}
+    \[ lP_l = xP'_l - P'_{l-1}. \]
+  }
+  对\rref{lpl1}微分，有
+  \[ lP'_l = \pare{2l-1}P_{l-1} + \pare{2l-1}xP'_{l-1}-\pare{l-1}P'_{l-2}. \]
+  再注意\rref{lpl2}可以写为
+  \[ \pare{l-1}^2P_{l-1} = \pare{l-1}xP'_{l-1}-\pare{l-1}P'_{l-2}, \]
+  从而
+  \[ \pare{l^2-\pare{l-1}^2}P_{l-1} + \pare{2l-1}xP'_{l-1}-\pare{l-1}P'_{l-2} = l^2P_{l-1}+lxP'_{l-1}. \]
+  \refl{
+    \label{refl:lpl3}
+    \[ lP_{l-1} = P'_l - xP'_{l-1}. \]
+  }
+  在\rref{lpl2}两侧乘$x$并与\rref{lpl3}相减，得到
+  \[ lP_{l-1} - lxP_l = \pare{1-x^2}P'_l. \]
+  亦即
+  \refl{
+    \label{refl:lpl4}
+    \[ \pare{1-x^2}P'_l = lP_{l-1}-lxP_l. \]
+  }
+  在\rref{lpl3}两侧乘$x$并与\rref{lpl2}相减，得到
+  \[ lxP_{l-1} - lP_l= \pare{1-x^2}P'_{l-1}. \]
+  亦即
+  \refl{
+    \label{refl:lpl5}
+    \[ \pare{1-x^2}P'_{l-1} = lxP_{l-1}-lP_l. \]
+  }
+  在\rref{lpl4}两侧微分，有
+  \[ -DfDP_l = lP'_{l-1} - lxP'_l - lP_l. \]
+  由\rref{lpl2}，
+  \[ lxP'_l = l^2P_l+lP'_{l-1}, \]
+  故
+  \[ DfDP_l = l\pare{l+1}P_l. \]
+  这再次证明上述反射皆定义了Legendre多项式.
+  \par
+  最后，将\rref{lpl3}写作
+  \[ P'_{l+1} - xP'_l = \pare{l+1}P_l. \]
+  由\rref{lpl2}，
+  \[ xP'_l = lPl + P'_{l-1}, \]
+  得到（快速获得正交关系的途径之一）
+  \refl{
+    \label{refl:lpl6}
+    \[ \pare{2l+1}P_l = P'_{l+1}-P'_{l-1}. \]
+  }
+  \paragraph{势展开}场源$r$与检验点$R$之间的距离可以写为
+  \[ d = R\sqrt{1-2\frac{r}{R}\cos\theta+\pare{\frac{r}{R}}^2}. \]
+  对于反比势，有
+  \[ V = \frac{K}{R}\pare{1-\frac{2r}{R}\cos\theta+\pare{\frac{r}{R}}^2}^{-\half}. \]
+  注意$h=r/R$，有
+  \[ V = \frac{K}{R} \sum \frac{r^l}{R^l}P_l\pare{\cos\theta}. \]
+  \par
+  若场源的位置远离检验点，例如要考虑其他行星对水星的摄动，则可以互换$r$与$R$，上述方程仍然不变.
+  \subsection{完备正交函数集}
+  定义
+  \[ \bk{A}{B} = \intab{}{}{A^*B}{x}, \]
+  若
+  \[ \bk{A}{B} = 0 \]
+  则称$A$与$B$正交.
+  \par
+  Legendre多项式$\curb{P_0,\cdots,P_{n}}$是$\curb{1,\cdots,x^{n}}$Gram-Schmidt正交化的结果. 故单位区间内的所有Riemann可积函数均可以表示为Legendre多项式的和（参考如《傅立叶分析导论》，或《实变函数论》p.192），因此Legendre多项式是一完备集合.
+  \par
+  注意$\curb{P_0,\cdots,P_{n-1}}$与$\curb{1,\cdots,x^{n-1}}$张成完全相同的多项式空间，并假设其可由Gram-Schmidt过程获得. 则对$xP_{n-1}$应用此过程，有（忽略比例因子）
+  \[ \pare{P_n} = xP_{n-1} + \frac{\int xP_{n-1}^2}{\int P_{n-1}^2}P_{n-1} + \frac{\int x P_{n-2}P_{n-1}}{\int P_{n-2}^2}P_{n-2}. \]
+  由\eref{xpp}，这正是\rref{lpl1}（忽略比例因子）
+  \[ \pare{P_n} = xP_{n-1} + \frac{n-1}{2n-1}P_{n-2}. \]
+  \par
+  之所以可以如此应用Gram-Schmidt过程，在于$\alpha x^n$与$x^n$挖去\[ \curb{1,\cdots,x^{n-1}} \]分量的结果成比例. 而$\alpha x^n + O\pare{x^{n-1}}$挖去的结果也相同，故最终仅仅相差一比例因子.
+  \subsection{正交关系}
+  \label{sssec:oth}
+  $\FF = \DD f\DD$是Hermitian算子，
+  \begin{align*}
+    \intab{-1}{1}{P\DD f\DD Q}{x} &= \intab{-1}{1}{P}{f\DD Q} \\
+    &= Pf\DD Q\left\vert_{x=-1}^{1} - \intab{-1}{1}{\pare{f\DD Q}\pare{\DD P}}{x} \right. \\
+    &= -\intab{-1}{1}{f\DD P}{Q} \\
+    &= -Qf\DD P\left\vert_{x=-1}^{1} + \intab{-1}{1}{Q\DD fDP}{x}\right. \\
+    &= \intab{-1}{1}{Q\DD f\DD P}.
+  \end{align*}
+  边界项的消除完全承蒙$f\pare{\pm1}=0$. 由此可得
+  \[ \bik{P_m}{\FF}{P_n} = \lambda_m\bk{P_m}{P_n} = \lambda_n\bk{P_m}{P_n}. \]
+  因此，若$m\ne n$，有
+  \[ \intab{-1}{1}{P_mP_n}{x} = 0. \]
+  \par
+  注意任意的$f\pare{x}$本身均为Hermitian算子，而Hermitian算子的加减仍然为Hermitian算子，因此
+  \[ \DD f \DD - \frac{m^2}{1-x^2} \]
+  也是Hermitian算子，故其本征函数为正交系（关联Legendre函数）.
+  \subsection{自交关系：归一化}
+  借助\rref{lpl3}，
+  \begin{align*}
+    \pare{2l+1}\intab{-1}{1}{P_l^2}{x} &= \intab{-1}{1}{P_l\pare{P'_{l+1}-P'_{l-1}}}{x} \\
+    &= \intab{-1}{1}{P_l}{P_{l+1}} \\
+    &= \left.P_lP_{l+1}\right\vert_{x=-1}^{1} - \intab{-1}{1}{P_{l+1}P'_l}{x} \\
+    &= 2.
+  \end{align*}
+  其中若干积分项的消失承蒙$P_l$与次数小于其的所有多项式正交的事实.
+  \refl{
+    \label{refl:PP}
+    \[ \intab{-1}{1}{P_lP_m}{x} = \frac{2}{2l+1}\delta_{lm}. \]
+  }
+  \subsection{Legendre级数}
+  \begin{ex}
+    将
+    \[ 
+       f\pare{x} = \begin{cases}
+       0, \quad -1<x<0,\\
+       1, \quad 0<x<1
+       \end{cases}
+    \]
+    展开为Legendre级数
+    \[ f=\sum c_l P_l, \]
+    有
+    \[ \bk{f}{P_l} = c_l\bk{P_l}{P_l}. \]
+  \end{ex}
+  \refl{
+    对于
+    \[ f=\sum c_l P_l, \]
+    有
+    \[ c_l = \frac{2l+1}{2}\bk{f}{P_l}. \]
+  }
+  上述逼近可以证明为最佳逼近（参考《傅立叶分析导论》）. 直接注意到$P_l$为正交系后应用Pythagorean定理即可.
+  \subsection{关联Legendre函数}
+  对于方程
+  \[ \pare{1-x^2}y''-2xy'+\pare{l\pare{l+1} - \frac{m^2}{1-x^2}}y = 0,\qquad m\le l, \]
+  令
+  \[ f=1-x^2, \]
+  可以尝试代换
+  \[ y=\pare{1-x^2}^{m/2}u = f^{m/2}u. \]
+  从而
+  \[ y' = f^{m/2}u' - mxf^{m/2-1}u, \]
+  \begin{align*}
+    y'' =& f^{m/2}u'' - mxf^{m/2-1}u' \\
+         & -mf^{m/2-1}u + m\pare{m-2}x^2f^{m/2-2}u\\
+         & -mxf^{m/2-1}u'.
+  \end{align*}
+  将各项系数列出如下
+  \begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+     & $f^{m/2+1}$ & $f^{m/2}$ & $f^{m/2-1}$ \\
+    \hline
+     $y''$项 & $u''$ & $-mu-mxu'-mxu'$ & $m\pare{m-2}x^2u$ \\
+    \hline
+     $y'$项 & $$ & $-2xu'$ & $2mx^2u$ \\
+    \hline
+     $y$项 & $$ & $l\pare{l+1}u$ & $-m^2u$ \\
+    \hline
+    \end{tabular}
+  \end{table}
+  合并$u$项给出
+  \[ f^{m/2} \pare{\pare{l\pare{l+1}-m\pare{m+1}}u}, \]
+  合并$u'$项给出
+  \[ -2f^{m/2}\pare{m+1}xu, \]
+  合并$u''$项给出
+  \[ f^{m/2+1}u''. \]
+  故方程化为
+  \[ \pare{1-x^2}u''-2\pare{m+1}xu'+\pare{l\pare{l+1} - m\pare{m+1}}u = 0. \]
+  若对上式微分，有
+  \[ \pare{1-x^2}\pare{u'}'' - 2\pare{m+1+1}x\pare{u'}' - \pare{l\pare{l+1} - \pare{m+1}\pare{m+2}}u = 0. \]
+  这正是对前式替换$m$为$m+1$的结果. 由是可以得到，对$m+1$的解刚好为对$m$的解求导的结果. 而对于$m$为0的情况，$u$恰为Legendre多项式. 是故
+  \refl{
+    \label{refl:pml}
+    方程
+    \[ \pare{\DD f \DD + \pare{l\pare{l+1}-\frac{m^2}{1-x^2}}}y = 0 \]
+    的解为
+    \[  P_l^m = \pare{1-x^2}^{m/2}\DD^mP_l. \]
+  }
+  应当注意到，Legendre多项式就是$m=0$时的关联Legendre函数.
+  \begin{ex}
+    对于方程
+    \[ \frac{1}{\sin\theta} \eddon{}{\theta}\pare{\sin\theta\eddon{y}{\theta}} + \pare{l\pare{l+1}-\frac{m^2}{\sin^2\theta}}y = 0, \]
+    令$x=\cos\theta$，有
+    \[ \sin\theta\eddon{}{\theta} = -f\DD, \]
+    而
+    \[ \frac{1}{\sin\theta}\eddon{}{\theta} = -\DD. \]
+    因此方程等价于
+    \[ \DD f \DD y + \pare{l\pare{l+1}-\frac{m^2}{1-x^2}}y = 0. \]
+    故解为
+    \[ y = P_l^m\pare{\cos\theta}. \]
+  \end{ex}
+  由于
+  \[ \DD f \DD + -\frac{m^2}{1-x^2} \]
+  是Hermitian算子（参考\ref{sssec:oth}），故对同一$m$，其本征函数为正交函数系.
+  \paragraph{关联Legendre函数的正交与自交}
+  由Leibniz法则，
+  \begin{align*}
+  L &= \rec{\pare{l-m}!}\DD^{l-m}\pare{x-1}^l\pare{x+1}^l =\\ &\sum \rec{r!\pare{l-m-r}!} \curb{\DD^r \pare{x-1}^l} \curb{\DD^{l-m-r}\pare{x+1}^l},\\
+  R &=\pare{x-1}^m\pare{x+1}^m\rec{\pare{l+m}!}\DD^{l+m}\pare{x-1}^l\pare{x+1}^l =\\ &\sum \rec{r!\pare{l+m-r}!} \curb{\pare{x-1}^m\DD^r \pare{x-1}^l} \curb{\pare{x+1}^m\DD^{l+m-r}\pare{x+1}^l},
+  \end{align*}
+  对齐两侧的项，以右侧$r \mapsto r+m$，变为
+  \[ \sum \rec{\pare{r+m}!\pare{l-r}!} \curb{\pare{x-1}^m\DD^{r+m} \pare{x-1}^l} \curb{\pare{x+1}^m\DD^{l-r}\pare{x+1}^l}. \]
+  因此，对齐后
+  \begin{align*}
+    L &\sim \frac{l\times \cdots \times \pare{l-r+1}\times l \times \cdots \times \pare{m+r+1}}{r!\pare{l-m-r}!},\\
+    R &\sim \frac{l\times \cdots \times \pare{l-m-r+1}\times l \times \cdots \times \pare{r+1}}{\pare{r+m}!\pare{l-r}!}.
+  \end{align*}
+  消去可知两侧相等，故（注意$f=1-x^2$而不是$x^2-1$）
+  \begin{equation}
+  \label{eq:lmlm} \DD^{l-m}f^l = \pare{-1}^m\frac{\pare{l-m}!}{\pare{l+m}!}f^m\DD^{l+m}f^l.
+  \end{equation}
+  \refl{
+    \[ \rec{\pare{l+m}!}\pare{x^2-1}^{m/2}\DD^{l+m}\pare{x^2-1}^l \]
+    在变换$m \mapsto -m$下不变.
+  }
+  在\rref{pml}中代入\rref{pl}，有
+  \[ P_l^m = \rec{2^ll!}f^{m/2}\DD^{l+m}f^l. \]
+  因此，由这一公式求出的
+  \[ P_l^{-m} = \rec{2^ll!}f^{-m/2}\DD^{l-m}f^l = \pare{-1}^m \frac{\pare{l-m}!}{\pare{l+m}!} P_l^m. \]
+  有些作者在\rref{pml}中采用了$\abs{m}$替换$m$，此时
+  \[ P_l^{-m} = P_l^{m}. \]
+  \par
+  若将$\DD^{l+m}$利用\ref{eq:lmlm}代换，有
+  \[ P_l^m = \pare{-1}^m\rec{2^ll!}f^{-m/2}\frac{\pare{l+m}!}{\pare{l-m}!}\DD^{l-m}f^l. \]
+  又注意由\rref{pml}，
+  \[ P_l^m = f^{m/2}\DD^{l+m}f^l, \]
+  因此
+  \[ \pare{P_l^m}^2 = \frac{\pare{l+m}!}{\pare{l-m}!} \rec{2^ll!} \DD^{l+m}f^l \DD^{l-m}f^l,  \]
+  分部积分后由\rref{pl}与\rref{PP}，自交结果为
+  \refl{
+  \[ \bk{P_l^m}{P_l^m} = \frac{\pare{l+m}!}{\pare{l-m}!}\frac{2}{2l+1}.  \]
+  }
+  \subsection{广义幂级数}
+  对于解的幂级数中含有$x$的分数幂的情况，例如
+  \[ y = x^s \sum a_n x^n \]
+  仍可以借助类似于\rref{subst}的方法求解，唯应注意$n\mapsto n+s$.
+  \refl{
+  \label{refl:substs}
+  可以遵守如\tbref{substs}所示的替换法则，其中$n'=n+s$.牢记当$n<0$时定义$a_n=0$.
+  }
+  \begin{table}[!ht]
+  \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    因子 & $1$ & $x$ & $x^2$ \\
+    \hline
+    $y$ & $a_n$ & $a_{n-1}$ & $a_{n-2}$ \\
+    \hline
+    $y'$ & $\pare{n'+1}a_{n+1}$ & $n'a_n$ & $\pare{n'-1}a_{n-1}$ \\
+    \hline
+    $y''$ & $\pare{n'+1}\pare{n'+2}a_{n+2}$ & $n'\pare{n'+1}a_{n+1}$ & $\pare{n'-1}n'a_n$ \\
+    \hline
+    \end{tabular}
+    \caption{替换法则}
+    \label{table:substs}
+  \end{table}
+  \begin{ex}
+    对于方程
+    \[ x^2y''+4xy' + \pare{x^2+2}y=0, \]
+    有
+    \[ \pare{n+s-1}\pare{n+s}a_n + 4\pare{n+s}a_n + a_{n-2} + 2a_n = 0. \]
+    当$n=0$，有
+    \[ \pare{s-1}sa_0 + 4sa_0 + 2a_0 = 0. \]
+    仅有二解为$s=-2$与$s=-1$.
+    \par
+    对于$s=-1$的情形，$a_{2n+1}=0$且
+    \[ a_n = -\frac{a_{n-2}}{n\pare{n+1}}, \]
+    故
+    \[ y = \frac{a_0\sin x}{x}. \]
+  \end{ex}
+  \subsection{Bessel方程}
+  考虑方程
+  \[ x^2y''+xy'+\pare{x^2-p^2}y = 0, \]
+  可以考虑代换$x\pare{xy'}' = x^2y'' + xy'$，从而化之为
+  \[ x\pare{xy'}' + \pare{x^2-p^2}y = 0. \]
+  若不考虑上述代换，仍可以借助\rref{substs}，有
+  \[ \pare{n+s-1}\pare{n+s}a_n + \pare{n+s}a_n + a_{n-2} - p^2a_n = 0. \]
+  或者
+  \[ \pare{\pare{n+s}^2-p^2}a_n + a_{n-2} = 0, \]
+  \[ a_n = -\frac{a_{n-2}}{\pare{n+s}^2-p^2}. \]
+  此处考虑$a_0\ne 0$的解，从而$a_1 = 0$且$s=p$（还有另一解$s=-p$留待下节）.因此
+  \[ a_{2n} = -\frac{a_{2n-2}}{4n\pare{n+p}} = \pare{-1}^n\frac{\Gamma\pare{1}}{\Gamma\pare{n+1}}\frac{\Gamma\pare{1+p}}{\Gamma\pare{n+1+p}}\frac{a_0}{2^{2n}}. \]
+  且
+  \[ y = \sum a_{2n}x^{2n+p}, \]
+  故若令
+  \[ a_0 = \rec{2^p\Gamma\pare{p+1}}, \]
+  有
+  \refl{
+    \label{refl:jps}
+    \[ J_p\pare{x} = \sum \frac{\pare{-1}^n}{\Gamma\pare{n+1}\Gamma\pare{n+1+p}}\pare{\frac{x}{2}}^{2n+p} \]
+    满足
+    \[ \pare{x\DD}^2y + x^2y-p^2y = 0. \]
+  }
+  \subsection{Bessel方程的第二解}
+  可直接定义（或者，原封不动）
+  \[ J_{-p}\pare{x} = \sum \frac{\pare{-1}^n}{\Gamma\pare{n+1}\Gamma\pare{n+1-p}}\pare{\frac{x}{2}}^{2n-p}, \]
+  代换$n\mapsto n+p$有
+  \[ J_{-p}\pare{x} = \sum_{n=-p} \frac{\pare{-1}^{n+p}}{\Gamma\pare{n+p+1}\Gamma\pare{n+1}}\pare{\frac{x}{2}}^{2n+p}, \]
+  未对齐的项目由于$n<p$而系数消失.故
+  \refl{
+  对于整数$p$，
+    \[ J_{-p} = \pare{-1}^pJ_p. \]
+  }
+  对于非整数的$p$，$J_p$与$J_{-p}$为二独立解，故可组合而给出Bessel方程的通解. 对于一般的$p$，第二解由Neumann函数给出
+  \refl{
+    \label{refl:newman}
+    \[ N_p = Y_p = \frac{\cos\pare{\pi p} J_p - J_{-p}}{\sin \pare{\pi p}} \]
+    满足Bessel方程.
+  }
+  当$p$非整数时，$N_p$与$J_p$线性无关. 而对于整数的$p$，在$x\ne 0$极限存在，而$x=0$发散，故独立于$J_p$.
+  \par
+  特别地，对于半奇整数，直接有
+  \[ N_{\pare{2n+1}/2}=\pare{-1}^{n+1}J_{-\pare{2n+1}/2}. \]
+  这并不矛盾，半奇整数的两个$J$本就线性独立.
+  \par
+  \begin{ex}
+    \label{ex:p-half}
+    对于$p=-\half$，借助\rref{gamma2p}有
+    \begin{align*}
+    J_{-\half} &= \pare{\frac{x}{2}}^{-\half} \sum \frac{\pare{-1}^n}{\Gamma\pare{n+1}\Gamma\pare{n+\half}}\pare{\frac{x}{2}}^{2n} \\
+    &= \pare{\frac{x}{2}}^{-\half} \sum \frac{\pare{-1}^n2^{2n}}{\sqrt{\pi}\Gamma\pare{2n+1}}\pare{\frac{x}{2}}^{2n} \\
+    &= \sqrt{\frac{2}{\pi x}}\cos x.
+    \end{align*}
+    参考上文令$n=0$，直接有
+    \[ Y_\half = -\sqrt{\frac{2}{\pi x}}\cos x. \]
+  \end{ex}
+  \subsection{Bessel函数的零点}
+  所有（除了$p=0$）的Bessel函数都可以近似看做振幅以$x^{-1/2}$衰减的三角函数，其零点间距接近$\pi$. 而Neumann函数也有类似的性质（参考后文的渐进公式，以及《物理学家用的数学方法》，Arfken）.
+  \subsection{递归关系}
+  本节的反射对Neumann函数均适用.
+  \par 
+  对
+  \[ x^pJ_p = \sum \frac{\pare{-1}^n}{\Gamma\pare{n+1}\Gamma\pare{n+1+p}}\pare{\frac{x}{2}}^{2n+2p} \]
+  求导，
+  \begin{align*}
+    \DD x^p J_p &= \sum \frac{\pare{-1}^n \pare{n+p}}{\Gamma\pare{n+1}\Gamma\pare{n+1+p}}\pare{\frac{x}{2}}^{2n+2p-1} \\
+    &= x^p \sum \frac{\pare{-1}^n}{\Gamma\pare{n+1}\Gamma\pare{n+1+p-1}}\pare{\frac{x}{2}}^{2n+\pare{p-1}} \\
+    &= x^p J_{p-1}.
+  \end{align*}
+  \refl{
+  \label{refl:jpp0}
+    \[ \pare{x^pJ_p}' = x^pJ_{p-1}. \]
+  }
+  而对
+  \[ x^{-p}J_p = \sum \frac{\pare{-1}^n}{\Gamma\pare{n+1}\Gamma\pare{n+1+p}}\pare{\frac{x}{2}}^{2n} \]
+  求导，
+  \begin{align*}
+    \DD x^{-p} J_p &= \sum \frac{\pare{-1}^n n}{\Gamma\pare{n+1}\Gamma\pare{n+1+p}}\pare{\frac{x}{2}}^{2n} \\
+    &= \sum \frac{\pare{-1}^n}{\Gamma\pare{n}\Gamma\pare{n+1+p}}\pare{\frac{x}{2}}^{2n-1} \\
+    &= x^{-p} \sum \frac{\pare{-1}^{n+1}}{\Gamma\pare{n+1}\Gamma\pare{n+1+p+1}}\pare{\frac{x}{2}}^{2n+p+1} \\
+    &= -x^{-p}J_{p+1}.
+  \end{align*}
+  \refl{
+  \label{refl:jpp1}
+    \[ \pare{x^{-p}J_p}' = -x^{-p}J_{p+1}. \]
+  }
+  \begin{ex}
+    \label{ex:phalf}
+    对\eref{p-half}应用上述反射，有
+    \[ \pare{x^{\half}J_{-\half}}' = -\sqrt{\frac{2}{\pi}}\sin x = -x^{\half}J_{\half}. \]
+    即
+    \[ J_\half = \sqrt{\frac{2}{\pi x}}\sin x. \]
+  \end{ex}
+  \paragraph{半整数阶的初等函数通项}借助前例以及上述反射，可以证明
+  \[ \sqrt{\frac{\pi}{2x}}J_{n+\half}\pare{x}=x^n\pare{-\rec{x}\DD}^n\frac{\sin x}{x}. \]
+  上式要求
+  \[ \sqrt{\frac{\pi}{2x}}J_{n+1+\half} \pare{x} = x^{n+1}\pare{-\rec{x}\DD}^{n+1}\frac{\sin x}{x}, \]
+  而递推关系要求
+  \begin{align*}
+    J_{n+1+\half} &= -x^{n+\half}\DD\pare{x^{-n-\half}J_{n+\half}} \\
+    &= -x^{n+\half}\DD\pare{x^{-n-\half}\sqrt{\frac{2x}{\pi}}x^n\pare{-\rec{x}\DD}^n\frac{\sin x}{x}}.
+  \end{align*}
+  可见二者一致，故通项公式满足递推条件. 又可见其首项相符，故
+  \refl{
+    \label{refl:elej}
+    \[ J_{n+\half}\pare{x} = \sqrt{\frac{2x}{\pi}}x^n\pare{-\rec{x}\DD}^n\pare{\frac{\sin x}{x}}. \]
+  }
+  而参考\eref{p-half}后段，直接将$\sin$替换为$-\cos$，可得
+  \refl{
+    \label{refl:eley}
+    \[ Y_{n+\half} = -\sqrt{\frac{2x}{\pi}}x^n\pare{-\rec{x}\DD}^n\pare{\frac{\cos x}{x}}. \]
+  }
+  将\rref{jpp0}与\rref{jpp1}的微分展开，有
+  \begin{align}
+    px^{p-1}J_p+x^pJ'_p &= x^pJ_{p-1},\\
+  \label{eq:jpd}
+    -px^{-p-1}J_p + x^{-p}J'_p &= -x^{-p}J_{p+1}.
+  \end{align}
+  立即得到
+  \refl{
+  \label{refl:jpp2}
+    \[ J'_p = -\frac{p}{x}J_p + J_{p-1} = \frac{p}{x}J_p - J_{p+1}. \]
+  }
+  将第二条微分乘以$x^{2p}$，得
+  \[ -px^{p-1}J_p + x^{p}J'_p = -x^{p}J_{p+1}. \]
+  前式减后式，有
+  \refl{
+  \label{refl:jpp3}
+    \[ \frac{2p}{x}J_p = J_{p-1}+J_{p+1}. \]
+  }
+  前式加后式，有
+  \refl{
+  \label{refl:jpp4}
+    \[ 2J'_p = J_{p-1} - J_{p+1}. \]
+  }
+  下面证明$J_0$的积分形式，
+  \refl{
+    \[ J_0\pare{x} = \frac{1}{\pi}\intu{\pi}{\cos\pare{x\sin\theta}}{\theta}. \]
+  }
+  将$\cos$级数展开并借助\eref{sin2n}，即
+  \begin{align*}
+    \frac{1}{\pi}\intu{\pi}{\cos\pare{x\sin\theta}}{\theta} &= \frac{1}{\pi}\intu{\pi}{\sum \frac{\pare{-1}^n}{\pare{2n}!}\pare{\sin^{2n}\theta} x^{2n}}{\theta} \\
+    &= \frac{2}{\pi}\sum \pare{-1}^n\frac{\pi}{2^{2n}}\frac{\Gamma\pare{2n}}{\Gamma\pare{n}\Gamma\pare{n+1}\Gamma\pare{2n+1}} x^{2n}\\
+    &= \sum \frac{\pare{-1}^n}{\Gamma\pare{n+1}\Gamma\pare{n+1}}\pare{\frac{x}{2}}^{2n} \\
+    &= J_0\pare{x}.
+  \end{align*}
+  欲求出$J_0$的Laplace变换，可经由
+  \begin{align*}
+    &\re \frac{1}{\pi}\intt{\intu{\pi}{e^{ix\sin\theta}e^{-tx}}{\theta}}{x}\\
+    =&\re \frac{1}{\pi}\intu{\pi}{\rec{t-i\sin\theta}}{\theta}\\
+    =& \frac{1}{\pi}\intu{\pi}{\frac{t}{t^2+\sin^2\theta}}{\theta}\\
+    =& \frac{1}{2\pi}\intu{2\pi}{\frac{a}{a^2+\pare{1-\cos\theta}/2}}{\theta}\\
+    =& \sqrt{\frac{1}{1+t^2}}.
+  \end{align*}
+  虽然上式仅适用于$t>0$，亦不妨将其延拓至$t=0$处，从而
+  \[ \intt{J_0\pare{x}}{x} = 1. \]
+  直接在\rref{jpp1}中令$p=0$并积分，有
+  \[ \intt{J_1\pare{x}}{x} = J_0\pare{0} - J_0\pare{\infty} = 1. \]
+  对\rref{jpp4}积分，有
+  \[ \intt{J_0\pare{x}}{x} = \intt{J_{2n}\pare{x}}{x} \]
+  以及
+  \[ \intt{J_1\pare{x}}{x} = \intt{J_{2n+1}\pare{x}}{x}. \]
+  因此，
+  \refl{
+    \[ \intt{J_n\pare{x}}{x} = 1. \]
+  }
+  \subsection{Bessel函数用于更广泛的微分方程}
+	\refl{
+	  \label{refl:genj}
+	  方程
+	  \[ y''+\frac{1-2a}{x}y'+\pare{\pare{bcx^{c-1}}^2+\frac{a^2-p^2c^2}{x^2}}y=0 \]
+	  有解
+	  \[ y = x^a Z_p \pare{bx^c}. \]
+	  其中$Z$为$J$和$N$的任意线性组合.
+	}
+	令
+	\[ y=x^2J\pare{z},\quad z=bx^c. \]
+	\begin{align*}
+	  y'' &= a\pare{a-1}x^{a-2}J+2ax^{a-1}J'+x^aJ'',\\
+	  \frac{1-2a}{x}y' &= \pare{1-2a}ax^{a-2}J+\pare{1-2a}x^{a-1}J',\\
+	  \pare{bcx^{c-1}}^2y &=\pare{bc}^2x^{a+2c-2}J,\\
+	  \frac{a^2-p^2c^2}{x^2}y &=\pare{a^2-p^2c^2}x^{a-2}J.\\
+	\end{align*}
+	从而
+	\[ c^2\pare{b^2x^{2c}-p^2}J+xJ'+x^2J'' = 0. \]
+	前若干式的求导均对$x$进行，下列各式的撇号都表示对$z$的求导.
+	\begin{align*}
+	  x\eddon{}{x}J &= x \eddon{z}{x} \eddon{}{z}J = xbcx^{c-1}J' = czJ'.\\
+	  x^2\edx{J} &= x^2 \eddon{z}{x}\eddon{}{z}\eddon{z}{x}J' \\
+	  &= x^2bcx^{c-1}\eddon{}{z}\pare{bcx^{c-1}J'} \\
+	  &= \pare{\frac{z}{b}}^{\rec{c}}cz\eddon{}{z}\pare{bc\pare{\frac{z}{b}}^{1-\rec{c}}J'}\\
+	  &=\pare{\frac{z}{b}}^{\rec{c}}cz\pare{\pare{c-1}\pare{\frac{z}{b}}^{-\rec{c}}+bc\pare{\frac{z}{b}}^{1-\rec{c}}J''}\\
+	  &= c\pare{c-1}zJ'+c^2z^2J''.
+	\end{align*}
+	最终
+	\[ c^2\pare{z^2-p^2}J+\pare{c+c\pare{c-1}}zJ'+c^2z^2J''=0. \]
+	故得证.
+	\par
+	在上述反射中令$a=0$，$b=K$，$c=1$，得到
+	\refl{
+	  \label{refl:jk}
+	  方程
+	  \[ x\DD x\DD y + \pare{K^2x^2-p^2}y = 0 \]
+	  的解为$J_p\pare{Kx}$与$N_p\pare{Kx}$.
+	}
+	\subsection{其他Bessel函数}
+	\paragraph{Hankel函数}定义如下，可参照$e^i = \cos + i\sin$.
+  \refl{
+    \begin{align*}
+      \hankel\pare{x} &= J_p\pare{x} + iN_p\pare{x}, \\
+      \hankell \pare{x} &= J_p\pare{x} - iN_p\pare{x}.
+    \end{align*}
+  }
+  \paragraph{修正Bessel函数}定义如下，可参照$\sinh = -i\sin i$以及$\cosh = \cos i$.
+  \refl{
+    \begin{align*}
+      I_p\pare{x} &= i^{-p}J_p\pare{ix},\\
+      K_p\pare{x} &= \frac{\pi}{2}i^{p+1}\hankel\pare{ix}.
+    \end{align*}
+  }
+  $i$因子的存在使得上述二函数将实数映为实数.
+  \paragraph{球Bessel函数}对于方程
+  \[ x^2y''+2xy'+\pare{x^2-n\pare{n+1}}y = 0, \]
+  借助\rref{genj}，令$a=-1/2$，$b=1$，$c=1$，$p=n+1/2$.可得
+  \[ y = \frac{1}{\sqrt{x}}J_{n+\half}\pare{x}. \]
+  借助\rref{elej}与\rref{eley}，有
+  \refl{
+    \begin{align*}
+      j_n\pare{x} &= \sqrt{\frac{\pi}{2x}}J_{n+\half}\pare{x} = x^n\pare{-\rec{x}\DD}^n\pare{\frac{\sin x}{x}},\\
+      y_n\pare{x} &= \sqrt{\frac{\pi}{2x}}Y_{n+\half}\pare{x} = -x^n\pare{-\rec{x}\DD}^n\pare{\frac{\cos x}{x}},\\
+      \hhankel &= j_n + iy_n,\\
+      \hhankell &= j_n - iy_n.
+    \end{align*}
+  }
+  $j_n$与$y_n$满足的递推关系可修正\rref{jpp0}及以下而得.
+  \paragraph{Kelvin函数}对于下列方程
+  \[ y''+\frac{1}{x}y'-iy=0, \]
+  借助\rref{genj}，可得
+  \[ y = Z_0\pare{i^{3/2}x}. \]
+  故定义四个函数
+  \begin{align*}
+    J_0\pare{i^{3/2}x} &= \ber x + i\, \bei x,\\
+    K_0\pare{i^{1/2}x} &= \kker x + i\, \kei x.
+  \end{align*}
+  \paragraph{Airy函数}对于方程
+  \[ y''-xy=0, \]
+  借助\rref{genj}，可得
+  \[ y = \sqrt{x}Z_{1/3}\pare{\frac{2}{3}ix^{3/2}}. \]
+  故定义
+  \begin{align*}
+    \Ai\pare{x} &= \rec{\pi}\sqrt{\frac{x}{3}}K_{1/3}\pare{\frac{2}{3}x^{3/2}},\\
+    \Bi\pare{x} &= \sqrt{\frac{x}{3}}\pare{I_{-1/3}\pare{\frac{2}{3}x^{3/2}}+I_{1/3}\pare{\frac{2}{3}x^{3/2}}}.
+  \end{align*}
+  \subsection{应用：伸长的单摆}
+  在单摆的Lagrange方程
+  \[ \edt{}\pare{ml^2\dot{\theta}} + mgl\sin\theta = 0 \]
+  中令$l = l_0 + vt $，立即有
+  \[ \edt{} = v\eddon{}{l}. \]
+  故
+  \[ mv^2l^2 \eddon{\theta}{l} + 2mv^2l\eddon{\theta}{l} + mgl\theta = 0, \]
+  即
+  \[ l \theta'' + 2\theta' + \frac{g}{v^2}\theta = 0. \]
+  在\rref{genj}中令$a=-\half$，$b=2g^{1/2}/v$，$c=\half$，$p=1$，有
+  \[ \theta=l^{-\half}Z_1\pare{bl^{\half}}. \]
+  复令$u=bl^{1/2}$，有
+  \[ \theta = Au^{-1}J_1\pare{u} + Bu^{-1}N_1\pare{u}. \]
+  借助\rref{jpp1}，有
+  \[ \eddon{\theta}{u} = -\pare{Au^{-1}J_2\pare{u} + Bu^{-1}N_2\pare{u}}. \]
+  故可以根据初始条件确定$A$与$B$的值. 
+  \paragraph{边值问题}对于$\theta=\theta_0$，$\dot{\theta}=0$的初始条件，先证如下等式.
+  \[ \DD\pare{x\pare{J_pJ'_{-p}-J_{-p}J'_p}} = 0. \]
+  径借助\rref{dxd}，在Bessel方程两侧分别乘$J_p$与$J_{-p}$后相减得到. 由是立得
+  \[ J_pJ'_{-p}-J_{-p}J'_p = \frac{c}{x}. \]
+  借助\rref{jps}提取$-1$次项，
+  \[ -\frac{1}{\Gamma\pare{1+p}}\frac{p}{\Gamma\pare{1-p}} - \frac{1}{\Gamma\pare{1-p}}\frac{p}{\Gamma\pare{1+p}} = c. \]
+  由\rref{gammarefl}，得
+  \[ c = -\frac{2 \sin p\pi}{\pi}. \]
+  又由\rref{newman}，
+  \[ J_pN'_p-J'_pN_p = \frac{2}{\pi x}. \]
+  借助\eqref{eq:jpd}（在两侧乘$x^p$），可得
+  \[ J_nN_{n+1} - J_{n+1}N_n = -\frac{2}{\pi x}. \]
+  于是可径令
+  \[ A=-\frac{\pi u_0^2}{2}\theta_0N_2\pare{u_0},\quad B = \frac{\pi u_0^2}{2}\theta_0J_2\pare{u_0}. \]
+  易知上述$A$，$B$满足条件.
+  \subsection{正交关系与自交关系}
+  考虑二函数$u=J_p\pare{\alpha x}$与$v=J_p\pare{\beta x}$（就像$\sin n\pi x$与$\sin m\pi x$），由\rref{jk}分别满足
+  \begin{align*}
+    x\pare{xu'}' + \pare{\alpha^2 x^2-p^2}u = 0, \\
+    x\pare{xv'}' + \pare{\alpha^2 x^2-p^2}v = 0.
+  \end{align*}
+  上式乘$v$，下式乘$u$后相减得
+  \[ v\pare{xu'}' - u\pare{xv'}' + \pare{\alpha^2-\beta^2}xuv = 0. \]
+  借助\rref{dxd}，得
+  \[ \DD x \pare{v\DD u - u \DD v} + \pare{\alpha^2-\beta^2}xuv = 0. \]
+  因而
+  \[ \bik{u}{x}{v} = -\frac{J_p\pare{\beta}\alpha J'_p\pare{\alpha} - J_p\pare{\alpha}\beta J'_p\pare{\beta}}{\alpha^2-\beta^2}.  \]
+  其中内积的积分区间为$\curb{0,1}$.
+  \par
+  设$\alpha$与$\beta$为$J_p$的二零点，若$\alpha \ne \beta$，内积为$0$. 若$\alpha = \beta$，先设$\beta$接近实际零点，故
+  \[ \bik{u}{x}{v} = \frac{J_p\pare{\beta}\alpha J'_p\pare{\alpha}}{\pare{\beta-\alpha}\pare{\alpha+\beta}} = \frac{\pare{J_p\pare{\beta}-J_p\pare{\alpha}}\alpha J'_p\pare{\alpha}}{\pare{\beta-\alpha}\pare{\alpha+\beta}} = \half J'^2_p\pare{\alpha}. \]
+  因而
+  \refl{
+    \[ \bik{J_p\pare{\alpha x}}{x}{J_p\pare{\beta x}} = \half J'^2_p\pare{\alpha}\delta_{\alpha\beta}. \]
+  }
+  借助\rref{jpp3}及以下，有
+  \refl{
+    \[ \bik{J_p\pare{\alpha x}}{x}{J_p\pare{\alpha x}} = \half J'^2_p\pare{\alpha} = \half J^2_{p+1}\pare{\alpha} = \half J^2_{p-1}\pare{\alpha}. \]
+  }
+  \subsection{鞍点法：渐进公式}
+  对于大的$x$，有各类Bessel函数有如下渐进形式：
+  \refl{
+    \[ J_p\pare{x}\sim \sqrt{\frac{2}{\pi x}}\cos\pare{x-\frac{2p+1}{4}\pi}. \]
+  }
+  \refl{
+    \[ N_p\pare{x}\sim \sqrt{\frac{2}{\pi x}}\sin\pare{x-\frac{2p+1}{4}\pi}. \]
+  }
+  \subsection{Fuchs定理}
+  对于方程
+  \[ y''+f\pare{x}y'+g\pare{x}y=0, \]
+  若$f$与$g$可以展开为Taylor级数，则二解或为二Frobenius级数，或其一$S_1$为级数，另解为$S_1\ln x+S_2$（其中$S_2$亦为Frobenius级数）. 第二种情况仅当特征方程的根相差为整数时出现.
+  \subsection{Hermite函数，Laguerre函数，阶梯算子}
+  \paragraph{Hermite函数}对于方程
+  \[ y''_n-x^2y_n = -\pare{2n+1}y_n,\quad n=0,1,2,\cdots. \]
+  可由多种方法应对之.
+  \paragraph{阶梯算子}由\eqref{eq:dpmx}，$\pare{\DD-x}\pare{\DD+x}=\DD^2-x^2+1$，$\pare{\DD+x}\pare{\DD-x}=\DD^2-x^2-1$. 定义$\oplus=\DD+x$，$\ominus=\DD-x$，方程可写为
+  \begin{align*}
+    \ominus\oplus y_n &= -2ny_n,\\
+    \oplus\ominus y_n &= -2\pare{n+1}y_n.
+  \end{align*}
+  进而
+  \begin{align*}
+    \ominus\oplus\ominus y_n &= -2\pare{n+1}\ominus y_n,\\
+    \oplus\ominus\oplus y_n &= -2n\oplus y_n.
+  \end{align*}
+  故$\ominus y_n$给出$n+1$的解，而$\oplus y_n$给出$n-1$的解. 因此，若对于复数的$n$要求$y_n$被消灭，还需要
+  \[ \pare{\DD+x}y_0 = 0. \]
+  立得
+  \[ y_0 = e^{-x^2/2}. \]
+  由是还可得
+  \[ e^{x^2/2}\DD e^{-x^2/2} = \DD -x, \]
+  从而
+  \[ e^{x^2/2}\DD^n e^{-x^2/2} = \pare{\DD -x}^n. \]
+  故
+  \refl{
+    \[ y_n = \pare{\DD-x}^n e^{-x^2/2} = e^{x^2/2}\DD^n e^{-x^2} \]
+    是$\DD^2-x^2$本征值为$-2\pare{n+1}$的本征函数.
+  }
+  Hermite函数的正交关系则有赖于算子$\DD^2-x^2$为Hermite算子（谐振子能量），故不同的Hermite函数彼此正交（内积的积分区间为实数轴）. 自交结果可计算为
+  \begin{align*}
+    \intr{y^2_{n+1}}{x} &= \intr{\pare{\pare{\DD-x}y}^2}{x}\\
+    &= \intr{\pare{\DD y_n}^2}{x} - \intr{2xy_ny'_n}{x}+\intr{x^2y^2_n}{x}\\
+    &= -\intr{y\DD^2y}{x} - \intr{2xy_ny'_n}{x}+\intr{x^2y^2_n}{x}.
+  \end{align*}
+  并注意
+  \[ \DD^2y_n = x^2y_n - \pare{2n+1}y_n. \]
+  还有
+  \[ \intr{xy_ny'_n}{x} = -\intr{y^2_n}{x} - \intr{xy_ny'_n}. \]
+  故
+  \[ \intr{2xy_ny'_n}{x} = -\intr{y^2_n}{x}. \]
+  由是
+  \[ \intr{y^2_{n+1}}{x} = 2\pare{n+1}\intr{y^2_{n}}{x}. \]
+  \refl{
+    \[ \bk{y_n}{y_m} = \sqrt{\pi}2^nn!\delta_{nm}. \]
+  }
+  由Hermite函数引出的Hermite多项式定义如下：
+  \refl{
+    \[ H_n\pare{x} = \pare{-1}^n e^{x^2} \DD^n e^{-x^2}. \]
+  }
+  注意$y_n = e^{-x^2/2}H_n$，代入Hermite方程
+  \[ e^{x^2/2}\DD^2 e^{-x^2/2}H_n - x^2 H_n = -\pare{2n+1}H_n. \]
+  故
+  \[ \pare{\DD-x}^2H_n-x^2H_n=-\pare{2n+1}H_n, \]
+  即
+  \refl{
+    $H_n$是
+    \[ y''-2xy'+2ny = 0 \]
+    的解.
+  }
+  设函数
+  \[ \Phi\pare{x,h} = e^{2xh-h^2} = \sum H_n\pare{x}\frac{h^n}{n!}. \]
+  其满足
+  \[ \Phi_{xx} - 2x\Phi_x+2h\Phi_h = 0. \]
+  故
+  \[ H_n''-2xH_n'+2nH_n = 0. \]
+  欲得到此处的$H_n$正是上述的Hermite多项式，还需要另外的论证. 可以考虑证明
+  \[ e^{-\pare{h-x}^2} = \sum e^{-x^2}H_n\pare{x}\frac{h^n}{n!}. \]
+  也就是在$h=0$处，
+  \[ e^{-\pare{h-x}^2} \]
+  的$n$阶导数要等于（参考前文$H_n$的定义）
+  \[ \pare{-1}^n\DD^n e^{-x^2}. \]
+  这是显然的，可以将对$h$的求导看做对$-x$的求导，从而得到前面的$\pare{-1}^n$因子.
+  \refl{
+    \[ e^{2xh-h^2} = \sum H_n\pare{x}\frac{h^n}{n!}. \]
+  }
+  由
+  \[ \Phi_x - 2h\Phi = 0, \]
+  \refl{
+    \[ H'_n = 2nH_{n-1}. \]
+  }
+  由
+  \[ \Phi_h = 2x\Phi - 2h\Phi, \]
+  \refl{
+    \[ H_{n+1} = 2xH_n - 2nH_{n-1}. \]
+  }
+  \paragraph{幂级数}
+\end{document}

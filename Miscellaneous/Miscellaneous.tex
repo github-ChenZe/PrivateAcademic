@@ -1,0 +1,182 @@
+\documentclass{ctexart}
+
+\input{/Users/zechen/Documents/PrivateAcademic/CommonHead/CommonHead.tex}
+
+\begin{document}
+\section{Android GUI应用}
+\section{Swift GUI应用}
+\section{GTK GUI应用}
+\snp{gcc `pkg-config --libs --cflags gtk+-2.0` gtk_test.c }
+\section{Bash-cgi}
+\section{LaTeX包安装}
+\section{centOS}
+\subsubsection*{简单命令}
+\noindent locate之前先sudo updatedb。\\
+\noindent 在VirtualBox中，通过修改\href{https://unix.stackexchange.com/questions/79269/out-of-the-box-centos-in-virtualbox-nat-network-is-unreachable}{/etc/sysconfig/network-scripts/[ifcfg-eth0][enp0s3]}获得网络连接。\\
+\noindent 使用\snp{date +\%Y/\%m/\%d}获得日期，cal [[month] year]获得日历，bc获得计算器。\\
+\noindent Tab自动补全，Ctrl+C中断程序，Ctrl+D终止输入。\\
+\noindent man中使用/[pattern]向下查找pattern，?[pattern]向上查找pattern，n下一个查询，N上一个查询。\\
+\noindent info也可以用于查询，N到下一个节点，U回上层，P到上一个节点。\\
+\noindent /usr/share/doc/下有各种文档。\\
+\noindent yum [search]|[list] something, [provides] */something可以查找相关的包，yum info something可以获得信息。\\
+\noindent nano是个好用的文本编辑器，自带说明。\\
+\noindent 通过visudo修改sudo的允许用户，添加username ALL=(ALL) ALL即可。\\
+\noindent who查看在线用户，netstat查看网络状态，ps -aux查看运行中的程序。\\
+\noindent sync命令将数据同步写入磁盘，shutdown可以关机，half、poweroff、reboot顾名思义。\\
+\noindent shutdown -h [now]|[20:15]|[+10]等停止所有服务后可以关机，halt直接硬关机。\\
+\noindent init可更改运行等级，runlevel可查看当前运行等级。\\
+\noindent cd - 回到上一目录。
+\subsubsection*{权限与目录}
+\noindent ls -la可以枚举当前目录，[d][-][l][b][c]在rwx前表示目录、文件、连接、可储存接口、串行端口等。username groupname前的数字表示连接到此i-node的文件名数量。之后的文件大小，单位为byte。\\
+\noindent chgrp, chown, chmod可改变所有者与权限 [-R]可以修改目录下的所有子文件。r=4,w=2,x=1。\\
+\noindent chmod还支持 u=rwx,go=rx这样的语法。=+-都可以。\\
+\noindent 目录需要具有r才能ls，需要w才能增、删、改，需要x才能cd。\\
+\noindent Linux具有一套目录配置标准（FHS），/为根目录，与开机系统有关，/usr与软件执行有关，/var与系统运作过程相关，/bin为执行文件（可被shell直接执行，单用户为乎模式下仍然可以操作），/boot为开机需要的文件，/dev为设备与接口，/etc为各类配置文件，/home为用户主文件夹，/lib为开机时用到的函数库（以及/bin，/sbin用到的），/media放置媒体设备，/mnt为暂时挂载，/opt为第三方软件，/root为root的主文件夹，/sbin为（仅root可使用的）开机需要的命令或设置系统环境的命令，/srv为服务的数据文件，/tmp为临时文件。其中，/bin /etc /dev /lib /sbin开机时挂载，故需要与根目录在同一分区。\\
+\noindent /usr中，/bin为用户使用的命令，/include与/lib为C/C++的头文件放置处，各应用的苦文件放置处，/usr/local下也有bin，etc，include，lib等，这是系统管理员在本机自行下载安装的软件，/sbin为非必需的系统命令，/share顾名思义，/src放置源码。
+\noindent /var放置缓存、登陆等，其/cache放置暂存文件，/lib放置运行时需要的数据文件，/lock放置上锁资源，/log放置登陆文件，/mail放置个人邮箱，/run放置服务启动后的PID，/spool放置一些队列数据。\\
+\noindent uname -r 可以查看内核版本号，lsb\_release -a可以得到发型版本。
+\subsubsection*{目录}
+\noindent pwd可获得当前目录。\\
+\noindent [deprecated] mkdir -p A/B/C/D可以直接跳跃多层创建目录。\\
+\noindent which命令可以获得PATH中命令或文件对应的路径，whereis可以获得文件的所有路径，locate也一样。\\
+\noindent find也可用于查找，find /var -mtime 0可以获得24小时内有改动的文件。find /var -user chen获得给定用户下的文件。-name name获得给定名称的文件。find -exec command \{ \} $\backslash$;可以执行命令。\\
+\noindent echo \$PATH得到冒号分隔的查找路径。\\
+\noindent basename与dirname可以获得路径的文件名与dir名。
+\noindent ll等价于ls -l。\\
+\noindent cp -r 可复制目录 -i会在覆盖前询问 -a会复制属性 -u会在文件较旧的时候才更新。 -l创建硬连接，-s创建软连接，-d将软连接复制为软连接。\\
+\noindent rm -i,-r,-f作用类似。-i在删除前询问。\\
+\noindent mv -f, -i, -u作用类似。
+\noindent cat从第一行开始显示（-n行号，-A显示特殊字符），tac倒过来，nl输出行号，more一页一页，less可以往前翻，head只看头，tail只看尾，od看二进制。\\
+\noindent more中:f可以获得文件名和行数。\\
+\noindent head -n 100 可以选择行数。\\
+\noindent od -t x(xc)可以十六进制。od -t a/c可以字符输出。\\
+\noindent ls -time=[mtime ctime atime]分别对应内容更改时间，状态更改时间，访问时间。touch可以更新访问时间，或者创建文件。\\
+\noindent 创建文件的默认权限为666，创建目录的默认权限为777。\\
+\noindent umask (-S)可以获得文件掩码，也就是文件创建时被掩盖的权限。\\
+\noindent chattr [+-=] a设置只能增加不能删除，i设置不能修改、删除，S设置同步写入。相应lsattr可显示属性。\\
+\noindent 4=SUID rws将导致执行者具有owner的权限。2=SGID s导致拥有组权限。1=SGUI还可以用在目录，导致访问目录的有效用户族变成目录的用户组而创建的文件用户组与此目录用户组相同。SBIT（T位）导致目录下能删除文件的只有创建文件的人。chmod S+777可以添加特殊位。\\
+\noindent S与T大写表示空权限。\\
+\noindent file命令可以获得文件类型。 \\
+\subsubsection*{硬盘与文件系统}
+\noindent 硬盘的零扇区有446bytes的MBR和64bytes的分区表，最多有四个主分区和扩展分区，扩展分区再分出逻辑分区，只有逻辑分区可以格式化。\\
+\noindent 文件的属性放在inode内，文件的数据放在datablock内。\\
+\noindent 文件系统最前面为启动扇区，安装引导装载程序。\\
+\noindent superblock储存inode与block总量等数据。\\
+\noindent df可查看已经挂载的设备，dumpe2f命令可以查看分区的信息。\\
+\noindent ls -i可以查看目录的inode号码。ls -d只查看目录。\\
+\noindent ext3使用了日志文件系统处理断电等导致数据不一致的情形。\\
+\noindent 文件系统与目录树结合的操作称为挂载。\\
+\noindent ls -l /lib/modules/\$(uname -r)/kernel/fs可查看支持的文件系统，cat /proc/filesystems可查看已加载的文件系统。\\
+\noindent Linux系统对文件的访问通过VFS（虚拟文件系统）访问文件。\\
+\noindent df -h以易读的方式显示磁盘容量。df -a列出所有（如/proc）。\\
+\noindent du列出目录下的情况。du -a列出所有文件（容量）。du -s仅总量而不枚举。\\
+\noindent ln 可创建硬连接，即目录中的文件名指向真实的inode。ln -s创建软连接（快捷方式）。\\
+\noindent fdisk可查看磁盘信息。fdisk -l列举所有分区。\\
+\noindent mkfs -t 格式 磁盘文件 格式化磁盘。\\
+\noindent mount 设备名 挂载点 可以挂载设备到目录。\\
+\noindent /etc/fstab中设置开机挂载。\\
+\noindent gzip命令可压缩文件。-d解压缩，-v显示压缩比。zcat读取压缩文件。\\
+\noindent bzip2命令同样，-k双保留，bzcat读取，bunzip2也可以解压缩。\\
+\noindent tar -j获得bizp2支持，-c 新建打包文件，-v显示处理中的文件名，-f加处理的文件名。\\
+\noindent tar -jxvf 其中x表示解压缩或解打包，-C + 目标目录。\\
+\noindent tar -jtv -f 显示包内容。\\
+\noindent tar -p保留属性权限等，-P保留绝对路径开头的反斜杠。\\
+\noindent tar --exclude=pattern 排除特定文件， --newer-mtime="YYYY/MM/DD"选择时间。 
+\noindent 奇技淫巧：tar -cvf - 目录名 | tar -xvf - 可以打包目录并解压到当前目录。\\
+\noindent dump -0 some.dump something 可以备份。-u记录备份时间到/etc/dumpdateS。\\
+\noindent restore -t -f some 可以显示dump文件的内容，restore -r可以还原文件系统。\\
+\noindent mkisofs -o my.iso myfilem可以新建景象文件。\\
+\noindent dd if=inputfile, of=outputfile, bs=blocksize, count=number可以备份文件。
+
+\section{通用Linux}
+\subsection{VIM}
+\keypoint{hjkl分别对应左上下右。}
+\keypoint{i为当前位置插入，A为行尾插入。}
+\keypoint{dw删除单词至下一个单词开头。}
+\keypoint{de删除单词至最后一个字母。}
+\keypoint{d\$删除到行尾。}
+\vspace{1em}
+\keypoint{nw前进n个单词。}
+\keypoint{ne前进到n个单词的结尾。}
+\keypoint{0到行头，\$到行尾。}
+\vspace{1em}
+\keypoint{dnw和dne删除多个。}
+\keypoint{ndd删除多行。}
+\keypoint{u返回一个操作，U返回整个行的初始状态，Ctrl+R撤销u。}
+\vspace{1em}
+\keypoint{ndd剪切多行，nyy复制多行。}
+\keypoint{dd + p可以剪切。}
+\keypoint{r + char可以替换字符。}
+\keypoint{ce可以替换至单词结尾。}
+\keypoint{c\$可以替换行至结尾。}
+\vspace{1em}
+\keypoint{ctrl+g可以显示当前光标位置，文件总行数等。}
+\keypoint{gg文件头，G文件尾，nG第n行。}
+\keypoint{/keyword向下搜索，?keyword向上搜索，n下一个，N上一个，ctrl-o回上一个，ctrl-i去下一个。}
+\keypoint{/keyword$\backslash$c单次忽略大小写。}
+\keypoint{\% 跳出或跳过括号。}
+\keypoint{:s/old/new一次，:s/old/new/g全部替换。}
+\keypoint{:s/old/new/gc会有提示，:startline,endline s/old/new/g指定范围。}
+\vspace{1em}
+\keypoint{:!+外部命令。}
+\keypoint{v开始区域选择。}
+\keypoint{:r FILENAME可以粘贴文件内容。:r !command可以粘贴命令结果。}
+\keypoint{R进入覆盖式替换。}
+\vspace{1em}
+\keypoint{o可以在光标下方插入行，O在上方。}
+\keypoint{a可以在当前单词后开始插入。}
+\keypoint{y可以复制v选择的区域，yy复制行，yw复制单词，p粘贴。}
+\keypoint{:set 可以设置属性，:set ic可以在搜索中ignore case。:set noic。}
+\keypoint{:set hls可以高亮搜索。:set nohlsearch。}
+\vspace{1em}
+\keypoint{:help获得帮助，C-w C-w切换窗口。}
+\keypoint{:e FILENAME编辑文件。}
+\keypoint{:+tab可以补全命令。}
+\vspace{1em}
+\keypoint{C-f屏幕下一页，C-d屏幕下半页，C-b上一页，C-u上半页。}
+\keypoint{.重复上一个操作。}
+\vspace{1em}
+\keypoint{出现.swp时，遵循界面指引。}
+\keypoint{C-v可以方块选择。}
+\keypoint{vim file1 file2打开多个文件，通过:n :N切换。}
+\keypoint{:sp添加窗口。C-w j或C-w k上下切换。}
+\vspace{1em}
+\keypoint{unix2dos与dos2unix可以转换文件的换行符。}
+\vspace{1em}
+\keypoint{:set all可以查看当前的所有设定。}
+\subsection{bash}
+\keypoint{/etc/passwd里面存了各种用户的默认终端。}
+\keypoint{type 可以查看一个命令是否为内置，-a可以显示PATH。}
+\keypoint{反斜杠可以bash续行。}
+\keypoint{双引号内，\$name会变成其值，单引号内则原状。}
+\keypoint{通过PATH="\$PATH"something添加值。}
+\keypoint{export 才能让变量成为环境变量。}
+\keypoint{\`{} something \`{}等价于\$(something)，调用something的结果。}
+\keypoint{unset 可以取消命令。}
+
+\section{虚拟机}
+\noindent ssh -p num + 端口转发可以访问到虚拟机的ssh。\\
+\noindent passwd -d username可清除密码。\\
+\section{yum包安装}
+\noindent 包名+devel可以获得「能include」的版本。\\
+\noindent yum group list可以获得各种包组，sudo yum group install "Development Tools"可以安装包组。
+\section{pkg-config命令}
+\section*{真·杂项}
+\noindent 罗勒（九层塔）-Basil-Ocimum basilicum\\
+\noindent 似乎汉语很多a韵词（怕、啊、哈）会鼻化（参考：鼻化元音）\\
+\noindent 韬光养晦、圭臬之类的生词\\
+\noindent 「亭亭盖矣」\\
+\noindent Kim用dotard形容trump\\
+\noindent Clement Vallandigham在法庭上一枪干掉了自己\\
+\noindent Letitia Chai她。。。\\
+\noindent 《伊利亚特》的第二章是无聊的Catalogue of Ships，尽管如此，我还是忘了和SYH吐槽这一点\\
+\noindent focus, radius, fungus, nucleus, cactus, alumnus, octopus, hippopotamus的复数都是加i，axis, analysis, crisis, thesis的复数变es，phenomenon, criterion变a，datum, memorandum, bacterium, stratum, curriculum变a，index, appendix, vortex变es\\
+\noindent 看看QT案和Leung Chun Kwong案的判决\\
+\noindent 社会达尔文主义为种种歧视与不公正名\\
+\noindent Pirah\~{a}是一种神奇的语言\\
+\noindent Poor Joshua! 出现在DeShaney v. Winnebago County的判决中\\
+\noindent filibuster，冗长演说，阻挠议事\\
+\noindent Lufthansa-Fanhansa=Fly the fans.\\
+\noindent Shelly v. Kraemer禁止法院执行有歧视的契约\\
+\noindent {\color{red} AndroidStudio里面有个不错的录音机项目，没空就看看。}\\
+\end{document}
