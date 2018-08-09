@@ -115,8 +115,8 @@
 \keypoint{/keyword向下搜索，?keyword向上搜索，n下一个，N上一个，ctrl-o回上一个，ctrl-i去下一个。}
 \keypoint{/keyword$\backslash$c单次忽略大小写。}
 \keypoint{\% 跳出或跳过括号。}
-\keypoint{:s/old/new一次，:s/old/new/g全部替换。}
-\keypoint{:s/old/new/gc会有提示，:startline,endline s/old/new/g指定范围。}
+\keypoint{:\%s/old/new一次，:s/old/new/g全部替换。}
+\keypoint{:\%s/old/new/gc会有提示，:startline,endline s/old/new/g指定范围。}
 \vspace{1em}
 \keypoint{:!+外部命令。}
 \keypoint{v开始区域选择。}
@@ -146,14 +146,91 @@
 \keypoint{:set all可以查看当前的所有设定。}
 \subsection{bash}
 \keypoint{/etc/passwd里面存了各种用户的默认终端。}
-\keypoint{type 可以查看一个命令是否为内置，-a可以显示PATH。}
+\keypoint{type 可以查看一个命令是否为内置，-a展开检索顺序。}
 \keypoint{反斜杠可以bash续行。}
 \keypoint{双引号内，\$name会变成其值，单引号内则原状。}
 \keypoint{通过PATH="\$PATH"something添加值。}
 \keypoint{export 才能让变量成为环境变量。}
 \keypoint{\`{} something \`{}等价于\$(something)，调用something的结果。}
 \keypoint{unset 可以取消命令。}
-
+\keypoint{env可列举所有环境变量。}
+\keypoint{HOME显示主文件夹，SHELL显示当前SHELL程序的路径，HISTSIZE为历史记录条数，LANG为语系数据，RANDOM为随机数。}
+\keypoint{set可查看所有变量。}
+\keypoint{PS1储存提示符。}
+\keypoint{?是上一个命令的返回值。}
+\keypoint{OSTYPE，HOSTTYPE，MACHTYPE显示主机硬件与内核的等级。}
+\keypoint{环境变量会被子进程继承，而自定义变量不会。}
+\keypoint{locale命令可以查询支持的语系。}
+\keypoint{read -p prompt -t timeout varname交互设定变量名。}
+\keypoint{declare -[aixr] name[=value] 新建变量（为数组、整数、环境变量、只读）。declare +x可以将环境变量隐藏为自定义变量。}
+\keypoint{数组通过var[i]="something"，echo "\${var[i]}"的语法赋值与访问。}
+\keypoint{ulimit可以设定配额。ulimit -a可以查看配额。}
+\keypoint{\$var\#pattern可以从开头开始删除pattern的最短匹配，\$var\#\#pattern可以删除pattern的最长匹配。}
+\keypoint{\$var\%以及\$var\%\%从尾部开始。}
+\keypoint{\$var/old/new可以替换一次，\$var//old/new可以全部替换。}
+\keypoint{oldvar-content等价于oldvar or content，oldvar:-content 等价于oldvar is None or is empty? content: oldvar。}
+\keypoint{oldvar[:]+|=与此类似（相反）。}
+\keypoint{alias name='command'可以设置命令别名。}
+\keypoint{unalias取消命令别名。}
+\keypoint{history -w强制写入bashhistory。!num可执行第num号命令。}
+\keypoint{/etc/issue包含欢迎信息。/etc/motd包含登陆后的欢迎信息。}
+\keypoint{login shell登入时会读取/etc/profile与\snp{～/.bash_profile}，若有bashrc也会读取。}
+\keypoint{non login shell登入时会也会读取/etc/profile，bashrc等。}
+\keypoint{source命令可以读取配置文件立即生效。}
+\keypoint{stty -a可以枚举终端机设置。stty erase \^h可以设定快捷键。C-u为删除当前命令行上的文字。C-w删除一个词，C-反斜杠为退出。}
+\keypoint{set -u等价于implicit none。}
+\keypoint{()的实质为子shell。}
+\keypoint{<与<<重定向stdin，>与>>重定向stdout， 2>与2>>重定向stderr。}
+\keypoint{command > somthing 2>\& 1可以写到同一文件。}
+\keypoint{<<"eof"指定结束符。}
+\keypoint{com1 \&\& com2 与 com1 || com2条件执行com2。}
+\keypoint{com1 \&\& com2 || com3 等价于 com1 ? com2 : com3。}
+\keypoint{echo something | cut -d 'sep' -f 可以split，3,5选取第三和第五，3-5选取第三到第五，3-选取3之后的。}
+\keypoint{grep -[acinv]v取反（不含的行），-i忽略大小写，-n输出行号。}
+\keypoint{egrep支持扩展的正则表达式。}
+\keypoint{sort可以排序，-t指定分割符，-k指定列，-n指定数字排序。}
+\keypoint{sort | uniq去重，-i忽略大小写，-c顺带计数。uniq前一定要sort。}
+\keypoint{wc -lwm分别数行，字，字母。}
+\keypoint{tr可以进行替换或去除，tr origin new为替换，tr -d为删除，}
+\keypoint{cat -A可以显示tab，col -x可以将tab转化为空格。}
+\keypoint{join可以按照column合并同类项，join -t sep -1 column 1 -2 column 2 file1 file 2。}
+\keypoint{paste直接合并行，用tab隔开。}
+\keypoint{expand将tab转化为空格。}
+\keypoint{split -b sizeeach file targetnamehead可以分割文件。}
+\keypoint{xargs command可以将管道的结果按空格断开传递给command。}
+\subsection{sed}
+\keypoint{sed -f 可以用指定的sed动作文件。}
+\keypoint{sed -e something -e another可以多个动作。}
+\keypoint{sed -n为静默方式。}
+\keypoint{sed命令的构成为n1,n2command，n的\$为最后一行，command d为删除，a为append，c为替换，-n 'a,b p'可以打印给定行，s/old/new/g可以替换。}
+\keypoint{sed -i action filename 可以直接修改文件。}
+\subsection{awk}
+\keypoint{awk命令通过awk '\{ command \}'的方式执行。}
+\keypoint{awk command print 可以打印，\$n访问第n列的数据。}
+\keypoint{awk 'BEGIN \{ FS=":" \}'可以设置分割符。}
+\keypoint{awk 'condition \{ \}'设置条件。}
+\keypoint{NR为当前行数，NF为每一行的字段总数。}
+\subsection{diff，cmp和patch}
+\keypoint{diff fromfile tofile 可以比较文件。}
+\keypoint{cmp可以找第一个不同点。}
+\keypoint{diff -Naur old new可以比较生成补丁文件。用patch -pN < patchfile或patch -R -pN可以升级或还原，其中N为取消第N层目录，在文件比较时取0。}
+\keypoint{pr命令可以将文件输出为准备打印的格式。}
+\subsection{shell script}
+\keypoint{{\color{red} CGI-SCRIPT}}
+\keypoint{再次注意，\$\{[:][+-=]\}访问变量，\$()为子shell，\$(())可执行计算。}
+\keypoint{子进程的局部变量在shell中无效。export了也无效。}
+\keypoint{test命令可以确认文件的存在性。-e为文件是否存在，-f且为文件，-d为目录。还可以检测权限等。}
+\keypoint{[]为判断符号，结合空格使用。[ -z \$SOME ]检测变量是否存在。[ SOME1 -o SOME2 ]为或。}
+\keypoint{\$0为执行路径，\$1 \$2等为输入参数。\$\#为参数个数。}
+\keypoint{[ -lt ]等可以比较大小。}
+\keypoint{shift可以pop掉输入参数。}
+\keypoint{\snp{if [] || []; then fi}的语法可以逻辑判断，以及\snp{if []; then else fi}或者\snp{if []; then elif []; then else fi}。}
+\keypoint{case \$NAME in "SOME") ;; *) ;; esac}可以选择。
+\keypoint{function funcname()\{\}可定义函数，\$1等可访问传入参数。}
+\keypoint{while [] do done可以循环，until [] do done也可以。}
+\keypoint{for var in a b c d可以循环，for var in \$(seq 1 100)可以固定式循环。}
+\keypoint{for((;;))可以C式循环。}
+\keypoint{sh -n会报语法错误，sh -x会显示执行过程。}
 \section{虚拟机}
 \noindent ssh -p num + 端口转发可以访问到虚拟机的ssh。\\
 \noindent passwd -d username可清除密码。\\

@@ -665,6 +665,54 @@
   \begin{ex}
     $S=\curb{x\times \sin\pare{1/x}}$的闭包$\clo{S}$连通而非道路连通。任何$S$到$0\times\brac{-1,1}$的路径都必然震荡$t_n \times \pare{-1}^n$，故无法收敛，不可能连续。
   \end{ex}
+  \subsection{分支与局部连通性}
+  \begin{definition}
+    $X$中的连通等价类谓分支。
+  \end{definition}
+  \begin{theorem}
+    $X$的所有分支是$X$中无交的连通子空间，其并为$X$，且任意连通子空间必定包含在某分量内。
+  \end{theorem}
+  \begin{proof}
+    如果某连通子空间和两个分量相交，那么$x_1\sim x_2$。
+  \end{proof}
+  \begin{definition}
+    $X$中的道路连通等价类谓道路连通分支。
+  \end{definition}
+  可以证明这是一个等价关系。
+  \begin{theorem}
+    $X$的道路连通分支是无交的道路连通子空间，其并为$X$，且任意道路连通子空间必定包含在某分量内。
+  \end{theorem}
+  连通分支的闭包也是连通的，因此它们是闭集。如果只有有限分支，它们还会是开集。但道路连通不一定。
+  \begin{ex}
+    $\Q$的每个分支为单点集，但不是开集。
+  \end{ex}
+  \begin{ex}
+    拓扑学家的正弦曲线，两个道路分支一个纯开一个纯闭。
+  \end{ex}
+  \begin{definition}
+    空间谓局部连通的，如果处处给定$U$有连通邻域$V\subset U$。谓局部道路连通的，如果处处有道路连通邻域。
+  \end{definition}
+  \begin{ex}
+    这里的定义不能改成「每个$x$都存在连通邻域」，因为连通邻域的子开集不一定连通。见\href{https://math.stackexchange.com/questions/2439096/consider-the-infinite-broom}{局部连通与无穷扫帚}。
+  \end{ex}
+  \begin{ex}
+    区间的并是局部连通的，$\Q$不是局部连通的。
+  \end{ex}
+  \begin{theorem}
+    空间是局部连通的当且仅当任何开集的每一个分支都是开的。
+  \end{theorem}
+  \begin{proof}
+    后半句成立则显然，前半句成立则对邻域取交可得内含的开集。
+  \end{proof}
+  \begin{theorem}
+    空间是局部道路连通的当且仅当开集的所有道路连通分量都是开的。
+  \end{theorem}
+  \begin{theorem}
+    道路分支包含在分支内。局部道路连通则分支与道路分支同。
+  \end{theorem}
+  \begin{proof}
+    前句显然。后句若分支内有多个道路分支都是开的，则构成分割。
+  \end{proof}
   \subsection{紧致空间}
   \begin{definition}
     $X$的子集族$\setf{C}$称为具有有限交性质（finite intersection property），如果$\setf{C}$的任意有限子族交非空。
