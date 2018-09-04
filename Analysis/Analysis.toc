@@ -1,104 +1,138 @@
-\contentsline {chapter}{\numberline {第一章\hspace {.3em}}普通集合论}{5}{chapter.1}
-\contentsline {section}{\numberline {1.1}集与势}{5}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}自然数公理及其运算}{5}{subsection.1.1.1}
-\contentsline {subsubsection}{加法}{6}{subsubsection*.3}
-\contentsline {subsubsection}{乘法}{7}{subsubsection*.4}
-\contentsline {subsection}{\numberline {1.1.2}集公理及其运算}{8}{subsection.1.1.2}
-\contentsline {subsubsection}{Cartesian乘积}{9}{subsubsection*.5}
-\contentsline {subsection}{\numberline {1.1.3}映射}{9}{subsection.1.1.3}
-\contentsline {subsubsection}{有限集}{10}{subsubsection*.6}
-\contentsline {subsection}{\numberline {1.1.4}可数集}{10}{subsection.1.1.4}
-\contentsline {subsection}{\numberline {1.1.5}连续统的势}{12}{subsection.1.1.5}
-\contentsline {subsection}{\numberline {1.1.6}势的比较}{14}{subsection.1.1.6}
-\contentsline {section}{\numberline {1.2}数系}{15}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}序关系}{15}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}整数}{16}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}有理数}{19}{subsection.1.2.3}
-\contentsline {subsection}{\numberline {1.2.4}实数}{22}{subsection.1.2.4}
-\contentsline {subsection}{\numberline {1.2.5}实数的Dedekind构造}{22}{subsection.1.2.5}
-\contentsline {subsection}{\numberline {1.2.6}实数作为有理数的Cauchy序列}{22}{subsection.1.2.6}
-\contentsline {section}{\numberline {1.3}逻辑}{22}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}归纳定义原理}{22}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}无限集与选择公理}{22}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}良序集}{22}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}极大原理}{22}{subsection.1.3.4}
-\contentsline {subsection}{\numberline {1.3.5}良序原理与选择公理}{22}{subsection.1.3.5}
-\contentsline {chapter}{\numberline {第二章\hspace {.3em}}普通点集拓扑}{23}{chapter.2}
-\contentsline {section}{\numberline {2.1}拓扑空间与连续函数}{23}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}拓扑空间}{23}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}拓扑的基}{23}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}序拓扑}{24}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}积拓扑}{25}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}子空间拓扑}{25}{subsection.2.1.5}
-\contentsline {subsection}{\numberline {2.1.6}闭集与极限点}{26}{subsection.2.1.6}
-\contentsline {subsubsection}{Hausdorff空间}{26}{subsubsection*.7}
-\contentsline {section}{\numberline {2.2}连通性与紧致性}{26}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}紧致空间}{26}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}实直线上的紧致子空间}{26}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}极限点紧致性}{27}{subsection.2.2.3}
-\contentsline {chapter}{\numberline {第三章\hspace {.3em}}普通微积分}{28}{chapter.3}
-\contentsline {section}{\numberline {3.1}微分}{28}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}向量值函数的微分}{28}{subsection.3.1.1}
-\contentsline {chapter}{\numberline {第四章\hspace {.3em}}普通线性代数}{29}{chapter.4}
-\contentsline {section}{\numberline {4.1}算子作为函数的像}{29}{section.4.1}
-\contentsline {chapter}{\numberline {第五章\hspace {.3em}}普通函数理论}{30}{chapter.5}
-\contentsline {section}{\numberline {5.1}函数序列}{30}{section.5.1}
-\contentsline {section}{\numberline {5.2}特殊函数}{30}{section.5.2}
-\contentsline {section}{\numberline {5.3}多元函数}{30}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}微分法}{30}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}反函数定理}{32}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}隐函数定理}{33}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}秩定理}{33}{subsection.5.3.4}
-\contentsline {chapter}{\numberline {第六章\hspace {.3em}}点集拓扑}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}可数性公理与分离公理}{35}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}流形的嵌入}{35}{subsection.6.1.1}
-\contentsline {chapter}{\numberline {第七章\hspace {.3em}}流形上的分析}{37}{chapter.7}
-\contentsline {section}{\numberline {7.1}重积分的换元}{37}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}单位分解}{37}{subsection.7.1.1}
-\contentsline {chapter}{\numberline {第八章\hspace {.3em}}测度论}{39}{chapter.8}
-\contentsline {section}{\numberline {8.1}Lebesgue测度}{39}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}引论}{39}{subsection.8.1.1}
-\contentsline {paragraph}{区间的测度为其长度}{39}{paragraph*.9}
-\contentsline {paragraph}{测度是平移不变的}{39}{paragraph*.10}
-\contentsline {paragraph}{无交集的可数并的测度可加}{39}{paragraph*.11}
-\contentsline {subsection}{\numberline {8.1.2}Lebesgue外测度}{40}{subsection.8.1.2}
-\contentsline {subsection}{\numberline {8.1.3}Lebesgue可测集的$\sigma $-代数}{40}{subsection.8.1.3}
-\contentsline {subsubsection}{Carath\'{e}odory可测}{40}{subsubsection*.12}
-\contentsline {subsection}{\numberline {8.1.4}Lebesgue可测集的内外逼近}{42}{subsection.8.1.4}
-\contentsline {subsection}{\numberline {8.1.5}Lebesgue测度的其他性质}{43}{subsection.8.1.5}
-\contentsline {subsection}{\numberline {8.1.6}不可测集}{44}{subsection.8.1.6}
-\contentsline {subsection}{\numberline {8.1.7}Cantor集与Cantor-Lebesgue函数}{44}{subsection.8.1.7}
-\contentsline {section}{\numberline {8.2}可测函数}{45}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}可测函数的和、积与复合}{45}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}可测函数的极限与逼近}{47}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Littlewood的三大原理}{47}{subsection.8.2.3}
-\contentsline {chapter}{\numberline {第九章\hspace {.3em}}积分论}{49}{chapter.9}
-\contentsline {section}{\numberline {9.1}Lebesgue积分}{49}{section.9.1}
-\contentsline {subsection}{\numberline {9.1.1}Riemann积分}{49}{subsection.9.1.1}
-\contentsline {subsection}{\numberline {9.1.2}有界函数在有限测度集上的Lebesgue积分}{49}{subsection.9.1.2}
-\contentsline {subsection}{\numberline {9.1.3}非负函数的Lebesgue测度}{51}{subsection.9.1.3}
-\contentsline {subsection}{\numberline {9.1.4}一般Lebesgue积分}{53}{subsection.9.1.4}
-\contentsline {subsection}{\numberline {9.1.5}积分的可数可加性与连续性}{54}{subsection.9.1.5}
-\contentsline {subsection}{\numberline {9.1.6}一致可积性}{55}{subsection.9.1.6}
-\contentsline {section}{\numberline {9.2}进一步的主题}{56}{section.9.2}
-\contentsline {subsection}{\numberline {9.2.1}一致可积性与测度紧密型}{56}{subsection.9.2.1}
-\contentsline {subsection}{\numberline {9.2.2}依测度收敛}{57}{subsection.9.2.2}
-\contentsline {subsection}{\numberline {9.2.3}Riemann与Lebesgue可积性的特征}{57}{subsection.9.2.3}
-\contentsline {section}{\numberline {9.3}微分与积分}{58}{section.9.3}
-\contentsline {subsection}{\numberline {9.3.1}单调函数的连续性}{58}{subsection.9.3.1}
-\contentsline {subsection}{\numberline {9.3.2}单调函数的可微性}{58}{subsection.9.3.2}
-\contentsline {subsection}{\numberline {9.3.3}有界变差函数：Jordan定理}{59}{subsection.9.3.3}
-\contentsline {subsection}{\numberline {9.3.4}绝对连续函数}{60}{subsection.9.3.4}
-\contentsline {subsection}{\numberline {9.3.5}积分下的微分}{61}{subsection.9.3.5}
-\contentsline {subsection}{\numberline {9.3.6}凸函数}{62}{subsection.9.3.6}
-\contentsline {chapter}{\numberline {第十章\hspace {.3em}}$L^p$空间}{63}{chapter.10}
-\contentsline {section}{\numberline {10.1}$L^p$空间：完备性与逼近}{63}{section.10.1}
-\contentsline {subsection}{\numberline {10.1.1}赋范线性空间}{63}{subsection.10.1.1}
-\contentsline {subsection}{\numberline {10.1.2}Young不等式，H\"{o}lder不等式，Minkowski不等式}{64}{subsection.10.1.2}
-\contentsline {subsection}{\numberline {10.1.3}$L^p$的完备性}{65}{subsection.10.1.3}
-\contentsline {subsection}{\numberline {10.1.4}逼近与可分性}{67}{subsection.10.1.4}
-\contentsline {section}{\numberline {10.2}$L^p$空间的对偶与弱收敛}{67}{section.10.2}
-\contentsline {subsection}{\numberline {10.2.1}$L^p$的对偶与表示}{67}{subsection.10.2.1}
-\contentsline {subsection}{\numberline {10.2.2}弱收敛性}{69}{subsection.10.2.2}
-\contentsline {subsection}{\numberline {10.2.3}弱列紧性}{71}{subsection.10.2.3}
-\contentsline {subsection}{\numberline {10.2.4}凸函数的最小值}{72}{subsection.10.2.4}
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}普通集合论}{6}{chapter.1}
+\contentsline {section}{\numberline {1.1}集与势}{6}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}自然数公理及其运算}{6}{subsection.1.1.1}
+\contentsline {subsubsection}{加法}{7}{subsubsection*.3}
+\contentsline {subsubsection}{乘法}{8}{subsubsection*.4}
+\contentsline {subsection}{\numberline {1.1.2}集公理及其运算}{9}{subsection.1.1.2}
+\contentsline {subsubsection}{Cartesian乘积}{10}{subsubsection*.5}
+\contentsline {subsection}{\numberline {1.1.3}映射}{10}{subsection.1.1.3}
+\contentsline {subsubsection}{有限集}{11}{subsubsection*.6}
+\contentsline {subsection}{\numberline {1.1.4}可数集}{11}{subsection.1.1.4}
+\contentsline {subsection}{\numberline {1.1.5}连续统的势}{13}{subsection.1.1.5}
+\contentsline {subsection}{\numberline {1.1.6}势的比较}{15}{subsection.1.1.6}
+\contentsline {section}{\numberline {1.2}数系}{16}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}序关系}{16}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}整数}{17}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}有理数}{20}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}实数}{23}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}实数的Dedekind构造}{23}{subsection.1.2.5}
+\contentsline {subsection}{\numberline {1.2.6}实数作为有理数的Cauchy序列}{23}{subsection.1.2.6}
+\contentsline {section}{\numberline {1.3}逻辑}{23}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}归纳定义原理}{23}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}无限集与选择公理}{23}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}良序集}{23}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}极大原理}{23}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.5}良序原理与选择公理}{23}{subsection.1.3.5}
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}普通点集拓扑}{24}{chapter.2}
+\contentsline {section}{\numberline {2.1}拓扑空间与连续函数}{24}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}拓扑空间}{24}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}拓扑的基}{24}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}序拓扑}{25}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}积拓扑}{26}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}子空间拓扑}{26}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.6}闭集与极限点}{27}{subsection.2.1.6}
+\contentsline {subsubsection}{Hausdorff空间}{27}{subsubsection*.7}
+\contentsline {subsubsection}{极限点}{28}{subsubsection*.8}
+\contentsline {subsubsection}{Hausdorff空间}{28}{subsubsection*.9}
+\contentsline {subsection}{\numberline {2.1.7}连续函数}{29}{subsection.2.1.7}
+\contentsline {subsubsection}{函数的连续性}{29}{subsubsection*.10}
+\contentsline {subsubsection}{同胚}{30}{subsubsection*.11}
+\contentsline {subsubsection}{构造连续函数}{30}{subsubsection*.12}
+\contentsline {subsection}{\numberline {2.1.8}积拓扑}{31}{subsection.2.1.8}
+\contentsline {subsection}{\numberline {2.1.9}度量拓扑}{31}{subsection.2.1.9}
+\contentsline {subsection}{\numberline {2.1.10}连续函数与度量拓扑}{33}{subsection.2.1.10}
+\contentsline {subsection}{\numberline {2.1.11}商拓扑}{34}{subsection.2.1.11}
+\contentsline {section}{\numberline {2.2}连通性与紧致性}{36}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}连通空间}{36}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}实直线上的连通子空间}{37}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}分支与局部连通性}{38}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}紧致空间}{39}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}实直线上的紧致子空间}{40}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}极限点紧致性}{41}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}局部紧致性}{43}{subsection.2.2.7}
+\contentsline {section}{\numberline {2.3}数列与级数}{43}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}收敛序列}{43}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}子序列}{44}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Cauchy序列}{45}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}上极限和下极限}{45}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}特殊序列}{46}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.6}级数}{46}{subsection.2.3.6}
+\contentsline {subsection}{\numberline {2.3.7}正项级数}{47}{subsection.2.3.7}
+\contentsline {subsection}{\numberline {2.3.8}审敛法}{47}{subsection.2.3.8}
+\contentsline {subsection}{\numberline {2.3.9}分部求和}{48}{subsection.2.3.9}
+\contentsline {subsection}{\numberline {2.3.10}绝对收敛}{49}{subsection.2.3.10}
+\contentsline {subsection}{\numberline {2.3.11}级数的加乘}{49}{subsection.2.3.11}
+\contentsline {subsection}{\numberline {2.3.12}级数重排}{49}{subsection.2.3.12}
+\contentsline {section}{\numberline {2.4}连续函数}{50}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}函数的极限}{50}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}连续性和紧性}{50}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}连续性与连通性}{51}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}间断}{51}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.5}单调函数}{52}{subsection.2.4.5}
+\contentsline {subsection}{\numberline {2.4.6}无穷远处的极限}{52}{subsection.2.4.6}
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}普通微积分}{53}{chapter.3}
+\contentsline {section}{\numberline {3.1}微分}{53}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}向量值函数的微分}{53}{subsection.3.1.1}
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}普通线性代数}{54}{chapter.4}
+\contentsline {section}{\numberline {4.1}算子作为函数的像}{54}{section.4.1}
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}普通函数理论}{55}{chapter.5}
+\contentsline {section}{\numberline {5.1}函数序列}{55}{section.5.1}
+\contentsline {section}{\numberline {5.2}特殊函数}{55}{section.5.2}
+\contentsline {section}{\numberline {5.3}多元函数}{55}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}微分法}{55}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}反函数定理}{57}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}隐函数定理}{58}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}秩定理}{58}{subsection.5.3.4}
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}点集拓扑}{60}{chapter.6}
+\contentsline {section}{\numberline {6.1}可数性公理与分离公理}{60}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}流形的嵌入}{60}{subsection.6.1.1}
+\contentsline {chapter}{\numberline {第七章\hspace {.3em}}流形上的分析}{62}{chapter.7}
+\contentsline {section}{\numberline {7.1}重积分的换元}{62}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}单位分解}{62}{subsection.7.1.1}
+\contentsline {chapter}{\numberline {第八章\hspace {.3em}}测度论}{64}{chapter.8}
+\contentsline {section}{\numberline {8.1}Lebesgue测度}{64}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}引论}{64}{subsection.8.1.1}
+\contentsline {paragraph}{区间的测度为其长度}{64}{paragraph*.15}
+\contentsline {paragraph}{测度是平移不变的}{64}{paragraph*.16}
+\contentsline {paragraph}{无交集的可数并的测度可加}{64}{paragraph*.17}
+\contentsline {subsection}{\numberline {8.1.2}Lebesgue外测度}{65}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Lebesgue可测集的$\sigma $-代数}{65}{subsection.8.1.3}
+\contentsline {subsubsection}{Carath\'{e}odory可测}{65}{subsubsection*.18}
+\contentsline {subsection}{\numberline {8.1.4}Lebesgue可测集的内外逼近}{67}{subsection.8.1.4}
+\contentsline {subsection}{\numberline {8.1.5}Lebesgue测度的其他性质}{68}{subsection.8.1.5}
+\contentsline {subsection}{\numberline {8.1.6}不可测集}{69}{subsection.8.1.6}
+\contentsline {subsection}{\numberline {8.1.7}Cantor集与Cantor-Lebesgue函数}{69}{subsection.8.1.7}
+\contentsline {section}{\numberline {8.2}可测函数}{70}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}可测函数的和、积与复合}{70}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}可测函数的极限与逼近}{72}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Littlewood的三大原理}{72}{subsection.8.2.3}
+\contentsline {chapter}{\numberline {第九章\hspace {.3em}}积分论}{74}{chapter.9}
+\contentsline {section}{\numberline {9.1}Lebesgue积分}{74}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Riemann积分}{74}{subsection.9.1.1}
+\contentsline {subsection}{\numberline {9.1.2}有界函数在有限测度集上的Lebesgue积分}{74}{subsection.9.1.2}
+\contentsline {subsection}{\numberline {9.1.3}非负函数的Lebesgue测度}{76}{subsection.9.1.3}
+\contentsline {subsection}{\numberline {9.1.4}一般Lebesgue积分}{78}{subsection.9.1.4}
+\contentsline {subsection}{\numberline {9.1.5}积分的可数可加性与连续性}{79}{subsection.9.1.5}
+\contentsline {subsection}{\numberline {9.1.6}一致可积性}{80}{subsection.9.1.6}
+\contentsline {section}{\numberline {9.2}进一步的主题}{81}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}一致可积性与测度紧密型}{81}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}依测度收敛}{82}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}Riemann与Lebesgue可积性的特征}{82}{subsection.9.2.3}
+\contentsline {section}{\numberline {9.3}微分与积分}{83}{section.9.3}
+\contentsline {subsection}{\numberline {9.3.1}单调函数的连续性}{83}{subsection.9.3.1}
+\contentsline {subsection}{\numberline {9.3.2}单调函数的可微性}{83}{subsection.9.3.2}
+\contentsline {subsection}{\numberline {9.3.3}有界变差函数：Jordan定理}{84}{subsection.9.3.3}
+\contentsline {subsection}{\numberline {9.3.4}绝对连续函数}{85}{subsection.9.3.4}
+\contentsline {subsection}{\numberline {9.3.5}积分下的微分}{86}{subsection.9.3.5}
+\contentsline {subsection}{\numberline {9.3.6}凸函数}{87}{subsection.9.3.6}
+\contentsline {chapter}{\numberline {第十章\hspace {.3em}}$L^p$空间}{88}{chapter.10}
+\contentsline {section}{\numberline {10.1}$L^p$空间：完备性与逼近}{88}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}赋范线性空间}{88}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}Young不等式，H\"{o}lder不等式，Minkowski不等式}{89}{subsection.10.1.2}
+\contentsline {subsection}{\numberline {10.1.3}$L^p$的完备性}{90}{subsection.10.1.3}
+\contentsline {subsection}{\numberline {10.1.4}逼近与可分性}{92}{subsection.10.1.4}
+\contentsline {section}{\numberline {10.2}$L^p$空间的对偶与弱收敛}{92}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}$L^p$的对偶与表示}{92}{subsection.10.2.1}
+\contentsline {subsection}{\numberline {10.2.2}弱收敛性}{94}{subsection.10.2.2}
+\contentsline {subsection}{\numberline {10.2.3}弱列紧性}{96}{subsection.10.2.3}
+\contentsline {subsection}{\numberline {10.2.4}凸函数的最小值}{97}{subsection.10.2.4}

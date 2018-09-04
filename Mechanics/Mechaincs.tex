@@ -1,4 +1,4 @@
-\documentclass{ctexart}
+\documentclass{ctexrep}
 
 \input{/Users/zechen/Documents/PrivateAcademic/CommonHead/CommonHead.tex}
 \title{经典力学}
@@ -6,34 +6,55 @@
 
 \begin{document}
 \maketitle
-\section{运动学与基本力学}
-\subsection{质点运动学}
+\tableofcontents
+\chapter{运动学与基本力学}
+\section{质点运动学}
+\subsection{普通运动学}
+\keypoint{追及问题可求临界条件，临界条件的追及满足路程相等且速度相等。}
+\keypoint{时间和空间的微分可以由\[ \edt{}=v \edx{} \]变换。对于加速度，有$a=v\edx v$。\SYSexeref{1-4}}
+\subsection{一般加速运动}
 对加速运动，成立
 \[ v\pare{t} = v_0 + \intab{0}{t}{a}{t}, \quad x\pare{t} = x_0 + \intab{0}{t}{v}{t}. \]
 对匀加速运动，成立
 \[ v^2 - v_0^2 = 2ax,\quad x\pare{x} = x_0 + v_0t + \half at^2. \]
+\keypoint{抛体运动的轨迹方程为\SYSexeref{1-7}\[ y=-\frac{g}{2v_0^2\cos^2\theta}x^2+\pare{\tan\theta}x. \]}
 \keypoint{斜面的加速度为$a=g\sin \theta$。}
-\keypoint{追及问题可求临界条件，临界条件的追击满足路程相等且速度相等。}
-\keypoint{受力斜向的可以斜分解。}
-\keypoint{向心加速度$a = v\omega = v^2/R$。}
+\keypoint{受力斜向的可以斜分解。\SYSexeref{1-9}}
+\subsection{圆周运动}
 对圆周运动，成立
 \[ \vv = \vomega \times \vR, \quad \vva_c = \vomega \times \vv, \quad \vva_t = \dot{\vomega} \times \vR. \]
-对一般的变速运动，将$R$替换为曲率半径$\rho$即可。曲率半径可通过设定一在曲线上运动的质点，求$v^2/a_c$得。
+\keypoint{向心加速度$a = v\omega = v^2/R$。}
+对一般的变速运动，将$R$替换为曲率半径$\rho$即可。
+\refl{曲率半径可通过设定一在曲线上运动的质点，求$v^2/a_c$得。}
+\keypoint{求解曲率半径，按照如下步骤\SYSexeref{1-14}\SYSexeref{1-32}：
+\begin{cenum}
+\item 求解该点的速度$\vv$；
+\item 求解速度的法向单位矢量$\vn$；
+\item 求解该点的加速度$\vva$；
+\item $\rho = \vv^2/\pare{\vva\cdot\vn}$。
+\end{cenum}}
 \keypoint{可直接将$\vva$投影到垂直于$\vv$的方向上获得$a_c$。}
+\subsection{运动的分解}
+\keypoint{对于杆（绳）的运动，可以将速度分解为绕杆（绳）转动与沿杆（绳）平动。\SYSexeref{1-24}\SYSexeref{1-33}}
+\keypoint{杆（绳）的速度或者加速度，知道两个方向上的分量投影。即可以只要实际大小。}\keypoint{因此，可以通过例如「向心加速度」和「$x$-方向加速度」得知总的加速度大小。\SYSexeref{1-25}}
+\keypoint{对于存在约束的情形，可以视为被约束方向的加速度或速度为零，因此得到一分量投影。\SYSexeref{1-33}}
+\subsection{极坐标下的运动学}
 在极坐标下，注意
 \[ \rd{} \ve_r =  \rd{\theta} \ve_\theta, \quad \rd{} \ve_\theta = -\rd{}\theta \ve_r.  \]
-立即有（可以用于求轨迹的）
-\[ \eddon{r}{\theta} = \frac{rv_r}{v_\theta}. \]
+立即有
+\keypoint{可以用于求轨迹的\SYSexeref{1-17}
+\[ \eddon{r}{\theta} = \frac{rv_r}{v_\theta}. \]}
 以及
 \conclu{
-\begin{equation}
+\begin{align}
 \label{eq:polara}
-a_r = \ddot{r} - r\dot{\theta}^2, \quad a_\theta = 2\dot{r}\dot{\theta} + r\ddot{\theta}.
-\end{equation}
+a_r = \ddot{r} - r\dot{\theta}^2&, \quad a_\theta = 2\dot{r}\dot{\theta} + r\ddot{\theta}.\\
+v_r=\dot{r}&, \quad v_\theta = r\dot{\theta}.
+\end{align}
 }
 \par
 $a_r$的第一项为单纯的径向加速度，第二项为向心加速度，$a_\theta$的第一项为科氏力，第二项为单纯的切向加速度。
-\par
+\subsection{参考系变换}
 刚体的运动可分平动与转动。任意两点的连线始终保持平行的运动谓平动。单个刚体，平动自由度有三个，故转动自由度有三个——自转，章动，进动。若为定轴转动，则只有一个自由度。
 \par
 欲变换参考系，则
@@ -41,9 +62,57 @@ $a_r$的第一项为单纯的径向加速度，第二项为向心加速度，$a_
 将$\vr$替换为$\vv$，$\vva$皆可成立。由\eqref{eq:polara}，可得在新参考系中的极坐标下的加速度。
 \par
 以某参考系为背景可以建立质点的平动参考系，注意它和刚体的参考系不同，它不会自转。
-
-%%%%%%%%%%%%%
-\subsection{动量与能量}
+\keypoint{对于显著存在匀加速的参考点的情形，可以切换至该参考点的坐标系再计算加速度。\SYSexeref{1-23}}
+\keypoint{在尺寸变化的连续介质中的运动，可以引入连续介质中的度规，将质点的绝对速度转化为介质的坐标。\SYSexeref{1-28}}
+\keypoint{对于\emph{同步的}自由落体，可以建立「自由落体坐标系」将自由落体转化为直线运动。\SYSexeref{1-34}}
+\section{质点动力学}
+\subsection{单质点动力学}
+由Newton第二定律$\vF=m\vva$可定义\term{惯性质量}{inertial mass}。
+在惯性参考系中，如下的关系成立，
+\begin{alignat*}{3}
+\vv=\dot{\vr}, \quad \vp &= m\vv, \quad &\dot{\vp}&=\vF.\\
+\vN=\vr\times\vF, \quad \vL &= \vr\times\vp, \quad &\dot{\vL}&=\vN.
+\end{alignat*}
+由动量和角动量的方程立刻有
+\conclu{
+  \begin{theorem}[动量守恒]
+    $\vF=0$时，$\dot{\vp}=0$。
+  \end{theorem}
+}
+\conclu{
+  \begin{theorem}[角动量守恒]
+    $\vN=0$时，$\dot{\vL}=0$。
+  \end{theorem}
+}
+\par
+如下定义功后有
+\[ W_{12}=\int_1^2\vF\cdot\rd{\vs}=\frac{m}{2}\int\edt v^2\intpostf{t}=T_2-T_1, \]
+其中
+\[ T=\half mv^2 \]
+谓动能。
+\par
+若上述对$\vF$的积分与路径无关则谓保守场，即
+\[ \oint\vF\cdot\rd{\vs}=0, \quad \nabla\times\vF=0, \quad \vF=-\nabla V\pare{\vr}. \]
+此时有
+\[ \vF\cdot\rd{\vs} = -\rd{V}, \quad W_{12}=V1-V2. \]
+因此有
+\conclu{
+\begin{theorem}[能量守恒]
+  对保守场，有$T_1+V_1=T_2+V_2$。
+\end{theorem}
+}
+\warning{对于$V$随时间变化的情况，$\vF\cdot\rd{\vs}=-\ddson{V}\rd{s}$求偏导即可。}
+\begin{ex}
+  球形均匀物体的引力场为
+  \[ F = \begin{cases}
+    GMm/r^2, \quad r \ge R,\\
+    G\frac{Mm}{R^3}r, \quad r < R.
+  \end{cases} \]
+\end{ex}
+\begin{remark}
+  定义引力质量为Newton万有引力定律中的质量项，则试验表明它与惯性质量成比例，故可设比例常数为$1$。
+\end{remark}
+\subsection{多质点动力学}
 质点系的动能为
 \begin{align*}
 T = \half m_i \vv_i^2 &= \half m_i\pare{\vv_i-\vV+\vV}^2\\
@@ -52,11 +121,24 @@ T = \half m_i \vv_i^2 &= \half m_i\pare{\vv_i-\vV+\vV}^2\\
 欲消除交叉项，只需
 \[ m_i\pare{\vv_i-\vV}\cdot\vV=\pare{\vp-\sum m_i\vV}\cdot\vV=0, \quad \vV = \frac{m_i\vv_i}{\sum m_i}. \]
 从而有
+\begin{equation*}
+T = T_\text{frame} + \sum T'_i.
+\end{equation*}
+\par
+将力分为内力和外力，并设外力由势$V_i$给出，内力由对称的
+\[ V_{ij}=V_{ij}\pare{\abs{\vr_i-\vr_j}} \]
+给出，故
+\[ \vF_{ij}\cdot\rd{\vs_i}+\vF_{ji}\cdot\rd{\vs_j} = -\nabla_i V_{ij}\cdot \rd{\vs_i}-\nabla_jV_{ij}\cdot\rd{\vs_j} = -\nabla_{ij}V_{ij}\cdot\rd{\vr_{ij}}. \]
+因此总势能
+\[ V=\sum_i V_i + \sum_{i<j}V_{ij} = \sum_i V_i + \half\sum_{i\neq j}V_{ij}. \]
 \conclu{
+\begin{theorem}[能量与能量守恒]
+\label{thm:Econservation}
 \begin{equation}
 \label{eq:Tframe}
-T = T_\text{frame} + \sum T'_i.
+T = T_\mathrm{frame} + \sum T'_i, \quad V=\sum_i V_i + \half\sum_{i\neq j}V_{ij}.
 \end{equation}
+\end{theorem}
 }
 \par
 质点系的角动量为
@@ -64,24 +146,477 @@ T = T_\text{frame} + \sum T'_i.
 \vL &= \sum m_i\vr_i\times\vv_i = \sum m_i \pare{\vr_i - \vR} \times \pare{\vv_i - \vV} \\
 &+ \sum m_i \vR \times \vv_i + \cancelto{0}{\sum m_i \pare{\vr_i-\vR} \times \vV}.
 \end{align*}
+注意将质点系的受力分为内力和外力，由Newton第三定律知内力相互抵消，故
+\[ \dot{\vp}_\text{总}=\sum \vF_{i\text{外}}. \]
 因此
 \conclu{
+\begin{theorem}[角动量定理]
+\label{thm:angularmomentum}
 \begin{equation}
 \label{eq:Lframe}
-\vL = \vL_\text{frame} + \sum \vL'_i.
+\vL = \vL_\mathrm{frame} + \sum \vL'_i, \quad \dot{\vp} = \sum \vN_{i\text{外}}.
 \end{equation}
+\end{theorem}
 }
 \par
-完全相同的道理有
+完全相同的道理，有
 \conclu{
+\begin{theorem}[动量定理]
+\label{thm:momentum}
 \begin{equation}
 \label{eq:Pframe}
-\vp = \vp_\text{frame} + \sum \vp'_i.
+\vp = \vp_\mathrm{frame} + \sum \vp'_i, \quad \dot{\vp} = \sum \vF_{i\text{外}}.
 \end{equation}
+\end{theorem}
 }
+\keypoint{
+  如果两物体间相对速度恒定，且两物体受外力相等，则两物体间不具有相互作用力。从而，类似的问题可以将两物体分开处理。\SYSexeref{2.5.14}
+}
+\subsection{完整约束}
+如果运动的约束可以表示为
+\begin{equation}
+\label{eq:hc}
+f\pare{\vr_i, t} = 0,
+\end{equation}
+则谓之\term{完整约束}{holonomic constraints}。
+\begin{ex}
+  刚体的约束可以表示为$\pare{\vr_i-\vr_j}^2-c_{ij}=0$，故为完整约束。
+\end{ex}
+\begin{ex}
+  容器内气体无法越过容器壁为非完整约束。
+\end{ex}
+\begin{ex}
+  圆盘在平面上的无摩擦滑动存在速度-角速度的约束非完整约束。
+\end{ex}
+如果\eqref{eq:hc}显式包含时间，则谓之\term{含时约束}{rheonomous constraint}，否则谓\term{非含时约束}{scleronomous constraint}。
+\par
+有约束的问题有两个难点，一谓坐标并非全部独立，二谓约束引入了未知力——约束可以看作「有些力它们的效果是知道的，但力本身是未知的」。
+\par
+对完整约束引入\term{广义坐标}{generalized coordinates}$\curb{q_1,\cdots,q_{3N-k}}$，其中$k$为\eqref{eq:hc}的数量，且
+\[ \vr_i=\vr_i\pare{q_1,q_2,\cdots,q_{3N-k},t}. \]
+就可以将运动方程转化为用$\curb{q_i}$表示。广义坐标可以是任何方便的量——甚至是角动量。这可以解决第一个难点。
+\begin{ex}[广义坐标对非完整约束失效]
+  圆盘在平面上的无摩擦滑动的约束为
+  \begin{align*}
+    \rd{x}-a\sin\theta\,\rd{\phi}&=0.\\
+    \rd{y}-a\cos\theta\,\rd{\phi}&=0.
+  \end{align*}
+  两条方程皆无法找到积分因子，故不可转化为\eqref{eq:hc}的形式。
+\end{ex}
+尽管许多实际问题都涉及非完整约束，但是近代物理在原子尺度上的问题已经无需担心非完整约束，故通常假设问题以完整约束的方式给出。
+\subsection{D'Alembert原理与Lagrange方程}
+\term{虚位移}{virtual displacement}是系统在符合约束的条件下的微小位移$\delta\vr_i$。在\emph{平衡状态}下，诸点的受力$\vF_i$皆为$0$，故显然
+\[ \sum \vF_{i\text{施加}}\cdot\delta\vr_i + \sum \vf_i\cdot\delta\vr_i = 0. \]
+其中$\vf_i$为约束力。为了化简问题，引入
+\begin{ass}
+  约束力的虚功为零。
+\end{ass}
+显然这对刚体约束是成立的，对于支持力也有其垂直于平面故不做功。摩擦力也许不符合这一点，但是控制无滑动转动的摩擦力却符合——因为它不做功，轮子在着地点是固定的。
+\par
+在这一假设下，立刻有
+\conclu{
+\begin{theorem}[虚功原理]
+\[ \sum \vF_{i\text{施加}} \cdot \delta\vr_i = 0. \]
+\end{theorem}
+}
+\par
+将$\delta\vr_i$用诸$\curb{\delta q_i}$表示可以得到诸$\delta q_i$项的和为零，故其系数为零——无法对$\delta \vr_i$直接应用这一点，因为它们不是无关的。同时，即使系统处于\emph{非平衡状态}，对诸点施加力$\vF'_i = -\dot{\vp}_i$后应用虚功原理，有
+\conclu{
+\begin{theorem}[D'Alembert原理]
+\[ \sum \pare{\vF_i-\dot{\vp}_i}\cdot\delta\vr_i=0. \]
+\end{theorem}
+}
+\par
+上式显然可以拆分为两项，第一项谓
+\[ \sum \vF_i\cdot\delta\vr_i = \sum_{i,j} \vF_i\cdot\ddelon{\vr_i}{q_j}\delta q_j = \sum Q_j\delta q_j. \]
+其中
+\begin{equation}
+\label{eq:gf}
+  Q_j = \sum \vF_i\cdot\ddelon{\vr_i}{q_j}
+\end{equation}
+谓\term{广义力}{generalized force}。
+\par
+第二项谓
+\begin{align*}
+\sum \dot{\vp}_i\cdot\delta\vr_i &= \sum m_i \ddot{\vr}_i\cdot\delta\vr_i = \sum_{i,j} m_i\ddot{\vr}_i\cdot\delta\vr_i\\
+&= \sum\brac{\edt\pare{m\dot{\vr_i}\cdot\ddelon{\vr_i}{q_j}} - m_i\dot{\vr}_i\cdot\edt\pare{\ddelon{\vr_i}{q_j}}}.
+\end{align*}
+借助关系（第二条可以将对$t$的全导数转化为对$q_j$的偏导之和求得）
+\[ \ddelon{\vv_i}{\dot{q}_j}=\ddelon{\vr_i}{q_j},\quad \edt\pare{\ddelon{\vr_i}{q_j}}=\ddelon{\vv_i}{q_j}. \]
+因此，第二项化为
+\[ \sum\dot{\vp}_i\cdot\delta\vr_i = \sum\brac{\edt\pare{m_i\vv_i\cdot\ddelon{\vv_i}{\dot{q_j}}}-m_i\vv_i\cdot\ddelon{\vv_i}{q_j}}. \]
+综上，D'Alembert原理化为
+\begin{equation}
+\label{eq:TLagrange}
+\sum\curb{\brac{\edt\pare{\ddelon{T}{\dot{q}_j}}-\ddelon{T}{q_j}}-Q_j}\delta q_j = 0.
+\end{equation}
+注意诸$\curb{q_j}$可取为独立变量，所以诸系数为零。又设
+\[ \vF_i = -\nabla_i V, \quad Q_j = -\sum\nabla_i V\cdot\ddelon{\vr_i}{q_j} = -\ddelon{V}{q_j}. \]
+再设$L=T-V$且$V$无关于$\curb{\dot{q_j}}$，则
+\conclu{
+  \begin{theorem}[Lagrange方程]
+    设$L=T-V$，有
+    \[ \edt\pare{\ddelon{L}{\dot{q_j}}}-\ddelon{L}{q_j}=0. \]
+  \end{theorem}
+}
+\par
+\begin{theorem}[规范不变性]
+\label{thm:addftolagrangian}
+注意对于给定的$L$和任意$F=F\pare{q,t}$，
+\[ L' = L + \edton{F} \]
+给出同样的运动方程。
+\end{theorem}
+因为
+\[ \edton{F} = \sum \ddelon{F}{q_i}\dot{q_i} + \ddelon{F}{t}. \]
+显然在$L$中加上这一项Lagrange方程仍然成立。
 
+\subsection{速度相关的势与耗散函数}
+上一节在\eqref{eq:TLagrange}中设$V$与$\curb{\dot{q_i}}$无关从而将括号中的第一项写作对$L$的导数，然则若$V$与$\curb{\dot{q_j}}$有关则可以将多余的项归入广义力$\curb{Q_j}$，因此
+\begin{theorem}
+  \label{thm:Uofv}
+  对于
+  \[ Q_j = -\ddelon{U}{q_j}+\edt\pare{\ddelon{U}{\dot{q}_j}} \]
+  Lagrange方程仍然成立。这正好是对$U$的变分。
+\end{theorem}
+\begin{ex}
+  对于Lorentz力，设$U=q\phi-q\vA\cdot \vv$，由D'Alembert方程有
+  \begin{align*}
+    m\ddot{x} &= -q\nabla_x \phi +\pare{qv_x\ddxon{A_x} + qv_y\ddyon{A_y} + qv_z\ddzon{A_z}} - q \edton{A_x} \\
+    &= -q\nabla_x \phi + v_y\pare{\ddxon{A_y}-\ddyon{A_x}} + v_z\pare{\ddxon{A_z}-\ddzon{A_x}} \\
+    &= -qE_x + v_y B_z - v_z B_y.
+  \end{align*}
+  写出所有分量可以得到$m\ddot{\vr} = q\pare{\vE + \pare{\vv\times\vB}}$。
+\end{ex}
+在\eqref{eq:TLagrange}中将不能借助势能表示的项移出，则
+\[ \edt\pare{\ddelon{L}{\dot{q}_j}}-\ddelon{L}{q_j}=Q_j. \]
+对于正比于速度的耗散力$F_{x}=-k_xv_x$，设Rayleigh耗散函数
+\[ \cF = \half\sum\vk\cdot\vv_i^2, \quad F_{x,i} = -\ddelon{\cF}{v_{x,i}}. \]
+Lagrange方程可写作
+\begin{equation}
+  \label{eq:Lwithdissipation}
+  \edt\pare{\ddelon{L}{\dot{q}_j}}-\ddelon{L}{q_j}+\ddelon{\cF}{\dot{q}_j}=0.
+\end{equation}
+\begin{remark}
+  \label{rm:dissipation}
+  Rayleigh耗散函数恰为$\half \vF\cdot v=\half P_F$，即能量耗散速率的一半。
+\end{remark}
+\begin{ex}
+  流体黏性阻力$\vf = -\gamma \vv$合于此式。然而普通的摩擦力不合。
+\end{ex}
+注意最大静摩擦力$f=\mu_0 N$与滑动摩擦力$f=\mu N$不等，通常$\mu_0 > \mu$。
+\keypoint{
+  正比于速度的耗散力除了流体摩擦，还有例如Lorentz力导致的摩擦，$F=\mu qvB=\gamma v$，亦可以应用类似结论，从而$\rd{I} = \gamma \rd{x}$。\SYSexeref{2.5.12}
+}
+\keypoint{
+  $x$和$v$与$F$可以通过如下方式转化。\SYSexeref{2.5.12}
+  \[ \rd{x} = v \frac{\rd{I}}{F} = \frac{mv\,\rd{v}}{F}. \]
+}
+\subsection{Lagrange表述的应用}
+将$T$的表述展开，有
+\begin{align}
+  \label{eq:Texpand}
+  T&=\sum \half m_i v_i^2 = \sum \half m_i\pare{\sum \ddelon{\vr_i}{q_j}\dot{q}_j+\ddton{\vr_i}}^2\\
+  &= M_0 + \sum M_j \dot{q}_j + \half \sum_{j,k} M_{jk}\dot{q}_j\dot{q}_k.
+\end{align}
+\conclu{
+\begin{theorem}
+\label{thm:Tcomposition}
+  在广义坐标下，动能有形式
+  \[ T= M_0 + \sum M_j \dot{q}_j + \half \sum_{j,k} M_{jk}\dot{q}_j\dot{q}_k. \]
+  其中诸$M$是$\curb{q_i}$和$t$的函数。
+\end{theorem}
+}
+\begin{ex}
+  完全无需坐标变换，可以得到直角坐标系下的Newton第二定律。
+\end{ex}
+\begin{ex}[极坐标下的运动]
+  由\eqref{eq:gf}，有
+  \begin{align*}
+    Q_r &= \vF\cdot\ddron{\vr}=F_r,\\
+    Q_\theta &= \vF\cdot\ddthon{\vr}=rF_\theta.
+    T=\half m\brac{\dot{r}^2+\pare{r\dot{\theta}}^2}.
+  \end{align*}
+  从而
+  \conclu{
+    \begin{align*}
+      m\ddot{r}-mr\dot{\theta}^2 &= F_r,\\
+      mr\ddot{\theta}^2+2mr\dot{r}\dot{\theta}&=rF_\theta.
+    \end{align*}
+  }
+  \\
+  这与\eqref{eq:polara}相符。
+\end{ex}
+\begin{ex}[Atwood滑轮]
+  滑轮两端有质量$M_1$和$M_2$的两个物体，
+  \[ L=\half\pare{M_1+M_2}\dot{x}^2+M_1 gx + M_2 g\pare{l-x}, \]
+  得到
+  \[ \ddot{x} = \frac{M_1-M_2}{M_1+M_2}g. \]
+\end{ex}
+\begin{ex}[系在匀速转动杆上的珠子]
+  采用极坐标系，有
+  \[ T = \half m\pare{\dot{r}^2+r^2\omega^2}. \]
+  故
+  \[ m\ddot{r}-mr\omega^2=0, \quad r=e^{\omega t}. \]
+\end{ex}
+在非惯性系中，加速度$\vva'$由力$\vF'$表征，满足
+\[ \vF' = \vF + \vF_i. \]
+其中第二项为虚拟力。对于加速平动参考系，有
+\[ \vF_i = -m\vva_0. \]
+对于转动参考系，有
+\[ \vF_i = m\omega^2\vr'. \]
+\keypoint{对于平动加速参考系，可以尝试用等效的重力替代之。\SYSexeref{2.4.6}}
+\begin{ex}[潮汐的定性解释]
+  地球（忽略自转）的公转具有平动惯性虚力$F_i=GMm/r^2$指向太阳外。赤道近日侧引力大从而抵消平动惯性虚力，将海水外拽。同样远日侧将海水外拽，而极点（以及日界线）处将海水下挤。随着地球自转，一日内经过两次外拽和下挤的点，形成潮汐。
+\end{ex}
+\keypoint{
+  对于平动同时转动的刚体上一点，分析时应当同时纳入该点随刚体转动的平动虚力以及该点相对刚体的外在惯性系的转动离心力。
+}
+考虑惯性系$S$和逆时针$\omega$-旋转的$S'$，$S$中的静止粒子在$S‘$系中自动获得向外的$F_c$离心力，但实际上观测到的力是向内的$F_c$向心力，因此引入修正$F_{\text{cor}} = 2mv'\omega$。
+\par
+接上开论述，考虑质点在$S'$系内朝外运动，则$S$内质点偏移（向上），存在加速度（向上的）$2v\omega$（这是纳入了速度本身的旋转和平动导致的圆周半径改变），故引入修正$F_{\text{cor}}=2mv'\omega$（相应的分量方向不一样）。
+\par
+考虑极坐标下（注意平面内有$\vr$垂直于$\vomega$）的
+\[ L = T = \half m\pare{\vv + \vomega\times\vr}^2 = \half mv^2 + m\vv\cdot\pare{\vomega\times\vr} + \omega^2 r^2. \]
+后两项分别为以上的两个力。
+\conclu{
+  \[ \vF_\text{cor}=2m\vv\times\vomega, \]
+  \[ \vF_c = mr\omega^2. \]
+}
+\keypoint{类比Lorentz力的情形，Coriolis力也导致一个圆周运动，有\[ r=\frac{v_0}{2\omega}. \]}
+\section{变分与Lagrange表述}
+\subsection{变分法}
+设有积分
+\[ J = \int_1^2 f\pare{y,\dot{y},x}\intpostf{x}. \]
+欲使之最小且$y$满足端点约束，设$y$的微小变化
+\[ y\pare{x,\alpha} = y\pare{x,0}+\alpha\eta\pare{x}. \]
+设$J\pare{\alpha}$为相应的积分，驻定值条件要求
+\[ \pare{\ddalon{J}}_{\alpha=0} = 0. \]
+将积分展开，有
+\[ \edalon{J}=\int_1^2\pare{\ddyon{f}\ddalon{y}+\ddelon{f}{\dot{y}}\ddalon{\dot{y}}}\intpostf{x}. \]
+设法在第二项中分解出$\ddalon{y}$，注意$\dot{y}=\ddxon{y}$可以分部积分，从而
+\[ \edalon{J} =  \left. \ddelon{f}{\dot{y}}\ddalon{y}\right\rvert_{1}^{2} + \int_1^2\pare{\ddyon{f}-\edx\ddelon{f}{\dot{y}}}\ddalon{y}\intpostf{x}.\]
+注意在边界处$y$的值已经固定，故边界处对$\alpha$的偏导数为零。因此由最值条件，
+\conclu{
+\begin{theorem}[Lagrange方程]
+  \[ \ddyon{f}-\edx\pare{\ddelon{f}{\dot{y}}}=0. \]
+\end{theorem}
+}
+\begin{remark}
+  记$\delta J = \edalon{J}\,\rd{\alpha}$，$\delta y=\edalon{y}\,\rd{\alpha}$，上述积分又可以写作
+  \[ \delta J = \int_1^2 \pare{\ddyon{f}-\edx \ddelon{f}{\dot{y}}}\delta y \intpostf{x} = 0. \]
+\end{remark}
+\begin{ex}[两点间的最短距离]
+  $f=\sqrt{1+\dot{y}^2}$，由Lagrange方程得
+  \[ \frac{\dot{y}}{\sqrt{1+\dot{y}^2}}=c, \]
+  知$\dot{y}=a$，得一直线。
+\end{ex}
+\begin{ex}[最小旋转曲面]
+  $f=2\pi x\sqrt{1+\dot{y}^2}$，得
+  \[ \frac{x\dot{y}}{1+\dot{y}^2}=a, \quad \dot{y}=\sqrt{\frac{a^2}{x^2-a^2}}, \]
+  故
+  \[ x = a\cosh \frac{y-b}{a}. \]
+  这并不是最终解——它作为Lagrange方程的解，实际上仅给出了稳定值，却并不是最大值或最小值，而是在鞍点处。考虑$0<x_1<x_2\ll \abs{y_2-y_1}$，则最小曲面为两圆盘加一线段。
+\end{ex}
+\begin{ex}[最速降线问题]
+  $f={2gy}/{\sqrt{1+\dot{y}^2}}$，稍微借助一些奇技淫巧\cite{Boas}可将Lagrange方程写为
+  \[ \frac{x'}{\sqrt{y}\sqrt{1+x'^2}} = c, \]
+  得到一摆线。
+\end{ex}
+\begin{ex}
+  求旋转水面的形状。
+\end{ex}
+%proof1
+  \begin{proof}[受力分析]
+    由受力分析，
+    \[ r\omega^2\,\rd{m} = g\tan\theta\,\rd{m}. \]
+    从而$y'=r\omega^2/g$，
+    \[ h = \frac{\omega^2}{2g}x^2+C. \]
+  \end{proof}
+%proof2
+  \begin{proof}[变分]
+    设$M\pare{r}$为半径$r$内包含的质量，则$\int L$取驻定值当且仅当稳态的$T-U$取驻定值，此时
+    \[ L = \int_0^R \pare{\half M' r^2\omega^2 - \frac{M'^2g}{2\cdot 2\pi r\rho}}\intpostf{r}. \]
+    变分得
+    \[ r^2\omega^2 - \frac{M'g}{\pi r\rho} = C'. \]
+    \[ M' = \frac{\pi r^3 \rho \omega^2}{2g} + Cr. \]
+    \[ h = \frac{M'}{2\pi r \rho} = \frac{\omega^2}{2g}r^2 + C . \qedhere\]
+  \end{proof}
+\subsection{Hamilton原理}
+\term{单演系统}{monogenic system}谓力可以由作为位置、速度和时间函数的势导出的系统。
+\begin{ass}[Hamilton原理]
+  系统的运动满足使
+  \[ I=\int_1^2 L\intpostf{t} \]
+  取驻定值。
+\end{ass}
+前一节的D'Alembert原理借助了「无穷小」的位移，Hamilton原理则借助对系统运动路径的无穷小变化。将Lagrange方程应用到诸（独立的）坐标$\curb{q_i}$，再次得到
+\conclu{
+  \begin{theorem}[Lagrange方程]
+    设$L=T-V$，有
+    \[ \edt\pare{\ddelon{L}{\dot{q_j}}}-\ddelon{L}{q_j}=0. \]
+  \end{theorem}
+}
+\begin{remark}
+  在Hamilton表述下，\tref{addftolagrangian}就相当显然了——加上这样的$\edt F\pare{q,t}$后，Lagrangian的积分只是增加了一个常数。
+\end{remark}
+\begin{ex}
+\label{ex:RLlagrange}
+  在$RL$电路中，设广义坐标$q$为通过电荷量，
+  \[ T = \half L\dot{q}^2, \quad \cF = \half R\dot{q}^2, \quad U=qV, \]
+  \[ L\ddot{q} + R\dot{q} = L\dot{I} + RI = V. \]
+  立刻有
+  \[ I = I_0 \pare{1-e^{-Rt/L}}. \]
+\end{ex}
+\begin{ex}[\ecompare{RLlagrange}]
+  在黏性流体中半径为$a$的球满足
+  \[ T = \half m \dot{x}^2, \quad \cF=3\pi\eta a\dot{x}, \quad U=mgx, \]
+  \[ m\ddot{x} + 6\pi\eta a\dot{x} = m'\dot{v} + 6\pi\eta a v = mg. \]
+  立刻有
+  \[ v=v_0\pare{1-e^{-t/\tau}}. \]
+\end{ex}
+\begin{ex}
+\label{ex:LClagrange}
+  在$LC$电路中，同上有
+  \[ T = \half L\dot{q}^2, \quad U=\frac{q^2}{2C}, \]
+  \[ L\ddot{q} + \frac{q}{C} = 0. \]
+  立刻有
+  \[ q=q_0 \cos \omega t. \]
+\end{ex}
+\begin{ex}[\ecompare{LClagrange}]
+  对于弹簧系统，有
+  \[ T = \half m\dot{x}^2, \quad U = \half k x^2, \]
+  \[ m\ddot{x} + kx = 0. \]
+  立刻有
+  \[ x=x_0 \cos\omega t. \]
+\end{ex}
+可以看出，电感的贡献相当于动能项，电容和电源相当于势能，电阻为耗散。对于一半的多电路之间由互感相连的情形，有
+\[ L = \half \sum L_j \dot{q}_j^2 + \half \sum M_{jk}\dot{q_j}{q_k} - \sum \frac{q_j^2}{2C_j} - \sum E_j\pare{t}q_j. \]
+由此，通过Lagrange表述可以将电路问题转化为与之等价的力学问题。
+\subsection{对有约束系统的应用}
+在D'Alembert原理的推导中，只有最后一步\eqref{eq:TLagrange}使用了诸$\curb{q_i}$无关的条件。对于并非无关的$n$个坐标，设有约束$m$条，引入Lagrange乘子，
+\[ I=\int_1^2 \pare{L+\sum_{a=1}^m \lambda_a f_a} \intpostf{t}, \]
+关于$m$个$\lambda$的变分得到约束方程，关于$q_i$的变分则写作
+\[ \edt\ddelon{L}{\dot{q}_k}-\ddelon{L}{q_k}+\sum_{a=1}^m \lambda_a\ddelon{f_a}{q_k}=0. \]
+注意只需要前$m$个$k$满足此方程就可以求解所有$\lambda$，这使得这$k$个中任意的$\delta q_i$的系数均为零——这样，就可以任意取剩下$n-m$个自由的坐标，无论如何剩下这$m$个坐标都可以满足便分条件。比照\eqref{eq:TLagrange}知
+\conclu{
+\[ Q_k = -\sum_{a=1}^m \lambda_a \ddelon{f_a}{q_k}. \]
+}
+\warning{尽管如此，$Q_k$的符号是不确定的——只有大小可以确定。}
+\begin{ex}
+  在半径为$a$的固定球上放置一质点，有Lagrange量
+  \[ L=\half M r^2\dot{\theta}^2-Mg\cos\theta, \]
+  约束$f=a-r$，Lagrange方程写作
+  \[ Ma\dot{\theta}^2-Mg\cos\theta + \lambda = 0, \quad Ma^2\ddot{\theta}+Mga\sin\theta=0. \]
+  解得
+  \[ \dot{\theta}^2=-\frac{2g}{a}\cos\theta+\frac{2g}{a},\quad \lambda=Mg\pare{3\cos\theta-2}. \]
+  \[ Q = \lambda = Mg\pare{3\cos\theta-2}, \]
+  当$Q=0$，即$\theta=\inv{\cos}{2/3}$时飞出。
+\end{ex}
+\begin{ex}
+  小滑块在大滑块上自由滑下会不会飞出？
+\end{ex}
+%proof1
+  \begin{proof}[受力分析]
+    小物块有$mg-N\cos\theta = ma_y$以及$m\sin\theta=ma_x$，底座有$N\sin\theta = Ma'_x$，同时$a_y = \pare{a_x+a'_x}\tan\theta$，得到$N$同下。
+  \end{proof}
+%proof2
+  \begin{proof}[变分]
+    设$x$和$y$为小滑块相应的坐标，$u$为大滑块的坐标，$f=y=0$。
+    \begin{align*}
+      L &= \half M \dot{u}^2 + \half m \pare{\dot{x}^2+\dot{u}^2} - m\dot{x}\do t{u}\cos\theta + mgx\sin\theta.\\
+      L_y &= \half m \pare{\dot{y}^2+\dot{u}^2} - m\dot{y}\dot{u}\sin\theta - mgy\cos\theta
+    \end{align*}
+    \begin{align*}
+      \edt\ddelon{L}{\dot{u}} &= \pare{M+m}\ddot{u}-m\ddot{x}\cos\theta = 0,\\
+      \edt\ddelon{L}{\dot{x}} &= m\ddot{x}-m\ddot{u}\cos\theta = mg\sin\theta.
+    \end{align*}
+    \[ \ddot{u} = \frac{mg\sin\theta\cos\theta}{M+m\sin^2\theta}. \]
+    \[ N = Q_y = -\edt\ddelon{L}{\dot{y}}+\ddelon{L}{y} = \frac{mg\cos\theta}{1+\frac{m}{M}\sin^2\theta}. \]
+    故不会飞出。
+  \end{proof}
+  \keypoint{
+    绳与摩擦力的处理，在无摩擦的情形下处处张力相等，然而在有摩擦的情形下绳的相近两点之间张力允许有一阶差距，$\rd{T} = \mu T\,\rd{\theta}$。\SYSexeref{2.2.3}
+  }
+  \keypoint{
+    对于惯性系中难以直观理解的问题，可以尝试将虚力视为重力进而应用机械能守恒。例如逆时针旋转的圆环，其上的点和重力场下情形类似。\SYSexeref{2.4.11}
+  }
+对于准完整约束，Goldstein\cite{Goldstein}的处理似乎\href{https://physics.stackexchange.com/questions/343456/hamiltons-principle-with-semiholonomic-constraints}{有误}。设约束为$ f\pare{q_k, \dot{q}_k, t}=0. $，有
+\[ \ddelon{L}{q_k} - \edt\ddelon{L}{\dot{q}_k} = Q_k = -\sum\brac{\mu_a\pare{\ddelon{f_a}{q_k}-\edt\ddelon{f_a}{\dot{q}_k}}-\dot{\mu}_a\ddelon{f_a}{\dot{q}_k}}. \]
+即使如此，仅有约束力不做功的的情况才能应用之。由\tref{Uofv}知$Q$恰好为$U$的变分，而Hamilton原理要求$T$和$U$的便分抵消，故$\Delta T = Q \delta q$，完全由$U$导出的函数贡献得到。
+\begin{ex}
+  \label{ex:rollinghoop}
+  考虑斜面上圆环的无摩擦滚动，由\tref{Econservation}求得动能，有
+  \[ L = \half M\dot{x}^2 + \half M r^2 \dot{\theta}^2 - Mg\pare{l-x}\sin\phi, \quad f = r\dot{\theta} - \dot{x} = 0. \]
+  \[ M\ddot{x} - Mg\sin\phi = -\dot{\mu}_a, \quad Mr^2\ddot{\theta} = r\dot{\mu}_a. \]
+  消去得到$\ddot{x} = \pare{Mg\sin\phi}/2$。
+\end{ex}
+\subsection{对称性与守恒定律}
+通过Lagrange方程可以得到二阶微分方程，进而通过初始条件得解。然而，也可以通过\term{首次积分}{first integral}得到一阶方程进而得到系统的一些信息。
+\par
+定义\term{广义动量}{generalized momentum}为
+\[ p_j = \ddelon{L}{\dot{q_j}}. \]
+\begin{ex}
+  对于电磁场，
+  \[ L = \half m\dot{r}^2 - q\phi +q\vA\cdot\dot{\vr}, \quad p_i = m \dot{x}_i + q A_i. \]
+\end{ex}
+\begin{ex}
+  对于极坐标下的自由粒子，
+  \[ L = T = \half m \pare{\dot{r}^2 + \pare{r\dot{\theta}}^2}, \quad p_\theta = mr^2\dot{\theta} = L. \]
+\end{ex}
+若$L$与某个坐标$q_j$无关，即$\ddelon{L}{q_j}=0$，由
+\[ \edt\ddelon{L}{\dot{q_j}} - \ddelon{L}{q_j} = 0, \]
+\conclu{
+  \begin{theorem}[广义动量守恒]
+    若Lagragian与某坐标$q_j$无关，则
+    \[ \edton{p_j} = 0. \]
+  \end{theorem}
+}
+\warning{对于诸坐标相关的情形不再适用，例如圆环的滚动\eref{rollinghoop}中Lagragian与$\theta$无关然而角动量不守恒。}
+\par
+因此，所有涉及$\dot{q}_j$的项都可以借助常数$p_j$表出，而$q_j$不存在，故通过首次积分可\emph{完全消除一广义坐标}。
+\par
+当$T$不包含$\curb{q_j}$且$U$不包含$\curb{\dot{q}_j}$时，由Lagrange方程的等价形式
+\[ \dot{p}_j = Q_j, \quad Q_j = \sum\vF_i \cdot\ddelon{\vr_i}{q_j}, \quad p_j = \ddelon{T}{\dot{q}_j}=\sum m_i\vv_i\cdot\ddelon{\vr_i}{q_j}. \]
+得到$\vn\cdot\sum m_i\vv_i =  \vn\cdot\sum\vF_i$，再次得到\tref{momentum}。
+\par
+考虑某$p_j$对应转动的情形，不妨设$\delta p_j$即为转动角，否则乘$\ddthon{p_j}$即可。
+\[ \ddelon{\vr_i}{q_j} = r_i \sin\theta \vn = \vn \times \vr_i, \quad \vF_i\cdot\ddelon{\vr_i}{q_j} = \vn\cdot \vr_i\times\vF_i, \quad \vv_i\cdot\ddelon{\vr_i}{q_j} = \vn\cdot \vr_i\times\vv_i. \]
+再次得到\tref{angularmomentum}。
+\begin{ex}
+  考虑电磁波在界面的折射，具有$x$方向的平移不变，因此
+  \[ p_x = \frac{E}{c}\sin\theta = p'_x = \frac{E}{c'}\sin\theta'. \]
+  得到Schnell定律
+  \[ \frac{\sin\theta'}{\sin\theta} = \frac{c}{c'}. \]
+\end{ex}
+\subsection{能量守恒}
+定义Hamilton量
+\[ H = \sum \dot{q}_j p_j - L. \]
+\begin{align*}
+  \edton{L} &= \sum \ddelon{L}{q_i}\dot{q}_i + \sum \ddelon{L}{\dot{q}_i}\edton{\dot{q}_i} + \ddton{L} \\
+  &= \sum\edt\ddelon{L}{\dot{q}_i}\dot{q}_i + \sum \ddelon{L}{\dot{q}_i}\edton{\dot{q}_i} + \ddton{L} \\
+  &= \sum \edt{\dot{q}_i p_i} + \ddton{L}.
+\end{align*}
+从而
+\[ \edton{H} = -\ddton{L}. \]
+\conclu{
+  \begin{theorem}[能量守恒]
+    若Lagragian与某坐标$t$无关，则
+    \[ \edton{H} = 0. \]
+  \end{theorem}
+}
+\par
+根据\tref{Tcomposition}将$L$分解为与$\curb{\dot{q}_j}$无关，与$\curb{\dot{q}_j}$成线性以及与$\curb{\dot{q}_j}$成二次齐次的项，则
+\[ L = L_0 + L_1 + L_2, \quad H = 2L_2+L_1-L = L_2 - L_0. \]
+由\eqref{eq:Texpand}，若坐标变换不包含时间，则$T=T_2$。若$U$不包含速度，则$U=U_0$，故
+\[ H=L_2-L_0 = T+U \]
+为守恒量，再次得到\tref{Econservation}。
+\par
+对于有耗散的情形，考虑\eqref{eq:Lwithdissipation}形式的Lagrange方程，有
+\[ \edton{H} + \ddton{L} = \sum \ddelon{\cF}{\dot{q}_j}\dot{q}_j. \]
+从而对于Lagrange量不显含时间的情形，有
+\[ \edton{H} = -2\cF. \]
+从而再次证明了\rmref{dissipation}。
 
-\section{中心力场问题}
+\chapter{中心力场问题}
 由\eqref{eq:Tframe}二体问题之动能在质心系可表示为
 \begin{align*}
 T &= \half m_1\dot{\vr}_1^2+\half m_2\dot{\vr}_2^2 \\
@@ -89,7 +624,8 @@ T &= \half m_1\dot{\vr}_1^2+\half m_2\dot{\vr}_2^2 \\
 &= \half\frac{m_1m_2}{m_1+m_2}\dot{\vr}^2 = \half\mu\vr^2.
 \end{align*}
 
-\section{刚体运动学}
+
+\chapter{刚体运动学}
 为确定一个刚体的状态，只需其中三个点的坐标，且满足约束
 \[ r_{\pair{1}{2}} = c_{\pair{1}{2}}, \quad r_{\pair{2}{3}} = c_{\pair{2}{3}}, \quad r_{\pair{1}{3}} = c_{\pair{1}{3}}. \]
 故总的自由度为$9-3=6$。亦可以理解为3个自由度用于指定刚体一参考点的坐标，2个自由度用于指定一参考矢量的方向，1个自由度约束刚体在此矢量方向上的旋转。
@@ -99,7 +635,7 @@ T &= \half m_1\dot{\vr}_1^2+\half m_2\dot{\vr}_2^2 \\
 并且注意由$x'_i = \vi'_i\cdot \vx$，立刻有
 \[ x'_i = \cos \theta_{\pair{i}{j}} x_j. \]
 
-\section{刚体的运动方程}
+\chapter{刚体的运动方程}
 可以在刚体中寻找一参考点，使运动方程的求解分为平动与纯转动两部分。若选择质心作参考点，则恰可由
 \[ \dot{\vp} = \sum \vF_i, \quad \dot{\vL} = \vN \]
 分别求解参考点的运动与刚体绕参考点的转动。在刚体上一固定点或质心建立（空间）惯性参考系，
@@ -115,5 +651,16 @@ I_3\dot{\omega}_3-\omega_1\omega_2\pare{I_1-I_2}&=N_3.
 上述方程亦可由拉格朗日方程导出。
 \subsubsection{刚体的自由转动}
 不受力的刚体质心保持静止或匀速直线运动，因此不妨以质心为参考点。
+
+\begin{thebibliography}{9}
+\bibitem{Goldstein} 
+Goldstein.
+\textit{Classical Mechanics}. 
+Wiley, 2006.
+\bibitem{Boas} 
+Mary Boas.
+\textit{Mathematical Methods in the Physical Sciences}. 
+Wiley, 2006.
+\end{thebibliography}
 
 \end{document}

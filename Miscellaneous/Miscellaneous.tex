@@ -8,7 +8,9 @@
 \section{GTK GUI应用}
 \snp{gcc `pkg-config --libs --cflags gtk+-2.0` gtk_test.c }
 \section{Bash-cgi}
+\lstinputlisting{src/server.sh}
 \section{LaTeX包安装}
+\href{https://tex.stackexchange.com/questions/73016/how-do-i-install-an-individual-package-on-a-linux-system}{手动安装的方法}。
 \section{centOS}
 \subsubsection*{简单命令}
 \noindent locate之前先sudo updatedb。\\
@@ -231,6 +233,32 @@
 \keypoint{for var in a b c d可以循环，for var in \$(seq 1 100)可以固定式循环。}
 \keypoint{for((;;))可以C式循环。}
 \keypoint{sh -n会报语法错误，sh -x会显示执行过程。}
+\subsection{账号管理}
+\keypoint{登录的用户会自动获得用户ID和组ID。}
+\keypoint{passwd每一行由7个字段构成，分别为帐号，密码（x），UID，GID，用户信息，主文件夹，Shell。}
+\keypoint{shadow有9个字段，帐号、密码的MD5、最近变更日期、不可变更的天数、需要更改的天数、更改期限前的警告天数、过期后的宽限时间、帐号失效日期、保留字段。}
+\keypoint{/etc/group储存用户组，gshadow储存用户组密码。group的字段包含名称、密码、GID、包含的用户等。}
+\keypoint{用户可以加入多个用户组，passwd中的用户组名称为初始用户组，用户登陆后拥有其权限。}
+\keypoint{usermode -G groupname username可以设置用户组。}
+\keypoint{groups命令第一个输出的就是有效用户组，用于创建文件。newgrp可以切换有效用户组。}
+\keypoint{useradd可以新建用户，-r创建系统帐号（不会有主文件夹）。}
+\keypoint{useradd -D调出/etc/default/useradd获得添加用户的默认操作。注意默认的用户组在centOS下不生效。}
+\keypoint{/etc/login.defs包含了各种UIDMIN之类的标准。}
+\keypoint{passwd [username]可以设置密码。}
+\keypoint{echo SOMETHING | passwd - -stdin username可以从stdin读取设置。}
+\keypoint{chage -l 可以详细列出密码参数，不同参数可以修改。}
+\keypoint{usermod可以修改账户参数。}
+\keypoint{userdel可以删除账户。}
+\keypoint{finger命令可以查看用户信息。}
+\keypoint{chfn可以修改finger的信息，很鸡肋。}
+\keypoint{chsh可以修改用户的shell。}
+\keypoint{id可以查看用户的UID，GID等，还可以检测用户是否存在。}
+\keypoint{groupadd，groupmod，groupdel与之类似。}
+\keypoint{gpasswd设置密码，gpasswd user groupname将用户添加到组，-A将控制权交到他手中。}
+\keypoint{ACL可以为每个用户单独分配权限。}
+\keypoint{su可以切换身份，默认为root。}
+\keypoint{已经跳过第14章后半部分以及第15章。}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{虚拟机}
 \noindent ssh -p num + 端口转发可以访问到虚拟机的ssh。\\
 \noindent passwd -d username可清除密码。\\
@@ -256,4 +284,9 @@
 \noindent Lufthansa-Fanhansa=Fly the fans.\\
 \noindent Shelly v. Kraemer禁止法院执行有歧视的契约\\
 \noindent {\color{red} AndroidStudio里面有个不错的录音机项目，没空就看看。}\\
+\noindent wiki Nobiliary particle可以看到关于van von de da le la之类的信息。\\
+\noindent Y.似乎推荐过marshmello。\\
+\noindent 有空就做做Bluetooth 4.0 HM10\\
+\noindent \href{https://stackoverflow.com/questions/5171764/how-do-you-turn-off-auto-capitalisation-in-html-form-fields-in-ios}{看看如何取消文本框的自动大写}\\
+\noindent pycairo是个不错的矢量绘图库，然而现在暂时用不上，而且装了pycairo的/usr/local/bin/python已经被我卸载了\\
 \end{document}

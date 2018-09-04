@@ -1,7 +1,7 @@
 %Ch1.GeneralSetTheory.tex
 \ifx\allfiles\undefined
 \documentclass{ctexrep}
-\include{head}
+\input{../Head/head.tex}
 \begin{document}
 \fi
 
@@ -9,13 +9,287 @@
 
 \chapter{普通微积分}
   \section{微分}
+  \subsection{实函数的导数}
+  \begin{definition}
+    极限
+    \[ f'\pare{x} = \frac{f\pare{t\rightarrow x} - f\pare{x}}{\pare{t\rightarrow x}-x} \]
+    若存在则谓$f\pare{x}$的导数。
+  \end{definition}
+  \begin{theorem}
+    函数在可微点连续。
+  \end{theorem}
+  \begin{theorem}
+    若$f$和$g$都在$x$处可微，则此处
+    \begin{cenum}
+      \item $\pare{f+g}' = f'+g'$；
+      \item $\pare{fg}'=f'g+fg'$；
+      \item $\pare{f/g}'=\pare{f'g-fg'}/\pare{g^2}.$
+    \end{cenum}
+  \end{theorem}
+  \begin{theorem}
+    若$f$连续且在$x$处可微，$g$在$f\pare{x}$处可微，则
+    \[ \pare{g\comp f}'\pare{x} = g'\pare{f\pare{x}}f'\pare{x}. \]
+  \end{theorem}
+  \begin{ex}
+    $f\pare{x}=x\sin 1/x \otw 0$，则$f$在$x=0$处不可微。
+  \end{ex}
+  \begin{ex}
+    $f\pare{x}=x^2\sin 1/x \otw 0$在任意点可微且$f'\pare{0}=0$，则$f$处处可微但$f'$不连续。
+  \end{ex}
+  \subsection{中值定理}
+  \begin{definition}
+    若存在$\delta>0$满足$d\pare{p,q}<\delta\Rightarrow f\pare{q}\le f\pare{p}$则谓之局部极大值。类似定义极小值。
+  \end{definition}
+  \begin{theorem}
+    $f\pare{x}$若取得局部极大（小）值而$f'\pare{x}$存在，则$f'\pare{x}=0$。
+  \end{theorem}
+  \begin{theorem}
+    $\brac{a,b}$上连续的$f$和$g$在$\pare{a,b}$上可微则存在$x$满足
+    \[ \brac{f\pare{b}-f\pare{a}} g'\pare{x} = \brac{g\pare{b}-g\pare{a}}f'\pare{x}. \]
+  \end{theorem}
+  \begin{proof}
+    两侧做差并发现原函数在两段点水平。
+  \end{proof}
+  取$g\pare{x}=x$，有
+  \begin{theorem}
+    $\brac{a,b}$上连续的$f$可微则存在$x$满足
+    \[ {f\pare{b}-f\pare{a}} = \pare{b-a}f'\pare{x}. \]
+  \end{theorem}
+  \begin{theorem}
+    在$\pare{a,b}$内可微的f若恒有$f'\pare{x}\ge 0$则$f$单调递增，类似有常数和递减。
+  \end{theorem}
+  \subsection{导数的连续性}
+  \begin{theorem}
+    设$f$在$\brac{a,b}$可微，又设$f'\pare{a}<\lambda<f'\pare{b}$，则存在$f'\pare{x}=\lambda$。
+  \end{theorem}
+  \begin{proof}
+    构造$g\pare{x}=f\pare{x}-\lambda x$并注意其取得最小值即可。
+  \end{proof}
+  \begin{corollary}
+    若$f$在$\brac{a,b}$上可微，则$f'$不能有第一类间断。
+  \end{corollary}
+  \subsection{L'Hospital法则}
+  \begin{theorem}
+    若$f$和$g$在$\pare{a,b}$（$a$和$b$可取无穷）内可微且$g'\pare{x}\neq 0$，若$f\pare{x\rightarrow a}\rightarrow 0$以及$g\pare{x\rightarrow a}\rightarrow 0$或$g\pare{x\rightarrow a}\rightarrow \pm\infty$则
+    \[ \frac{f'\pare{x\rightarrow a}}{g'\pare{x\rightarrow a}}\rightarrow A \Rightarrow \frac{f\pare{x\rightarrow a}}{g\pare{x\rightarrow a}} \rightarrow A. \]
+    上述$a$替换为$b$仍然成立。
+  \end{theorem}
+  \begin{proof}
+    对任意$q>A$，当$x,y,t$足够接近$a$时，有$f'\pare{t}/g'\pare{t}<q^-$，故
+    \[ \frac{f\pare{x}-f\pare{y}}{g\pare{x}-g\pare{y}} = \frac{f'\pare{t}}{g'\pare{t}} < q^-. \]
+    对双零的情形单方面让$y\rightarrow0$即可，当$g\pare{x\rightarrow a}\rightarrow a$时令$x,y$再次足够接近$a$则两边通分有
+    \[ \frac{f\pare{x}}{g\pare{x}} < q^- - q^- \frac{g\pare{y}}{g\pare{x}}+\frac{f\pare{y}}{f\pare{x}}. \]
+  \end{proof}
+  \subsection{高阶导数}
+  \begin{definition}
+    若$f$在一个区间上有导数$f'$，$f'$可微则谓二阶导数$f''$，类似定义高阶者。
+  \end{definition}
+  \subsection{Taylor定理}
+  \begin{theorem}
+    若$f$为闭区间上实函数，$f\difn{n-1}$连续且$f\difn{n}$存在，令
+    \[ P\pare{t} = \sum_{k=0}^{n-1} \frac{f\difn{k}\pare{\alpha}}{k!}\pare{t-\alpha}^k. \]
+    则对于给定的$\beta$，存在$\brac{\alpha, \beta}$间一点$x$满足
+    \[ f\pare{\beta} = P\pare{\beta} + \frac{f\difn{n}\pare{x}}{n!}\pare{\beta-\alpha}^n. \]
+  \end{theorem}
+  \begin{proof}
+    定义$g\pare{t} = f\pare{t} - P\pare{t} - M\pare{t-\alpha}^n$，注意$g\difn{0}=\cdots=g\difn{n-1}\pare{\alpha}=0$。选取$M$满足$g\pare{\beta}=0$，故存在$g'\pare{\beta^-_1}=0$，存在$g''\pare{\beta^-_2}=0$等。
+  \end{proof}
   \subsection{向量值函数的微分}
+  前开加减乘除法则将$f$设定为向量值函数后仍然有效，然而L'Hospital法则不再有效。
+  \begin{ex}
+    定义$f\pare{x}=x$与$g\pare{x}=x+x^2 e^{i/x^2}$，则显然$f\pare{x}/g\pare{x}\rightarrow1$。然而，$g'=1+\pare{2x-2i/x}e^{i/x^2}$，$\abs{f'\pare{x\rightarrow0}/g'\pare{x\rightarrow0}}=0$。
+  \end{ex}
+  类似于中值定理，有
   \begin{theorem}
     \label{thm:vfab}
     设连续的$\bff$在$\pare{a,b}$内可微并将$\brac{a,b}$映入$\R^k$，则必有$x\in\pare{a,b}$满足$\abs{\bff\pare{b}-\bff\pare{a}}\le\pare{b-a}\abs{\bff'\pare{x}}$。
   \end{theorem}
-
-
+  \begin{proof}
+    不妨设$a=0$，$b=1$，$\bff\pare{a}=\vzero$。令$\varphi\pare{t}=\bff\pare{t}\cdot\pare{1}$后中值定理
+    \[ \bff\pare{1}^2 = \bff'\pare{x}\cdot \bff\pare{1} \le \abs{\bff'\pare{x}}\abs{\bff\pare{1}}. \qedhere \]
+  \end{proof}
+  \section{Riemann-Stieltjes积分}
+  \subsection{积分的定义和存在性}
+  \begin{definition}
+    $\brac{a,b}$的分法谓其间一列非减点集。在每个区间$\brac{x_{i-1},x_i}$内定义$M_i=\sup f$，$m_i=\inf f$，又定义
+    \begin{align*}
+      U\pare{P,f} &= \sum M_i \Delta x_i, \\
+      L\pare{P,f} &= \sum m_i \Delta x_i.
+    \end{align*}
+    定义上积分与下积分为
+    \begin{align*}
+      \supint{a}{b} f\intpostf{x} &= \inf U\pare{P,f},\\
+      \infint{a}{b} f\intpostf{x} &= \sup L\pare{P,f}.
+    \end{align*}
+    如果上下积分相等，则谓之Riemann可积。
+  \end{definition}
+  易见有界函数的上下积分均存在。
+  \begin{definition}
+    设$\alpha$是$\brac{a,b}$上的单调递增函数，在前开定义中将$\Delta x_i$替换为$\Delta \alpha_i$则可得Riemann-Stieltjes积分。
+  \end{definition}
+  \begin{theorem}
+    对于$P$的加细$P^*$有
+    \begin{equation*}
+      L\pare{P,f,\alpha}\le L\pare{P^*,f,\alpha}\le U\pare{P^*,f,\alpha}\le U\pare{P,f,\alpha}.
+    \end{equation*}
+  \end{theorem}
+  \begin{theorem}
+    $\infint{}{} \le \supint{}{}.$
+  \end{theorem}
+  \begin{theorem}
+    $\brac{a,b}$上的$f$可积当且仅当对于任意$\epsilon$都存在分法满足
+    \begin{equation}
+      \label{eq:ULe}
+      U\pare{P,f,\alpha} - L\pare{P,f,\alpha} < \epsilon.
+    \end{equation}
+  \end{theorem}
+  \begin{proof}
+    注意若条件满足，则意味着$\abs{\supint{}{}-\infint{}{}}<\epsilon$。
+  \end{proof}
+  \begin{theorem}
+    如果\eqref{eq:ULe}成立，则加细后仍然成立。
+  \end{theorem}
+  \begin{theorem}
+    \label{thm:stbetweenx}
+    如果\eqref{eq:ULe}成立，在$\brac{x_{i-1},x_i}$之间选取$s_i$和$t_i$，则
+    \[ \sum \abs{f\pare{s_i}-f\pare{t_i}}\Delta\alpha_i < \epsilon. \]
+  \end{theorem}
+  \begin{theorem}
+    \label{thm:intervalrepr}
+    在前开题设下，若$f$可积，则
+    \[ \abs{\sum f\pare{t_i}\Delta\alpha_i - \int_{a}^{b} f \intpostf{\alpha}}<\epsilon. \]
+  \end{theorem}
+  \begin{theorem}
+    闭区间上连续函数对任意$\alpha$可积。
+  \end{theorem}
+  \begin{theorem}
+    闭区间上单调函数对单调连续的$\alpha$可积。
+  \end{theorem}
+  \begin{proof}
+    选取分割$P_n$满足$\Delta\alpha_i=\Delta\alpha/n$，从而$U-L=\Delta\alpha_i\Delta f$。 
+  \end{proof}
+  \begin{theorem}
+    若$f$在$\brac{a,b}$上有界且只有有限间断点，$\alpha$在$f$的每个间断点上连续，则$f$可积。
+  \end{theorem}
+  \begin{proof}
+    选取小区间包含$f$的诸间断点且其内$\alpha$连续，这些区间内因$\alpha$连续而上下差任意小，剩余区间内由于$f$连续而上下差任意小。
+  \end{proof}
+  \begin{theorem}
+    $\brac{a,b}$上的$f$可积而$\phi$在其像上连续，则$\phi\comp f$可积。
+  \end{theorem}
+  \begin{proof}
+    若$\Delta s<\delta \Rightarrow \Delta\phi<\epsilon$，选取$P$使$U\pare{f}-L\pare{f}<\delta^2$，将区间分两类，$\Delta f < \delta$及相反，后者的区间满足$\sum\Delta\alpha_i<\delta$。总的$\sum\Delta\phi\comp f$为小量。
+  \end{proof}
+  \subsection{积分及其性质}
+  \begin{theorem}
+    对于积分，下列性质成立：
+    \begin{cenum}
+      \item 闭区间可积函数构成线性空间，积分是线性算子；
+      \item $f_1\le f_2\Rightarrow \int f_1 \le \int f_2$；
+      \item 若$\brac{a,b}$上$f$可积，则$\brac{a,c}$与$\brac{c,b}$上可积且$\int_a^c + \int_c^b=\int_a^b$；
+      \item 若$f$可积且$\abs{f}\le M$，则$\abs{\int f} \le M \brac{\alpha\pare{b}-\alpha\pare{a}}$；
+      \item 积分与可积性对$\alpha$为线性。
+    \end{cenum}
+  \end{theorem}
+  \begin{theorem}
+    若$f$和$g$皆可积则$fg$可积。
+  \end{theorem}
+  \begin{theorem}
+    若$f$可积则$\abs{f}$可积且$\abs{\int f}\le \int \abs{f}$。
+  \end{theorem}
+  \begin{definition}
+    单位阶跃函数定义为$I\pare{x}=\chi_{\pare{0,+\infty}}$。
+  \end{definition}
+  \begin{definition}
+    若$f$在$\brac{a,b}$上有界且$\alpha\pare{x}=I\pare{x-s}=\chi_{\pare{s,+\infty}}$，则
+    \[ \int_{a}^{b} f \intpostf{\alpha} = f\pare{s}. \]
+  \end{definition}
+  \begin{theorem}
+    设$\curb{c_n>0}$且$\sum c_n$收敛，$\curb{s_n}$两两不同，
+    \[ \alpha\pare{x} = \sum c_n I\pare{x-s_n}. \]
+    若$f$在$\brac{a,b}$上连续，则
+    \[ \int_a^b f\intpostf{\alpha} = \sum c_n f\pare{s_n}. \]
+  \end{theorem}
+  \begin{proof}
+    选取足够大的$N$满足$\sum c_n-\sum^N c_n < \epsilon$后将$\alpha$拆分即可。
+  \end{proof}
+  \begin{theorem}
+    若闭区间上$\alpha$单调递增且$\alpha'$可积，$f$有界，则$f$可积当且仅当$f\alpha'$可积，且
+    \[ \int f\intpostf{\alpha} = \int f\alpha'. \]
+  \end{theorem}
+  \begin{proof}
+    设$U\pare{P,\alpha'}-L\pare{P,\alpha'}<\epsilon$而$f$上界为$M$，根据中值定理与\tref{stbetweenx}，
+    \[ \sum f_i\Delta\alpha_i = \sum f_i\alpha'\pare{s_i}\Delta x, \quad \sum f_i \abs{\alpha'\pare{s_i} - \alpha'\pare{t_i}} \Delta x \le M\epsilon. \]
+    \[ \abs{\sum f\pare{s_i}\Delta\alpha_i - \sum f\pare{s_i}\alpha'\pare{s_i}\Delta x_i} \le M\epsilon. \]
+    因此，$\abs{\switch{L}{U}\pare{f,\alpha}-\switch{L}{U}\pare{f,\alpha'}}\le M\epsilon$，任意加细后仍然成立。
+  \end{proof}
+  \begin{theorem}
+    设有严格递增的满射$\func{\varphi}{\brac{A,B}}{\brac{a,b}}$，$f$在$\brac{a,b}$上对$\alpha$可积，定义$\beta=\alpha\comp\varphi$而$g=f\comp \varphi$，则$g$对$\beta$可积且
+    \[ \int_A^B g \intpostf{\beta} = \int_a^b f\intpostf{\alpha}. \]
+  \end{theorem}
+  \begin{proof}
+    注意$\varphi$只是一个坐标变换，把分法映射到分法即可。
+  \end{proof}
+  取$\alpha\pare{x}=x$，就有
+  \[ \int_a^b f\pare{x}\intpostf{x} = \int_A^B  f\pare{\varphi\pare{y}}\varphi'\pare{y}\intpostf{y}. \]
+  \subsection{积分与微分}
+  \begin{theorem}
+    设$f$可积且
+    \[ F\pare{x} = \int_a^x f\pare{x}\intpostf{x}, \]
+    则$F$在$\brac{a,b}$上一致连续且若$f$在$x_0$处连续则$F$可微且$F'\pare{x_0} = f\pare{x_0}$。
+  \end{theorem}
+  \begin{proof}
+    做差，将$F$的差和积分相互转换。
+  \end{proof}
+  \begin{theorem}
+    \label{thm:elecalculus}
+    若$\brac{a,b}$上$f$可积且$F'=f$，则
+    \[ \int_a^b f\intpostf{x} = F\pare{b}-F\pare{a}. \]
+  \end{theorem}
+  \begin{proof}
+    在某分割内选取有代表性的$t_i$后对下式调用\tref{intervalrepr}。
+    \[ \sum f\pare{t_i}\Delta x_i = F\pare{b}-F\pare{a}.\qedhere \]
+  \end{proof}
+  \subsection{向量值函数的积分}
+  \begin{definition}
+    定义区间上的向量值函数的积分以诸分量的积分为分量。
+  \end{definition}
+  \begin{theorem}[\tcompare{elecalculus}]
+    若可积的$\vf$和$\vF$将$\brac{a,b}$映入$R^k$，且$\vF'=\vf$则
+    \[ \int_a^b \vf = \vF\pare{b} - \vF\pare{a}. \]
+  \end{theorem}
+  \begin{theorem}
+    \label{thm:ineqtriint}
+    若$\vf$如上且$\vf$对$\alpha$可积，则$\abs{\vf}$可积且
+    \[ \abs{\int_a^b\vf} \le \int_a^b \abs{\vf}. \]
+  \end{theorem}
+  \begin{proof}
+    可积性由连续函数复合可知，由Schwarz不等式，有
+    \[ \abs{\int\vf}^2 = \sum\int \pare{\int f_i}\cdot  f_i \le \int \abs{\int \vf} \abs{\vf}. \qedhere \]
+  \end{proof}
+  \subsection{可求长曲线}
+  \begin{definition}
+    将闭区间映入$\R^k$内的映射谓曲线，双射谓弧，区间端点处取值相等谓闭曲线。
+  \end{definition}
+  \begin{definition}
+    对闭区间的分法$P$定义
+    \[ \Lambda\pare{P,\gamma} = \sum\abs{\gamma\pare{x_i}-\gamma\pare{x_{i-1}}}. \]
+    定义$\Lambda\pare{\gamma}=\sup \Lambda\pare{P,\gamma}$。其值有限则谓曲线可求长。
+  \end{definition}
+  \begin{theorem}
+    $\gamma'$连续则曲线可求长且
+    \[ \Lambda\pare{\gamma} = \int_a^b \abs{\gamma'\pare{t}}\intpostf{t}. \]
+  \end{theorem}
+  \begin{proof}
+    对$\gamma'$调用积分的三角不等式\tref{ineqtriint}的
+    \[ \Lambda\pare{\gamma}\le \int \abs{\gamma'}. \]
+    反向的不等式注意小区间上的下列不等式加和即可
+    \begin{align*}
+      \int \abs{\gamma'} &\le \abs{\gamma'\pare{x_i}}\Delta x_i + \epsilon\Delta x_i\\
+      &\le \abs{\int \gamma'} + \abs{\int\brac{\gamma'\pare{x_i}-\gamma'}} + \epsilon \Delta x_i.\qedhere
+    \end{align*}
+  \end{proof}
+  
 %ContentEnds
  
 \ifx\allfiles\undefined %如果位置放错，可能出现意外中断

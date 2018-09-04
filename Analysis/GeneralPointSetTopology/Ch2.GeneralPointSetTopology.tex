@@ -205,6 +205,7 @@
     $A=\lbr{0,1}$，$\brac{0,1}$中的点均为其极限点。$A=\Q$，$\R$中的点均为其极限点。$A=\curb{1/n}$，$0$为其极限点。
   \end{ex}
   \begin{theorem}
+  \label{thm:closureeq}
   $\clo{A} = A\cup A'$，其中$A'$为极限点集合。
   \end{theorem}
   \begin{proof}
@@ -215,6 +216,7 @@
   \end{collary}
   \subsubsection{Hausdorff空间}
   \begin{definition}
+    \label{def:converge}
     如果\forest{$x$的任意邻域$U$}{$N$}{当$n>N$，$x_n\in U$}，则$\curb{x_n}$收敛到点$x$。
   \end{definition}
   $\R^2$和$\R$中的序列最多收敛至一点，然而其他拓扑空间不一定。
@@ -238,6 +240,7 @@
     如果有一个邻域只有有限交点，挖掉还是开集，但不再与$A$相交。
   \end{proof}
   \begin{theorem}
+    \label{thm:hausonepoint}
     若$X$为Hausdorff空间，则$X$中的序列最多收敛至一点。
   \end{theorem}
   \begin{proof}
@@ -292,10 +295,12 @@
     $F\pare{x}=x/\pare{1-x^2}$与$G\pare{y}=2y/\pare{1+\pare{1+4y^2}^{1/2}}$为$\pare{-1,1}$与$\R$间同胚。
   \end{ex}
   \begin{ex}
+    \label{ex:01tocircle}
     $\blr{0,1}$弯曲到圆周的映射连续而非同胚。其扩张连续而非嵌入。
   \end{ex}
   \subsubsection{构造连续函数}
   \begin{theorem}
+    \label{thm:continauscontin}
     下列函数皆连续：
     \begin{cenum}
       \item 常值函数；
@@ -317,12 +322,14 @@
     对$x\ge 0$，$h\pare{x}=x$，$x\le 0$，$h\pare{x}=x/2$，则$h$连续。
   \end{ex}
   \begin{theorem}
+    \label{thm:continprod}
     $\func{f}{A}{X\times Y}$连续的充分必要条件为$f_X$与$f_Y$连续。
   \end{theorem}
   \begin{proof}
     注意连续的拓扑定义等价于对基连续即可。
   \end{proof}
   \begin{ex}
+    \label{ex:veccontin}
     向量场连续当且仅当分量连续。
   \end{ex}
   \subsection{积拓扑}
@@ -367,7 +374,7 @@
     注意连续的拓扑定义等价于对基成立即可。
   \end{proof}  
   \begin{ex}
-    对箱拓扑下$\R$的可数无限积$\R^\omega$，$f\pare{t}=\pare{t,t,t,\cdots}$不连续。注意$\pare{-1,1}\times\pare{-1/2,1/2}\times{-1/3,1/3}$被映回$0$即可。
+    对箱拓扑下$\R$的可数无限积$\R^\omega$，$f\pare{t}=\pare{t,t,t,\cdots}$不连续。注意$\pare{-1,1}\times\pare{-1/2,1/2}\times\pare{-1/3,1/3}$被映回$0$即可。
   \end{ex}
   \subsection{度量拓扑}
   \begin{definition}
@@ -390,13 +397,14 @@
     度量空间的子集$A$为有界的，若$d\pare{a_1,a_2}$一致有界。$A$的直径谓$\diam A = \sup\curb{d\pare{a_1,a_2}}$。
   \end{definition}
   \begin{theorem}
+    \label{thm:sbmeqm}
     由度量$d$诱导的度量
     \[ \sbm{d}\pare{x,y} = \min\curb{d\pare{x,y}, 1} \]
-    谓标准有界度量。
+    谓标准有界度量，它和$d$诱导同一拓扑。
   \end{theorem}
-  \begin{definition}
+  \begin{proof}
     分类验证三角不等式即可。
-  \end{definition}
+  \end{proof}
   \begin{definition}
     对$\R^n$中的点，$d\pare{\vx,\vy} = \norm{\vx-\vy} = \pare{\sum\pare{x_i-y_i}^2}^{1/2}$诱导欧氏度量，$\rho\pare{\vx,\vy} = \max\curb{\abs{x_i-y_i}}$诱导平方度量。
   \end{definition}
@@ -410,6 +418,7 @@
     \[ B'\pare{x,\epsilon'} \subset B\pare{x, \epsilon}. \]
   \end{theorem}
   \begin{theorem}
+    \label{thm:eucsqreq}
     欧氏度量和平方度量诱导$\R^n$上的积拓扑。
   \end{theorem}
   \begin{proof}
@@ -427,6 +436,7 @@
     玩弄基元素的大小可证其粗细。$J$无限时，$\pare{-1,1}^J$在一致拓扑下为开，积拓扑下非开。$\prod \pare{-1/n,1/n}$在箱拓扑下为开，一致拓扑下非开。
   \end{proof}
   \begin{theorem}
+    \label{thm:metricprodR}
     对$\R$的可数无限积$\R^\omega$定义
     \[ D\pare{\vx, \vy} = \sup\curb{\frac{\sbm{d}\pare{x_i,y_i}}{i}}, \]
     可诱导$\R^\omega$上的积拓扑。
@@ -446,15 +456,22 @@
   \end{ex}
   \subsection{连续函数与度量拓扑}
   \begin{theorem}
+    \label{thm:contineqdeltaepsilon}
     度量空间到度量空间的$\func{f}{X}{Y}$的连续性等价于$\epsilon$-$\delta$条件。
   \end{theorem}
   \begin{proof}
     仿照\eref{epsd}可得。
   \end{proof}
+  \begin{corollary}
+  \label{coll:metricscontin}
+    度量为连续函数。
+  \end{corollary}
   \begin{lemma}[序列引理]
+    \label{lem:seq}
     若$A$中有收敛于$x$的序列，则$x\in\clo{A}$。若$X$为度量空间，逆命题成立。
   \end{lemma}
   \begin{theorem}
+    \label{thm:matricscontineq}
     度量空间之间的$\func{f}{X}{Y}$连续的充要条件谓$x_n\rightarrow x$等价于$f\pare{x_n}\rightarrow f\pare{x}$。
   \end{theorem}
   \begin{proof}
@@ -465,15 +482,18 @@
     如果$x$有邻域$\curb{U_n}$满足任意邻域$U$都有某$U_n$含于其内，则称$X$在$x$处有可数基。如果处处都有则称$X$满足第一可数性公理。
   \end{definition}
   \begin{lemma}
+    \label{lem:asmd}
     加减乘除是其定义域内的连续函数。
   \end{lemma}
   \begin{theorem}
+    \label{thm:continasmd}
     连续函数加减乘的结果连续，恒非零的除亦连续。
   \end{theorem}
   \begin{definition}
     若$\curb{f_n}$关于度量$d\pare{f,g}=\sup\curb{\abs{f-g}}$收敛于$f$，则称其一致收敛。
   \end{definition}
   \begin{theorem}
+    \label{thm:uniformconvergecontin}
     一致收敛的连续函数列收敛于连续函数。
   \end{theorem}
   \begin{proof}
@@ -610,6 +630,7 @@
     若$\clo{A}$被分拆为$C\cup D$，则$A\subset C$而$D$为一个与$A$无交的邻域。
   \end{proof}
   \begin{theorem}
+    \label{thm:connectcontin}
     连通空间的连续映射的像是连通的。
   \end{theorem}
   \begin{theorem}
@@ -638,6 +659,7 @@
     $\R$及其区间和射线都是连通的。
   \end{corollary}
   \begin{theorem}[介值定理]
+    \label{thm:interv}
     连通空间到序拓扑的全序集的映射$\func{f}{X}{Y}$，任何$f\pare{a}$与$f\pare{b}$之间的$r$存在$c$满足$f\pare{c}=r$。
   \end{theorem}
   \begin{ex}
@@ -690,7 +712,7 @@
     拓扑学家的正弦曲线，两个道路分支一个纯开一个纯闭。
   \end{ex}
   \begin{definition}
-    空间谓局部连通的，如果处处给定$U$有连通邻域$V\subset U$。谓局部道路连通的，如果处处有道路连通邻域。
+    空间谓局部连通的，如果处处给定$U$有连通邻域$V\subset U$。谓局部道路连通的，如果处处给定$U$有道路连通邻域$V\subset U$。
   \end{definition}
   \begin{ex}
     这里的定义不能改成「每个$x$都存在连通邻域」，因为连通邻域的子开集不一定连通。见\href{https://math.stackexchange.com/questions/2439096/consider-the-infinite-broom}{局部连通与无穷扫帚}。
@@ -715,6 +737,63 @@
   \end{proof}
   \subsection{紧致空间}
   \begin{definition}
+    $\cA$成员的并为$X$，称之为覆盖。包含子空间$Y$亦称为覆盖。
+  \end{definition}
+  \begin{definition}
+    $X$任何开覆盖包含有限子族覆盖，则称之紧致的。
+  \end{definition}
+  \begin{ex}
+    $\R$不是紧致的，$\curb{0,1}$或$\lbr{0,1}$也不是，而$\curb{0}\cup\curb{1/n}$紧致。
+  \end{ex}
+  \begin{lemma}
+    子空间$Y$是紧致的，当且仅当$X$的开集组成的每一个$Y$的覆盖都有有限子族覆盖$Y$。
+  \end{lemma}
+  \begin{theorem}
+    紧致空间的闭子集紧致。
+  \end{theorem}
+  \begin{proof}
+    注意子集的每个覆盖都可以并上子集的补称为$X$的开覆盖。
+  \end{proof}
+  \begin{theorem}
+    \label{thm:hauscompact}
+    Hausdorff空间的每一个紧致子空间都是闭的。
+  \end{theorem}
+  \begin{proof}
+    只证其补为开。$Y$内所有点都和外点$z$有无交邻域，并起取有限族，相应$z$取有限交可得$z$与$Y$的无交邻域。
+  \end{proof}
+  \begin{lemma}
+    紧致空间和其外一点可以分别被无交开集包含。
+  \end{lemma}
+  \begin{ex}
+    半开区间和开区间不是紧致的。
+  \end{ex}
+  \begin{ex}
+    有限补拓扑的每个集合都是紧致的，但只有有限集是闭的。
+  \end{ex}
+  \begin{theorem}
+    \label{thm:imagecompact}
+    紧致空间的连续像是紧致的。 
+  \end{theorem}
+  \begin{theorem}
+    \label{thm:compacthomo}
+    连续双射$\func{f}{X}{Y}$，$X$紧致$Y$为Hausdorff，则$f$为同胚。
+  \end{theorem}
+  \begin{proof}
+    结合\tref{hauscompact}和\tref{imagecompact}证明闭集映射到闭集即可。
+  \end{proof}
+  \begin{lemma}[管状引理]
+    积空间$X\times Y$中若$Y$为紧致，$N$为包含$x\times Y$的开集，则$N$包含$x$的一个邻域$W\times Y$。
+  \end{lemma}
+  \begin{theorem}
+    紧致空间的有限积是紧致的。
+  \end{theorem}
+  \begin{proof}
+    对每个$x$选一条管道，从中选出有限条，每个管道选择有限覆盖。
+  \end{proof}
+  \begin{ex}
+    若$Y$非紧致，则考虑正态分布下方部分，显然不包含管道。
+  \end{ex}
+  \begin{definition}
     $X$的子集族$\setf{C}$称为具有有限交性质（finite intersection property），如果$\setf{C}$的任意有限子族交非空。
   \end{definition}
   \begin{theorem}
@@ -726,16 +805,105 @@
   \end{proof}
   \subsection{实直线上的紧致子空间}
   \begin{theorem}
+    设$X$是具有上确界性质和序拓扑的全序集，则闭区间紧致。
+  \end{theorem}
+  \begin{proof}
+    $a$以上存在$c$满足$\brac{a,c}$可以被有限覆盖，假设$c_0$是这些$\curb{c}$的上确界，则显然$c_0\in\curb{c}$，并且注意$c_0\neq b$会引发矛盾。
+  \end{proof}
+  \begin{corollary}
+    $\R$中的每一个闭区间紧致。
+  \end{corollary}
+  \begin{theorem}
+    $\R^n$的子集紧致，当且仅当为闭的且欧氏度量或平方度量有界。
+  \end{theorem}
+  \begin{proof}
+    Hausdorff空间的紧致集合是闭的，且诸开球$B_n$可以覆盖之，故有界。反之若为闭且有界，则为紧致立方体的子空间故亦紧致。
+  \end{proof}
+  注意这不意味着「度量空间的紧致集合是有界闭集」，因为由\tref{sbmeqm}，一个欧氏无界的集合在同一拓扑下可以有界。
+  \begin{ex}
+    球面和闭球是紧致的，双曲线是闭的但不是紧致的。$\curb{1/n}$不是闭的故不是紧致的。
+  \end{ex}
+  \begin{theorem}[极值定理]
+    \label{thm:extreme}
+    $\func{f}{X}{Y}$若$X$为紧致而$Y$具有序拓扑，则存在极大值和极小值。
+  \end{theorem}
+  \begin{proof}
+    只证序拓扑下的紧致集合包含最大元。否则$\setcond{\pare{-\infty,a}}{a\in A}$是覆盖，存在有限覆盖$\curb{\pare{-\infty,a_n}}$，则最大的$a_n\notin A$，矛盾。
+  \end{proof}
+  \begin{definition}
+    $x$到集合$A$的距离定义为$d\pare{x,A}=\inf {d\pare{x,a}}$。
+  \end{definition}
+  容易验证这是一个连续函数。
+  \begin{lemma}[Lebesgue数引理]
+    $\cA$为紧致度量空间$X$的开覆盖，则存在$\delta$使每个直径小于它的子集都包含在某$A$中，称此$\delta$为Lebesgue数。
+  \end{lemma}
+  \begin{proof}
+    令$\curb{C_i}$为有限的诸$\curb{A_i}$之补，则$f\pare{x}=\sum d\pare{x,C_i}>0$，故存在最小值$\epsilon$，则$\delta=\epsilon/n$。因为$\max d\pare{x,C_i}\ge \epsilon/n$。
+  \end{proof}
+  \begin{definition}
+    \label{def:unifcontin}
+    $\func{f}{X}{Y}$是度量空间之间的映射，若对于任意的$\epsilon>0$，存在$\delta>0$使得
+    \[ \abs{x_0-x_1} < \delta \Rightarrow \abs{f\pare{x_0} - f\pare{x_1}} < \epsilon, \]
+    则称之一致连续的。
+  \end{definition}
+  \begin{theorem}
+    \label{thm:compactunifcontin}
+    若$X$为紧致的而$f$连续，则$f$一致连续。
+  \end{theorem}
+  \begin{proof}
+    把每处的$\delta$邻域并起， 取$\delta$为Lebesgue数即可。
+  \end{proof}
+  \begin{definition}
+    孤立点谓单点开集。
+  \end{definition}
+  \begin{theorem}
     \label{thm:uncountableR}
     非空紧致Hausforff空间$X$，若无孤立点则不可数。
   \end{theorem}
   \begin{proof}
-    对于$X$的任意元素$x$，由Hausdorff性质皆可以选取一非空开集$V$，满足$x \notin \clo{V}$。\par
+    对于$X$的任意元素$x$和非空开集$U$，由Hausdorff性质皆可以选取一非空开集$V\subset{U}$，满足$x \notin \clo{V}$。\par
     假设有$\func{f}{\Z_+}{X}$，则可以选取$V_1$其闭包不包含$x$，且可选取$V_2 \subset V_1$其闭包不包含$x_2$，以此类推。考虑
     \[ \clo{V}_1 \supset \clo{V}_2 \supset \cdots, \]
     由$x$的紧致性与\tref{finiteinters}，知其交非空故有元素$x$在诸$x_n$之外。
   \end{proof}
   \subsection{极限点紧致性}
+  \begin{definition}
+    如果$X$的任意无穷子集都有极限点， 称$X$为极限点紧致的。
+  \end{definition}
+  \begin{theorem}
+    \label{thm:metriccompactimplies}
+    紧致性蕴含极限点紧致。
+  \end{theorem}
+  \begin{proof}
+    假设紧致性而一个集合没有极限点，故其为闭集从而紧致。选取诸点的小邻域覆盖，可以取得有限多个小邻域，故仅有有限多点。
+  \end{proof}
+  \begin{ex}
+    $\Z_+\times Y$其中$Y$为两点密着拓扑集，则其为极限点紧致（每个子集都有极限点）但显然非紧致。
+  \end{ex}
+  \begin{ex}
+    具有序拓扑的极小不可数良序集$\muc$非紧致，但每个可数集合都包含在一个闭区间内，闭区间是紧致的，故存在极限点，故$\muc$极限点紧致。
+  \end{ex}
+  \begin{definition}
+    若每个序列都有收敛的子序列，称空间为列紧的。
+  \end{definition}
+  \begin{theorem}
+    \label{thm:metriccompacteq}
+    对于度量空间，紧致、极限点紧致与列紧等价。
+  \end{theorem}
+  \begin{proof}
+    极限点的存在性意味着收敛子列存在。如果列紧，则Lebesgue数引理成立，否则会有$\curb{r_i}\rightarrow 0$使得诸球皆不包含于$A$内。然而诸球的的球心存在极限点，存在此点的邻域在$A$内而包含诸球，矛盾。
+    \par
+    下证对任意$\epsilon$都存在有限$\epsilon$-球覆盖。否则取$B\pare{x_1,\epsilon}$，并在其外取$x_2$，在$B_1\cup B_2$外取$x_3$，以此类推。则最终$\curb{x_n}$两两距离$\ge\epsilon$，故无极限点。
+    \par
+    对任意开覆盖，选取Lebesgue数以及相应开球有限覆盖的父集$A$。
+  \end{proof}
+  由有限$\epsilon$-球覆盖的存在性知
+  \begin{corollary}
+    可度量化的紧致空间具有有限直径。
+  \end{corollary}
+  \begin{ex}
+    $\clo{\muc}$不是可度量化的，因为$\Omega$为极限点但不满足序列引理。$\muc$满足序列引理但它也不可度量化。
+  \end{ex}
   \begin{definition}
     度量空间内的映射$f$，若
     \[ \dist{f\pare{x}}{f\pare{y}} < \dist{x}{y}, \]
@@ -748,10 +916,563 @@
   \end{definition}
   \begin{theorem}
     \label{thm:fixp0}
-    若$X$为完备度量空间，则压缩映射存在不动点。
+    若$X$为完备度量空间，则压缩映射存在唯一不动点。
   \end{theorem}
+  \begin{proof}
+    注意$\abs{x_n-x_{n+1}} < d\abs{x_{n}-x_{n-1}}$即可。
+  \end{proof}
+  原书上此处仅证紧致空间，然而由\tref{metriccompacteq}紧致的度量空间是完备的。
+  \subsection{局部紧致性}
+  \begin{definition}
+    空间$X$在$x$处局部紧致，如果存在紧致子空间包含其邻域。如果处处如此，则空间局部紧致。
+  \end{definition}
+  \begin{ex}
+    $\R^n$是局部紧致的，但$\R^\omega$不是。
+  \end{ex}
+  \begin{ex}
+    具有上确界性质的全序集是局部紧致的。
+  \end{ex}
+  \begin{definition}
+    若$Y$是紧致的Hausdorff空间，$\clo{X}=Y$且$X$为$Y$的真子空间，则$Y$为$X$的紧致化。若相差单点集则谓单点紧致化。
+  \end{definition}
+  \begin{theorem}
+    空间局部紧致的Haudorff空间当且仅当存在单点紧致化。在此情形下，诸紧致化同胚且在$X$上恒等。 
+  \end{theorem}
+  \begin{proof}
+    同胚性验证开集映射到开集，分$\infty\in U$与$\infty \notin U$即可。构造$Y=X\cup\curb{\infty}$的拓扑为$\curb{U}\cup\curb{Y-C}$其中$C$紧致可得单点紧致化。若已知单点紧致化存在，则取$\infty$的邻域的补知为紧致空间的闭子集故紧致。
+  \end{proof}
+  \begin{ex}
+    $\R$的单点紧致化同胚于圆周。$\bC$的单点紧致化同胚于球。
+  \end{ex}
+  \begin{theorem}
+    设$X$为Hausdorff空间，则$X$在某处局部紧致当且仅当其任意邻域$U$包含邻域$V$且$\clo{V}$紧致，$\clo{V}\subset U$。
+  \end{theorem}
+  \begin{proof}
+    若$X$局部紧致，取单点紧致化后$Y-U$为闭集，由\tref{hauscompact}的证明知存在无交邻域分开$x$与$Y-U$，故$\clo{V}\subset U$紧致。
+  \end{proof}
+  \begin{corollary}
+    局部紧致空间的闭子集或开子集局部紧致。
+  \end{corollary}
+  \begin{proof}
+    闭子集由定义知局部紧致，开子集借前开定理知局部紧致。
+  \end{proof}
+  \begin{corollary}
+    空间同胚于一个紧致的Hausdorff空间的开子集当且仅当其为局部紧致的Hausdorff空间。
+  \end{corollary}
+  \section{完备度量空间与函数空间}
+  \subsection{完备度量空间}
+  \begin{definition}
+  \label{def:cauchy}
+    度量空间中若序列$\curb{x_n}$对任意给定的$\epsilon$有$N$使$n,m\ge N\Rightarrow d\pare{x_n,x_m}< \epsilon$，则谓之Cauchy。空间谓完备的，若Cauchy序列皆收敛。
+  \end{definition}
+  显然收敛序列必定是Cauchy的。显然完备空间的闭子集皆完备。显然空间关于一度量完备当且仅当其关于相应的标准有界度量完备。
+  \begin{lemma}
+    若空间中每一个Cauchy序列皆有收敛子序列则空间完备。
+  \end{lemma}
+  \begin{lemma}
+    对于通常的度量，$\R^n$完备。
+  \end{lemma}
+  \begin{proof}
+    借助\tref{metriccompacteq}选取收敛子列。
+  \end{proof}
+  \begin{lemma}
+    积空间中的序列收敛当且仅当其分量收敛。
+  \end{lemma}
+  \begin{theorem}
+    积空间$\R^\omega$关于诱导积拓扑的度量完备。
+  \end{theorem}
+  \begin{proof}
+    诱导积拓扑的度量见\tref{metricprodR}，只证分量Cauchy$\Rightarrow$列Cauchy。
+  \end{proof}
+  \begin{ex}
+    $\Q$和$\pare{-1,1}$不是完备的，可见完备性不是拓扑性质。
+  \end{ex}
+  \begin{definition}
+    设$\sbm{d}$为度量空间$Y$的标准有界度量，则
+    \[ \sbm{\rho}\pare{\vx,\vy} = \sup\curb{\sbm{d}\pare{x_\alpha,y_\alpha}} \]
+    谓一致度量。
+  \end{definition}
+  \begin{theorem}
+    如果$Y$关于度量$d$完备，则$Y^J$关于$\sbm{\rho}$完备。
+  \end{theorem}
+  下文中用$\cC\pare{X}{Y}$表示连续函数，$\cB\pare{X,Y}$表示有界函数。
+  \begin{theorem}
+    对于度量空间$Y$，$\cC\pare{X,Y}$和$\cB\pare{X,Y}$都是闭集。
+  \end{theorem}
+  \begin{proof}
+    前者为\tref{uniformconvergecontin}，后者注意存在有界函数一致接近极限点即可。
+  \end{proof}
+  \begin{corollary}
+    \label{coll:completeBC}
+    若$Y$是完备的，则$\cC\pare{X,Y}$和$\cB\pare{X,Y}$都是完备的。
+  \end{corollary}
+  \begin{definition}
+    设有度量空间$Y$，则$\cB\pare{X,Y}$上定义
+    \[ \rho\pare{f,g} = \sup\curb{d\pare{f\pare{x},g\pare{x}}}. \]
+    谓之上确界度量。
+  \end{definition}
+  \begin{theorem}
+    度量空间存在到完备度量空间的等距嵌入。
+  \end{theorem}
+  \begin{proof}[借助度量函数]
+    $\phi_a\pare{x}=d\pare{x,a}-d\pare{x,x_0}$连续而有界，故$\Phi\pare{a}=\phi_a$是$X$到完备度量空间$\cB$的嵌入，显然$\rho\pare{\phi_a,\phi_b}=d\pare{a,b}$故为等距嵌入。
+  \end{proof}
+  \begin{proof}[借助Cauchy序列]
+    $Y$为所有$X$中等价Cauchy列的集，$d_Y\leftarrow d\pare{x_n,y_n}$，则$h\pare{x}=\pare{x,x,\cdots}$等距。$h\pare{X}$在$Y$中稠密，再借助下述引理。
+  \end{proof}
+  \begin{lemma}
+    $A$在度量空间$Z$中稠密，$A$中Cauchy列皆收敛则$Z$完备。
+  \end{lemma}
+  \begin{proof}
+    对$\curb{z_n}$选取$\curb{a_n}$满足$d\pare{a_n,z_n}\le 1/n$。
+  \end{proof}
+  \begin{definition}
+    $\func{h}{X}{Y}$等距嵌入完备空间，则$\clo{h\pare{X}}$为完备，谓完备化。
+  \end{definition}
+  \subsection{Peano曲线}
+  \begin{theorem}
+    设$I=\brac{0,1}$，存在连续满射$\func{f}{I}{I^2}$。
+  \end{theorem}
+  \begin{proof}
+    对正方形定义$\land$-形道路$f_1$，$f_2$由多段$\land$-形拼成，形同$>\land\land <$，类推定义$f_3$等。由\cref{completeBC}，$\cC\pare{I,I^2}$完备，又显然$\curb{f_n}$为Cauchy，收敛于$f$。又显然$x\in I^2$的任意邻域都与$f$相交，而$f\pare{I}$为闭集，故为满射。
+  \end{proof}
+  
+% 点集拓扑学在此处结束  -- POSITION_ID=POINTSET_TOPOLOGY_ENDING
+  \section{数列与级数}
+  \subsection{收敛序列}
+  \begin{definition}[\dcompare{converge}]
+    度量空间的序列$\curb{p_n}$收敛，如果存在$p\in X$满足对于任意$\epsilon > 0$，存在$N$使$n\ge N$时$d\pare{p_n,p} < \epsilon$。
+  \end{definition}
+  \begin{theorem}
+    设$\curb{p_n}$是度量空间$X$中的序列，
+    \begin{cenum}
+      \item $\curb{p_ n}$收敛于$p\in X$，当且仅当$p$的每个邻域都能包含$\curb{p_n}$除有限项意外的其他项；
+      \item （\tcompare{hausonepoint}）如果$p\in X$，$p' \in X$，$\curb{p_n}$收敛于$p$和$p'$，则$p'=p$；
+      \item 如果$\curb{p_n}$收敛，那么$\curb{p_n}$有界。
+      \item （\lcompare{seq}）如果$E\subset X$而$p$是$E$的极限点，那么$E$中有$\curb{p_n}$收敛于$p$。
+    \end{cenum}
+  \end{theorem}
+  \begin{theorem}[\tcompare{matricscontineq}与\lcompare{asmd}]
+    若$t_n\rightarrow t$而$s_n\rightarrow s$，则
+    \begin{cenum}
+      \item $t_n + s_n \rightarrow s+t$；
+      \item $c s_n \rightarrow cs$，$c+s_n\rightarrow c+s$；
+      \item $s_n t_n \rightarrow st$；
+      \item 若$s_n\neq 0$且$s\neq 0$则$1/s_n\rightarrow 1/s$。
+    \end{cenum}
+  \end{theorem}
+  \begin{proof}
+    注意第三点可以先证明$p_n\rightarrow p \Rightarrow p_n^2\rightarrow p^2$，即
+    \[ \abs{p_n^2-p^2}=\abs{p_n-p}\abs{p_n+p}\rightarrow 0. \qedhere\]
+  \end{proof}
+  \begin{theorem}[\ecompare{veccontin}或\tcompare{eucsqreq}]
+    $\R^n$中的序列收敛当且仅当其诸分量收敛，在此情形下，若$\beta_n\rightarrow \beta$，
+    \begin{cenum}
+      \item $\vx_n + \vy_n \rightarrow \vx+\vy$；
+      \item $\vx_n\cdot\vy_n\rightarrow \vx\cdot\vy$；
+      \item $\beta_n\vx_n\rightarrow\beta\vx$。
+    \end{cenum}
+  \end{theorem}
+  \begin{proof}
+    对各分量调用前开定理即可。
+  \end{proof}
+  \subsection{子序列}
+  \begin{definition}
+    $\curb{p_{n_k}}$中若$\curb{n_k}$严格递增则谓子序列。若收敛则谓部分极限。
+  \end{definition}
+  \begin{theorem}[\tcompare{metriccompactimplies}]
+    紧致度量空间中的序列存在收敛子列。
+  \end{theorem}
+  \begin{corollary}
+    $\R^n$中的有界序列包含收敛子列。
+  \end{corollary}
+  \begin{theorem}[\tcompare{closureeq}]
+    度量空间中$\curb{p_n}$的部分极限组成闭集。
+  \end{theorem}
+  \begin{proof}
+    用闭集$C$排斥所有孤立点，从而所有部分极限，即$\clo{O}\cap C$为闭集。
+  \end{proof}
+  \subsection{Cauchy序列}
+  \begin{definition}[\dcompare{cauchy}]
+    $\curb{p_n}$谓Cauchy序列，若对于任意$\epsilon>0$，存在$N$使得任意$n,m\ge N$都有$d\pare{p_n,p_m}<\epsilon$。
+  \end{definition}
+  $\curb{p_n}$是Cauchy序列，等价于$\diam \curb{p_n,p_{n+1},\cdots} \rightarrow 0$。
+  \begin{theorem}[\ccompare{metricscontin}与\tcompare{contineq}]
+    $\diam E = \diam \clo{E}$。
+  \end{theorem}
+  \begin{theorem}[\tref{finiteinters}]
+    \label{thm:kncap}
+    若$\curb{K_n}$为紧集的递降序列且$\diam K_n \rightarrow 0$，则$\cap K_n$为单点集。
+  \end{theorem}
+  \begin{theorem}
+    度量空间中的收敛序列都是Cauchy序列。
+  \end{theorem}
+  \begin{theorem}
+    紧致的度量空间中Cauchy序列收敛。
+  \end{theorem}
+  \begin{proof}
+    由\tref{kncap}可得。或由于存在收敛子序列，故Cauchy序列收敛。
+  \end{proof}
+  \begin{theorem}
+    $\R^n$中Cauchy序列收敛。
+  \end{theorem}
+  \begin{definition}
+    若度量空间的每个Cauchy序列在其中收敛，则称之完备的。
+  \end{definition}
+  \begin{corollary}
+    紧度量空间完备，$\R^n$完备，完备度量空间的闭子集完备。
+  \end{corollary}
+  \begin{theorem}
+    单调序列收敛当且仅当有界。
+  \end{theorem}
+  \begin{proof}
+    有界单调序列存在收敛子列，即子Cauchy列，故为Cauchy序列。
+  \end{proof}
+  \subsection{上极限和下极限}
+  \begin{definition}
+    若$\curb{p_n}$满足对任意实数$M$，存在$N$使得$n\ge N\Rightarrow s_n\ge M$，则谓$s_n\rightarrow +\infty$。类似定义$s_n\rightarrow -\infty$。
+  \end{definition}
+  \begin{definition}
+    $\curb{p_n}$为实数序列而$E$为其所有部分极限的扩展（必要时包含$\infty$），则$p^*=\sup E$为上极限，$p_*=\inf E$谓下极限。
+  \end{definition}
+  \begin{theorem}
+    \label{thm:sup}
+    符号定义如上，则
+    \begin{cenum}
+      \item $p^*\in E$；
+      \item $x>p^*$则存在$N$使得$n\ge N\Rightarrow p_n<x$；
+      \item $p^*$是唯一具有上述二性质的数。
+    \end{cenum}
+    对$p_*$，类似结论成立。
+  \end{theorem}
+  \begin{proof}
+    由部分极限构成闭集知第一点成立。若$p^*$以上仍然存在无限多点，则矛盾，知第二点成立。若$p<p^*$，则第二点不能成立，知第三点成立。
+  \end{proof}
+  \begin{theorem}
+    $s_n\rightarrow s$当且仅当$s_*=s=s_*$。
+  \end{theorem}
+  \subsection{特殊序列}
+  \begin{theorem}
+    当$p>0$，$\alpha\in\R$，下列极限成立：
+    \begin{cenum}
+      \item $1/n^p\rightarrow 0$；
+      \item $p^{{1/n}}\rightarrow 1$；
+      \item $n^{1/n}\rightarrow 1$；
+      \item $n^\alpha/\pare{1+p}^n\rightarrow 0$；
+      \item $\abs{x}<1$时，$x^n\rightarrow 0$。
+    \end{cenum}
+  \end{theorem}
+  \begin{proof}
+    取$N=\pare{1/\epsilon}^{\pare{1/p}}$可得第一点。若$p>1$，令$x_n=p^{1/n}-1$，$\pare{1+x_n}^n=p$后展开取前二项知成立第二点。展开取第三项成立第三点。
+  \end{proof}
+  \subsection{级数}
+  \begin{definition}
+    $s_n=\sum^n a_n$谓部分和，若$s_n\rightarrow s$则谓级数收敛。
+  \end{definition}
+  \begin{theorem}
+    $\sum a_n$收敛当且仅当对任意的$\epsilon>0$，存在整数$N$使得$m\ge n\ge N$时，
+    \[ \abs{\sum_{k=n}^m a_k} \le \epsilon. \]
+  \end{theorem}
+  \begin{theorem}
+    $\sum a_n$收敛则$a_n\rightarrow 0$。
+  \end{theorem}
+  \begin{theorem}
+    正项级数收敛当且仅当$s_n$有界。
+  \end{theorem}
+  \begin{theorem}
+    如果$\abs{a_n}\le c_n$而$\sum c_n$收敛则$\sum a_n$收敛。
+  \end{theorem}
+  \begin{theorem}
+    若$a_n\ge d_n \ge 0$而$\sum d_n$发散，则$\sum a_n$发散。
+  \end{theorem}
+  \begin{proof}
+    由前开定理反证得。
+  \end{proof}
+  \subsection{正项级数}
+  \begin{theorem}
+    若$0\le x<1$，则$\sum x^n = 1/\pare{1-x}$。
+  \end{theorem}
+  \begin{theorem}
+    单调递减的正项序列$\curb{a_n}$，其和收敛当且仅当$\sum 2^ka_{2^k}$收敛。
+  \end{theorem}
+  \begin{corollary}
+    $p>1$时$\sum 1/n^p$收敛，否则发散。
+  \end{corollary}
+  \begin{corollary}
+    $p>1$时$\sum 1/n\pare{\log n}^p$收敛，否则发散。
+  \end{corollary}
+  可以继续这种手段，证明$\sum 1/n \log n \pare{\log \log n}^p$的敛散性。
+  \begin{definition}
+    e=$\sum 1/n!$。
+  \end{definition}
+  \begin{theorem}
+    $\pare{1+1/n}^n\rightarrow e$。
+  \end{theorem}
+  \begin{proof}
+    设$a_n=\pare{1+1/n}^n$，二项式展开立得
+    \begin{align*}
+    1+\rec{1!} + \rec{2!}+\cdots > \pare{1+\rec{n}}^n&, \quad \sup a_n \le e.\\
+    \lim\inf a_n \ge 1+1+\rec{2!}+\cdots + \rec{m!}&, \quad \inf a_n \ge e. \qedhere
+    \end{align*}
+    $\sum^m 1/n!-e < 1/n!n$可知级数逼近的误差。
+  \end{proof}
+  \begin{theorem}
+    $e$是无理数。
+  \end{theorem}
+  \begin{proof}
+    假设$e=p/q$，则$0<q!\pare{e-s_q}<1/q$是整数，矛盾。
+  \end{proof}
+  \subsection{审敛法}
+  \begin{theorem}[根值审敛法]
+    令$\alpha = \lim\sup \abs{a_n}^{1/n}$，则
+    \begin{cenum}
+      \item $\alpha > 1$时$\sum a_n$发散；
+      \item $\alpha < 1$时$\sum a_n$收敛。
+    \end{cenum}
+  \end{theorem}
+  \begin{proof}
+    由\tref{sup}，选取一条猛增的$\curb{a_n}$子列即可。
+  \end{proof}
+  \begin{ex}
+    $a_n=1/n$与$a_n=1/n^2$同样满足$\alpha=1$但前者发散后者收敛。
+  \end{ex}
+  \begin{theorem}[比值审敛法]
+    令$\alpha=\lim\sup\abs{a_{n+1}/a_n}$,
+    \begin{cenum}
+      \item $\alpha < 1$时$\sum a_n$收敛；
+      \item 若存在$N$满足$n\ge N\Rightarrow \abs{a_{n+1}/a_n} \ge 1$则它发散。
+    \end{cenum}
+  \end{theorem}
+  \begin{ex}
+    对于$\pare{1/2+1/3} + \pare{1/2^2+1/3^2} + \pare{1/2^3+1/3^3} + \cdots$，根值审敛法成功而比值审敛法失败。
+  \end{ex}
+  \begin{ex}
+    对于$\pare{1/2+1}+\pare{1/8+1/4}+\pare{1/32+1/16}+\cdots$同样如此。
+  \end{ex}
+  \begin{theorem}
+    对任意正数序列$\curb{c_n}$，有
+    \begin{align*}
+      \lim\inf \frac{c_{n+1}}{c_n} &\le \lim\inf c_n^{1/n},\\
+      \lim\sup c_n^{1/n} &\le \lim\sup \frac{c_{n+1}}{c_n}.
+    \end{align*}
+  \end{theorem}
+  \begin{proof}
+    只证第二个，设左边的上界为$\alpha$，则对于充分大的$n$，
+    \[ c_n \le c \alpha^n. \qedhere \]
+  \end{proof}
+  \begin{theorem}
+    对于$\sum c_n z^n$，设$\alpha=\lim\sup\abs{c_n}^{1/n}$，$R=1/\alpha$为收敛半径。
+  \end{theorem}
+  \subsection{分部求和}
+  \begin{theorem}[Abel求和]
+    令$A_n=\sum_0^n a_n$而$A_{-1}=0$，则
+    \[ \sum_{n=p}^q a_n b_n = \sum_{n=p}^{q-1} A_n\pare{b_n-b_{n+1}} + A_qb_q-A_{p-1}b_p. \]
+  \end{theorem}
+  \begin{theorem}
+    假设
+    \begin{cenum}
+      \item $\curb{A_n}$构成有界序列；
+      \item $b_n\searrow 0$；
+    \end{cenum}
+    那么$\sum a_nb_n$收敛。
+  \end{theorem}
+  \begin{proof}
+    借助Abel求和发现余项满足Cauchy即可。
+  \end{proof}
+  \begin{theorem}
+    如果$\abs{c_n}\searrow 0$而$\sgnf c_n=\pare{-1}^{n+1}$，则$\sum c_n$收敛。
+  \end{theorem}
+  \begin{theorem}
+    若$\sum c_nz^n$的收敛半径为$1$而$c_n\searrow 0$，则它在单位圆上可能除了$z=1$外每个点收敛。
+  \end{theorem}
+  \begin{proof}
+    取$A_n=\sum^n z^k$即可。
+  \end{proof}
+  \subsection{绝对收敛}
+  \begin{definition}
+    如果$\sum \abs{a_n}$收敛则谓$\sum a_n$绝对收敛。
+  \end{definition}
+  \begin{theorem}
+    绝对收敛的级数收敛。
+  \end{theorem}
+  \subsection{级数的加乘}
+  由极限的加乘立刻得到
+  \begin{theorem}
+    $\sum{a_n+b_n}=\sum a_n+\sum b_n$而$\sum ca_n=c\sum a_n$。
+  \end{theorem}
+  \begin{definition}
+    令$c_n=\sum_0^n a_kb_{n-k}$则谓$\sum c_n$为两个级数的积。
+  \end{definition}
+  \begin{ex}
+    $\sum_0^\infty \pare{-1}^n/\sqrt{n+1}$收敛，自乘的结果发散。
+  \end{ex}
+  \noindent
+  \begin{minipage}{0.7\textwidth}
+  \begin{theorem}
+    若$\sum a_n$绝对收敛，$\sum b_n$收敛，$c_n$定义如上，则
+  \end{theorem}
+  \[ \sum c_n = AB. \]
+  \end{minipage}
+  \begin{minipage}{0.25\textwidth}
+  \includegraphics{/Users/zechen/Documents/PrivateAcademic/Analysis/GeneralPointSetTopology/src/graph1.pdf} 
+  \end{minipage}
+  \begin{proof}
+    参考上图，
+    \[ C_n = A_n B_n - \leftidx{^{n}_{n}}Ba_1 - \leftidx{^{n}_{n-1}}Ba_2 - \cdots - \leftidx{^{n}_{1}}Ba_n. \]
+    由于$\curb{B_n}$为Cauchy列，可以选取$M$使得$n\ge m\ge M$时有$\leftidx{^n_m}B<\epsilon$，
+    \[ \abs{C_n-A_nB_n} \le \epsilon\sum\abs{a_n} + \max_{i<M}\abs{B_i}\pare{a_{n-M} + \cdots + a_n}. \qedhere \]
+  \end{proof}
 
-
+  \subsection{级数重排}
+  \begin{definition}
+    设$\func{f}{\Z_+}{\Z_+}$为双射，则$\sum a_{f\pare{n}}$为$\sum a_n$的重排。
+  \end{definition}
+  \begin{theorem}
+    对于收敛而非绝对收敛的级数和任意$-\infty\le\alpha\le\beta\le+\infty$，存在重排满足$\inf s'_n=\alpha$而$\sup s'_n=\beta$。
+  \end{theorem}
+  \begin{proof}
+    正负分出来，正项累加到刚好过$\alpha$，累加负项到刚好低于$\beta$，循环。
+  \end{proof}
+  \begin{theorem}
+    绝对收敛的级数其任意重排收敛。
+  \end{theorem}
+  \section{连续函数}
+  \subsection{函数的极限}
+  \begin{definition}
+    谓$\lim_{x\rightarrow p}f\pare{x} = q$，如果对于任意$\epsilon>0$，存在$\delta>0$满足$0 < d\pare{x,p} < \delta \Rightarrow d\pare{f\pare{x},q}<\epsilon$。
+  \end{definition}
+  \begin{theorem}[\tcompare{matricscontineq}]
+    前开定义等价于$p_n\rightarrow p\Rightarrow f\pare{p_n}\rightarrow f\pare{p}$，其中$p_n\neq p$。
+  \end{theorem}
+  \begin{proof}
+    如果定义成立，则显然。若定义不成立，可反证。
+  \end{proof}
+  \begin{corollary}
+    如果$f$在$p$处的极限存在，则极限唯一。
+  \end{corollary}
+  \begin{theorem}
+    若$f\pare{x\rightarrow p}=A$，$g\pare{x\rightarrow p}=B$，则$\pare{f\star g}\pare{x\rightarrow p}=A\star B$。其中$\star$为任意四则运算，对除法假设$B=0$。
+  \end{theorem}
+  \begin{definition}[连续性的$\epsilon$-$\delta$定义]
+    谓$f$在$p$处连续，如果对任意$\epsilon>0$，总存在$\delta>0$满足$d\pare{x,p}<\delta\Rightarrow d\pare{f\pare{x},f\pare{p}}<\epsilon$。
+  \end{definition}
+  \begin{theorem}[\tcompare{matricscontineq}]
+    定义等价于$x\rightarrow p\Rightarrow f\pare{x\rightarrow p}=f\pare{p}$。
+  \end{theorem}
+  \begin{theorem}[\tcompare{continauscontin}]
+    （在某点）连续函数的复合函数仍然连续。
+  \end{theorem}
+  \begin{theorem}[\tcompare{contineqdeltaepsilon}]
+    连续性等价于$V$为开$\Rightarrow \inv{f}\pare{V}$为开。
+  \end{theorem}
+  \begin{theorem}[\tcompare{contineq}]
+    连续性等价于$V$为闭$\Rightarrow \inv{f}\pare{V}$为闭。
+  \end{theorem}
+  \begin{theorem}[\tcompare{continasmd}]
+    连续函数的加减乘除（在非零部分）连续。
+  \end{theorem}
+  \begin{theorem}[\tcompare{continprod}]
+    连续函数的有限Cartesian乘积连续。
+  \end{theorem}
+  \begin{ex}
+    投射、单项式以及定义域内的有理函数连续。
+  \end{ex}
+  \subsection{连续性和紧性}
+  \begin{definition}
+    映入$\R^k$的函数谓有界的，如果其像集有界。
+  \end{definition}
+  \begin{theorem}[\tcompare{imagecompact}]
+    紧致度量空间的连续像紧致。
+  \end{theorem}
+  \begin{theorem}
+    紧致度量空间上的连续函数有界。
+  \end{theorem}
+  \begin{theorem}[\tcompare{extreme}]
+    紧度量空间上的连续实函数可取得最值。
+  \end{theorem}
+  \begin{theorem}[\tcompare{compacthomo}]
+    \label{thm:invofcompactcontin}
+    紧度量空间到度量空间的双射之逆连续。
+  \end{theorem}
+  \begin{definition}[\dcompare{unifcontin}]
+  一致连续的定义。
+  \end{definition}
+  \begin{definition}[\tcompare{compactunifcontin}]
+    紧度量空间上的连续函数一致连续。
+  \end{definition}
+  \begin{proof}
+    选取$p_n\rightarrow q_n$而$\abs{f\pare{p_n}-f\pare{q_n}}>\epsilon$矛盾。
+  \end{proof}
+  \begin{theorem}
+    若$E$为$\R$中非紧的集，则
+    \begin{cenum}
+      \item 存在在$E$连续而非有界的函数；
+      \item 存在在$E$上连续有界而无最大值的函数；
+      \item 若$E$有界，则存在$E$上连续而非一致连续的函数。
+    \end{cenum}
+  \end{theorem}
+  \begin{proof}
+    在极限点处做文章即可。
+  \end{proof}
+  \begin{ex}
+    \tref{invofcompactcontin}中紧性不可缺少，\eref{01tocircle}即是一例。
+  \end{ex}
+  \subsection{连续性与连通性}
+  \begin{theorem}[\tcompare{connectcontin}]
+    连通空间的连续像是连通的。
+  \end{theorem}
+  \begin{theorem}[\tcompare{interv}]
+    介值定理。
+  \end{theorem}
+  \subsection{间断}
+  \begin{definition}
+    $\curb{t_n>x}\Rightarrow f\pare{t_n\rightarrow x} = q$，则谓$f\pare{x+}=q$。类似有$f\pare{x-}$。
+  \end{definition}
+  \begin{definition}
+    谓第一类间断者，$f\pare{x\pm}$皆存在而不等。否则谓第二类。
+  \end{definition}
+  注意$f\pare{x}$可能等于或不等于$f\pare{x\pm}$。
+  \begin{ex}
+    $\chi_\Q$在每个点发生第二类间断。
+  \end{ex}
+  \begin{ex}
+    $x\chi_\Q$在$x=0$连续，其他点发生第二类间断。
+  \end{ex}
+  \begin{ex}
+    $f\pare{x}=\sin 1/x \otw 0$在$x=0$处发生第二类间断。
+  \end{ex}
+  \subsection{单调函数}
+  \begin{definition}
+    若$x<y\Rightarrow f\pare{x}\le f\pare{y}$则谓之单调递增，类似有单调递减。
+  \end{definition}
+  \begin{theorem}
+    设$\func{f}{\pare{a,b}}{\R}$单调递增，则下列极限存在且
+    \[ \sup_{a<t<x} f\pare{t} = f\pare{x-} \le f\pare{x}\le f\pare{x+}=\inf_{x<t<b} f\pare{t}. \]
+  \end{theorem}
+  \begin{corollary}
+    单调函数没有第二类间断。
+  \end{corollary}
+  \begin{theorem}
+    单调函数最多只有可数间断。
+  \end{theorem}
+  \begin{theorem}
+    对于给定的可数集$\curb{x_n}$，存在函数恰好在其上间断，其他地方连续。
+  \end{theorem}
+  \begin{proof}
+    选取收敛的正项级数$\sum c_n$后取
+    \[ f= \sum_{x_n<x} c_n. \qedhere \]
+  \end{proof}
+  \subsection{无穷远处的极限}
+  \begin{definition}
+    $+\infty$的邻域谓形如$\pare{c,+\infty}$的区间。
+  \end{definition}
+  \begin{definition}
+    设$A$在广义实数系中，若对$A$的邻域$U$皆存在$x$的邻域$V$满足$f\pare{V}\subset U$，则谓$f\pare{t\rightarrow x} = A$。
+  \end{definition}
+  \begin{theorem}
+    函数极限的四则运算在广义实数系内仍然成立。
+  \end{theorem}
+  注意广义实数系可视为$\R$的两点紧致化。
 %ContentEnds
  
 \ifx\allfiles\undefined %如果位置放错，可能出现意外中断

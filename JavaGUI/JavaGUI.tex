@@ -203,6 +203,10 @@ setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 可以修改光标样式。
 \par
 除了上述各种Listener，还有用于滚动条的AdjustmentListener，用于复选框的ItemListener等。
+\subsubsection*{布局管理}
+在使用layout之前，应当先\snp{setLayout(new BorderLayout());}。
+\par
+边框布局在装好panel之后\snp{add(panel, BorderLayout.SOUTH);}即可。
 \subsubsection*{各种控件}
 表格中的数据以二维数组的形式储存
 \begin{lstlisting}

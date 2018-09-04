@@ -2,16 +2,12 @@
 
 \input{/Users/zechen/Documents/PrivateAcademic/CommonHead/CommonHead.tex}
 
-\makeatletter
-\newcommand{\generate}[4]{%
-  % #1 customary command prefix;  #2 macro content;  #3 starting point;  #4 end point
-  \def\temp{TEMP}
-  %\count=`#3
-  \@namedef{#1#3}{#2{#3}}
-}
-\generate{rc}{\mathbf}{A}{b}
-\makeatother
-
 \begin{document}
-$\bra{a} A \ket{b} \erf\pare{c}$
+\begin{align*}
+  &\sin^3\theta\cos^2\theta\\
+  =&\pare{\frac{e^{i\theta}-e^{-i\theta}}{2i}}^3\pare{\frac{e^{i\theta}+e^{-i\theta}}{2}}^2\\
+  =&-\frac{e^{5ix}}{32i}+\frac{e^{3ix}}{32i}+\frac{e^{ix}}{16i}\\
+    &+\frac{e^{-5ix}}{32i}-\frac{e^{-3ix}}{32i}-\frac{e^{-ix}}{16i}\\
+  =&\frac{1}{16}\pare{2\sin\theta+\sin3\theta-\sin5\theta}.
+\end{align*}
 \end{document}

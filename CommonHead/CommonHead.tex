@@ -9,6 +9,8 @@
 \usepackage{braket}
 \usepackage{hyperref}
 \usepackage[all, pdf]{xy}
+\usepackage{wrapfig}
+\usepackage{leftidx}
 
 % Physics Include
 \usepackage{amsmath}
@@ -25,6 +27,17 @@
 \usepackage{mathtools}
 \usepackage[normalem]{ulem}
 \usepackage{multicol}
+
+\usepackage{mdframed}
+\usepackage{lipsum}% just to generate text for the example
+
+\newmdenv[
+  topline=false,
+  bottomline=false,
+  skipabove=\topsep,
+  skipbelow=\topsep
+]{siderules}
+
 
 % Mathematics Head
 
@@ -47,7 +60,13 @@
 \newcommand{\lref}[1]{引理\ref{lem:#1}}
 \newcommand{\cref}[1]{推论\ref{coll:#1}}
 \newcommand{\pref}[1]{命题\ref{prp:#1}}
+\newcommand{\rmref}[1]{附注\ref{rm:#1}}
 \newcommand{\eref}[1]{例\ref{ex:#1}}
+\newcommand{\dcompare}[1]{\textit{平行于\dref{#1}}}
+\newcommand{\tcompare}[1]{\textit{平行于\tref{#1}}}
+\newcommand{\lcompare}[1]{\textit{平行于\lref{#1}}}
+\newcommand{\ecompare}[1]{\textit{平行于\eref{#1}}}
+\newcommand{\ccompare}[1]{\textit{平行于\cref{#1}}}
 \newcommand{\func}[3]{#1:\, #2 \rightarrow #3}
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\clo}[1]{\overbar{#1}}
@@ -107,13 +126,61 @@
 \newcommand{\Av}[1]{\mathrm{Av}_{#1}\,}
 \newcommand{\Lip}[1]{Lipschitz-$#1$}
 \newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\sgnf}{\mathrm{sgn}\,}
 \newcommand{\eset}{\varnothing}
-\newcommand{\cT}{\mathcal{T}}
-\newcommand{\cS}{\mathcal{S}}
-\newcommand{\cG}{\mathcal{G}}
-\newcommand{\cF}{\mathcal{F}}
-\newcommand{\cC}{\mathcal{C}}
+\newcommand{\difn}[1]{^{\pare{#1}}}
+%\newcommand{\ca}{\mathcal{a}}
+%\newcommand{\cb}{\mathcal{b}}
+%\newcommand{\cc}{\mathcal{c}}
+%\newcommand{\cd}{\mathcal{d}}
+%\newcommand{\ce}{\mathcal{e}}
+%\newcommand{\cf}{\mathcal{f}}
+%\newcommand{\cg}{\mathcal{g}}
+%\newcommand{\ch}{\mathcal{h}}
+%\newcommand{\ci}{\mathcal{i}}
+%\newcommand{\cj}{\mathcal{j}}
+%\newcommand{\ck}{\mathcal{k}}
+%\newcommand{\cl}{\mathcal{l}}
+%\newcommand{\cm}{\mathcal{m}}
+%\newcommand{\cn}{\mathcal{n}}
+%\newcommand{\co}{\mathcal{o}}
+%\newcommand{\cp}{\mathcal{p}}
+%\newcommand{\cq}{\mathcal{q}}
+%\newcommand{\cr}{\mathcal{r}}
+%\newcommand{\cs}{\mathcal{s}}
+%\newcommand{\ct}{\mathcal{t}}
+%\newcommand{\cu}{\mathcal{u}}
+%\newcommand{\cv}{\mathcal{v}}
+%\newcommand{\cw}{\mathcal{w}}
+%\newcommand{\cx}{\mathcal{x}}
+%\newcommand{\cy}{\mathcal{y}}
+%\newcommand{\cz}{\mathcal{z}}
+\newcommand{\cA}{\mathcal{A}}
 \newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+%\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\inter}[1]{\mathring{#1}}
 \newcommand{\forest}[3]{对于{#1}，存在{#2}，使得{#3}}
 \newcommand{\tuno}{$T_1$公理}
@@ -142,10 +209,13 @@
 \newtheorem{corollary}{推论}[section]
 \newtheorem{proposition}{命题}[section]
 \newtheorem{axiom}{公理}[section]
+\newtheorem{ass}{假设}[section]
 \newtheorem{ex}{例}[section]
+\newtheorem{remark}{附注}[section]
+%\newtheorem*{remark*}{附注}[section]
 \newtheorem{reflection}{反射}[section]
 \newcommand{\refl}[1]{\vspace{0.5em}\par\noindent\fbox{%
-    \parbox{0.9\textwidth}{%
+    \parbox{0.97\textwidth}{%
     \begin{reflection}
         #1
     \end{reflection}
@@ -168,6 +238,15 @@
 \newcommand{\ddT}{\ddel{T}}
 \newcommand{\ddV}{\ddel{V}}
 \newcommand{\ddr}{\ddel{r}}
+\newcommand{\dds}{\ddel{s}}
+\newcommand{\ddron}[1]{\ddelon{#1}{r}}
+\newcommand{\ddson}[1]{\ddelon{#1}{s}}
+\newcommand{\ddton}[1]{\ddelon{#1}{t}}
+\newcommand{\ddxon}[1]{\ddelon{#1}{x}}
+\newcommand{\ddyon}[1]{\ddelon{#1}{y}}
+\newcommand{\ddzon}[1]{\ddelon{#1}{z}}
+\newcommand{\ddthon}[1]{\ddelon{#1}{\theta}}
+\newcommand{\ddalon}[1]{\ddelon{#1}{\alpha}}
 \newcommand{\ddth}{\ddel{\theta}}
 \newcommand{\ddph}{\ddel{\phi}}
 \newcommand{\dddt}{\dddel{t}}
@@ -184,6 +263,7 @@
 \newcommand{\edddon}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d}^2 #2}}
 \newcommand{\edt}{\edd{t}}
 \newcommand{\edton}[1]{\eddon{#1}{t}}
+\newcommand{\edalon}[1]{\eddon{#1}{\alpha}}
 \newcommand{\edT}{\edd{T}}
 \newcommand{\edr}{\edd{r}}
 \newcommand{\edl}{\edd{l}}
@@ -264,11 +344,12 @@
 \newcommand{\rot}{\nabla\times}
 \newcommand{\divg}{\nabla\cdot}
 \newcommand{\cE}{\mathcal{E}}
-\newcommand{\conclu}[1]{\vspace{1em}\par\noindent\fbox{\parbox{0.9\textwidth}{#1}}\vspace{1em}}
+\newcommand{\conclu}[1]{\vspace{1em}\par\noindent\fbox{\parbox{0.97\linewidth}{#1}}\vspace{1em}}
 \newcommand{\subentrynote}{$\bullet$}
-\newcommand{\keypoint}[1]{\par\subentrynote\quad #1 \par}
+\newcommand{\keypoint}[1]{\par\begin{siderules}\subentrynote\quad #1 \end{siderules}\par}
 \newcommand{\fconclu}{\boxed}
 \newcommand{\pair}[2]{#1 \, #2}
+\newcommand{\barbelow}[1]{\underline{#1}}
 \newcommand{\intn}[2]{\int #1 \,\mathrm{d} #2}
 \newcommand{\intu}[3]{\int_0^{#1} #2 \,\mathrm{d} #3}
 \newcommand{\intiu}[3]{\int_{-\infty}^{#1} #2 \, \rd{} #3}
@@ -278,10 +359,15 @@
 \newcommand{\intr}[2]{\int_{-\infty}^{\infty} #1 \, \rd{} #2}
 \newcommand{\intbi}[3]{\int_{#1}^{\infty} #2 \, \rd{} #3}
 \newcommand{\intab}[4]{\int_{#1}^{#2} #3 \, \rd{} #4}
+\newcommand{\supint}[2]{\overbar{\int_{#1}^{#2}}}
+\newcommand{\infint}[2]{\barbelow{\int_{#1}^{#2}}}
+\newcommand{\intpostf}[1]{\, \rd{} #1}
 \newcommand{\bfactor}[1]{e^{-#1/k_BT}}
 \newcommand{\pbfactor}[1]{e^{#1/k_BT}}
 \newcommand{\dn}[2]{#1^{\pare{#2}}}
 \newcommand{\prodg}[1]{\pare{#1}^\times}
+\newcommand{\muc}{S_\Omega}
+\newcommand{\otw}{\, || \,}
 
 \newcommand{\notion}{\emph}
 \newcommand{\iP}{\mathcal{P}}
@@ -322,6 +408,9 @@
 \newcommand{\dcol}[2]{\[ \left.#1 \hspace{1em}\right\vert\hspace{1em} #2 \]}
 \newcommand{\titlegamma}{\texorpdfstring{$\Gamma$}{Gamma}}
 \newcommand{\titleB}{\texorpdfstring{$B$}{B}}
+\newcommand{\switch}[2]{\brac{#1 | #2}}
+\newcommand{\SYSexeref}[1]{（舒幼生#1）}
+\newcommand{\warning}[1]{\par\textit{注意：#1}}
 
 % Computer Science Head
 \usepackage{listings}
